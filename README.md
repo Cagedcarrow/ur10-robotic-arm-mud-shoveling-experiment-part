@@ -65,6 +65,30 @@ ros2 run ur10_examples_py moveit_py_demo
 
 更详细的使用方式见 [运行手册](docs/03_runbook.md)。
 
+## 新手阅读顺序
+
+如果你是 ROS 2 / MoveIt2 新手，推荐按下面顺序阅读：
+
+1. [运行手册](docs/03_runbook.md)
+2. [工作区结构说明](docs/02_workspace_structure.md)
+3. [代码讲解](docs/05_code_walkthrough.md)
+4. [路径规划与避障原理](docs/06_motion_planning_and_obstacle_avoidance.md)
+
+这样可以先学会“怎么跑”，再学“代码在哪”，最后理解“为什么能规划和避障”。
+
+## 系统工作流程
+
+这套系统默认按下面顺序运行：
+
+1. `complete_simulation.launch.py` 先清理旧的 Gazebo / MoveIt 残留进程
+2. 启动 Gazebo Classic，并在世界里生成 UR10 机器人
+3. `gazebo_ros2_control` 启动控制器，激活 `joint_state_broadcaster` 和 `joint_trajectory_controller`
+4. 启动 `move_group`，让 MoveIt 可以读取当前关节状态并准备规划
+5. 俯视点云节点发布 `/overhead_camera/points`
+6. `pcd_capture_node` 把点云写成 `latest_obstacle.pcd`
+7. `pcd_to_collision_scene_node` 把 PCD 转成 `work_table` 和 `pcd_obstacle_box`
+8. C++ 示例节点读取当前状态和障碍物，调用 MoveIt 规划并执行避障轨迹
+
 ## 典型演示链路
 
 ### 一键自动链路
@@ -107,6 +131,8 @@ ros2 run ur10_examples_py moveit_py_demo
 - [工作区结构说明](docs/02_workspace_structure.md)
 - [运行手册](docs/03_runbook.md)
 - [节点与 Launch 清单](docs/04_nodes_and_launches.md)
+- [代码讲解](docs/05_code_walkthrough.md)
+- [路径规划与避障原理](docs/06_motion_planning_and_obstacle_avoidance.md)
 
 ## 目录预览
 

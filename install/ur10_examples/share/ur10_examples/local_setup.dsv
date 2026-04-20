@@ -1,1 +1,2 @@
-/root/ur10_ws/build/ur10_examples/ament_cmake_environment_hooks/local_setup.dsv
+source;share/ur10_examples/environment/ament_prefix_path.sh
+source;share/ur10_examples/environment/path.sh

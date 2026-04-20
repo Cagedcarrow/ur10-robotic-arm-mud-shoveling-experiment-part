@@ -198,17 +198,17 @@ ur10_moveit_config_uninstall/fast:
 .PHONY : ur10_moveit_config_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named ament_cmake_python_symlink_ur10_moveit_config
+# Target rules for targets named ament_cmake_python_copy_ur10_moveit_config
 
 # Build rule for target.
-ament_cmake_python_symlink_ur10_moveit_config: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_ur10_moveit_config
-.PHONY : ament_cmake_python_symlink_ur10_moveit_config
+ament_cmake_python_copy_ur10_moveit_config: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_ur10_moveit_config
+.PHONY : ament_cmake_python_copy_ur10_moveit_config
 
 # fast build rule for target.
-ament_cmake_python_symlink_ur10_moveit_config/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_ur10_moveit_config.dir/build.make CMakeFiles/ament_cmake_python_symlink_ur10_moveit_config.dir/build
-.PHONY : ament_cmake_python_symlink_ur10_moveit_config/fast
+ament_cmake_python_copy_ur10_moveit_config/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_ur10_moveit_config.dir/build.make CMakeFiles/ament_cmake_python_copy_ur10_moveit_config.dir/build
+.PHONY : ament_cmake_python_copy_ur10_moveit_config/fast
 
 #=============================================================================
 # Target rules for targets named ament_cmake_python_build_ur10_moveit_config_egg
@@ -237,7 +237,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ament_cmake_python_build_ur10_moveit_config_egg"
-	@echo "... ament_cmake_python_symlink_ur10_moveit_config"
+	@echo "... ament_cmake_python_copy_ur10_moveit_config"
 	@echo "... uninstall"
 	@echo "... ur10_moveit_config_uninstall"
 .PHONY : help

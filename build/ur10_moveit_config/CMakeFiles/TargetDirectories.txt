@@ -1,6 +1,6 @@
 /root/ur10_ws/build/ur10_moveit_config/CMakeFiles/uninstall.dir
 /root/ur10_ws/build/ur10_moveit_config/CMakeFiles/ur10_moveit_config_uninstall.dir
-/root/ur10_ws/build/ur10_moveit_config/CMakeFiles/ament_cmake_python_symlink_ur10_moveit_config.dir
+/root/ur10_ws/build/ur10_moveit_config/CMakeFiles/ament_cmake_python_copy_ur10_moveit_config.dir
 /root/ur10_ws/build/ur10_moveit_config/CMakeFiles/ament_cmake_python_build_ur10_moveit_config_egg.dir
 /root/ur10_ws/build/ur10_moveit_config/CMakeFiles/test.dir
 /root/ur10_ws/build/ur10_moveit_config/CMakeFiles/edit_cache.dir

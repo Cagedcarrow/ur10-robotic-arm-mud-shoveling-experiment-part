@@ -55,6 +55,3 @@ endforeach()
 message(STATUS "Execute custom uninstall script")
 
 # begin of custom uninstall code
-
-# uninstall files installed using the symlink install functions
-include("/root/ur10_ws/build/ur10_simulation_bringup/ament_cmake_symlink_install/ament_cmake_symlink_install_uninstall_script.cmake")

@@ -1,5 +1,7 @@
 # 节点与 Launch 清单
 
+适合谁看：想知道“系统到底启动了哪些节点、哪些是自动起的、参数从哪传”的读者。
+
 本文档汇总当前工作区中的主要 launch 文件、可执行节点以及关键 ROS 接口。
 
 相关文档：
@@ -16,10 +18,19 @@
 
 - 项目总入口
 - 串联 Gazebo、MoveIt、感知、PCD 导入和示例节点
+- 启动前自动清理旧的 Gazebo / MoveIt 残留进程
 
 典型用途：
 
 - 一条命令完整演示系统能力
+
+最常改的参数：
+
+- `start_rviz`
+- `start_cpp_demo`
+- `start_py_demo`
+- `pcd_file`
+- `ur_type`
 
 ### `ur10_simulation_bringup/launch/gazebo_sim.launch.py`
 
@@ -34,6 +45,12 @@
 
 - 单独调试仿真与控制器
 
+最常改的参数：
+
+- `world`
+- `ur_type`
+- `use_fake_hardware`
+
 ### `ur10_simulation_bringup/launch/moveit_planning.launch.py`
 
 作用：
@@ -44,6 +61,11 @@
 典型用途：
 
 - 单独调试 `move_group` 与 RViz
+
+最常改的参数：
+
+- `start_rviz`
+- `ur_type`
 
 ### `ur10_simulation_bringup/launch/demo_nodes.launch.py`
 
@@ -56,6 +78,13 @@
 
 - 在已有仿真与 MoveIt 环境中只调试示例节点
 
+最常改的参数：
+
+- `start_cpp_demo`
+- `start_py_demo`
+- `wait_for_obstacle`
+- `obstacle_id`
+
 ### `ur10_perception/launch/perception_only.launch.py`
 
 作用：
@@ -65,6 +94,11 @@
 典型用途：
 
 - 调试点云相机与 PCD 生成
+
+最常改的参数：
+
+- `pointcloud_topic`
+- `pcd_file`
 
 ### `ur10_description/launch/view_description.launch.py`
 
@@ -76,7 +110,22 @@
 
 - 调试 URDF / xacro
 
-## 2. 可执行节点清单
+最常改的参数：
+
+- `ur_type`
+
+## 2. 节点总览表
+
+| 节点 | 包 | 是否自动启动 | 更适合做什么 |
+| --- | --- | --- | --- |
+| `move_group_interface_demo` | `ur10_examples` | 是 | 自动或手动调试 C++ 规划执行 |
+| `moveit_py_demo` | `ur10_examples_py` | 默认否 | 手动调试 Python 规划执行 |
+| `capture_and_import_pcd` | `ur10_examples_py` | 默认否 | 手动触发一次点云采集和导入 |
+| `pcd_capture_node` | `ur10_perception` | 是 | 调试 PCD 写盘 |
+| `pcd_to_collision_scene_node` | `ur10_perception` | 是 | 调试障碍物回灌 |
+| `synthetic_overhead_camera_node` | `ur10_perception` | 是 | 提供稳定点云输入 |
+
+## 3. 可执行节点清单
 
 ## `move_group_interface_demo`
 
@@ -96,6 +145,17 @@ ur10_examples
 
 - 是，由 `complete_simulation.launch.py` 自动启动
 
+输入参数在哪里传入：
+
+- `demo_nodes.launch.py`
+- 或者手动执行 `ros2 run ... --ros-args -p ...`
+
+常用参数名：
+
+- `use_sim_time`
+- `planning_group`
+- `obstacle_id`
+
 ## `moveit_py_demo`
 
 包：
@@ -113,6 +173,16 @@ ur10_examples_py
 
 - 默认否，可单独运行或通过 `start_py_demo:=true` 启动
 
+输入参数在哪里传入：
+
+- `demo_nodes.launch.py`
+- 或者手动执行 `ros2 run ur10_examples_py moveit_py_demo`
+
+常用参数名：
+
+- `planning_group`
+- `use_sim_time`
+
 ## `capture_and_import_pcd`
 
 包：
@@ -129,6 +199,17 @@ ur10_examples_py
 默认是否自动启动：
 
 - 否，可通过 `start_py_tools:=true` 启动
+
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+- 或者手动运行脚本时从节点参数传入
+
+常用参数名：
+
+- `pcd_file`
+- `pointcloud_topic`
+- `obstacle_id`
 
 ## `pcd_capture_node`
 
@@ -153,6 +234,17 @@ ur10_perception
 默认是否自动启动：
 
 - 是，由总启动自动触发一次
+
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+- 或者手动运行 `ros2 run ur10_perception pcd_capture_node --ros-args -p ...`
+
+常用参数名：
+
+- `pointcloud_topic`
+- `output_file`
+- `use_sim_time`
 
 ## `pcd_to_collision_scene_node`
 
@@ -181,6 +273,17 @@ ur10_perception
 
 - 是，在 PCD 采集完成后自动触发
 
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+- 或者手动运行 `ros2 run ur10_perception pcd_to_collision_scene_node --ros-args -p ...`
+
+常用参数名：
+
+- `pcd_file`
+- `obstacle_id`
+- `use_sim_time`
+
 ## `synthetic_overhead_camera_node`
 
 包：
@@ -206,7 +309,17 @@ ur10_perception
 
 - 是，由总启动自动启动
 
-## 3. 关键 ROS 接口
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+
+常用参数名：
+
+- `pointcloud_topic`
+- `frame_id`
+- `use_sim_time`
+
+## 4. 关键 ROS 接口
 
 ### 话题
 
@@ -219,46 +332,15 @@ ur10_perception
 
 ### 控制器
 
-| 名称 | 作用 |
+| 控制器 | 作用 |
 | --- | --- |
-| `joint_state_broadcaster` | 广播关节状态 |
-| `joint_trajectory_controller` | 执行 MoveIt 发送的轨迹 |
+| `joint_state_broadcaster` | 发布当前关节状态 |
+| `joint_trajectory_controller` | 执行 MoveIt 输出的关节轨迹 |
 
-### 文件输出
+### 常用文件输出
 
 | 路径 | 作用 |
 | --- | --- |
-| `/root/ur10_ws/data/latest_obstacle.pcd` | 默认 PCD 输出文件 |
+| `/root/ur10_ws/data/latest_obstacle.pcd` | 默认点云输出文件 |
 
-## 4. 自动启动关系
-
-`complete_simulation.launch.py` 的默认自动启动关系如下：
-
-1. `gazebo_sim.launch.py`
-2. `synthetic_overhead_camera_node`
-3. `moveit_planning.launch.py`
-4. `pcd_capture_node`
-5. `pcd_to_collision_scene_node`
-6. `move_group_interface_demo`
-
-如果需要 Python 自动示例，可以加：
-
-```bash
-ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_py_demo:=true
-```
-
-## 5. 节点调试建议
-
-调试顺序建议如下：
-
-1. 先确认 Gazebo 与控制器
-2. 再确认 `move_group`
-3. 再确认点云与 PCD
-4. 然后运行 C++ 示例
-5. 最后运行 Python 示例
-
-如果只关心障碍物导入链路，可以跳过示例节点，单独运行：
-
-```bash
-ros2 run ur10_examples_py capture_and_import_pcd
-```
+下一篇建议阅读：[代码讲解](05_code_walkthrough.md)

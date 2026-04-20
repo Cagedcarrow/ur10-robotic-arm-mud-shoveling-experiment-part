@@ -1,5 +1,7 @@
 # 运行手册
 
+适合谁看：第一次真正运行这套 UR10 系统的人，或者想知道命令应该怎么输入的人。
+
 本文档面向使用者，介绍如何启动、调试和验证整个 UR10 仿真与避障系统。
 
 相关文档：
@@ -7,8 +9,24 @@
 - [编译与重编指南](01_build_and_rebuild_guide.md)
 - [工作区结构说明](02_workspace_structure.md)
 - [节点与 Launch 清单](04_nodes_and_launches.md)
+- [代码讲解](05_code_walkthrough.md)
+- [路径规划与避障原理](06_motion_planning_and_obstacle_avoidance.md)
 
 ## 1. 环境准备
+
+### 1.1 必须在新终端执行
+
+每次运行前，建议打开一个新的终端窗口，不要在已经跑过旧仿真、旧 MoveIt 的终端里反复叠加执行。
+
+如果你在旧终端里多次运行，常见现象包括：
+
+- `Entity already exists`
+- `Controller already loaded`
+- `PREEMPTED`
+
+这些通常不是代码坏了，而是旧的 Gazebo / MoveIt 进程还没退出。
+
+### 1.2 source 顺序
 
 每次打开新终端后，先执行：
 
@@ -28,16 +46,69 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 
 默认行为：
 
-1. 启动 Gazebo Classic
-2. 加载 UR10 模型
-3. 激活 `joint_state_broadcaster` 和 `joint_trajectory_controller`
-4. 启动 `move_group` 与 RViz
-5. 启动俯视点云节点
-6. 生成 `latest_obstacle.pcd`
-7. 导入 `work_table` 和 `pcd_obstacle_box`
-8. 自动启动 C++ 示例节点并执行一次避障规划
+1. 自动清理旧的 Gazebo / MoveIt 残留进程
+2. 启动 Gazebo Classic
+3. 加载 UR10 模型
+4. 激活 `joint_state_broadcaster` 和 `joint_trajectory_controller`
+5. 启动 `move_group` 与 RViz
+6. 启动俯视点云节点
+7. 生成 `latest_obstacle.pcd`
+8. 导入 `work_table` 和 `pcd_obstacle_box`
+9. 自动启动 C++ 示例节点并执行一次避障规划
 
-## 3. 自动链路说明
+如果你没有图形界面，或者是远程终端环境，建议关闭 RViz：
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_rviz:=false
+```
+
+## 3. 参数应该在哪里输入
+
+这是新手最容易混淆的部分。
+
+### 3.1 launch 参数
+
+如果你运行的是 `ros2 launch`，参数写在命令后面，格式是：
+
+```bash
+ros2 launch <package> <launch_file> key:=value
+```
+
+例如：
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_rviz:=false
+```
+
+### 3.2 节点参数
+
+如果你运行的是 `ros2 run`，节点参数写在 `--ros-args -p` 后面，格式是：
+
+```bash
+ros2 run <package> <executable> --ros-args -p key:=value
+```
+
+例如：
+
+```bash
+ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=true
+```
+
+### 3.3 代码默认值
+
+如果你不从命令行传参数，程序会使用源码里的默认值。常见位置有：
+
+- C++ 示例默认目标：`ur10_examples/src/move_group_interface_demo.cpp`
+- Python 示例默认目标：`ur10_examples_py/ur10_examples_py/moveit_py_demo.py`
+- 总启动默认参数：`ur10_simulation_bringup/launch/complete_simulation.launch.py`
+
+所以你可以把“参数输入位置”简单理解为三种：
+
+- 命令行 `ros2 launch ... key:=value`
+- 命令行 `ros2 run ... --ros-args -p key:=value`
+- 源码里默认写死的值
+
+## 4. 自动链路说明
 
 ### Gazebo
 
@@ -94,27 +165,77 @@ ur10_examples/move_group_interface_demo
 
 它会等待障碍物导入完成，然后执行一次避障关节空间规划。
 
-## 4. 手动运行方式
+## 5. 最常见三种使用方式
 
-### 4.1 只启动总环境，不自动运行示例
+### 5.1 一键自动演示
+
+直接运行：
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py
+```
+
+适合：
+
+- 第一次验证系统是否能跑通
+- 想直接看机械臂自动避障
+
+### 5.2 手动调试仿真 + MoveIt
+
+如果你想自己一步一步调试：
 
 ```bash
 ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_cpp_demo:=false start_py_demo:=false
 ```
 
-### 4.2 只起 Gazebo 仿真
+适合：
+
+- 想先看 Gazebo 和 MoveIt 是否起来
+- 不想立即自动执行示例节点
+
+### 5.3 已启动环境下单独运行 C++ / Python 示例
+
+如果完整环境已经启动，再开新终端执行：
+
+```bash
+source /opt/ros/humble/setup.bash
+source /root/moveit_ws/install/setup.bash
+source /root/ur10_ws/install/setup.bash
+```
+
+单独运行 C++：
+
+```bash
+ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=true
+```
+
+单独运行 Python：
+
+```bash
+ros2 run ur10_examples_py moveit_py_demo
+```
+
+## 6. 手动运行方式
+
+### 6.1 只启动总环境，不自动运行示例
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_cpp_demo:=false start_py_demo:=false
+```
+
+### 6.2 只起 Gazebo 仿真
 
 ```bash
 ros2 launch ur10_simulation_bringup gazebo_sim.launch.py
 ```
 
-### 4.3 只起 MoveIt 规划环境
+### 6.3 只起 MoveIt 规划环境
 
 ```bash
 ros2 launch ur10_simulation_bringup moveit_planning.launch.py
 ```
 
-### 4.4 单独运行 C++ 示例
+### 6.4 单独运行 C++ 示例
 
 在 `move_group` 已经运行、障碍物已导入的前提下：
 
@@ -122,7 +243,7 @@ ros2 launch ur10_simulation_bringup moveit_planning.launch.py
 ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=true
 ```
 
-### 4.5 单独运行 Python 示例
+### 6.5 单独运行 Python 示例
 
 在完整环境已启动后执行：
 
@@ -130,7 +251,7 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 ros2 run ur10_examples_py moveit_py_demo
 ```
 
-### 4.6 单独运行 PCD 采集与导入辅助脚本
+### 6.6 单独运行 PCD 采集与导入辅助脚本
 
 ```bash
 ros2 run ur10_examples_py capture_and_import_pcd
@@ -142,19 +263,19 @@ ros2 run ur10_examples_py capture_and_import_pcd
 2. 生成 PCD
 3. 导入规划场景障碍物
 
-### 4.7 单独运行点云采集节点
+### 6.7 单独运行点云采集节点
 
 ```bash
 ros2 run ur10_perception pcd_capture_node --ros-args -p pointcloud_topic:=/overhead_camera/points -p output_file:=/root/ur10_ws/data/latest_obstacle.pcd
 ```
 
-### 4.8 单独运行 PCD 导入节点
+### 6.8 单独运行 PCD 导入节点
 
 ```bash
 ros2 run ur10_perception pcd_to_collision_scene_node --ros-args -p pcd_file:=/root/ur10_ws/data/latest_obstacle.pcd -p obstacle_id:=pcd_obstacle_box
 ```
 
-## 5. 常用变体参数
+## 7. 常用变体参数
 
 ### 总启动常用参数
 
@@ -180,7 +301,49 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
 - `pcd_file`
   - 指定 PCD 输出与导入文件
 
-## 6. 结果检查
+## 8. 常见报错是什么意思
+
+### `Entity already exists`
+
+含义：
+
+- Gazebo 里已经有同名机器人实体了
+
+常见原因：
+
+- 上一轮 Gazebo 没有退出干净
+
+现在默认总启动会先自动清理旧进程，但如果你手动起了其他 Gazebo，也可能遇到这个提示。
+
+### `Controller already loaded`
+
+含义：
+
+- 控制器已经由旧的 `controller_manager` 加载过
+
+常见原因：
+
+- 旧的 Gazebo / `gazebo_ros2_control` 还在运行
+
+### `PREEMPTED`
+
+含义：
+
+- 当前轨迹执行被中断，或者执行链路被旧实例抢占
+
+常见原因：
+
+- 有多套 `move_group` / `controller_manager` 同时存在
+- 当前仿真不是一套干净启动出来的环境
+
+最稳妥的办法：
+
+- 关闭当前 launch
+- 新开终端
+- 重新 `source`
+- 再次运行 `complete_simulation.launch.py`
+
+## 9. 结果检查
 
 ### 应生成的 PCD 文件
 
@@ -219,12 +382,4 @@ ros2 control list_controllers
 - 机械臂完成一条避开障碍物的规划轨迹
 - RViz 中能看到机器人模型和 MotionPlanning 面板
 
-## 7. 回退到 UR10e
-
-如果需要使用回退模型：
-
-```bash
-ros2 launch ur10_simulation_bringup complete_simulation.launch.py ur_type:=ur10e
-```
-
-这条链路保持相同接口，不需要改 C++ 或 Python 示例代码。
+下一篇建议阅读：[节点与 Launch 清单](04_nodes_and_launches.md)

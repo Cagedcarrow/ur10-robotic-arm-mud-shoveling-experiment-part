@@ -1,1 +1,1 @@
-/root/ur10_ws/build/ur10_simulation_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/ur10_simulation_bringup
+controller_manager;gazebo_ros;launch;launch_ros;robot_state_publisher;ur10_description;ur10_examples;ur10_examples_py;ur10_moveit_config;ur10_perception;xacro
