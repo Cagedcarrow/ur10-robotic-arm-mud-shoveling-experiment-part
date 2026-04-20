@@ -13,6 +13,7 @@
 5. [代码讲解](05_code_walkthrough.md)
 6. [路径规划与避障原理](06_motion_planning_and_obstacle_avoidance.md)
 7. [编译与重编指南](01_build_and_rebuild_guide.md)
+8. [实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
 ## 文档列表
 
@@ -23,6 +24,7 @@
 - [05 代码讲解](05_code_walkthrough.md)
 - [06 路径规划与避障原理](06_motion_planning_and_obstacle_avoidance.md)
 - [07 ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
+- [08 实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
 ## 你能从这里学到什么
 
@@ -34,5 +36,7 @@
 - Gazebo 在仿真中扮演什么角色
 - 点云障碍物是如何从 PCD 进入 MoveIt 场景的
 - C++ / Python 示例代码应该从哪里改起
+- 实机 UR10 的网线应该怎么接、PC IP 应该怎么配
+- 应该用哪个 launch 来启动 `ur_robot_driver`
 
 如果你只是想马上跑起来，请先看 [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md) 和 [运行手册](03_runbook.md)。

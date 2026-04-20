@@ -41,6 +41,11 @@
     <!--END EFFECTOR - Purpose - Represent information about an end effector.-->
     <!--VIRTUAL JOINT - Purpose - this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <!--DISABLE COLLISIONS - By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="gantry_structure_link" link2="gantry_x_carriage_link" reason="Adjacent" />
+    <disable_collisions link1="gantry_x_carriage_link" link2="gantry_y_carriage_link" reason="Adjacent" />
+    <disable_collisions link1="gantry_y_carriage_link" link2="gantry_z_carriage_link" reason="Adjacent" />
+    <disable_collisions link1="gantry_z_carriage_link" link2="ur_mount_link" reason="Adjacent" />
+    <disable_collisions link1="ur_mount_link" link2="${prefix}base_link" reason="Adjacent" />
     <disable_collisions link1="${prefix}base_link" link2="${prefix}base_link_inertia" reason="Adjacent" />
     <disable_collisions link1="${prefix}base_link_inertia" link2="${prefix}shoulder_link" reason="Adjacent" />
     <disable_collisions link1="${prefix}tool0" link2="${prefix}wrist_1_link" reason="Never" />

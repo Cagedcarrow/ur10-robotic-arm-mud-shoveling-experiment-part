@@ -20,6 +20,7 @@ setup(
         "console_scripts": [
             "moveit_py_demo = ur10_examples_py.moveit_py_demo:main",
             "capture_and_import_pcd = ur10_examples_py.capture_and_import_pcd:main",
+            "gantry_control = ur10_examples_py.gantry_control:main",
         ],
     },
 )

@@ -1,1 +1,1 @@
-ament_index_python:geometry_msgs:python3-numpy:rclpy:ur10_perception
+ament_index_python:control_msgs:geometry_msgs:python3-numpy:rclpy:trajectory_msgs:ur10_perception

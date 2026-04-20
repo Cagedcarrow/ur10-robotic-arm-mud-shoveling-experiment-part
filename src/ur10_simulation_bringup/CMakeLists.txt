@@ -4,7 +4,7 @@ project(ur10_simulation_bringup)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch worlds
+  DIRECTORY launch worlds config
   DESTINATION share/${PROJECT_NAME}
 )
 

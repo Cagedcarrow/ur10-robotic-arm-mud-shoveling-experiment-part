@@ -1,2 +1,1 @@
-source;share/ur10_simulation_bringup/environment/ament_prefix_path.sh
-source;share/ur10_simulation_bringup/environment/path.sh
+/root/ur10_ws/build/ur10_simulation_bringup/ament_cmake_environment_hooks/local_setup.dsv

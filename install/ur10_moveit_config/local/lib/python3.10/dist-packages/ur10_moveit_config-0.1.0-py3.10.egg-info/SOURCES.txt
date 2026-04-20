@@ -1,7 +1,1 @@
-setup.py
-ur10_moveit_config/__init__.py
-ur10_moveit_config/launch_common.py
-ur10_moveit_config.egg-info/PKG-INFO
-ur10_moveit_config.egg-info/SOURCES.txt
-ur10_moveit_config.egg-info/dependency_links.txt
-ur10_moveit_config.egg-info/top_level.txt
+/root/ur10_ws/build/ur10_moveit_config/ament_cmake_python/ur10_moveit_config/ur10_moveit_config.egg-info/SOURCES.txt

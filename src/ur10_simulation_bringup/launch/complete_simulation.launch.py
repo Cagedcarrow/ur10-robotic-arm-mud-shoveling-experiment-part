@@ -30,6 +30,16 @@ def generate_launch_description():
     pointcloud_topic = LaunchConfiguration("pointcloud_topic")
     obstacle_id = LaunchConfiguration("obstacle_id")
     world = LaunchConfiguration("world")
+    gantry_x_initial = LaunchConfiguration("gantry_x_initial")
+    gantry_y_initial = LaunchConfiguration("gantry_y_initial")
+    gantry_z_initial = LaunchConfiguration("gantry_z_initial")
+    gantry_x_min = LaunchConfiguration("gantry_x_min")
+    gantry_x_max = LaunchConfiguration("gantry_x_max")
+    gantry_y_min = LaunchConfiguration("gantry_y_min")
+    gantry_y_max = LaunchConfiguration("gantry_y_max")
+    gantry_z_min = LaunchConfiguration("gantry_z_min")
+    gantry_z_max = LaunchConfiguration("gantry_z_max")
+    gantry_base_height = LaunchConfiguration("gantry_base_height")
 
     # Clean up any stale processes from a previous bringup so a second launch
     # doesn't attach to an old Gazebo/controller_manager instance.
@@ -39,6 +49,7 @@ def generate_launch_description():
             "-lc",
             (
                 "pkill -9 -f '[g]zserver .*ur10_perception.*/obstacle_scene.world' || true; "
+                "pkill -9 -f '[g]zserver .*ur10_perception.*/gantry_only.world' || true; "
                 "pkill -9 -f '[g]zclient' || true; "
                 "pkill -9 -f '/root/moveit_ws/install/moveit_ros_move_[g]roup/lib/moveit_ros_move_group/move_group' || true; "
                 "pkill -9 -f '/opt/ros/humble/lib/[r]obot_state_publisher/robot_state_publisher' || true; "
@@ -64,12 +75,22 @@ def generate_launch_description():
                         [FindPackageShare("ur10_simulation_bringup"), "launch", "gazebo_sim.launch.py"]
                     )
                 ),
-                launch_arguments={
-                    "ur_type": ur_type,
-                    "use_fake_hardware": use_fake_hardware,
-                    "world": world,
-                }.items(),
-            )
+        launch_arguments={
+            "ur_type": ur_type,
+            "use_fake_hardware": use_fake_hardware,
+            "world": world,
+            "gantry_x_initial": gantry_x_initial,
+            "gantry_y_initial": gantry_y_initial,
+            "gantry_z_initial": gantry_z_initial,
+            "gantry_x_min": gantry_x_min,
+            "gantry_x_max": gantry_x_max,
+            "gantry_y_min": gantry_y_min,
+            "gantry_y_max": gantry_y_max,
+            "gantry_z_min": gantry_z_min,
+            "gantry_z_max": gantry_z_max,
+            "gantry_base_height": gantry_base_height,
+        }.items(),
+    )
         ],
     )
 
@@ -86,7 +107,20 @@ def generate_launch_description():
                         ]
                     )
                 ),
-                launch_arguments={"ur_type": ur_type, "start_rviz": start_rviz}.items(),
+                launch_arguments={
+                    "ur_type": ur_type,
+                    "start_rviz": start_rviz,
+                    "gantry_x_initial": gantry_x_initial,
+                    "gantry_y_initial": gantry_y_initial,
+                    "gantry_z_initial": gantry_z_initial,
+                    "gantry_x_min": gantry_x_min,
+                    "gantry_x_max": gantry_x_max,
+                    "gantry_y_min": gantry_y_min,
+                    "gantry_y_max": gantry_y_max,
+                    "gantry_z_min": gantry_z_min,
+                    "gantry_z_max": gantry_z_max,
+                    "gantry_base_height": gantry_base_height,
+                }.items(),
             )
         ],
     )
@@ -105,6 +139,16 @@ def generate_launch_description():
                     "start_py_demo": start_py_demo,
                     "obstacle_id": obstacle_id,
                     "wait_for_obstacle": import_pcd_obstacle,
+                    "gantry_x_initial": gantry_x_initial,
+                    "gantry_y_initial": gantry_y_initial,
+                    "gantry_z_initial": gantry_z_initial,
+                    "gantry_x_min": gantry_x_min,
+                    "gantry_x_max": gantry_x_max,
+                    "gantry_y_min": gantry_y_min,
+                    "gantry_y_max": gantry_y_max,
+                    "gantry_z_min": gantry_z_min,
+                    "gantry_z_max": gantry_z_max,
+                    "gantry_base_height": gantry_base_height,
                 }.items(),
             )
         ],
@@ -163,20 +207,30 @@ def generate_launch_description():
             DeclareLaunchArgument("ur_type", default_value="ur10"),
             DeclareLaunchArgument("use_fake_hardware", default_value="false"),
             DeclareLaunchArgument("start_rviz", default_value="true"),
-            DeclareLaunchArgument("start_cpp_demo", default_value="true"),
+            DeclareLaunchArgument("start_cpp_demo", default_value="false"),
             DeclareLaunchArgument("start_py_demo", default_value="false"),
             DeclareLaunchArgument("start_py_tools", default_value="false"),
-            DeclareLaunchArgument("enable_overhead_camera", default_value="true"),
-            DeclareLaunchArgument("capture_pcd_on_start", default_value="true"),
-            DeclareLaunchArgument("import_pcd_obstacle", default_value="true"),
+            DeclareLaunchArgument("enable_overhead_camera", default_value="false"),
+            DeclareLaunchArgument("capture_pcd_on_start", default_value="false"),
+            DeclareLaunchArgument("import_pcd_obstacle", default_value="false"),
             DeclareLaunchArgument("cleanup_existing_processes", default_value="true"),
             DeclareLaunchArgument("pcd_file", default_value="/root/ur10_ws/data/latest_obstacle.pcd"),
             DeclareLaunchArgument("pointcloud_topic", default_value="/overhead_camera/points"),
             DeclareLaunchArgument("obstacle_id", default_value="pcd_obstacle_box"),
+            DeclareLaunchArgument("gantry_x_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_y_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_z_initial", default_value="-0.6"),
+            DeclareLaunchArgument("gantry_x_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_x_max", default_value="1.0"),
+            DeclareLaunchArgument("gantry_y_min", default_value="-0.8"),
+            DeclareLaunchArgument("gantry_y_max", default_value="0.8"),
+            DeclareLaunchArgument("gantry_z_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_z_max", default_value="0.0"),
+            DeclareLaunchArgument("gantry_base_height", default_value="2.2"),
             DeclareLaunchArgument(
                 "world",
                 default_value=PathJoinSubstitution(
-                    [FindPackageShare("ur10_perception"), "worlds", "obstacle_scene.world"]
+                    [FindPackageShare("ur10_perception"), "worlds", "gantry_only.world"]
                 ),
             ),
             cleanup_processes,

@@ -13,6 +13,7 @@
 - [代码讲解](05_code_walkthrough.md)
 - [路径规划与避障原理](06_motion_planning_and_obstacle_avoidance.md)
 - [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
+- [实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
 ## 1. 环境准备
 
@@ -50,13 +51,12 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 
 1. 自动清理旧的 Gazebo / MoveIt 残留进程
 2. 启动 Gazebo Classic
-3. 加载 UR10 模型
-4. 激活 `joint_state_broadcaster` 和 `joint_trajectory_controller`
-5. 启动 `move_group` 与 RViz
-6. 启动俯视点云节点
-7. 生成 `latest_obstacle.pcd`
-8. 导入 `work_table` 和 `pcd_obstacle_box`
-9. 自动启动 C++ 示例节点并执行一次避障规划
+3. 加载“倒装龙门架 + UR10”模型
+4. 激活 `joint_state_broadcaster`、`joint_trajectory_controller` 和 `gantry_trajectory_controller`
+5. 自动把龙门移动到 launch 参数指定的初始 `X/Y/Z`
+6. 启动 `move_group` 与 RViz
+
+当前默认场景是干净场景，不再自动放置桌子和障碍物。
 
 如果你没有图形界面，或者是远程终端环境，建议关闭 RViz：
 
@@ -117,14 +117,14 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 Gazebo 使用的场景默认是：
 
 ```text
-/root/ur10_ws/src/ur10_perception/worlds/obstacle_scene.world
+/root/ur10_ws/src/ur10_perception/worlds/gantry_only.world
 ```
 
 其中包含：
 
-- 工作台
-- 规则障碍物
-- UR10 模型生成所需世界环境
+- 地面
+- 光照
+- 龙门架倒装 UR10 运行所需世界环境
 
 ### MoveIt
 
@@ -136,7 +136,7 @@ MoveIt 由 `ur10_moveit_config` 提供配置，默认：
 
 ### 点云采集
 
-俯视点云默认发布到：
+点云链路现在默认关闭。如果你显式启用，俯视点云默认发布到：
 
 ```text
 /overhead_camera/points
@@ -144,7 +144,7 @@ MoveIt 由 `ur10_moveit_config` 提供配置，默认：
 
 ### PCD 文件写盘
 
-默认 PCD 输出文件：
+如果启用点云链路，默认 PCD 输出文件：
 
 ```text
 /root/ur10_ws/data/latest_obstacle.pcd
@@ -152,14 +152,14 @@ MoveIt 由 `ur10_moveit_config` 提供配置，默认：
 
 ### 障碍物回灌
 
-PCD 会被转换为两个规划场景对象：
+如果启用障碍物模式，PCD 会被转换为两个规划场景对象：
 
 - `work_table`
 - `pcd_obstacle_box`
 
 ### C++ 自动规划执行
 
-总启动会自动运行：
+当前默认不会自动运行 C++ 示例。如果你显式设置 `start_cpp_demo:=true`，会运行：
 
 ```text
 ur10_examples/move_group_interface_demo
@@ -169,7 +169,7 @@ ur10_examples/move_group_interface_demo
 
 ## 5. 最常见三种使用方式
 
-### 5.1 一键自动演示
+### 5.1 启动干净龙门场景
 
 直接运行：
 
@@ -179,10 +179,10 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 
 适合：
 
-- 第一次验证系统是否能跑通
-- 想直接看机械臂自动避障
+- 第一次验证龙门架和 UR10 是否能正常起来
+- 想先看纯仿真场景，不想自动加载障碍物
 
-### 5.2 手动调试仿真 + MoveIt
+### 5.2 启动带 MoveIt 的龙门场景并手动控制
 
 如果你想自己一步一步调试：
 
@@ -194,6 +194,12 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_cpp_demo
 
 - 想先看 Gazebo 和 MoveIt 是否起来
 - 不想立即自动执行示例节点
+
+启动后，如果你要手动移动龙门：
+
+```bash
+ros2 run ur10_examples_py gantry_control --ros-args -p x:=0.20 -p y:=0.00 -p z:=-0.70
+```
 
 ### 5.3 已启动环境下单独运行 C++ / Python 示例
 
@@ -217,7 +223,52 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 ros2 run ur10_examples_py moveit_py_demo
 ```
 
+单独运行龙门控制：
+
+```bash
+ros2 run ur10_examples_py gantry_control --ros-args -p x:=0.10 -p y:=0.05 -p z:=-0.65
+```
+
+### 5.4 如果你仍然想启用旧的障碍物/PCD 场景
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
+  world:=/root/ur10_ws/src/ur10_perception/worlds/obstacle_scene.world \
+  enable_overhead_camera:=true \
+  capture_pcd_on_start:=true \
+  import_pcd_obstacle:=true \
+  start_cpp_demo:=true
+```
+
 ## 6. 手动运行方式
+
+### 6.1 只起纯龙门仿真
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_rviz:=false start_cpp_demo:=false start_py_demo:=false
+```
+
+### 6.2 指定龙门初始位置
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
+  gantry_x_initial:=0.15 \
+  gantry_y_initial:=0.05 \
+  gantry_z_initial:=-0.70
+```
+
+### 6.3 启动真实 UR10 驱动
+
+```bash
+ros2 launch ur10_simulation_bringup real_robot_driver.launch.py \
+  ur_type:=ur10 \
+  robot_ip:=192.168.56.101 \
+  reverse_ip:=192.168.56.1
+```
+
+详细接线和 IP 规划见：
+
+- [实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
 ### 6.1 只启动总环境，不自动运行示例
 

@@ -8,6 +8,10 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     ur_type = LaunchConfiguration("ur_type")
+    gantry_x_initial = LaunchConfiguration("gantry_x_initial")
+    gantry_y_initial = LaunchConfiguration("gantry_y_initial")
+    gantry_z_initial = LaunchConfiguration("gantry_z_initial")
+    gantry_base_height = LaunchConfiguration("gantry_base_height")
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -16,6 +20,18 @@ def generate_launch_description():
             " ",
             "ur_type:=",
             ur_type,
+            " ",
+            "gantry_x_initial:=",
+            gantry_x_initial,
+            " ",
+            "gantry_y_initial:=",
+            gantry_y_initial,
+            " ",
+            "gantry_z_initial:=",
+            gantry_z_initial,
+            " ",
+            "gantry_base_height:=",
+            gantry_base_height,
             " ",
             "use_fake_hardware:=true ",
             "sim_gazebo:=false",
@@ -28,6 +44,10 @@ def generate_launch_description():
     return LaunchDescription(
         [
             DeclareLaunchArgument("ur_type", default_value="ur10"),
+            DeclareLaunchArgument("gantry_x_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_y_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_z_initial", default_value="-0.6"),
+            DeclareLaunchArgument("gantry_base_height", default_value="2.2"),
             Node(
                 package="robot_state_publisher",
                 executable="robot_state_publisher",

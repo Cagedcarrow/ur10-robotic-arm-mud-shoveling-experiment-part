@@ -13,6 +13,16 @@ def generate_launch_description():
     use_fake_hardware = LaunchConfiguration("use_fake_hardware")
     use_sim_time = LaunchConfiguration("use_sim_time")
     world = LaunchConfiguration("world")
+    gantry_x_initial = LaunchConfiguration("gantry_x_initial")
+    gantry_y_initial = LaunchConfiguration("gantry_y_initial")
+    gantry_z_initial = LaunchConfiguration("gantry_z_initial")
+    gantry_x_min = LaunchConfiguration("gantry_x_min")
+    gantry_x_max = LaunchConfiguration("gantry_x_max")
+    gantry_y_min = LaunchConfiguration("gantry_y_min")
+    gantry_y_max = LaunchConfiguration("gantry_y_max")
+    gantry_z_min = LaunchConfiguration("gantry_z_min")
+    gantry_z_max = LaunchConfiguration("gantry_z_max")
+    gantry_base_height = LaunchConfiguration("gantry_base_height")
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -21,6 +31,36 @@ def generate_launch_description():
             " ",
             "ur_type:=",
             ur_type,
+            " ",
+            "gantry_x_initial:=",
+            gantry_x_initial,
+            " ",
+            "gantry_y_initial:=",
+            gantry_y_initial,
+            " ",
+            "gantry_z_initial:=",
+            gantry_z_initial,
+            " ",
+            "gantry_x_min:=",
+            gantry_x_min,
+            " ",
+            "gantry_x_max:=",
+            gantry_x_max,
+            " ",
+            "gantry_y_min:=",
+            gantry_y_min,
+            " ",
+            "gantry_y_max:=",
+            gantry_y_max,
+            " ",
+            "gantry_z_min:=",
+            gantry_z_min,
+            " ",
+            "gantry_z_max:=",
+            gantry_z_max,
+            " ",
+            "gantry_base_height:=",
+            gantry_base_height,
             " ",
             "use_fake_hardware:=",
             use_fake_hardware,
@@ -67,15 +107,47 @@ def generate_launch_description():
         output="screen",
     )
 
+    gantry_trajectory_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["gantry_trajectory_controller", "--controller-manager", "/controller_manager"],
+        output="screen",
+    )
+
+    gantry_initializer = Node(
+        package="ur10_examples_py",
+        executable="gantry_control",
+        output="screen",
+        parameters=[
+            {
+                "x": gantry_x_initial,
+                "y": gantry_y_initial,
+                "z": gantry_z_initial,
+                "duration_sec": 4.0,
+                "use_sim_time": use_sim_time,
+            }
+        ],
+    )
+
     return LaunchDescription(
         [
             DeclareLaunchArgument("ur_type", default_value="ur10"),
             DeclareLaunchArgument("use_fake_hardware", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
+            DeclareLaunchArgument("gantry_x_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_y_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_z_initial", default_value="-0.6"),
+            DeclareLaunchArgument("gantry_x_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_x_max", default_value="1.0"),
+            DeclareLaunchArgument("gantry_y_min", default_value="-0.8"),
+            DeclareLaunchArgument("gantry_y_max", default_value="0.8"),
+            DeclareLaunchArgument("gantry_z_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_z_max", default_value="0.0"),
+            DeclareLaunchArgument("gantry_base_height", default_value="2.2"),
             DeclareLaunchArgument(
                 "world",
                 default_value=PathJoinSubstitution(
-                    [FindPackageShare("ur10_perception"), "worlds", "obstacle_scene.world"]
+                    [FindPackageShare("ur10_perception"), "worlds", "gantry_only.world"]
                 ),
             ),
             gazebo,
@@ -87,6 +159,16 @@ def generate_launch_description():
             RegisterEventHandler(
                 OnProcessExit(
                     target_action=joint_state_broadcaster, on_exit=[joint_trajectory_controller]
+                )
+            ),
+            RegisterEventHandler(
+                OnProcessExit(
+                    target_action=joint_trajectory_controller, on_exit=[gantry_trajectory_controller]
+                )
+            ),
+            RegisterEventHandler(
+                OnProcessExit(
+                    target_action=gantry_trajectory_controller, on_exit=[gantry_initializer]
                 )
             ),
         ]

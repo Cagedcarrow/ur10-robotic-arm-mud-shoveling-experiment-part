@@ -1,3 +1,1 @@
-source;share/ur10_moveit_config/environment/ament_prefix_path.sh
-source;share/ur10_moveit_config/environment/path.sh
-source;share/ur10_moveit_config/environment/pythonpath.sh
+/root/ur10_ws/build/ur10_moveit_config/ament_cmake_environment_hooks/local_setup.dsv

@@ -11,6 +11,7 @@
 - [工作区结构说明](02_workspace_structure.md)
 - [运行手册](03_runbook.md)
 - [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
+- [实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
 ## 1. Launch 文件清单
 
@@ -19,19 +20,23 @@
 作用：
 
 - 项目总入口
-- 串联 Gazebo、MoveIt、感知、PCD 导入和示例节点
+- 默认串联 Gazebo、龙门架 UR10 和 MoveIt
+- 可选串联感知、PCD 导入和示例节点
 - 启动前自动清理旧的 Gazebo / MoveIt 残留进程
 
 典型用途：
 
-- 一条命令完整演示系统能力
+- 一条命令启动干净龙门场景
+- 或者通过参数启用旧的障碍物/PCD 链路
 
 最常改的参数：
 
 - `start_rviz`
 - `start_cpp_demo`
 - `start_py_demo`
-- `pcd_file`
+- `gantry_x_initial`
+- `gantry_y_initial`
+- `gantry_z_initial`
 - `ur_type`
 
 ### `ur10_simulation_bringup/launch/gazebo_sim.launch.py`
@@ -42,6 +47,7 @@
 - 发布机器人描述
 - 在 Gazebo 中生成 UR10
 - 启动控制器
+- 自动把龙门移动到 launch 参数指定的初始 XYZ
 
 典型用途：
 
@@ -52,6 +58,9 @@
 - `world`
 - `ur_type`
 - `use_fake_hardware`
+- `gantry_x_initial`
+- `gantry_y_initial`
+- `gantry_z_initial`
 
 ### `ur10_simulation_bringup/launch/moveit_planning.launch.py`
 
@@ -68,6 +77,24 @@
 
 - `start_rviz`
 - `ur_type`
+
+### `ur10_simulation_bringup/launch/real_robot_driver.launch.py`
+
+作用：
+
+- 包装官方 `ur_robot_driver/launch/ur_control.launch.py`
+- 为真实 UR10 提供统一的本项目启动入口
+
+典型用途：
+
+- 通过网线连接真实 UR10 后启动 ROS 2 驱动
+
+最常改的参数：
+
+- `robot_ip`
+- `reverse_ip`
+- `ur_type`
+- `launch_rviz`
 
 ### `ur10_simulation_bringup/launch/demo_nodes.launch.py`
 
@@ -122,6 +149,7 @@
 | --- | --- | --- | --- |
 | `move_group_interface_demo` | `ur10_examples` | 是 | 自动或手动调试 C++ 规划执行 |
 | `moveit_py_demo` | `ur10_examples_py` | 默认否 | 手动调试 Python 规划执行 |
+| `gantry_control` | `ur10_examples_py` | 是，一次性初始化后退出，也可手动运行 | 单独控制龙门 X/Y/Z |
 | `capture_and_import_pcd` | `ur10_examples_py` | 默认否 | 手动触发一次点云采集和导入 |
 | `pcd_capture_node` | `ur10_perception` | 是 | 调试 PCD 写盘 |
 | `pcd_to_collision_scene_node` | `ur10_perception` | 是 | 调试障碍物回灌 |
@@ -184,6 +212,37 @@ ur10_examples_py
 
 - `planning_group`
 - `use_sim_time`
+
+## `gantry_control`
+
+包：
+
+```text
+ur10_examples_py
+```
+
+作用：
+
+- 通过 `gantry_trajectory_controller` 单独控制龙门三轴
+- 不进入 MoveIt，不规划 UR 六轴
+
+默认是否自动启动：
+
+- 是，一次性自动启动，用来把龙门送到 launch 指定的初始位姿
+- 也适合手动重复运行
+
+输入参数在哪里传入：
+
+- `gazebo_sim.launch.py` 中自动传入
+- 或者手动执行 `ros2 run ur10_examples_py gantry_control --ros-args -p ...`
+
+常用参数名：
+
+- `x`
+- `y`
+- `z`
+- `duration_sec`
+- `controller_name`
 
 ## `capture_and_import_pcd`
 
@@ -327,7 +386,8 @@ ur10_perception
 
 | 接口 | 类型 | 作用 |
 | --- | --- | --- |
-| `/joint_states` | `sensor_msgs/msg/JointState` | 机械臂当前关节状态 |
+| `/joint_states` | `sensor_msgs/msg/JointState` | 龙门三轴和 UR 六轴的当前关节状态 |
+| `/gantry_trajectory_controller/follow_joint_trajectory` | `control_msgs/action/FollowJointTrajectory` | 龙门三轴动作接口 |
 | `/overhead_camera/points` | `sensor_msgs/msg/PointCloud2` | 俯视点云输入 |
 | `/planning_scene` | MoveIt 规划场景更新 | MoveIt 场景同步 |
 | `/planning_scene_world` | MoveIt 场景世界对象 | 障碍物世界状态 |
@@ -338,6 +398,7 @@ ur10_perception
 | --- | --- |
 | `joint_state_broadcaster` | 发布当前关节状态 |
 | `joint_trajectory_controller` | 执行 MoveIt 输出的关节轨迹 |
+| `gantry_trajectory_controller` | 执行龙门 X/Y/Z 平移轨迹 |
 
 ### 常用文件输出
 

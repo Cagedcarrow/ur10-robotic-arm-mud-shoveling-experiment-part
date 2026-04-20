@@ -15,6 +15,16 @@ def launch_setup(context, *args, **kwargs):
     wait_for_obstacle = LaunchConfiguration("wait_for_obstacle")
     obstacle_id = LaunchConfiguration("obstacle_id")
     use_pose_target = LaunchConfiguration("use_pose_target")
+    gantry_x_initial = LaunchConfiguration("gantry_x_initial")
+    gantry_y_initial = LaunchConfiguration("gantry_y_initial")
+    gantry_z_initial = LaunchConfiguration("gantry_z_initial")
+    gantry_x_min = LaunchConfiguration("gantry_x_min")
+    gantry_x_max = LaunchConfiguration("gantry_x_max")
+    gantry_y_min = LaunchConfiguration("gantry_y_min")
+    gantry_y_max = LaunchConfiguration("gantry_y_max")
+    gantry_z_min = LaunchConfiguration("gantry_z_min")
+    gantry_z_max = LaunchConfiguration("gantry_z_max")
+    gantry_base_height = LaunchConfiguration("gantry_base_height")
 
     robot_description_content = Command(
         [
@@ -24,6 +34,36 @@ def launch_setup(context, *args, **kwargs):
             " ",
             "ur_type:=",
             ur_type,
+            " ",
+            "gantry_x_initial:=",
+            gantry_x_initial,
+            " ",
+            "gantry_y_initial:=",
+            gantry_y_initial,
+            " ",
+            "gantry_z_initial:=",
+            gantry_z_initial,
+            " ",
+            "gantry_x_min:=",
+            gantry_x_min,
+            " ",
+            "gantry_x_max:=",
+            gantry_x_max,
+            " ",
+            "gantry_y_min:=",
+            gantry_y_min,
+            " ",
+            "gantry_y_max:=",
+            gantry_y_max,
+            " ",
+            "gantry_z_min:=",
+            gantry_z_min,
+            " ",
+            "gantry_z_max:=",
+            gantry_z_max,
+            " ",
+            "gantry_base_height:=",
+            gantry_base_height,
             " ",
             "robot_name:=ur ",
             "use_fake_hardware:=false ",
@@ -103,6 +143,16 @@ def generate_launch_description():
             DeclareLaunchArgument("wait_for_obstacle", default_value="true"),
             DeclareLaunchArgument("obstacle_id", default_value="pcd_obstacle_box"),
             DeclareLaunchArgument("use_pose_target", default_value="false"),
+            DeclareLaunchArgument("gantry_x_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_y_initial", default_value="0.0"),
+            DeclareLaunchArgument("gantry_z_initial", default_value="-0.6"),
+            DeclareLaunchArgument("gantry_x_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_x_max", default_value="1.0"),
+            DeclareLaunchArgument("gantry_y_min", default_value="-0.8"),
+            DeclareLaunchArgument("gantry_y_max", default_value="0.8"),
+            DeclareLaunchArgument("gantry_z_min", default_value="-1.0"),
+            DeclareLaunchArgument("gantry_z_max", default_value="0.0"),
+            DeclareLaunchArgument("gantry_base_height", default_value="2.2"),
             OpaqueFunction(function=launch_setup),
         ]
     )

@@ -1,1 +1,1 @@
-from .launch_common import load_yaml, load_yaml_abs
+/root/ur10_ws/src/ur10_moveit_config/ur10_moveit_config/__init__.py

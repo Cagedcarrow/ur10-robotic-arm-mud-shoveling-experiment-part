@@ -3,6 +3,7 @@ import sys
 import time
 from pathlib import Path
 import subprocess
+from typing import Optional
 
 import numpy as np
 import rclpy
@@ -12,6 +13,15 @@ from ur10_examples_py.env_bootstrap import bootstrap_ros_python_environment
 
 
 bootstrap_ros_python_environment()
+
+
+def _get_string_parameter(node, name: str) -> Optional[str]:
+    if not node.has_parameter(name):
+        return None
+    parameter = node.get_parameter(name)
+    if parameter.type_ == parameter.Type.NOT_SET:
+        return None
+    return parameter.value
 
 
 def main():
@@ -25,13 +35,26 @@ def main():
         ) from exc
 
     rclpy.init(args=sys.argv)
-    node = rclpy.create_node("ur10_moveit_py_demo")
+    node = rclpy.create_node(
+        "ur10_moveit_py_demo", automatically_declare_parameters_from_overrides=True
+    )
     node.declare_parameter("planning_group", "ur_manipulator")
     node.declare_parameter("execute", True)
     node.declare_parameter(
         "goal_joint_positions",
         [-1.20, -1.70, 2.05, -1.95, -1.57, 0.0],
     )
+    node.declare_parameter("ur_type", "ur10")
+    node.declare_parameter("gantry_x_initial", 0.0)
+    node.declare_parameter("gantry_y_initial", 0.0)
+    node.declare_parameter("gantry_z_initial", -0.6)
+    node.declare_parameter("gantry_x_min", -1.0)
+    node.declare_parameter("gantry_x_max", 1.0)
+    node.declare_parameter("gantry_y_min", -0.8)
+    node.declare_parameter("gantry_y_max", 0.8)
+    node.declare_parameter("gantry_z_min", -1.0)
+    node.declare_parameter("gantry_z_max", 0.0)
+    node.declare_parameter("gantry_base_height", 2.2)
 
     if not node.has_parameter("use_sim_time"):
       node.declare_parameter("use_sim_time", True)
@@ -41,35 +64,49 @@ def main():
     planning_group = node.get_parameter("planning_group").value
     execute = node.get_parameter("execute").value
     goal_joint_positions = node.get_parameter("goal_joint_positions").value
-    ur_type = "ur10"
+    ur_type = node.get_parameter("ur_type").value
 
-    ur10_description_share = Path(get_package_share_directory("ur10_description"))
-    ur_description_share = Path(get_package_share_directory("ur_description"))
-    moveit_config_share = Path(get_package_share_directory("ur10_moveit_config"))
+    robot_description = _get_string_parameter(node, "robot_description")
+    robot_description_semantic = _get_string_parameter(node, "robot_description_semantic")
 
-    robot_description = subprocess.check_output(
-        [
-            "xacro",
-            str(ur10_description_share / "urdf" / "ur10_sim.urdf.xacro"),
-            f"ur_type:={ur_type}",
-            "robot_name:=ur",
-            "use_fake_hardware:=false",
-            "sim_gazebo:=true",
-            f"joint_limit_params:={ur_description_share / 'config' / ur_type / 'joint_limits.yaml'}",
-            f"kinematics_params:={ur_description_share / 'config' / ur_type / 'default_kinematics.yaml'}",
-            f"physical_params:={ur_description_share / 'config' / ur_type / 'physical_parameters.yaml'}",
-            f"visual_params:={ur_description_share / 'config' / ur_type / 'visual_parameters.yaml'}",
-        ],
-        text=True,
-    )
-    robot_description_semantic = subprocess.check_output(
-        [
-            "xacro",
-            str(moveit_config_share / "srdf" / "ur.srdf.xacro"),
-            "name:=ur",
-        ],
-        text=True,
-    )
+    if robot_description is None or robot_description_semantic is None:
+        ur10_description_share = Path(get_package_share_directory("ur10_description"))
+        ur_description_share = Path(get_package_share_directory("ur_description"))
+        moveit_config_share = Path(get_package_share_directory("ur10_moveit_config"))
+
+        robot_description = subprocess.check_output(
+            [
+                "xacro",
+                str(ur10_description_share / "urdf" / "ur10_sim.urdf.xacro"),
+                f"ur_type:={ur_type}",
+                "robot_name:=ur",
+                "use_fake_hardware:=false",
+                "sim_gazebo:=true",
+                f"joint_limit_params:={ur_description_share / 'config' / ur_type / 'joint_limits.yaml'}",
+                f"kinematics_params:={ur_description_share / 'config' / ur_type / 'default_kinematics.yaml'}",
+                f"physical_params:={ur_description_share / 'config' / ur_type / 'physical_parameters.yaml'}",
+                f"visual_params:={ur_description_share / 'config' / ur_type / 'visual_parameters.yaml'}",
+                f"gantry_x_initial:={node.get_parameter('gantry_x_initial').value}",
+                f"gantry_y_initial:={node.get_parameter('gantry_y_initial').value}",
+                f"gantry_z_initial:={node.get_parameter('gantry_z_initial').value}",
+                f"gantry_x_min:={node.get_parameter('gantry_x_min').value}",
+                f"gantry_x_max:={node.get_parameter('gantry_x_max').value}",
+                f"gantry_y_min:={node.get_parameter('gantry_y_min').value}",
+                f"gantry_y_max:={node.get_parameter('gantry_y_max').value}",
+                f"gantry_z_min:={node.get_parameter('gantry_z_min').value}",
+                f"gantry_z_max:={node.get_parameter('gantry_z_max').value}",
+                f"gantry_base_height:={node.get_parameter('gantry_base_height').value}",
+            ],
+            text=True,
+        )
+        robot_description_semantic = subprocess.check_output(
+            [
+                "xacro",
+                str(moveit_config_share / "srdf" / "ur.srdf.xacro"),
+                "name:=ur",
+            ],
+            text=True,
+        )
 
     ompl_config = {
         "planning_plugin": "ompl_interface/OMPLPlanner",

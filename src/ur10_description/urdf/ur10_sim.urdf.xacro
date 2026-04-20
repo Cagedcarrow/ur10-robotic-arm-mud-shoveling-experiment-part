@@ -14,16 +14,255 @@
   <xacro:arg name="kinematics_params" default="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
   <xacro:arg name="physical_params" default="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
   <xacro:arg name="visual_params" default="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
+  <xacro:arg name="gantry_x_initial" default="0.0"/>
+  <xacro:arg name="gantry_y_initial" default="0.0"/>
+  <xacro:arg name="gantry_z_initial" default="-0.6"/>
+  <xacro:arg name="gantry_x_min" default="-1.0"/>
+  <xacro:arg name="gantry_x_max" default="1.0"/>
+  <xacro:arg name="gantry_y_min" default="-0.8"/>
+  <xacro:arg name="gantry_y_max" default="0.8"/>
+  <xacro:arg name="gantry_z_min" default="-1.0"/>
+  <xacro:arg name="gantry_z_max" default="0.0"/>
+  <xacro:arg name="gantry_base_height" default="2.2"/>
   <xacro:property name="initial_positions_file_path" value="$(arg initial_positions_file)"/>
 
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
 
+  <xacro:macro name="box_inertial" params="x y z mass">
+    <inertial>
+      <mass value="${mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+        ixx="${mass * (y * y + z * z) / 12.0}"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="${mass * (x * x + z * z) / 12.0}"
+        iyz="0.0"
+        izz="${mass * (x * x + y * y) / 12.0}"/>
+    </inertial>
+  </xacro:macro>
+
   <link name="world"/>
+
+  <link name="gantry_structure_link">
+    <visual name="column_left_visual">
+      <origin xyz="-0.95 0 1.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.10 0.10 2.20"/>
+      </geometry>
+      <material name="gantry_dark_gray">
+        <color rgba="0.25 0.28 0.33 1.0"/>
+      </material>
+    </visual>
+    <collision name="column_left_collision">
+      <origin xyz="-0.95 0 1.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.10 0.10 2.20"/>
+      </geometry>
+    </collision>
+    <visual name="column_right_visual">
+      <origin xyz="0.95 0 1.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.10 0.10 2.20"/>
+      </geometry>
+      <material name="gantry_dark_gray">
+        <color rgba="0.25 0.28 0.33 1.0"/>
+      </material>
+    </visual>
+    <collision name="column_right_collision">
+      <origin xyz="0.95 0 1.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.10 0.10 2.20"/>
+      </geometry>
+    </collision>
+    <visual name="top_beam_visual">
+      <origin xyz="0 0 $(arg gantry_base_height)" rpy="0 0 0"/>
+      <geometry>
+        <box size="2.10 0.16 0.16"/>
+      </geometry>
+      <material name="gantry_mid_gray">
+        <color rgba="0.40 0.43 0.48 1.0"/>
+      </material>
+    </visual>
+    <collision name="top_beam_collision">
+      <origin xyz="0 0 $(arg gantry_base_height)" rpy="0 0 0"/>
+      <geometry>
+        <box size="2.10 0.16 0.16"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial x="2.10" y="0.16" z="2.20" mass="40.0"/>
+  </link>
+
+  <joint name="world_to_gantry_structure" type="fixed">
+    <parent link="world"/>
+    <child link="gantry_structure_link"/>
+    <origin xyz="0.95 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="gantry_x_carriage_link">
+    <visual name="gantry_x_carriage_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.22 1.75 0.14"/>
+      </geometry>
+      <material name="gantry_light_gray">
+        <color rgba="0.70 0.73 0.78 1.0"/>
+      </material>
+    </visual>
+    <collision name="gantry_x_carriage_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.22 1.75 0.14"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial x="0.22" y="1.75" z="0.14" mass="18.0"/>
+  </link>
+
+  <joint name="gantry_x_joint" type="prismatic">
+    <parent link="gantry_structure_link"/>
+    <child link="gantry_x_carriage_link"/>
+    <origin xyz="0 0 $(arg gantry_base_height)" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="$(arg gantry_x_min)" upper="$(arg gantry_x_max)" effort="2000.0" velocity="0.5"/>
+    <dynamics damping="50.0" friction="5.0"/>
+  </joint>
+
+  <link name="gantry_y_carriage_link">
+    <visual name="gantry_y_carriage_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.30 0.24 0.24"/>
+      </geometry>
+      <material name="gantry_yellow">
+        <color rgba="0.76 0.62 0.22 1.0"/>
+      </material>
+    </visual>
+    <collision name="gantry_y_carriage_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.30 0.24 0.24"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial x="0.30" y="0.24" z="0.24" mass="8.0"/>
+  </link>
+
+  <joint name="gantry_y_joint" type="prismatic">
+    <parent link="gantry_x_carriage_link"/>
+    <child link="gantry_y_carriage_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="$(arg gantry_y_min)" upper="$(arg gantry_y_max)" effort="1500.0" velocity="0.5"/>
+    <dynamics damping="35.0" friction="5.0"/>
+  </joint>
+
+  <link name="gantry_z_carriage_link">
+    <visual name="gantry_z_rail_visual">
+      <origin xyz="0 0 0.65" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.14 0.14 0.90"/>
+      </geometry>
+      <material name="gantry_yellow">
+        <color rgba="0.76 0.62 0.22 1.0"/>
+      </material>
+    </visual>
+    <collision name="gantry_z_rail_collision">
+      <origin xyz="0 0 0.65" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.14 0.14 0.90"/>
+      </geometry>
+    </collision>
+    <visual name="gantry_mount_plate_visual">
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.32 0.24 0.08"/>
+      </geometry>
+      <material name="gantry_light_gray">
+        <color rgba="0.70 0.73 0.78 1.0"/>
+      </material>
+    </visual>
+    <collision name="gantry_mount_plate_collision">
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.32 0.24 0.08"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial x="0.32" y="0.24" z="0.98" mass="14.0"/>
+  </link>
+
+  <joint name="gantry_z_joint" type="prismatic">
+    <parent link="gantry_y_carriage_link"/>
+    <child link="gantry_z_carriage_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="$(arg gantry_z_min)" upper="$(arg gantry_z_max)" effort="1500.0" velocity="0.4"/>
+    <dynamics damping="35.0" friction="5.0"/>
+  </joint>
+
+  <link name="ur_mount_link">
+    <visual name="ur_mount_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.26 0.26 0.04"/>
+      </geometry>
+      <material name="gantry_mount_gray">
+        <color rgba="0.45 0.48 0.54 1.0"/>
+      </material>
+    </visual>
+    <collision name="ur_mount_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.26 0.26 0.04"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial x="0.26" y="0.26" z="0.04" mass="2.0"/>
+  </link>
+
+  <joint name="gantry_to_ur_mount" type="fixed">
+    <parent link="gantry_z_carriage_link"/>
+    <child link="ur_mount_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <ros2_control name="gantry" type="system">
+    <hardware>
+      <xacro:if value="$(arg sim_gazebo)">
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </xacro:if>
+      <xacro:unless value="$(arg sim_gazebo)">
+        <xacro:if value="$(arg use_fake_hardware)">
+        <plugin>mock_components/GenericSystem</plugin>
+        <param name="state_following_offset">0.0</param>
+        <param name="calculate_dynamics">true</param>
+        </xacro:if>
+      </xacro:unless>
+    </hardware>
+    <joint name="gantry_x_joint">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="gantry_y_joint">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="gantry_z_joint">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.6</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
 
   <xacro:ur_robot
     name="$(arg robot_name)"
     tf_prefix="$(arg tf_prefix)"
-    parent="world"
+    parent="ur_mount_link"
     joint_limits_parameters_file="$(arg joint_limit_params)"
     kinematics_parameters_file="$(arg kinematics_params)"
     physical_parameters_file="$(arg physical_params)"
@@ -35,7 +274,7 @@
     sim_gazebo="$(arg sim_gazebo)"
     sim_ignition="false"
     initial_positions="${xacro.load_yaml(initial_positions_file_path)}">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="3.141592653589793 0 0"/>
   </xacro:ur_robot>
 
   <xacro:if value="$(arg sim_gazebo)">
