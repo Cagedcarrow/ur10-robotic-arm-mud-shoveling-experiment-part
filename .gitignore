@@ -1,0 +1,17 @@
+# ROS 编译文件
+build/
+devel/
+log/
+install/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# IDE 配置
+.vscode/
+.idea/
+
+# 其他
+*.bag
+.DS_Store
