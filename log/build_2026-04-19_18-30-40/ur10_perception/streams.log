@@ -1,0 +1,135 @@
+[0.008s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake /root/ur10_ws/src/ur10_perception -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_perception
+[0.374s] -- The C compiler identification is GNU 11.4.0
+[2.201s] -- The CXX compiler identification is GNU 11.4.0
+[3.718s] -- Detecting C compiler ABI info
+[4.045s] -- Detecting C compiler ABI info - done
+[4.052s] -- Check for working C compiler: /usr/bin/cc - skipped
+[4.052s] -- Detecting C compile features
+[4.052s] -- Detecting C compile features - done
+[4.055s] -- Detecting CXX compiler ABI info
+[4.279s] -- Detecting CXX compiler ABI info - done
+[4.283s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[4.283s] -- Detecting CXX compile features
+[4.283s] -- Detecting CXX compile features - done
+[4.285s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[4.392s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[4.441s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[4.463s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[4.858s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[4.863s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[4.871s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[4.880s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.891s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.917s] -- Found moveit_msgs: 2.7.1 (/root/moveit_ws/install/moveit_msgs/share/moveit_msgs/cmake)
+[5.013s] -- Found moveit_ros_planning_interface: 2.5.9 (/root/moveit_ws/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)
+[5.949s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[5.974s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[11.260s] -- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[11.307s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[11.309s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[15.812s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[21.563s] -- Found FastRTPS: /opt/ros/humble/include  
+[31.494s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[31.518s] -- Found Threads: TRUE  
+[31.551s] -- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[31.577s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: random 
+[36.843s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[37.052s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[37.053s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[42.033s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[42.053s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[42.073s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[42.097s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[42.134s] -- Checking for module 'eigen3'
+[42.149s] --   Found eigen3, version 3.4.0
+[42.181s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[42.182s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[46.561s] -- Checking for module 'flann'
+[46.582s] --   Found flann, version 1.9.1
+[48.066s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[48.066s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[67.293s] -- Checking for module 'libusb-1.0'
+[67.308s] --   Found libusb-1.0, version 1.0.25
+[67.665s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[67.669s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[68.427s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[77.388s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[77.393s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[77.398s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[86.416s] -- Found Qhull version 8.0.2
+[94.807s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[103.089s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[103.090s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[103.091s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[103.092s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[103.093s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[103.094s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[103.096s] -- Found PCL_2D: /usr/include/pcl-1.12  
+[103.100s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.12  
+[103.100s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[103.100s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[103.101s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[103.102s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[103.103s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[103.105s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[103.105s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[103.107s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[103.111s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[103.112s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[103.112s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[103.113s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[103.114s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  
+[103.114s] -- Found PCL_MODELER: /usr/include/pcl-1.12  
+[103.117s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  
+[103.118s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[103.119s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[103.125s] CMake Warning (dev) at CMakeLists.txt:13 (find_package):
+[103.126s]   Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+[103.126s]   Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+[103.126s]   command to set the policy and suppress this warning.
+[103.126s] 
+[103.126s]   CMake variable PCL_ROOT is set to:
+[103.126s] 
+[103.126s]     /usr
+[103.126s] 
+[103.126s]   For compatibility, CMake is ignoring the variable.
+[103.126s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[103.126s] 
+[103.210s] -- Configuring done
+[103.346s] -- Generating done
+[103.364s] -- Build files have been written to: /root/ur10_ws/build/ur10_perception
+[103.391s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake /root/ur10_ws/src/ur10_perception -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_perception
+[103.394s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[103.469s] [ 25%] Building CXX object CMakeFiles/pcd_capture_node.dir/src/pcd_capture_node.cpp.o
+[103.475s] [ 50%] Building CXX object CMakeFiles/pcd_to_collision_scene_node.dir/src/pcd_to_collision_scene_node.cpp.o
+[112.583s] [ 75%] Linking CXX executable pcd_to_collision_scene_node
+[113.470s] [100%] Linking CXX executable pcd_capture_node
+[114.139s] [100%] Built target pcd_to_collision_scene_node
+[114.579s] [100%] Built target pcd_capture_node
+[114.592s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[114.601s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception
+[114.607s] -- Install configuration: ""
+[114.607s] -- Execute custom install script
+[114.608s] -- Symlinking: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_capture_node
+[114.617s] -- Symlinking: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_to_collision_scene_node
+[114.624s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/config/camera_topics.yaml
+[114.631s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/__pycache__/perception_only.launch.cpython-310.pyc
+[114.638s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/perception_only.launch.py
+[114.645s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/urdf/overhead_depth_camera.xacro
+[114.657s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/worlds/obstacle_scene.world
+[114.664s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/package_run_dependencies/ur10_perception
+[114.672s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/parent_prefix_path/ur10_perception
+[114.679s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.sh
+[114.687s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.dsv
+[114.695s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.sh
+[114.701s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.dsv
+[114.709s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.bash
+[114.715s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.sh
+[114.723s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.zsh
+[114.730s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.dsv
+[114.738s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv
+[114.746s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/packages/ur10_perception
+[114.754s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig.cmake
+[114.762s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig-version.cmake
+[114.768s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.xml
+[114.777s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception

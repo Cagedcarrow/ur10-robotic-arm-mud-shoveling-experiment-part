@@ -1,0 +1,43 @@
+Consolidate compiler generated dependencies of target move_group_interface_demo
+[ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/kinematics_base/kinematics_base.h:42,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/joint_model_group.h:42,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/robot_model.h:45,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_state/robot_state.h:40,
+                 from /root/moveit_ws/install/moveit_ros_planning_interface/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:8:
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp: In function ‘int main(int, char**)’:
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:9: warning: format ‘%zu’ expects argument of type ‘size_t’, but argument 5 has type ‘unsigned int’ [-Wformat=]
+  196 |         "goal_joint_positions must contain %zu values but received %zu.",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  197 |         joint_model_group->getVariableCount(), goal_joint_positions.size());
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            unsigned int
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:46: note: format string is defined here
+  196 |         "goal_joint_positions must contain %zu values but received %zu.",
+      |                                            ~~^
+      |                                              |
+      |                                              long unsigned int
+      |                                            %u
+[100%] Linking CXX executable move_group_interface_demo
+[100%] Built target move_group_interface_demo
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv
+-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml

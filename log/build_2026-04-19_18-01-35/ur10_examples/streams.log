@@ -1,0 +1,26 @@
+[0.008s] Invoking command in '/root/ur10_ws/build/ur10_examples': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[0.043s] Consolidate compiler generated dependencies of target move_group_interface_demo
+[0.067s] [ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o
+[7.253s] [100%] Linking CXX executable move_group_interface_demo
+[7.792s] [100%] Built target move_group_interface_demo
+[7.808s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[7.819s] Invoking command in '/root/ur10_ws/build/ur10_examples': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples
+[7.827s] -- Install configuration: ""
+[7.828s] -- Execute custom install script
+[7.828s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo
+[7.828s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples
+[7.828s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples
+[7.830s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh
+[7.830s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv
+[7.830s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh
+[7.831s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv
+[7.831s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash
+[7.831s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh
+[7.831s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh
+[7.831s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv
+[7.831s] -- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv
+[7.842s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples
+[7.842s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake
+[7.843s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake
+[7.843s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml
+[7.844s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples

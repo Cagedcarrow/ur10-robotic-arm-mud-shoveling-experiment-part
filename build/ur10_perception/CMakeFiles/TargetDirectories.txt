@@ -1,0 +1,12 @@
+/root/ur10_ws/build/ur10_perception/CMakeFiles/uninstall.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/ur10_perception_uninstall.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/pcd_capture_node.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/synthetic_overhead_camera_node.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/pcd_to_collision_scene_node.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/test.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/edit_cache.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/rebuild_cache.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/list_install_components.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/install.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/install/local.dir
+/root/ur10_ws/build/ur10_perception/CMakeFiles/install/strip.dir

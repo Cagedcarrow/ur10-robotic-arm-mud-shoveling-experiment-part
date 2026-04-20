@@ -1,0 +1,116 @@
+[0.000000] (-) TimerEvent: {}
+[0.000083] (-) JobUnselected: {'identifier': 'ur10_description'}
+[0.000114] (-) JobUnselected: {'identifier': 'ur10_examples_py'}
+[0.000123] (-) JobUnselected: {'identifier': 'ur10_moveit_config'}
+[0.000130] (-) JobUnselected: {'identifier': 'ur10_simulation_bringup'}
+[0.000140] (ur10_examples) JobQueued: {'identifier': 'ur10_examples', 'dependencies': OrderedDict()}
+[0.000151] (ur10_examples) JobStarted: {'identifier': 'ur10_examples'}
+[0.006391] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'cmake'}
+[0.006917] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'build'}
+[0.007447] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ur10_ws/build/ur10_examples', '--', '-j4', '-l4'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.042874] (ur10_examples) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target move_group_interface_demo\n'}
+[0.066659] (ur10_examples) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o\n'}
+[0.098724] (-) TimerEvent: {}
+[0.198994] (-) TimerEvent: {}
+[0.299376] (-) TimerEvent: {}
+[0.399575] (-) TimerEvent: {}
+[0.499879] (-) TimerEvent: {}
+[0.600110] (-) TimerEvent: {}
+[0.700339] (-) TimerEvent: {}
+[0.800598] (-) TimerEvent: {}
+[0.900829] (-) TimerEvent: {}
+[1.001117] (-) TimerEvent: {}
+[1.101469] (-) TimerEvent: {}
+[1.201793] (-) TimerEvent: {}
+[1.302090] (-) TimerEvent: {}
+[1.402340] (-) TimerEvent: {}
+[1.502586] (-) TimerEvent: {}
+[1.602822] (-) TimerEvent: {}
+[1.703015] (-) TimerEvent: {}
+[1.803245] (-) TimerEvent: {}
+[1.903585] (-) TimerEvent: {}
+[2.003837] (-) TimerEvent: {}
+[2.104108] (-) TimerEvent: {}
+[2.204316] (-) TimerEvent: {}
+[2.304538] (-) TimerEvent: {}
+[2.404729] (-) TimerEvent: {}
+[2.504930] (-) TimerEvent: {}
+[2.605112] (-) TimerEvent: {}
+[2.705326] (-) TimerEvent: {}
+[2.805503] (-) TimerEvent: {}
+[2.905694] (-) TimerEvent: {}
+[3.006033] (-) TimerEvent: {}
+[3.106410] (-) TimerEvent: {}
+[3.206617] (-) TimerEvent: {}
+[3.306885] (-) TimerEvent: {}
+[3.407179] (-) TimerEvent: {}
+[3.507437] (-) TimerEvent: {}
+[3.607660] (-) TimerEvent: {}
+[3.708355] (-) TimerEvent: {}
+[3.808717] (-) TimerEvent: {}
+[3.908960] (-) TimerEvent: {}
+[4.009137] (-) TimerEvent: {}
+[4.109317] (-) TimerEvent: {}
+[4.209555] (-) TimerEvent: {}
+[4.309968] (-) TimerEvent: {}
+[4.410302] (-) TimerEvent: {}
+[4.510488] (-) TimerEvent: {}
+[4.610666] (-) TimerEvent: {}
+[4.710856] (-) TimerEvent: {}
+[4.811216] (-) TimerEvent: {}
+[4.911473] (-) TimerEvent: {}
+[5.011691] (-) TimerEvent: {}
+[5.111865] (-) TimerEvent: {}
+[5.212046] (-) TimerEvent: {}
+[5.312304] (-) TimerEvent: {}
+[5.412480] (-) TimerEvent: {}
+[5.512673] (-) TimerEvent: {}
+[5.612861] (-) TimerEvent: {}
+[5.713055] (-) TimerEvent: {}
+[5.813363] (-) TimerEvent: {}
+[5.913638] (-) TimerEvent: {}
+[6.013948] (-) TimerEvent: {}
+[6.114221] (-) TimerEvent: {}
+[6.214437] (-) TimerEvent: {}
+[6.314677] (-) TimerEvent: {}
+[6.414917] (-) TimerEvent: {}
+[6.515125] (-) TimerEvent: {}
+[6.615446] (-) TimerEvent: {}
+[6.715766] (-) TimerEvent: {}
+[6.816013] (-) TimerEvent: {}
+[6.916163] (-) TimerEvent: {}
+[7.016439] (-) TimerEvent: {}
+[7.116645] (-) TimerEvent: {}
+[7.216998] (-) TimerEvent: {}
+[7.253504] (ur10_examples) StdoutLine: {'line': b'[100%] Linking CXX executable move_group_interface_demo\n'}
+[7.317121] (-) TimerEvent: {}
+[7.417351] (-) TimerEvent: {}
+[7.517811] (-) TimerEvent: {}
+[7.618006] (-) TimerEvent: {}
+[7.718231] (-) TimerEvent: {}
+[7.792146] (ur10_examples) StdoutLine: {'line': b'[100%] Built target move_group_interface_demo\n'}
+[7.807138] (ur10_examples) CommandEnded: {'returncode': 0}
+[7.808352] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'install'}
+[7.818340] (-) TimerEvent: {}
+[7.818856] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ur10_ws/build/ur10_examples'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[7.827396] (ur10_examples) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.827856] (ur10_examples) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[7.828236] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo\n'}
+[7.828383] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples\n'}
+[7.828478] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples\n'}
+[7.829818] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh\n'}
+[7.830443] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv\n'}
+[7.830563] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh\n'}
+[7.830691] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv\n'}
+[7.830889] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash\n'}
+[7.831007] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh\n'}
+[7.831100] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh\n'}
+[7.831191] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv\n'}
+[7.831288] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv\n'}
+[7.842409] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples\n'}
+[7.842611] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake\n'}
+[7.842661] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake\n'}
+[7.842695] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml\n'}
+[7.843833] (ur10_examples) CommandEnded: {'returncode': 0}
+[7.857033] (ur10_examples) JobEnded: {'identifier': 'ur10_examples', 'rc': 0}
+[7.857454] (-) EventReactorShutdown: {}

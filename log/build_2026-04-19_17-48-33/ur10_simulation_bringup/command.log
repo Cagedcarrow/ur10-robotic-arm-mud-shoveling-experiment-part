@@ -1,0 +1,1 @@
+Invoking command in '/root/ur10_ws/build/ur10_simulation_bringup': /usr/bin/cmake /root/ur10_ws/src/ur10_simulation_bringup -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_simulation_bringup

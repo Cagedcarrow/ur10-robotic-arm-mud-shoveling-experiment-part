@@ -1,0 +1,1 @@
+/root/ur10_ws/build/ur10_examples/ament_cmake_core/ur10_examplesConfig.cmake

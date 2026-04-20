@@ -1,0 +1,26 @@
+[0.008s] Invoking command in '/root/ur10_ws/build/ur10_description': /usr/bin/cmake --build /root/ur10_ws/build/ur10_description -- -j4 -l4
+[0.036s] Invoked command in '/root/ur10_ws/build/ur10_description' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_description -- -j4 -l4
+[0.044s] Invoking command in '/root/ur10_ws/build/ur10_description': /usr/bin/cmake --install /root/ur10_ws/build/ur10_description
+[0.051s] -- Install configuration: ""
+[0.052s] -- Execute custom install script
+[0.052s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/config/initial_positions.yaml
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/config/ros2_controllers.yaml
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/launch/__pycache__/view_description.launch.cpython-310.pyc
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/launch/view_description.launch.py
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/urdf/ur10_sim.urdf.xacro
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ament_index/resource_index/package_run_dependencies/ur10_description
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ament_index/resource_index/parent_prefix_path/ur10_description
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/environment/ament_prefix_path.sh
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/environment/ament_prefix_path.dsv
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/environment/path.sh
+[0.053s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/environment/path.dsv
+[0.054s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/local_setup.bash
+[0.054s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/local_setup.sh
+[0.054s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/local_setup.zsh
+[0.054s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/local_setup.dsv
+[0.054s] -- Symlinking: /root/ur10_ws/install/ur10_description/share/ur10_description/package.dsv
+[0.060s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ament_index/resource_index/packages/ur10_description
+[0.061s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/cmake/ur10_descriptionConfig.cmake
+[0.061s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/cmake/ur10_descriptionConfig-version.cmake
+[0.061s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_description/share/ur10_description/package.xml
+[0.062s] Invoked command in '/root/ur10_ws/build/ur10_description' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_description

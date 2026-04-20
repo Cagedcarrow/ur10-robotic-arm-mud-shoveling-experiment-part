@@ -1,0 +1,4 @@
+Invoking command in '/root/ur10_ws/build/ur10_description': /usr/bin/cmake --build /root/ur10_ws/build/ur10_description -- -j4 -l4
+Invoked command in '/root/ur10_ws/build/ur10_description' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_description -- -j4 -l4
+Invoking command in '/root/ur10_ws/build/ur10_description': /usr/bin/cmake --install /root/ur10_ws/build/ur10_description
+Invoked command in '/root/ur10_ws/build/ur10_description' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_description

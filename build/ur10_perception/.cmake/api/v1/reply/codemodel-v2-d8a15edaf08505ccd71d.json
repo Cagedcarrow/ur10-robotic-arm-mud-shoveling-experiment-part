@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-1d24c5a068e4a3a2c4b5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ur10_perception",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "pcd_capture_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pcd_capture_node-e36fa2a9ebb0c2280d5c.json",
+					"name" : "pcd_capture_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pcd_to_collision_scene_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pcd_to_collision_scene_node-188ec372e81c6c6032b8.json",
+					"name" : "pcd_to_collision_scene_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "synthetic_overhead_camera_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-synthetic_overhead_camera_node-21b75466a5c9261c96d6.json",
+					"name" : "synthetic_overhead_camera_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-6847f97e8bbad59d8190.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ur10_perception_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ur10_perception_uninstall-064791b943dce8f5d16b.json",
+					"name" : "ur10_perception_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ur10_ws/build/ur10_perception",
+		"source" : "/root/ur10_ws/src/ur10_perception"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,38 @@
+[0.016s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[0.080s] Consolidate compiler generated dependencies of target synthetic_overhead_camera_node
+[0.081s] Consolidate compiler generated dependencies of target pcd_to_collision_scene_node
+[0.096s] [ 33%] Built target pcd_capture_node
+[0.100s] [ 50%] Building CXX object CMakeFiles/synthetic_overhead_camera_node.dir/src/synthetic_overhead_camera_node.cpp.o
+[0.106s] [ 66%] Building CXX object CMakeFiles/pcd_to_collision_scene_node.dir/src/pcd_to_collision_scene_node.cpp.o
+[5.895s] [ 83%] Linking CXX executable synthetic_overhead_camera_node
+[6.353s] [ 83%] Built target synthetic_overhead_camera_node
+[9.205s] [100%] Linking CXX executable pcd_to_collision_scene_node
+[10.686s] [100%] Built target pcd_to_collision_scene_node
+[10.718s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[10.739s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception
+[10.751s] -- Install configuration: ""
+[10.751s] -- Execute custom install script
+[10.752s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_capture_node
+[10.752s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/synthetic_overhead_camera_node
+[10.752s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_to_collision_scene_node
+[10.755s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/config/camera_topics.yaml
+[10.756s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/__pycache__/perception_only.launch.cpython-310.pyc
+[10.757s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/perception_only.launch.py
+[10.757s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/urdf/overhead_depth_camera.xacro
+[10.757s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/worlds/obstacle_scene.world
+[10.757s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/package_run_dependencies/ur10_perception
+[10.757s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/parent_prefix_path/ur10_perception
+[10.760s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.sh
+[10.760s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.dsv
+[10.760s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.sh
+[10.760s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.dsv
+[10.761s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.bash
+[10.761s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.sh
+[10.761s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.zsh
+[10.761s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.dsv
+[10.761s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv
+[10.785s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/packages/ur10_perception
+[10.785s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig.cmake
+[10.785s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig-version.cmake
+[10.786s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.xml
+[10.791s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception

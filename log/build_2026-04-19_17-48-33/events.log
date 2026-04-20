@@ -1,0 +1,556 @@
+[0.000000] (-) TimerEvent: {}
+[0.000048] (ur10_description) JobQueued: {'identifier': 'ur10_description', 'dependencies': OrderedDict()}
+[0.000078] (ur10_examples) JobQueued: {'identifier': 'ur10_examples', 'dependencies': OrderedDict()}
+[0.000101] (ur10_examples_py) JobQueued: {'identifier': 'ur10_examples_py', 'dependencies': OrderedDict()}
+[0.000124] (ur10_moveit_config) JobQueued: {'identifier': 'ur10_moveit_config', 'dependencies': OrderedDict()}
+[0.000166] (ur10_simulation_bringup) JobQueued: {'identifier': 'ur10_simulation_bringup', 'dependencies': OrderedDict()}
+[0.000185] (ur10_description) JobStarted: {'identifier': 'ur10_description'}
+[0.005409] (ur10_examples) JobStarted: {'identifier': 'ur10_examples'}
+[0.008847] (ur10_examples_py) JobStarted: {'identifier': 'ur10_examples_py'}
+[0.012870] (ur10_moveit_config) JobStarted: {'identifier': 'ur10_moveit_config'}
+[0.018050] (ur10_description) JobProgress: {'identifier': 'ur10_description', 'progress': 'cmake'}
+[0.018866] (ur10_description) Command: {'cmd': ['/usr/bin/cmake', '/root/ur10_ws/src/ur10_description', '-DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_description'], 'cwd': '/root/ur10_ws/build/ur10_description', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils/lib:/root/moveit_ws/install/moveit_simple_controller_manager/lib:/root/moveit_ws/install/moveit_py/lib:/root/moveit_ws/install/moveit_ros_planning_interface/lib:/root/moveit_ws/install/moveit_ros_warehouse/lib:/root/moveit_ws/install/moveit_ros_robot_interaction/lib:/root/moveit_ws/install/moveit_ros_move_group/lib:/root/moveit_ws/install/moveit_planners_ompl/lib:/root/moveit_ws/install/moveit_ros_planning/lib:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor/lib:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/root/moveit_ws/install/moveit_planners_chomp/lib:/root/moveit_ws/install/moveit_kinematics/lib:/root/moveit_ws/install/chomp_motion_planner/lib:/root/moveit_ws/install/moveit_core/lib:/root/moveit_ws/install/srdfdom/lib:/root/moveit_ws/install/rviz_marker_tools/lib:/root/moveit_ws/install/ruckig/lib:/root/moveit_ws/install/geometric_shapes/lib:/root/moveit_ws/install/random_numbers/lib:/root/moveit_ws/install/ompl/lib:/root/moveit_ws/install/moveit_task_constructor_msgs/lib:/root/moveit_ws/install/moveit_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/moveit_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/root/moveit_ws/install/ruckig/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ruckig/lib/pkgconfig:/root/moveit_ws/install/ompl/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ompl/lib/pkgconfig'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/moveit_ws/install/moveit_core/bin:/root/moveit_ws/install/ompl/bin:/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/root/moveit_ws/install/ompl/share/ompl/cmake'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_description'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/build/moveit_configs_utils:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ompl:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.020140] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'cmake'}
+[0.020672] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '/root/ur10_ws/src/ur10_examples', '-DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_examples'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils/lib:/root/moveit_ws/install/moveit_simple_controller_manager/lib:/root/moveit_ws/install/moveit_py/lib:/root/moveit_ws/install/moveit_ros_planning_interface/lib:/root/moveit_ws/install/moveit_ros_warehouse/lib:/root/moveit_ws/install/moveit_ros_robot_interaction/lib:/root/moveit_ws/install/moveit_ros_move_group/lib:/root/moveit_ws/install/moveit_planners_ompl/lib:/root/moveit_ws/install/moveit_ros_planning/lib:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor/lib:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/root/moveit_ws/install/moveit_planners_chomp/lib:/root/moveit_ws/install/moveit_kinematics/lib:/root/moveit_ws/install/chomp_motion_planner/lib:/root/moveit_ws/install/moveit_core/lib:/root/moveit_ws/install/srdfdom/lib:/root/moveit_ws/install/rviz_marker_tools/lib:/root/moveit_ws/install/ruckig/lib:/root/moveit_ws/install/geometric_shapes/lib:/root/moveit_ws/install/random_numbers/lib:/root/moveit_ws/install/ompl/lib:/root/moveit_ws/install/moveit_task_constructor_msgs/lib:/root/moveit_ws/install/moveit_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/moveit_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/root/moveit_ws/install/ruckig/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ruckig/lib/pkgconfig:/root/moveit_ws/install/ompl/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ompl/lib/pkgconfig'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/moveit_ws/install/moveit_core/bin:/root/moveit_ws/install/ompl/bin:/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/root/moveit_ws/install/ompl/share/ompl/cmake'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/build/moveit_configs_utils:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ompl:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.099164] (-) TimerEvent: {}
+[0.199330] (-) TimerEvent: {}
+[0.218004] (ur10_moveit_config) JobProgress: {'identifier': 'ur10_moveit_config', 'progress': 'cmake'}
+[0.218645] (ur10_moveit_config) Command: {'cmd': ['/usr/bin/cmake', '/root/ur10_ws/src/ur10_moveit_config', '-DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_moveit_config'], 'cwd': '/root/ur10_ws/build/ur10_moveit_config', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils/lib:/root/moveit_ws/install/moveit_simple_controller_manager/lib:/root/moveit_ws/install/moveit_py/lib:/root/moveit_ws/install/moveit_ros_planning_interface/lib:/root/moveit_ws/install/moveit_ros_warehouse/lib:/root/moveit_ws/install/moveit_ros_robot_interaction/lib:/root/moveit_ws/install/moveit_ros_move_group/lib:/root/moveit_ws/install/moveit_planners_ompl/lib:/root/moveit_ws/install/moveit_ros_planning/lib:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor/lib:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/root/moveit_ws/install/moveit_planners_chomp/lib:/root/moveit_ws/install/moveit_kinematics/lib:/root/moveit_ws/install/chomp_motion_planner/lib:/root/moveit_ws/install/moveit_core/lib:/root/moveit_ws/install/srdfdom/lib:/root/moveit_ws/install/rviz_marker_tools/lib:/root/moveit_ws/install/ruckig/lib:/root/moveit_ws/install/geometric_shapes/lib:/root/moveit_ws/install/random_numbers/lib:/root/moveit_ws/install/ompl/lib:/root/moveit_ws/install/moveit_task_constructor_msgs/lib:/root/moveit_ws/install/moveit_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/moveit_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/root/moveit_ws/install/ruckig/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ruckig/lib/pkgconfig:/root/moveit_ws/install/ompl/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ompl/lib/pkgconfig'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/moveit_ws/install/moveit_core/bin:/root/moveit_ws/install/ompl/bin:/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/root/moveit_ws/install/ompl/share/ompl/cmake'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_moveit_config'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/build/moveit_configs_utils:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ompl:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.256811] (ur10_examples) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.265967] (ur10_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.299436] (-) TimerEvent: {}
+[0.399598] (-) TimerEvent: {}
+[0.424978] (ur10_moveit_config) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.478956] (ur10_examples_py) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/root/ur10_ws/build/ur10_examples_py/build', '--no-deps', 'symlink_data'], 'cwd': '/root/ur10_ws/build/ur10_examples_py', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/mnt/d/Microsoft VS Code', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'CODEX_CI': '1', 'USER': 'root', 'CODEX_INTERNAL_ORIGINATOR_OVERRIDE': 'codex_vscode', 'VSCODE_NLS_CONFIG': '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}', 'VSCODE_WSL_EXT_LOCATION': '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'DEBUG': 'release', 'SHLVL': '0', 'LD_LIBRARY_PATH': '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils/lib:/root/moveit_ws/install/moveit_simple_controller_manager/lib:/root/moveit_ws/install/moveit_py/lib:/root/moveit_ws/install/moveit_ros_planning_interface/lib:/root/moveit_ws/install/moveit_ros_warehouse/lib:/root/moveit_ws/install/moveit_ros_robot_interaction/lib:/root/moveit_ws/install/moveit_ros_move_group/lib:/root/moveit_ws/install/moveit_planners_ompl/lib:/root/moveit_ws/install/moveit_ros_planning/lib:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor/lib:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/root/moveit_ws/install/moveit_planners_chomp/lib:/root/moveit_ws/install/moveit_kinematics/lib:/root/moveit_ws/install/chomp_motion_planner/lib:/root/moveit_ws/install/moveit_core/lib:/root/moveit_ws/install/srdfdom/lib:/root/moveit_ws/install/rviz_marker_tools/lib:/root/moveit_ws/install/ruckig/lib:/root/moveit_ws/install/geometric_shapes/lib:/root/moveit_ws/install/random_numbers/lib:/root/moveit_ws/install/ompl/lib:/root/moveit_ws/install/moveit_task_constructor_msgs/lib:/root/moveit_ws/install/moveit_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'VSCODE_RECONNECTION_GRACE_TIME': '10800000', 'VSCODE_IPC_HOOK_CLI': '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock', 'ROS_PYTHON_VERSION': '3', 'OPENAI_API_KEY': 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY', 'PAGER': 'cat', 'LC_CTYPE': 'C.UTF-8', 'NO_COLOR': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/0/bus', 'COLORTERM': '', 'WSL_DISTRO_NAME': 'Ubuntu-22.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/root/moveit_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', 'NAME': 'Caged-sparrow', 'WSL_INTEROP': '/run/WSL/378_interop', 'VSCODE_HANDLES_SIGPIPE': 'true', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/root/moveit_ws/install/ruckig/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ruckig/lib/pkgconfig:/root/moveit_ws/install/ompl/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ompl/lib/pkgconfig', 'CODEX_API_KEY': 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY', 'RUST_LOG': 'warn', 'TERM': 'dumb', 'GAZEBO_MODEL_PATH': ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/root/moveit_ws/install/moveit_core/bin:/root/moveit_ws/install/ompl/bin:/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64', 'XDG_RUNTIME_DIR': '/run/user/0/', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'GH_PAGER': 'cat', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common:/opt/ros/humble', 'SHELL': '/bin/bash', 'ELECTRON_RUN_AS_NODE': '1', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CMAKE_MODULE_PATH': '/root/moveit_ws/install/ompl/share/ompl/cmake', 'CODEX_THREAD_ID': '019da40b-0b47-7aa0-85b1-f8cf1c5a6109', 'GIT_PAGER': 'cat', 'PWD': '/root/ur10_ws/build/ur10_examples_py', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'C.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/root/ur10_ws/build/ur10_examples_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/build/moveit_configs_utils:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ompl:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common', 'WSLENV': 'VSCODE_WSL_EXT_LOCATION/up'}, 'shell': False}
+[0.499702] (-) TimerEvent: {}
+[0.599891] (-) TimerEvent: {}
+[0.644505] (ur10_examples_py) StdoutLine: {'line': b'running develop\n'}
+[0.700005] (-) TimerEvent: {}
+[0.739614] (ur10_examples_py) StdoutLine: {'line': b'running egg_info\n'}
+[0.739730] (ur10_examples_py) StdoutLine: {'line': b'creating ur10_examples_py.egg-info\n'}
+[0.739881] (ur10_examples_py) StdoutLine: {'line': b'writing ur10_examples_py.egg-info/PKG-INFO\n'}
+[0.740186] (ur10_examples_py) StdoutLine: {'line': b'writing dependency_links to ur10_examples_py.egg-info/dependency_links.txt\n'}
+[0.740288] (ur10_examples_py) StdoutLine: {'line': b'writing entry points to ur10_examples_py.egg-info/entry_points.txt\n'}
+[0.740320] (ur10_examples_py) StdoutLine: {'line': b'writing requirements to ur10_examples_py.egg-info/requires.txt\n'}
+[0.740345] (ur10_examples_py) StdoutLine: {'line': b'writing top-level names to ur10_examples_py.egg-info/top_level.txt\n'}
+[0.741301] (ur10_examples_py) StdoutLine: {'line': b"writing manifest file 'ur10_examples_py.egg-info/SOURCES.txt'\n"}
+[0.742332] (ur10_examples_py) StdoutLine: {'line': b"reading manifest file 'ur10_examples_py.egg-info/SOURCES.txt'\n"}
+[0.742651] (ur10_examples_py) StdoutLine: {'line': b"writing manifest file 'ur10_examples_py.egg-info/SOURCES.txt'\n"}
+[0.743512] (ur10_examples_py) StdoutLine: {'line': b'running build_ext\n'}
+[0.743761] (ur10_examples_py) StdoutLine: {'line': b'Creating /root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages/ur10-examples-py.egg-link (link to .)\n'}
+[0.744072] (ur10_examples_py) StdoutLine: {'line': b'Installing moveit_py_demo script to /root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py\n'}
+[0.744526] (ur10_examples_py) StdoutLine: {'line': b'\n'}
+[0.744594] (ur10_examples_py) StdoutLine: {'line': b'Installed /root/ur10_ws/build/ur10_examples_py\n'}
+[0.744622] (ur10_examples_py) StdoutLine: {'line': b'running symlink_data\n'}
+[0.744645] (ur10_examples_py) StdoutLine: {'line': b'creating /root/ur10_ws/install/ur10_examples_py/share\n'}
+[0.744871] (ur10_examples_py) StdoutLine: {'line': b'creating /root/ur10_ws/install/ur10_examples_py/share/ament_index\n'}
+[0.744934] (ur10_examples_py) StdoutLine: {'line': b'creating /root/ur10_ws/install/ur10_examples_py/share/ament_index/resource_index\n'}
+[0.745028] (ur10_examples_py) StdoutLine: {'line': b'creating /root/ur10_ws/install/ur10_examples_py/share/ament_index/resource_index/packages\n'}
+[0.745311] (ur10_examples_py) StdoutLine: {'line': b'symbolically linking /root/ur10_ws/build/ur10_examples_py/resource/ur10_examples_py -> /root/ur10_ws/install/ur10_examples_py/share/ament_index/resource_index/packages\n'}
+[0.745375] (ur10_examples_py) StdoutLine: {'line': b'creating /root/ur10_ws/install/ur10_examples_py/share/ur10_examples_py\n'}
+[0.745408] (ur10_examples_py) StdoutLine: {'line': b'symbolically linking /root/ur10_ws/build/ur10_examples_py/package.xml -> /root/ur10_ws/install/ur10_examples_py/share/ur10_examples_py\n'}
+[0.763694] (ur10_examples_py) CommandEnded: {'returncode': 0}
+[0.773643] (ur10_examples_py) JobEnded: {'identifier': 'ur10_examples_py', 'rc': 0}
+[0.774163] (ur10_simulation_bringup) JobStarted: {'identifier': 'ur10_simulation_bringup'}
+[0.779685] (ur10_simulation_bringup) JobProgress: {'identifier': 'ur10_simulation_bringup', 'progress': 'cmake'}
+[0.780613] (ur10_simulation_bringup) Command: {'cmd': ['/usr/bin/cmake', '/root/ur10_ws/src/ur10_simulation_bringup', '-DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_simulation_bringup'], 'cwd': '/root/ur10_ws/build/ur10_simulation_bringup', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils/lib:/root/moveit_ws/install/moveit_simple_controller_manager/lib:/root/moveit_ws/install/moveit_py/lib:/root/moveit_ws/install/moveit_ros_planning_interface/lib:/root/moveit_ws/install/moveit_ros_warehouse/lib:/root/moveit_ws/install/moveit_ros_robot_interaction/lib:/root/moveit_ws/install/moveit_ros_move_group/lib:/root/moveit_ws/install/moveit_planners_ompl/lib:/root/moveit_ws/install/moveit_ros_planning/lib:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor/lib:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/root/moveit_ws/install/moveit_planners_chomp/lib:/root/moveit_ws/install/moveit_kinematics/lib:/root/moveit_ws/install/chomp_motion_planner/lib:/root/moveit_ws/install/moveit_core/lib:/root/moveit_ws/install/srdfdom/lib:/root/moveit_ws/install/rviz_marker_tools/lib:/root/moveit_ws/install/ruckig/lib:/root/moveit_ws/install/geometric_shapes/lib:/root/moveit_ws/install/random_numbers/lib:/root/moveit_ws/install/ompl/lib:/root/moveit_ws/install/moveit_task_constructor_msgs/lib:/root/moveit_ws/install/moveit_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/moveit_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/root/moveit_ws/install/ruckig/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ruckig/lib/pkgconfig:/root/moveit_ws/install/ompl/lib/x86_64-linux-gnu/pkgconfig:/root/moveit_ws/install/ompl/lib/pkgconfig'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'dumb'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/moveit_ws/install/moveit_core/bin:/root/moveit_ws/install/ompl/bin:/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CMAKE_MODULE_PATH', '/root/moveit_ws/install/ompl/share/ompl/cmake'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_simulation_bringup'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/build/moveit_configs_utils:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/srdfdom:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ompl:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_common'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.800179] (-) TimerEvent: {}
+[0.900349] (-) TimerEvent: {}
+[1.000525] (-) TimerEvent: {}
+[1.063901] (ur10_simulation_bringup) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.100771] (-) TimerEvent: {}
+[1.201033] (-) TimerEvent: {}
+[1.301267] (-) TimerEvent: {}
+[1.340774] (ur10_examples) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.369712] (ur10_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.401427] (-) TimerEvent: {}
+[1.501732] (-) TimerEvent: {}
+[1.602023] (-) TimerEvent: {}
+[1.625497] (ur10_moveit_config) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.702301] (-) TimerEvent: {}
+[1.802541] (-) TimerEvent: {}
+[1.902733] (-) TimerEvent: {}
+[2.002942] (-) TimerEvent: {}
+[2.103144] (-) TimerEvent: {}
+[2.108756] (ur10_simulation_bringup) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.188054] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.203260] (-) TimerEvent: {}
+[2.303502] (-) TimerEvent: {}
+[2.350027] (ur10_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.403602] (-) TimerEvent: {}
+[2.478418] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.484841] (ur10_examples) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.485091] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.485643] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.488611] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.503739] (-) TimerEvent: {}
+[2.604010] (-) TimerEvent: {}
+[2.621457] (ur10_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.627825] (ur10_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.627955] (ur10_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.628115] (ur10_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.630048] (ur10_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.655827] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.704139] (-) TimerEvent: {}
+[2.787220] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.791589] (ur10_examples) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.791783] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.791998] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.796084] (ur10_examples) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[2.804255] (-) TimerEvent: {}
+[2.889394] (ur10_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.894546] (ur10_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.894716] (ur10_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.895236] (ur10_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.898104] (ur10_description) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[2.901116] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.904319] (-) TimerEvent: {}
+[2.905092] (ur10_moveit_config) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.905240] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.905482] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.907266] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.917107] (ur10_examples) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[3.004437] (-) TimerEvent: {}
+[3.012925] (ur10_examples) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[3.020541] (ur10_description) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[3.042137] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.104549] (-) TimerEvent: {}
+[3.204843] (-) TimerEvent: {}
+[3.214634] (ur10_description) StderrLine: {'line': b"Error parsing '/root/ur10_ws/src/ur10_description/package.xml':\n"}
+[3.216852] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.222081] (ur10_moveit_config) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.222356] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.222761] (ur10_moveit_config) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.231410] (ur10_moveit_config) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.280708] (ur10_description) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[3.280915] (ur10_description) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>\n'}
+[3.280957] (ur10_description) StderrLine: {'line': b'    main()\n'}
+[3.281028] (ur10_description) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main\n'}
+[3.281065] (ur10_description) StderrLine: {'line': b'    raise e\n'}
+[3.281103] (ur10_description) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main\n'}
+[3.281132] (ur10_description) StderrLine: {'line': b'    package = parse_package_string(\n'}
+[3.281160] (ur10_description) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string\n'}
+[3.281494] (ur10_description) StderrLine: {'line': b'    pkg.validate(warnings=warnings)\n'}
+[3.281559] (ur10_description) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate\n'}
+[3.281590] (ur10_description) StderrLine: {'line': b"    raise InvalidPackage('\\n'.join(errors), self.filename)\n"}
+[3.281619] (ur10_description) StderrLine: {'line': b"catkin_pkg.package.InvalidPackage: Error(s) in package '/root/ur10_ws/src/ur10_description/package.xml':\n"}
+[3.281647] (ur10_description) StderrLine: {'line': b'Invalid email "root@localhost" for person "root"\n'}
+[3.297618] (ur10_description) StderrLine: {'line': b'CMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):\n'}
+[3.297735] (ur10_description) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[3.297767] (ur10_description) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py\n'}
+[3.297793] (ur10_description) StderrLine: {'line': b'  /root/ur10_ws/src/ur10_description/package.xml\n'}
+[3.297817] (ur10_description) StderrLine: {'line': b'  /root/ur10_ws/build/ur10_description/ament_cmake_core/package.cmake)\n'}
+[3.297840] (ur10_description) StderrLine: {'line': b'  returned error code 1\n'}
+[3.297863] (ur10_description) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.297886] (ur10_description) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)\n'}
+[3.297914] (ur10_description) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)\n'}
+[3.297936] (ur10_description) StderrLine: {'line': b'  CMakeLists.txt:11 (ament_package)\n'}
+[3.297956] (ur10_description) StderrLine: {'line': b'\n'}
+[3.297980] (ur10_description) StderrLine: {'line': b'\n'}
+[3.298002] (ur10_description) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.298026] (ur10_description) StdoutLine: {'line': b'See also "/root/ur10_ws/build/ur10_description/CMakeFiles/CMakeOutput.log".\n'}
+[3.300136] (ur10_description) CommandEnded: {'returncode': 1}
+[3.300792] (ur10_description) JobEnded: {'identifier': 'ur10_description', 'rc': 1}
+[3.304920] (-) TimerEvent: {}
+[3.347009] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.353558] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[3.353806] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.353918] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.357085] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.404469] (ur10_moveit_config) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[3.405086] (-) TimerEvent: {}
+[3.420233] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[3.426308] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[3.435498] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[3.450881] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.468141] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.498205] (ur10_examples) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/root/moveit_ws/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)\n'}
+[3.505193] (-) TimerEvent: {}
+[3.557262] (ur10_moveit_config) StderrLine: {'line': b"Error parsing '/root/ur10_ws/src/ur10_moveit_config/package.xml':\n"}
+[3.593149] (ur10_moveit_config) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[3.593286] (ur10_moveit_config) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>\n'}
+[3.593402] (ur10_moveit_config) StderrLine: {'line': b'    main()\n'}
+[3.593438] (ur10_moveit_config) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main\n'}
+[3.593464] (ur10_moveit_config) StderrLine: {'line': b'    raise e\n'}
+[3.593488] (ur10_moveit_config) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main\n'}
+[3.593525] (ur10_moveit_config) StderrLine: {'line': b'    package = parse_package_string(\n'}
+[3.593550] (ur10_moveit_config) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string\n'}
+[3.593573] (ur10_moveit_config) StderrLine: {'line': b'    pkg.validate(warnings=warnings)\n'}
+[3.593604] (ur10_moveit_config) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate\n'}
+[3.593630] (ur10_moveit_config) StderrLine: {'line': b"    raise InvalidPackage('\\n'.join(errors), self.filename)\n"}
+[3.593653] (ur10_moveit_config) StderrLine: {'line': b"catkin_pkg.package.InvalidPackage: Error(s) in package '/root/ur10_ws/src/ur10_moveit_config/package.xml':\n"}
+[3.593685] (ur10_moveit_config) StderrLine: {'line': b'Invalid email "root@localhost" for person "root"\n'}
+[3.602534] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.605268] (-) TimerEvent: {}
+[3.605800] (ur10_moveit_config) StderrLine: {'line': b'CMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):\n'}
+[3.605891] (ur10_moveit_config) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[3.605921] (ur10_moveit_config) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py\n'}
+[3.605946] (ur10_moveit_config) StderrLine: {'line': b'  /root/ur10_ws/src/ur10_moveit_config/package.xml\n'}
+[3.605969] (ur10_moveit_config) StderrLine: {'line': b'  /root/ur10_ws/build/ur10_moveit_config/ament_cmake_core/package.cmake)\n'}
+[3.605991] (ur10_moveit_config) StderrLine: {'line': b'  returned error code 1\n'}
+[3.606013] (ur10_moveit_config) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.606035] (ur10_moveit_config) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)\n'}
+[3.606082] (ur10_moveit_config) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:60 (ament_package_xml)\n'}
+[3.606117] (ur10_moveit_config) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)\n'}
+[3.606142] (ur10_moveit_config) StderrLine: {'line': b'  CMakeLists.txt:7 (ament_python_install_package)\n'}
+[3.606165] (ur10_moveit_config) StderrLine: {'line': b'\n'}
+[3.606187] (ur10_moveit_config) StderrLine: {'line': b'\n'}
+[3.606215] (ur10_moveit_config) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.606242] (ur10_moveit_config) StdoutLine: {'line': b'See also "/root/ur10_ws/build/ur10_moveit_config/CMakeFiles/CMakeOutput.log".\n'}
+[3.606856] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.607042] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.607545] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.608430] (ur10_moveit_config) JobEnded: {'identifier': 'ur10_moveit_config', 'rc': 'SIGINT'}
+[3.610269] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.705388] (-) TimerEvent: {}
+[3.747036] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[3.805551] (-) TimerEvent: {}
+[3.868670] (ur10_simulation_bringup) StderrLine: {'line': b"Error parsing '/root/ur10_ws/src/ur10_simulation_bringup/package.xml':\n"}
+[3.898767] (ur10_simulation_bringup) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[3.898897] (ur10_simulation_bringup) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>\n'}
+[3.898928] (ur10_simulation_bringup) StderrLine: {'line': b'    main()\n'}
+[3.898952] (ur10_simulation_bringup) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main\n'}
+[3.898975] (ur10_simulation_bringup) StderrLine: {'line': b'    raise e\n'}
+[3.898995] (ur10_simulation_bringup) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main\n'}
+[3.899016] (ur10_simulation_bringup) StderrLine: {'line': b'    package = parse_package_string(\n'}
+[3.899036] (ur10_simulation_bringup) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string\n'}
+[3.899056] (ur10_simulation_bringup) StderrLine: {'line': b'    pkg.validate(warnings=warnings)\n'}
+[3.899081] (ur10_simulation_bringup) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate\n'}
+[3.899112] (ur10_simulation_bringup) StderrLine: {'line': b"    raise InvalidPackage('\\n'.join(errors), self.filename)\n"}
+[3.899132] (ur10_simulation_bringup) StderrLine: {'line': b"catkin_pkg.package.InvalidPackage: Error(s) in package '/root/ur10_ws/src/ur10_simulation_bringup/package.xml':\n"}
+[3.899154] (ur10_simulation_bringup) StderrLine: {'line': b'Invalid email "root@localhost" for person "root"\n'}
+[3.905672] (-) TimerEvent: {}
+[3.908484] (ur10_simulation_bringup) StderrLine: {'line': b'CMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):\n'}
+[3.908592] (ur10_simulation_bringup) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[3.908620] (ur10_simulation_bringup) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py\n'}
+[3.908645] (ur10_simulation_bringup) StderrLine: {'line': b'  /root/ur10_ws/src/ur10_simulation_bringup/package.xml\n'}
+[3.908674] (ur10_simulation_bringup) StderrLine: {'line': b'  /root/ur10_ws/build/ur10_simulation_bringup/ament_cmake_core/package.cmake)\n'}
+[3.908696] (ur10_simulation_bringup) StderrLine: {'line': b'  returned error code 1\n'}
+[3.908718] (ur10_simulation_bringup) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.908738] (ur10_simulation_bringup) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)\n'}
+[3.908761] (ur10_simulation_bringup) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)\n'}
+[3.908782] (ur10_simulation_bringup) StderrLine: {'line': b'  CMakeLists.txt:11 (ament_package)\n'}
+[3.908802] (ur10_simulation_bringup) StderrLine: {'line': b'\n'}
+[3.908821] (ur10_simulation_bringup) StderrLine: {'line': b'\n'}
+[3.908841] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.908866] (ur10_simulation_bringup) StdoutLine: {'line': b'See also "/root/ur10_ws/build/ur10_simulation_bringup/CMakeFiles/CMakeOutput.log".\n'}
+[3.911162] (ur10_simulation_bringup) JobEnded: {'identifier': 'ur10_simulation_bringup', 'rc': 'SIGINT'}
+[4.005876] (-) TimerEvent: {}
+[4.069709] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread \n'}
+[4.106168] (-) TimerEvent: {}
+[4.206472] (-) TimerEvent: {}
+[4.212757] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread \n'}
+[4.306717] (-) TimerEvent: {}
+[4.406976] (-) TimerEvent: {}
+[4.510317] (-) TimerEvent: {}
+[4.610573] (-) TimerEvent: {}
+[4.710856] (-) TimerEvent: {}
+[4.811125] (-) TimerEvent: {}
+[4.911358] (-) TimerEvent: {}
+[5.011585] (-) TimerEvent: {}
+[5.111787] (-) TimerEvent: {}
+[5.212112] (-) TimerEvent: {}
+[5.312479] (-) TimerEvent: {}
+[5.412666] (-) TimerEvent: {}
+[5.512849] (-) TimerEvent: {}
+[5.613108] (-) TimerEvent: {}
+[5.713397] (-) TimerEvent: {}
+[5.813681] (-) TimerEvent: {}
+[5.913955] (-) TimerEvent: {}
+[6.014280] (-) TimerEvent: {}
+[6.114580] (-) TimerEvent: {}
+[6.214823] (-) TimerEvent: {}
+[6.315027] (-) TimerEvent: {}
+[6.415294] (-) TimerEvent: {}
+[6.515509] (-) TimerEvent: {}
+[6.615711] (-) TimerEvent: {}
+[6.716038] (-) TimerEvent: {}
+[6.816413] (-) TimerEvent: {}
+[6.916620] (-) TimerEvent: {}
+[7.016927] (-) TimerEvent: {}
+[7.117284] (-) TimerEvent: {}
+[7.217550] (-) TimerEvent: {}
+[7.317920] (-) TimerEvent: {}
+[7.418186] (-) TimerEvent: {}
+[7.518446] (-) TimerEvent: {}
+[7.618767] (-) TimerEvent: {}
+[7.719183] (-) TimerEvent: {}
+[7.819476] (-) TimerEvent: {}
+[7.919735] (-) TimerEvent: {}
+[8.019934] (-) TimerEvent: {}
+[8.120245] (-) TimerEvent: {}
+[8.220543] (-) TimerEvent: {}
+[8.320845] (-) TimerEvent: {}
+[8.410641] (ur10_examples) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[8.421027] (-) TimerEvent: {}
+[8.521229] (-) TimerEvent: {}
+[8.562864] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[8.566853] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[8.621479] (-) TimerEvent: {}
+[8.721797] (-) TimerEvent: {}
+[8.822158] (-) TimerEvent: {}
+[8.922441] (-) TimerEvent: {}
+[9.022922] (-) TimerEvent: {}
+[9.123476] (-) TimerEvent: {}
+[9.223890] (-) TimerEvent: {}
+[9.324278] (-) TimerEvent: {}
+[9.424831] (-) TimerEvent: {}
+[9.525279] (-) TimerEvent: {}
+[9.625754] (-) TimerEvent: {}
+[9.726159] (-) TimerEvent: {}
+[9.826624] (-) TimerEvent: {}
+[9.927091] (-) TimerEvent: {}
+[10.027530] (-) TimerEvent: {}
+[10.127916] (-) TimerEvent: {}
+[10.228315] (-) TimerEvent: {}
+[10.328600] (-) TimerEvent: {}
+[10.428823] (-) TimerEvent: {}
+[10.529014] (-) TimerEvent: {}
+[10.629337] (-) TimerEvent: {}
+[10.729725] (-) TimerEvent: {}
+[10.830248] (-) TimerEvent: {}
+[10.930719] (-) TimerEvent: {}
+[11.031143] (-) TimerEvent: {}
+[11.131539] (-) TimerEvent: {}
+[11.231975] (-) TimerEvent: {}
+[11.332347] (-) TimerEvent: {}
+[11.432674] (-) TimerEvent: {}
+[11.533020] (-) TimerEvent: {}
+[11.633441] (-) TimerEvent: {}
+[11.733753] (-) TimerEvent: {}
+[11.834069] (-) TimerEvent: {}
+[11.934458] (-) TimerEvent: {}
+[12.034712] (-) TimerEvent: {}
+[12.135083] (-) TimerEvent: {}
+[12.235385] (-) TimerEvent: {}
+[12.335725] (-) TimerEvent: {}
+[12.436041] (-) TimerEvent: {}
+[12.536379] (-) TimerEvent: {}
+[12.636768] (-) TimerEvent: {}
+[12.737152] (-) TimerEvent: {}
+[12.837501] (-) TimerEvent: {}
+[12.937876] (-) TimerEvent: {}
+[13.038222] (-) TimerEvent: {}
+[13.085487] (ur10_examples) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[13.138376] (-) TimerEvent: {}
+[13.238713] (-) TimerEvent: {}
+[13.338958] (-) TimerEvent: {}
+[13.439287] (-) TimerEvent: {}
+[13.540469] (-) TimerEvent: {}
+[13.640988] (-) TimerEvent: {}
+[13.741339] (-) TimerEvent: {}
+[13.841719] (-) TimerEvent: {}
+[13.942107] (-) TimerEvent: {}
+[14.042450] (-) TimerEvent: {}
+[14.142750] (-) TimerEvent: {}
+[14.243013] (-) TimerEvent: {}
+[14.343226] (-) TimerEvent: {}
+[14.443428] (-) TimerEvent: {}
+[14.543620] (-) TimerEvent: {}
+[14.643902] (-) TimerEvent: {}
+[14.744208] (-) TimerEvent: {}
+[14.844447] (-) TimerEvent: {}
+[14.944703] (-) TimerEvent: {}
+[15.044945] (-) TimerEvent: {}
+[15.145405] (-) TimerEvent: {}
+[15.245749] (-) TimerEvent: {}
+[15.346037] (-) TimerEvent: {}
+[15.446306] (-) TimerEvent: {}
+[15.546494] (-) TimerEvent: {}
+[15.646807] (-) TimerEvent: {}
+[15.747231] (-) TimerEvent: {}
+[15.847512] (-) TimerEvent: {}
+[15.947765] (-) TimerEvent: {}
+[16.048137] (-) TimerEvent: {}
+[16.148470] (-) TimerEvent: {}
+[16.248700] (-) TimerEvent: {}
+[16.348887] (-) TimerEvent: {}
+[16.449176] (-) TimerEvent: {}
+[16.549426] (-) TimerEvent: {}
+[16.649692] (-) TimerEvent: {}
+[16.750094] (-) TimerEvent: {}
+[16.850418] (-) TimerEvent: {}
+[16.950656] (-) TimerEvent: {}
+[17.050845] (-) TimerEvent: {}
+[17.151141] (-) TimerEvent: {}
+[17.251396] (-) TimerEvent: {}
+[17.351666] (-) TimerEvent: {}
+[17.452142] (-) TimerEvent: {}
+[17.544791] (ur10_examples) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[17.552319] (-) TimerEvent: {}
+[17.652549] (-) TimerEvent: {}
+[17.752739] (-) TimerEvent: {}
+[17.853093] (-) TimerEvent: {}
+[17.953422] (-) TimerEvent: {}
+[18.054010] (-) TimerEvent: {}
+[18.154368] (-) TimerEvent: {}
+[18.254670] (-) TimerEvent: {}
+[18.355005] (-) TimerEvent: {}
+[18.455265] (-) TimerEvent: {}
+[18.555458] (-) TimerEvent: {}
+[18.655741] (-) TimerEvent: {}
+[18.755974] (-) TimerEvent: {}
+[18.856430] (-) TimerEvent: {}
+[18.956731] (-) TimerEvent: {}
+[19.056981] (-) TimerEvent: {}
+[19.157358] (-) TimerEvent: {}
+[19.257611] (-) TimerEvent: {}
+[19.357911] (-) TimerEvent: {}
+[19.458198] (-) TimerEvent: {}
+[19.558410] (-) TimerEvent: {}
+[19.658612] (-) TimerEvent: {}
+[19.758976] (-) TimerEvent: {}
+[19.859294] (-) TimerEvent: {}
+[19.959580] (-) TimerEvent: {}
+[20.059810] (-) TimerEvent: {}
+[20.160038] (-) TimerEvent: {}
+[20.260468] (-) TimerEvent: {}
+[20.360880] (-) TimerEvent: {}
+[20.461116] (-) TimerEvent: {}
+[20.561323] (-) TimerEvent: {}
+[20.661836] (-) TimerEvent: {}
+[20.762486] (-) TimerEvent: {}
+[20.862778] (-) TimerEvent: {}
+[20.963033] (-) TimerEvent: {}
+[21.063291] (-) TimerEvent: {}
+[21.163642] (-) TimerEvent: {}
+[21.263906] (-) TimerEvent: {}
+[21.364368] (-) TimerEvent: {}
+[21.464588] (-) TimerEvent: {}
+[21.564860] (-) TimerEvent: {}
+[21.665119] (-) TimerEvent: {}
+[21.765349] (-) TimerEvent: {}
+[21.865666] (-) TimerEvent: {}
+[21.965910] (-) TimerEvent: {}
+[22.066083] (-) TimerEvent: {}
+[22.166385] (-) TimerEvent: {}
+[22.266630] (-) TimerEvent: {}
+[22.366829] (-) TimerEvent: {}
+[22.467072] (-) TimerEvent: {}
+[22.567326] (-) TimerEvent: {}
+[22.667631] (-) TimerEvent: {}
+[22.767891] (-) TimerEvent: {}
+[22.868318] (-) TimerEvent: {}
+[22.968653] (-) TimerEvent: {}
+[23.068949] (-) TimerEvent: {}
+[23.169178] (-) TimerEvent: {}
+[23.269408] (-) TimerEvent: {}
+[23.369644] (-) TimerEvent: {}
+[23.469974] (-) TimerEvent: {}
+[23.570306] (-) TimerEvent: {}
+[23.670683] (-) TimerEvent: {}
+[23.771339] (-) TimerEvent: {}
+[23.871914] (-) TimerEvent: {}
+[23.972264] (-) TimerEvent: {}
+[24.072699] (-) TimerEvent: {}
+[24.172993] (-) TimerEvent: {}
+[24.273303] (-) TimerEvent: {}
+[24.373552] (-) TimerEvent: {}
+[24.474297] (-) TimerEvent: {}
+[24.574856] (-) TimerEvent: {}
+[24.675208] (-) TimerEvent: {}
+[24.775507] (-) TimerEvent: {}
+[24.875802] (-) TimerEvent: {}
+[24.976108] (-) TimerEvent: {}
+[25.076506] (-) TimerEvent: {}
+[25.176786] (-) TimerEvent: {}
+[25.277118] (-) TimerEvent: {}
+[25.377517] (-) TimerEvent: {}
+[25.477749] (-) TimerEvent: {}
+[25.556119] (ur10_examples) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[25.578105] (-) TimerEvent: {}
+[25.583581] (ur10_examples) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[25.654984] (ur10_examples) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[25.678275] (-) TimerEvent: {}
+[25.706067] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: random \n'}
+[25.778624] (-) TimerEvent: {}
+[25.878907] (-) TimerEvent: {}
+[25.979133] (-) TimerEvent: {}
+[26.079364] (-) TimerEvent: {}
+[26.179663] (-) TimerEvent: {}
+[26.279996] (-) TimerEvent: {}
+[26.380536] (-) TimerEvent: {}
+[26.480744] (-) TimerEvent: {}
+[26.581026] (-) TimerEvent: {}
+[26.681243] (-) TimerEvent: {}
+[26.781588] (-) TimerEvent: {}
+[26.882028] (-) TimerEvent: {}
+[26.982352] (-) TimerEvent: {}
+[27.082611] (-) TimerEvent: {}
+[27.183004] (-) TimerEvent: {}
+[27.283395] (-) TimerEvent: {}
+[27.383670] (-) TimerEvent: {}
+[27.484497] (-) TimerEvent: {}
+[27.584843] (-) TimerEvent: {}
+[27.685145] (-) TimerEvent: {}
+[27.785405] (-) TimerEvent: {}
+[27.885602] (-) TimerEvent: {}
+[27.985905] (-) TimerEvent: {}
+[28.086159] (-) TimerEvent: {}
+[28.186489] (-) TimerEvent: {}
+[28.286680] (-) TimerEvent: {}
+[28.386913] (-) TimerEvent: {}
+[28.487233] (-) TimerEvent: {}
+[28.587733] (-) TimerEvent: {}
+[28.688462] (-) TimerEvent: {}
+[28.788871] (-) TimerEvent: {}
+[28.889521] (-) TimerEvent: {}
+[28.989777] (-) TimerEvent: {}
+[29.089996] (-) TimerEvent: {}
+[29.190267] (-) TimerEvent: {}
+[29.290509] (-) TimerEvent: {}
+[29.390714] (-) TimerEvent: {}
+[29.490935] (-) TimerEvent: {}
+[29.591335] (-) TimerEvent: {}
+[29.691721] (-) TimerEvent: {}
+[29.791935] (-) TimerEvent: {}
+[29.892185] (-) TimerEvent: {}
+[29.914063] (ur10_examples) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[29.992461] (-) TimerEvent: {}
+[30.087960] (ur10_examples) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[30.088334] (ur10_examples) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[30.092602] (-) TimerEvent: {}
+[30.192792] (-) TimerEvent: {}
+[30.292999] (-) TimerEvent: {}
+[30.393217] (-) TimerEvent: {}
+[30.493478] (-) TimerEvent: {}
+[30.593695] (-) TimerEvent: {}
+[30.693886] (-) TimerEvent: {}
+[30.794063] (-) TimerEvent: {}
+[30.894375] (-) TimerEvent: {}
+[30.994686] (-) TimerEvent: {}
+[31.095056] (-) TimerEvent: {}
+[31.195323] (-) TimerEvent: {}
+[31.295613] (-) TimerEvent: {}
+[31.395871] (-) TimerEvent: {}
+[31.496121] (-) TimerEvent: {}
+[31.596455] (-) TimerEvent: {}
+[31.696785] (-) TimerEvent: {}
+[31.797052] (-) TimerEvent: {}
+[31.897278] (-) TimerEvent: {}
+[31.997550] (-) TimerEvent: {}
+[32.097829] (-) TimerEvent: {}
+[32.198382] (-) TimerEvent: {}
+[32.298618] (-) TimerEvent: {}
+[32.398862] (-) TimerEvent: {}
+[32.499269] (-) TimerEvent: {}
+[32.599585] (-) TimerEvent: {}
+[32.699878] (-) TimerEvent: {}
+[32.800107] (-) TimerEvent: {}
+[32.900316] (-) TimerEvent: {}
+[33.000556] (-) TimerEvent: {}
+[33.100783] (-) TimerEvent: {}
+[33.200989] (-) TimerEvent: {}
+[33.301185] (-) TimerEvent: {}
+[33.401367] (-) TimerEvent: {}
+[33.501531] (-) TimerEvent: {}
+[33.544238] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono \n'}
+[33.571756] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options \n'}
+[33.589695] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread \n'}
+[33.602432] (-) TimerEvent: {}
+[33.670111] (ur10_examples) StdoutLine: {'line': b'-- Configuring done\n'}
+[33.696443] (ur10_examples) StdoutLine: {'line': b'-- Generating done\n'}
+[33.702248] (ur10_examples) StdoutLine: {'line': b'-- Build files have been written to: /root/ur10_ws/build/ur10_examples\n'}
+[33.702488] (-) TimerEvent: {}
+[33.712119] (ur10_examples) JobEnded: {'identifier': 'ur10_examples', 'rc': 'SIGINT'}
+[33.722699] (-) EventReactorShutdown: {}

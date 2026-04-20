@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/root/ur10_ws/build/ur10_perception/pcd_capture_node" "/root/ur10_ws/build/ur10_perception/synthetic_overhead_camera_node" "/root/ur10_ws/build/ur10_perception/pcd_to_collision_scene_node" "TARGETS" "pcd_capture_node" "synthetic_overhead_camera_node" "pcd_to_collision_scene_node" "DESTINATION" "lib/ur10_perception")

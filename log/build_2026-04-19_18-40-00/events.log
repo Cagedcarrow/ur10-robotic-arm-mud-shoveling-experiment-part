@@ -1,0 +1,927 @@
+[0.000000] (-) TimerEvent: {}
+[0.000166] (-) JobUnselected: {'identifier': 'ur10_description'}
+[0.000201] (-) JobUnselected: {'identifier': 'ur10_examples'}
+[0.000224] (-) JobUnselected: {'identifier': 'ur10_examples_py'}
+[0.000246] (-) JobUnselected: {'identifier': 'ur10_moveit_config'}
+[0.000271] (ur10_perception) JobQueued: {'identifier': 'ur10_perception', 'dependencies': OrderedDict()}
+[0.000296] (ur10_simulation_bringup) JobQueued: {'identifier': 'ur10_simulation_bringup', 'dependencies': OrderedDict([('ur10_description', '/root/ur10_ws/install/ur10_description'), ('ur10_examples', '/root/ur10_ws/install/ur10_examples'), ('ur10_perception', '/root/ur10_ws/install/ur10_perception'), ('ur10_examples_py', '/root/ur10_ws/install/ur10_examples_py'), ('ur10_moveit_config', '/root/ur10_ws/install/ur10_moveit_config')])}
+[0.000338] (ur10_perception) JobStarted: {'identifier': 'ur10_perception'}
+[0.009234] (ur10_perception) JobProgress: {'identifier': 'ur10_perception', 'progress': 'cmake'}
+[0.009954] (ur10_perception) JobProgress: {'identifier': 'ur10_perception', 'progress': 'build'}
+[0.010472] (ur10_perception) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ur10_ws/build/ur10_perception', '--', '-j4', '-l4'], 'cwd': '/root/ur10_ws/build/ur10_perception', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_perception'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[0.039067] (ur10_perception) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.098853] (-) TimerEvent: {}
+[0.138119] (ur10_perception) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.143222] (ur10_perception) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.199000] (-) TimerEvent: {}
+[0.299222] (-) TimerEvent: {}
+[0.399434] (-) TimerEvent: {}
+[0.499607] (-) TimerEvent: {}
+[0.510125] (ur10_perception) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.511403] (ur10_perception) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.517426] (ur10_perception) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.527076] (ur10_perception) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.538158] (ur10_perception) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.568930] (ur10_perception) StdoutLine: {'line': b'-- Found moveit_msgs: 2.7.1 (/root/moveit_ws/install/moveit_msgs/share/moveit_msgs/cmake)\n'}
+[0.599743] (-) TimerEvent: {}
+[0.700074] (-) TimerEvent: {}
+[0.711533] (ur10_perception) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/root/moveit_ws/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)\n'}
+[0.733569] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread \n'}
+[0.747390] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread \n'}
+[0.800179] (-) TimerEvent: {}
+[0.900367] (-) TimerEvent: {}
+[1.000578] (-) TimerEvent: {}
+[1.100792] (-) TimerEvent: {}
+[1.201020] (-) TimerEvent: {}
+[1.301221] (-) TimerEvent: {}
+[1.401650] (-) TimerEvent: {}
+[1.502129] (-) TimerEvent: {}
+[1.602419] (-) TimerEvent: {}
+[1.709089] (-) TimerEvent: {}
+[1.809361] (-) TimerEvent: {}
+[1.909643] (-) TimerEvent: {}
+[2.009973] (-) TimerEvent: {}
+[2.110184] (-) TimerEvent: {}
+[2.210399] (-) TimerEvent: {}
+[2.310831] (-) TimerEvent: {}
+[2.411236] (-) TimerEvent: {}
+[2.511651] (-) TimerEvent: {}
+[2.611951] (-) TimerEvent: {}
+[2.712178] (-) TimerEvent: {}
+[2.812408] (-) TimerEvent: {}
+[2.912878] (-) TimerEvent: {}
+[2.970293] (ur10_perception) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[2.992090] (ur10_perception) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[2.993118] (ur10_perception) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.012948] (-) TimerEvent: {}
+[3.113163] (-) TimerEvent: {}
+[3.213564] (-) TimerEvent: {}
+[3.315001] (-) TimerEvent: {}
+[3.415187] (-) TimerEvent: {}
+[3.515441] (-) TimerEvent: {}
+[3.615675] (-) TimerEvent: {}
+[3.715914] (-) TimerEvent: {}
+[3.816188] (-) TimerEvent: {}
+[3.916386] (-) TimerEvent: {}
+[4.016569] (-) TimerEvent: {}
+[4.116791] (-) TimerEvent: {}
+[4.216988] (-) TimerEvent: {}
+[4.317175] (-) TimerEvent: {}
+[4.417472] (-) TimerEvent: {}
+[4.517717] (-) TimerEvent: {}
+[4.617935] (-) TimerEvent: {}
+[4.718169] (-) TimerEvent: {}
+[4.818374] (-) TimerEvent: {}
+[4.918565] (-) TimerEvent: {}
+[5.018821] (-) TimerEvent: {}
+[5.119023] (-) TimerEvent: {}
+[5.219432] (-) TimerEvent: {}
+[5.319697] (-) TimerEvent: {}
+[5.419932] (-) TimerEvent: {}
+[5.520205] (-) TimerEvent: {}
+[5.620557] (-) TimerEvent: {}
+[5.720820] (-) TimerEvent: {}
+[5.821282] (-) TimerEvent: {}
+[5.921924] (-) TimerEvent: {}
+[6.022207] (-) TimerEvent: {}
+[6.122447] (-) TimerEvent: {}
+[6.222667] (-) TimerEvent: {}
+[6.322895] (-) TimerEvent: {}
+[6.423090] (-) TimerEvent: {}
+[6.523480] (-) TimerEvent: {}
+[6.623796] (-) TimerEvent: {}
+[6.723972] (-) TimerEvent: {}
+[6.824219] (-) TimerEvent: {}
+[6.924725] (-) TimerEvent: {}
+[7.025042] (-) TimerEvent: {}
+[7.125272] (-) TimerEvent: {}
+[7.225486] (-) TimerEvent: {}
+[7.326558] (-) TimerEvent: {}
+[7.426889] (-) TimerEvent: {}
+[7.527432] (-) TimerEvent: {}
+[7.627932] (-) TimerEvent: {}
+[7.728251] (-) TimerEvent: {}
+[7.828482] (-) TimerEvent: {}
+[7.929135] (-) TimerEvent: {}
+[8.029539] (-) TimerEvent: {}
+[8.130052] (-) TimerEvent: {}
+[8.230477] (-) TimerEvent: {}
+[8.330691] (-) TimerEvent: {}
+[8.431030] (-) TimerEvent: {}
+[8.531244] (-) TimerEvent: {}
+[8.631579] (-) TimerEvent: {}
+[8.731894] (-) TimerEvent: {}
+[8.832094] (-) TimerEvent: {}
+[8.932327] (-) TimerEvent: {}
+[9.032539] (-) TimerEvent: {}
+[9.132756] (-) TimerEvent: {}
+[9.232922] (-) TimerEvent: {}
+[9.333212] (-) TimerEvent: {}
+[9.433499] (-) TimerEvent: {}
+[9.534205] (-) TimerEvent: {}
+[9.634453] (-) TimerEvent: {}
+[9.734791] (-) TimerEvent: {}
+[9.835107] (-) TimerEvent: {}
+[9.935469] (-) TimerEvent: {}
+[10.035788] (-) TimerEvent: {}
+[10.136012] (-) TimerEvent: {}
+[10.236255] (-) TimerEvent: {}
+[10.336746] (-) TimerEvent: {}
+[10.437377] (-) TimerEvent: {}
+[10.537566] (-) TimerEvent: {}
+[10.637773] (-) TimerEvent: {}
+[10.737986] (-) TimerEvent: {}
+[10.838182] (-) TimerEvent: {}
+[10.938423] (-) TimerEvent: {}
+[11.038598] (-) TimerEvent: {}
+[11.138817] (-) TimerEvent: {}
+[11.239011] (-) TimerEvent: {}
+[11.339389] (-) TimerEvent: {}
+[11.439626] (-) TimerEvent: {}
+[11.540419] (-) TimerEvent: {}
+[11.640686] (-) TimerEvent: {}
+[11.741053] (-) TimerEvent: {}
+[11.841789] (-) TimerEvent: {}
+[11.942058] (-) TimerEvent: {}
+[12.042629] (-) TimerEvent: {}
+[12.142921] (-) TimerEvent: {}
+[12.243287] (-) TimerEvent: {}
+[12.343609] (-) TimerEvent: {}
+[12.443930] (-) TimerEvent: {}
+[12.544628] (-) TimerEvent: {}
+[12.645167] (-) TimerEvent: {}
+[12.745434] (-) TimerEvent: {}
+[12.845626] (-) TimerEvent: {}
+[12.945804] (-) TimerEvent: {}
+[13.046327] (-) TimerEvent: {}
+[13.146696] (-) TimerEvent: {}
+[13.246937] (-) TimerEvent: {}
+[13.347398] (-) TimerEvent: {}
+[13.447711] (-) TimerEvent: {}
+[13.548063] (-) TimerEvent: {}
+[13.648348] (-) TimerEvent: {}
+[13.748625] (-) TimerEvent: {}
+[13.848917] (-) TimerEvent: {}
+[13.949150] (-) TimerEvent: {}
+[14.049399] (-) TimerEvent: {}
+[14.149869] (-) TimerEvent: {}
+[14.250150] (-) TimerEvent: {}
+[14.350332] (-) TimerEvent: {}
+[14.450582] (-) TimerEvent: {}
+[14.550832] (-) TimerEvent: {}
+[14.651115] (-) TimerEvent: {}
+[14.751588] (-) TimerEvent: {}
+[14.851873] (-) TimerEvent: {}
+[14.952057] (-) TimerEvent: {}
+[15.052278] (-) TimerEvent: {}
+[15.152487] (-) TimerEvent: {}
+[15.252782] (-) TimerEvent: {}
+[15.353208] (-) TimerEvent: {}
+[15.453604] (-) TimerEvent: {}
+[15.553927] (-) TimerEvent: {}
+[15.654299] (-) TimerEvent: {}
+[15.754588] (-) TimerEvent: {}
+[15.855002] (-) TimerEvent: {}
+[15.955436] (-) TimerEvent: {}
+[16.055731] (-) TimerEvent: {}
+[16.156121] (-) TimerEvent: {}
+[16.256396] (-) TimerEvent: {}
+[16.356612] (-) TimerEvent: {}
+[16.456898] (-) TimerEvent: {}
+[16.557198] (-) TimerEvent: {}
+[16.657439] (-) TimerEvent: {}
+[16.757771] (-) TimerEvent: {}
+[16.858039] (-) TimerEvent: {}
+[16.958223] (-) TimerEvent: {}
+[17.058429] (-) TimerEvent: {}
+[17.158618] (-) TimerEvent: {}
+[17.258880] (-) TimerEvent: {}
+[17.359182] (-) TimerEvent: {}
+[17.459605] (-) TimerEvent: {}
+[17.559951] (-) TimerEvent: {}
+[17.602784] (ur10_perception) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[17.640682] (ur10_perception) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[17.657007] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: random \n'}
+[17.660151] (-) TimerEvent: {}
+[17.760321] (-) TimerEvent: {}
+[17.860501] (-) TimerEvent: {}
+[17.960745] (-) TimerEvent: {}
+[18.060976] (-) TimerEvent: {}
+[18.161314] (-) TimerEvent: {}
+[18.261714] (-) TimerEvent: {}
+[18.362009] (-) TimerEvent: {}
+[18.462204] (-) TimerEvent: {}
+[18.562509] (-) TimerEvent: {}
+[18.662743] (-) TimerEvent: {}
+[18.763146] (-) TimerEvent: {}
+[18.863407] (-) TimerEvent: {}
+[18.963678] (-) TimerEvent: {}
+[19.063944] (-) TimerEvent: {}
+[19.164262] (-) TimerEvent: {}
+[19.264577] (-) TimerEvent: {}
+[19.364949] (-) TimerEvent: {}
+[19.465220] (-) TimerEvent: {}
+[19.565423] (-) TimerEvent: {}
+[19.665620] (-) TimerEvent: {}
+[19.765999] (-) TimerEvent: {}
+[19.866268] (-) TimerEvent: {}
+[19.966559] (-) TimerEvent: {}
+[20.066840] (-) TimerEvent: {}
+[20.167106] (-) TimerEvent: {}
+[20.267431] (-) TimerEvent: {}
+[20.367708] (-) TimerEvent: {}
+[20.468067] (-) TimerEvent: {}
+[20.568399] (-) TimerEvent: {}
+[20.668605] (-) TimerEvent: {}
+[20.768813] (-) TimerEvent: {}
+[20.869066] (-) TimerEvent: {}
+[20.969421] (-) TimerEvent: {}
+[21.069806] (-) TimerEvent: {}
+[21.170213] (-) TimerEvent: {}
+[21.270611] (-) TimerEvent: {}
+[21.371029] (-) TimerEvent: {}
+[21.471413] (-) TimerEvent: {}
+[21.571904] (-) TimerEvent: {}
+[21.672279] (-) TimerEvent: {}
+[21.772673] (-) TimerEvent: {}
+[21.872939] (-) TimerEvent: {}
+[21.945994] (ur10_perception) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[21.964452] (ur10_perception) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[21.973041] (-) TimerEvent: {}
+[22.073241] (-) TimerEvent: {}
+[22.173468] (-) TimerEvent: {}
+[22.273818] (-) TimerEvent: {}
+[22.374179] (-) TimerEvent: {}
+[22.474448] (-) TimerEvent: {}
+[22.574678] (-) TimerEvent: {}
+[22.675316] (-) TimerEvent: {}
+[22.775664] (-) TimerEvent: {}
+[22.875880] (-) TimerEvent: {}
+[22.976220] (-) TimerEvent: {}
+[23.076564] (-) TimerEvent: {}
+[23.176831] (-) TimerEvent: {}
+[23.277073] (-) TimerEvent: {}
+[23.377257] (-) TimerEvent: {}
+[23.477863] (-) TimerEvent: {}
+[23.578235] (-) TimerEvent: {}
+[23.678494] (-) TimerEvent: {}
+[23.778758] (-) TimerEvent: {}
+[23.879021] (-) TimerEvent: {}
+[23.979388] (-) TimerEvent: {}
+[24.079624] (-) TimerEvent: {}
+[24.179941] (-) TimerEvent: {}
+[24.280184] (-) TimerEvent: {}
+[24.380566] (-) TimerEvent: {}
+[24.480888] (-) TimerEvent: {}
+[24.581160] (-) TimerEvent: {}
+[24.681384] (-) TimerEvent: {}
+[24.781610] (-) TimerEvent: {}
+[24.881863] (-) TimerEvent: {}
+[24.982151] (-) TimerEvent: {}
+[25.082619] (-) TimerEvent: {}
+[25.182939] (-) TimerEvent: {}
+[25.283343] (-) TimerEvent: {}
+[25.383608] (-) TimerEvent: {}
+[25.484076] (-) TimerEvent: {}
+[25.584353] (-) TimerEvent: {}
+[25.684643] (-) TimerEvent: {}
+[25.784910] (-) TimerEvent: {}
+[25.885143] (-) TimerEvent: {}
+[25.937784] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono \n'}
+[25.956289] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options \n'}
+[25.968949] (ur10_perception) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread \n'}
+[25.985276] (-) TimerEvent: {}
+[25.986136] (ur10_perception) StdoutLine: {'line': b'-- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)\n'}
+[26.008675] (ur10_perception) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[26.085431] (-) TimerEvent: {}
+[26.185686] (-) TimerEvent: {}
+[26.286087] (-) TimerEvent: {}
+[26.386366] (-) TimerEvent: {}
+[26.486688] (-) TimerEvent: {}
+[26.586945] (-) TimerEvent: {}
+[26.687251] (-) TimerEvent: {}
+[26.787515] (-) TimerEvent: {}
+[26.887817] (-) TimerEvent: {}
+[26.988041] (-) TimerEvent: {}
+[27.088259] (-) TimerEvent: {}
+[27.188512] (-) TimerEvent: {}
+[27.288736] (-) TimerEvent: {}
+[27.389106] (-) TimerEvent: {}
+[27.489288] (-) TimerEvent: {}
+[27.589730] (-) TimerEvent: {}
+[27.690043] (-) TimerEvent: {}
+[27.790281] (-) TimerEvent: {}
+[27.890635] (-) TimerEvent: {}
+[27.991078] (-) TimerEvent: {}
+[28.091311] (-) TimerEvent: {}
+[28.191529] (-) TimerEvent: {}
+[28.291952] (-) TimerEvent: {}
+[28.392262] (-) TimerEvent: {}
+[28.492767] (-) TimerEvent: {}
+[28.593105] (-) TimerEvent: {}
+[28.693396] (-) TimerEvent: {}
+[28.793602] (-) TimerEvent: {}
+[28.894167] (-) TimerEvent: {}
+[28.994432] (-) TimerEvent: {}
+[29.094874] (-) TimerEvent: {}
+[29.195223] (-) TimerEvent: {}
+[29.295487] (-) TimerEvent: {}
+[29.395796] (-) TimerEvent: {}
+[29.496085] (-) TimerEvent: {}
+[29.596283] (-) TimerEvent: {}
+[29.696512] (-) TimerEvent: {}
+[29.797035] (-) TimerEvent: {}
+[29.897517] (-) TimerEvent: {}
+[29.997878] (-) TimerEvent: {}
+[30.098199] (-) TimerEvent: {}
+[30.198546] (-) TimerEvent: {}
+[30.298737] (-) TimerEvent: {}
+[30.399103] (-) TimerEvent: {}
+[30.499413] (-) TimerEvent: {}
+[30.599655] (-) TimerEvent: {}
+[30.699914] (-) TimerEvent: {}
+[30.800226] (-) TimerEvent: {}
+[30.900551] (-) TimerEvent: {}
+[30.924363] (ur10_perception) StdoutLine: {'line': b'-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)\n'}
+[31.000786] (-) TimerEvent: {}
+[31.101182] (-) TimerEvent: {}
+[31.201638] (-) TimerEvent: {}
+[31.302006] (-) TimerEvent: {}
+[31.402250] (-) TimerEvent: {}
+[31.502562] (-) TimerEvent: {}
+[31.602862] (-) TimerEvent: {}
+[31.703132] (-) TimerEvent: {}
+[31.803353] (-) TimerEvent: {}
+[31.903740] (-) TimerEvent: {}
+[32.004009] (-) TimerEvent: {}
+[32.104312] (-) TimerEvent: {}
+[32.204645] (-) TimerEvent: {}
+[32.305056] (-) TimerEvent: {}
+[32.405669] (-) TimerEvent: {}
+[32.506219] (-) TimerEvent: {}
+[32.606512] (-) TimerEvent: {}
+[32.706850] (-) TimerEvent: {}
+[32.807201] (-) TimerEvent: {}
+[32.907532] (-) TimerEvent: {}
+[33.007785] (-) TimerEvent: {}
+[33.107990] (-) TimerEvent: {}
+[33.208194] (-) TimerEvent: {}
+[33.308369] (-) TimerEvent: {}
+[33.408614] (-) TimerEvent: {}
+[33.509020] (-) TimerEvent: {}
+[33.609300] (-) TimerEvent: {}
+[33.709513] (-) TimerEvent: {}
+[33.809879] (-) TimerEvent: {}
+[33.910114] (-) TimerEvent: {}
+[34.010431] (-) TimerEvent: {}
+[34.110932] (-) TimerEvent: {}
+[34.211424] (-) TimerEvent: {}
+[34.311622] (-) TimerEvent: {}
+[34.411908] (-) TimerEvent: {}
+[34.512311] (-) TimerEvent: {}
+[34.612749] (-) TimerEvent: {}
+[34.713199] (-) TimerEvent: {}
+[34.813501] (-) TimerEvent: {}
+[34.913717] (-) TimerEvent: {}
+[35.014006] (-) TimerEvent: {}
+[35.114413] (-) TimerEvent: {}
+[35.214708] (-) TimerEvent: {}
+[35.316481] (-) TimerEvent: {}
+[35.416844] (-) TimerEvent: {}
+[35.517056] (-) TimerEvent: {}
+[35.617299] (-) TimerEvent: {}
+[35.717757] (-) TimerEvent: {}
+[35.818043] (-) TimerEvent: {}
+[35.918435] (-) TimerEvent: {}
+[36.018693] (-) TimerEvent: {}
+[36.118936] (-) TimerEvent: {}
+[36.219173] (-) TimerEvent: {}
+[36.319500] (-) TimerEvent: {}
+[36.420061] (-) TimerEvent: {}
+[36.520313] (-) TimerEvent: {}
+[36.620528] (-) TimerEvent: {}
+[36.720726] (-) TimerEvent: {}
+[36.820942] (-) TimerEvent: {}
+[36.921147] (-) TimerEvent: {}
+[37.021371] (-) TimerEvent: {}
+[37.121628] (-) TimerEvent: {}
+[37.221864] (-) TimerEvent: {}
+[37.322296] (-) TimerEvent: {}
+[37.422841] (-) TimerEvent: {}
+[37.523292] (-) TimerEvent: {}
+[37.623517] (-) TimerEvent: {}
+[37.724137] (-) TimerEvent: {}
+[37.824605] (-) TimerEvent: {}
+[37.926708] (-) TimerEvent: {}
+[38.026980] (-) TimerEvent: {}
+[38.127196] (-) TimerEvent: {}
+[38.227560] (-) TimerEvent: {}
+[38.327892] (-) TimerEvent: {}
+[38.428217] (-) TimerEvent: {}
+[38.528498] (-) TimerEvent: {}
+[38.628692] (-) TimerEvent: {}
+[38.729127] (-) TimerEvent: {}
+[38.829525] (-) TimerEvent: {}
+[38.929797] (-) TimerEvent: {}
+[39.030173] (-) TimerEvent: {}
+[39.130432] (-) TimerEvent: {}
+[39.230729] (-) TimerEvent: {}
+[39.331028] (-) TimerEvent: {}
+[39.431424] (-) TimerEvent: {}
+[39.531696] (-) TimerEvent: {}
+[39.632021] (-) TimerEvent: {}
+[39.732525] (-) TimerEvent: {}
+[39.832826] (-) TimerEvent: {}
+[39.933070] (-) TimerEvent: {}
+[40.033336] (-) TimerEvent: {}
+[40.133607] (-) TimerEvent: {}
+[40.233971] (-) TimerEvent: {}
+[40.334235] (-) TimerEvent: {}
+[40.434554] (-) TimerEvent: {}
+[40.534878] (-) TimerEvent: {}
+[40.635241] (-) TimerEvent: {}
+[40.735464] (-) TimerEvent: {}
+[40.835646] (-) TimerEvent: {}
+[40.935863] (-) TimerEvent: {}
+[41.036079] (-) TimerEvent: {}
+[41.136286] (-) TimerEvent: {}
+[41.236625] (-) TimerEvent: {}
+[41.337006] (-) TimerEvent: {}
+[41.437347] (-) TimerEvent: {}
+[41.537669] (-) TimerEvent: {}
+[41.638023] (-) TimerEvent: {}
+[41.738351] (-) TimerEvent: {}
+[41.838702] (-) TimerEvent: {}
+[41.938985] (-) TimerEvent: {}
+[42.039221] (-) TimerEvent: {}
+[42.139496] (-) TimerEvent: {}
+[42.239753] (-) TimerEvent: {}
+[42.340176] (-) TimerEvent: {}
+[42.440603] (-) TimerEvent: {}
+[42.540886] (-) TimerEvent: {}
+[42.641261] (-) TimerEvent: {}
+[42.741672] (-) TimerEvent: {}
+[42.841913] (-) TimerEvent: {}
+[42.942199] (-) TimerEvent: {}
+[43.042484] (-) TimerEvent: {}
+[43.142692] (-) TimerEvent: {}
+[43.201220] (ur10_perception) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[43.206250] (ur10_perception) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[43.242882] (-) TimerEvent: {}
+[43.343119] (-) TimerEvent: {}
+[43.443504] (-) TimerEvent: {}
+[43.543779] (-) TimerEvent: {}
+[43.645051] (-) TimerEvent: {}
+[43.745339] (-) TimerEvent: {}
+[43.845609] (-) TimerEvent: {}
+[43.945923] (-) TimerEvent: {}
+[44.046543] (-) TimerEvent: {}
+[44.146928] (-) TimerEvent: {}
+[44.247221] (-) TimerEvent: {}
+[44.347670] (-) TimerEvent: {}
+[44.448095] (-) TimerEvent: {}
+[44.548374] (-) TimerEvent: {}
+[44.648618] (-) TimerEvent: {}
+[44.748911] (-) TimerEvent: {}
+[44.849112] (-) TimerEvent: {}
+[44.949456] (-) TimerEvent: {}
+[45.049910] (-) TimerEvent: {}
+[45.150137] (-) TimerEvent: {}
+[45.250371] (-) TimerEvent: {}
+[45.350642] (-) TimerEvent: {}
+[45.450884] (-) TimerEvent: {}
+[45.551213] (-) TimerEvent: {}
+[45.651450] (-) TimerEvent: {}
+[45.751839] (-) TimerEvent: {}
+[45.852149] (-) TimerEvent: {}
+[45.952398] (-) TimerEvent: {}
+[46.052593] (-) TimerEvent: {}
+[46.153048] (-) TimerEvent: {}
+[46.253483] (-) TimerEvent: {}
+[46.353770] (-) TimerEvent: {}
+[46.454019] (-) TimerEvent: {}
+[46.554241] (-) TimerEvent: {}
+[46.654761] (-) TimerEvent: {}
+[46.755051] (-) TimerEvent: {}
+[46.855441] (-) TimerEvent: {}
+[46.955787] (-) TimerEvent: {}
+[47.056225] (-) TimerEvent: {}
+[47.156558] (-) TimerEvent: {}
+[47.256879] (-) TimerEvent: {}
+[47.357172] (-) TimerEvent: {}
+[47.457570] (-) TimerEvent: {}
+[47.557985] (-) TimerEvent: {}
+[47.658336] (-) TimerEvent: {}
+[47.758588] (-) TimerEvent: {}
+[47.858880] (-) TimerEvent: {}
+[47.959355] (-) TimerEvent: {}
+[48.059691] (-) TimerEvent: {}
+[48.160061] (-) TimerEvent: {}
+[48.260600] (-) TimerEvent: {}
+[48.361085] (-) TimerEvent: {}
+[48.461360] (-) TimerEvent: {}
+[48.561612] (-) TimerEvent: {}
+[48.661813] (-) TimerEvent: {}
+[48.762033] (-) TimerEvent: {}
+[48.862237] (-) TimerEvent: {}
+[48.962452] (-) TimerEvent: {}
+[49.062659] (-) TimerEvent: {}
+[49.162969] (-) TimerEvent: {}
+[49.263369] (-) TimerEvent: {}
+[49.363669] (-) TimerEvent: {}
+[49.464001] (-) TimerEvent: {}
+[49.564406] (-) TimerEvent: {}
+[49.664679] (-) TimerEvent: {}
+[49.765043] (-) TimerEvent: {}
+[49.865483] (-) TimerEvent: {}
+[49.966117] (-) TimerEvent: {}
+[50.066417] (-) TimerEvent: {}
+[50.166654] (-) TimerEvent: {}
+[50.189828] (ur10_perception) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[50.195362] (ur10_perception) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[50.200768] (ur10_perception) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[50.266728] (-) TimerEvent: {}
+[50.367044] (-) TimerEvent: {}
+[50.467446] (-) TimerEvent: {}
+[50.568165] (-) TimerEvent: {}
+[50.668627] (-) TimerEvent: {}
+[50.769154] (-) TimerEvent: {}
+[50.869653] (-) TimerEvent: {}
+[50.969921] (-) TimerEvent: {}
+[51.070277] (-) TimerEvent: {}
+[51.170657] (-) TimerEvent: {}
+[51.270990] (-) TimerEvent: {}
+[51.371327] (-) TimerEvent: {}
+[51.471723] (-) TimerEvent: {}
+[51.572032] (-) TimerEvent: {}
+[51.672326] (-) TimerEvent: {}
+[51.772573] (-) TimerEvent: {}
+[51.872912] (-) TimerEvent: {}
+[51.973158] (-) TimerEvent: {}
+[52.073575] (-) TimerEvent: {}
+[52.174200] (-) TimerEvent: {}
+[52.274580] (-) TimerEvent: {}
+[52.374904] (-) TimerEvent: {}
+[52.475178] (-) TimerEvent: {}
+[52.575431] (-) TimerEvent: {}
+[52.675735] (-) TimerEvent: {}
+[52.775964] (-) TimerEvent: {}
+[52.876193] (-) TimerEvent: {}
+[52.976450] (-) TimerEvent: {}
+[53.076764] (-) TimerEvent: {}
+[53.177075] (-) TimerEvent: {}
+[53.277283] (-) TimerEvent: {}
+[53.377547] (-) TimerEvent: {}
+[53.477792] (-) TimerEvent: {}
+[53.578024] (-) TimerEvent: {}
+[53.678272] (-) TimerEvent: {}
+[53.778470] (-) TimerEvent: {}
+[53.878821] (-) TimerEvent: {}
+[53.979008] (-) TimerEvent: {}
+[54.079393] (-) TimerEvent: {}
+[54.179734] (-) TimerEvent: {}
+[54.279961] (-) TimerEvent: {}
+[54.380199] (-) TimerEvent: {}
+[54.480416] (-) TimerEvent: {}
+[54.580625] (-) TimerEvent: {}
+[54.681235] (-) TimerEvent: {}
+[54.781766] (-) TimerEvent: {}
+[54.882341] (-) TimerEvent: {}
+[54.982622] (-) TimerEvent: {}
+[55.082818] (-) TimerEvent: {}
+[55.183019] (-) TimerEvent: {}
+[55.283212] (-) TimerEvent: {}
+[55.383401] (-) TimerEvent: {}
+[55.483583] (-) TimerEvent: {}
+[55.583764] (-) TimerEvent: {}
+[55.684009] (-) TimerEvent: {}
+[55.784220] (-) TimerEvent: {}
+[55.884700] (-) TimerEvent: {}
+[55.985237] (-) TimerEvent: {}
+[56.085703] (-) TimerEvent: {}
+[56.186145] (-) TimerEvent: {}
+[56.286595] (-) TimerEvent: {}
+[56.386911] (-) TimerEvent: {}
+[56.487232] (-) TimerEvent: {}
+[56.587749] (-) TimerEvent: {}
+[56.688115] (-) TimerEvent: {}
+[56.788746] (-) TimerEvent: {}
+[56.889166] (-) TimerEvent: {}
+[56.898920] (ur10_perception) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[56.989389] (-) TimerEvent: {}
+[57.089687] (-) TimerEvent: {}
+[57.189954] (-) TimerEvent: {}
+[57.290291] (-) TimerEvent: {}
+[57.391092] (-) TimerEvent: {}
+[57.491458] (-) TimerEvent: {}
+[57.591760] (-) TimerEvent: {}
+[57.692267] (-) TimerEvent: {}
+[57.792738] (-) TimerEvent: {}
+[57.893058] (-) TimerEvent: {}
+[57.993266] (-) TimerEvent: {}
+[58.093599] (-) TimerEvent: {}
+[58.193967] (-) TimerEvent: {}
+[58.294294] (-) TimerEvent: {}
+[58.394736] (-) TimerEvent: {}
+[58.495152] (-) TimerEvent: {}
+[58.595464] (-) TimerEvent: {}
+[58.695777] (-) TimerEvent: {}
+[58.796107] (-) TimerEvent: {}
+[58.896400] (-) TimerEvent: {}
+[58.996736] (-) TimerEvent: {}
+[59.097072] (-) TimerEvent: {}
+[59.197427] (-) TimerEvent: {}
+[59.297702] (-) TimerEvent: {}
+[59.397898] (-) TimerEvent: {}
+[59.498131] (-) TimerEvent: {}
+[59.598362] (-) TimerEvent: {}
+[59.698760] (-) TimerEvent: {}
+[59.799281] (-) TimerEvent: {}
+[59.899504] (-) TimerEvent: {}
+[59.999847] (-) TimerEvent: {}
+[60.100189] (-) TimerEvent: {}
+[60.200512] (-) TimerEvent: {}
+[60.300704] (-) TimerEvent: {}
+[60.400914] (-) TimerEvent: {}
+[60.501133] (-) TimerEvent: {}
+[60.601366] (-) TimerEvent: {}
+[60.701656] (-) TimerEvent: {}
+[60.801986] (-) TimerEvent: {}
+[60.902352] (-) TimerEvent: {}
+[61.002662] (-) TimerEvent: {}
+[61.103076] (-) TimerEvent: {}
+[61.203373] (-) TimerEvent: {}
+[61.303632] (-) TimerEvent: {}
+[61.404029] (-) TimerEvent: {}
+[61.504373] (-) TimerEvent: {}
+[61.604692] (-) TimerEvent: {}
+[61.704959] (-) TimerEvent: {}
+[61.805204] (-) TimerEvent: {}
+[61.905409] (-) TimerEvent: {}
+[62.005611] (-) TimerEvent: {}
+[62.105832] (-) TimerEvent: {}
+[62.206100] (-) TimerEvent: {}
+[62.306329] (-) TimerEvent: {}
+[62.406546] (-) TimerEvent: {}
+[62.506799] (-) TimerEvent: {}
+[62.606996] (-) TimerEvent: {}
+[62.707182] (-) TimerEvent: {}
+[62.807395] (-) TimerEvent: {}
+[62.907653] (-) TimerEvent: {}
+[63.008071] (-) TimerEvent: {}
+[63.108513] (-) TimerEvent: {}
+[63.208795] (-) TimerEvent: {}
+[63.309100] (-) TimerEvent: {}
+[63.331865] (ur10_perception) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[63.409260] (-) TimerEvent: {}
+[63.509564] (-) TimerEvent: {}
+[63.609784] (-) TimerEvent: {}
+[63.710024] (-) TimerEvent: {}
+[63.810236] (-) TimerEvent: {}
+[63.910450] (-) TimerEvent: {}
+[64.010716] (-) TimerEvent: {}
+[64.110948] (-) TimerEvent: {}
+[64.211142] (-) TimerEvent: {}
+[64.311370] (-) TimerEvent: {}
+[64.411560] (-) TimerEvent: {}
+[64.511758] (-) TimerEvent: {}
+[64.611946] (-) TimerEvent: {}
+[64.712160] (-) TimerEvent: {}
+[64.812405] (-) TimerEvent: {}
+[64.912605] (-) TimerEvent: {}
+[65.012966] (-) TimerEvent: {}
+[65.113534] (-) TimerEvent: {}
+[65.213901] (-) TimerEvent: {}
+[65.314277] (-) TimerEvent: {}
+[65.414608] (-) TimerEvent: {}
+[65.514897] (-) TimerEvent: {}
+[65.615326] (-) TimerEvent: {}
+[65.715652] (-) TimerEvent: {}
+[65.816025] (-) TimerEvent: {}
+[65.916386] (-) TimerEvent: {}
+[66.016631] (-) TimerEvent: {}
+[66.116954] (-) TimerEvent: {}
+[66.217165] (-) TimerEvent: {}
+[66.317454] (-) TimerEvent: {}
+[66.417723] (-) TimerEvent: {}
+[66.518371] (-) TimerEvent: {}
+[66.618658] (-) TimerEvent: {}
+[66.718847] (-) TimerEvent: {}
+[66.819138] (-) TimerEvent: {}
+[66.919625] (-) TimerEvent: {}
+[67.020164] (-) TimerEvent: {}
+[67.120497] (-) TimerEvent: {}
+[67.221029] (-) TimerEvent: {}
+[67.321412] (-) TimerEvent: {}
+[67.421741] (-) TimerEvent: {}
+[67.522009] (-) TimerEvent: {}
+[67.622445] (-) TimerEvent: {}
+[67.722790] (-) TimerEvent: {}
+[67.823063] (-) TimerEvent: {}
+[67.923285] (-) TimerEvent: {}
+[68.023632] (-) TimerEvent: {}
+[68.123994] (-) TimerEvent: {}
+[68.224422] (-) TimerEvent: {}
+[68.324802] (-) TimerEvent: {}
+[68.425098] (-) TimerEvent: {}
+[68.525459] (-) TimerEvent: {}
+[68.625930] (-) TimerEvent: {}
+[68.726288] (-) TimerEvent: {}
+[68.826849] (-) TimerEvent: {}
+[68.927131] (-) TimerEvent: {}
+[69.027340] (-) TimerEvent: {}
+[69.127633] (-) TimerEvent: {}
+[69.227875] (-) TimerEvent: {}
+[69.328127] (-) TimerEvent: {}
+[69.428378] (-) TimerEvent: {}
+[69.528775] (-) TimerEvent: {}
+[69.629149] (-) TimerEvent: {}
+[69.729451] (-) TimerEvent: {}
+[69.829803] (-) TimerEvent: {}
+[69.891724] (ur10_perception) StderrLine: {'line': b'CMake Warning (dev) at CMakeLists.txt:13 (find_package):\n'}
+[69.891943] (ur10_perception) StderrLine: {'line': b'  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.\n'}
+[69.891999] (ur10_perception) StderrLine: {'line': b'  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy\n'}
+[69.892034] (ur10_perception) StderrLine: {'line': b'  command to set the policy and suppress this warning.\n'}
+[69.892071] (ur10_perception) StderrLine: {'line': b'\n'}
+[69.892097] (ur10_perception) StderrLine: {'line': b'  CMake variable PCL_ROOT is set to:\n'}
+[69.892125] (ur10_perception) StderrLine: {'line': b'\n'}
+[69.892150] (ur10_perception) StderrLine: {'line': b'    /usr\n'}
+[69.892174] (ur10_perception) StderrLine: {'line': b'\n'}
+[69.892198] (ur10_perception) StderrLine: {'line': b'  For compatibility, CMake is ignoring the variable.\n'}
+[69.892223] (ur10_perception) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[69.892250] (ur10_perception) StderrLine: {'line': b'\n'}
+[69.930010] (-) TimerEvent: {}
+[69.996710] (ur10_perception) StdoutLine: {'line': b'-- Configuring done\n'}
+[70.030298] (-) TimerEvent: {}
+[70.085103] (ur10_perception) StdoutLine: {'line': b'-- Generating done\n'}
+[70.118994] (ur10_perception) StdoutLine: {'line': b'-- Build files have been written to: /root/ur10_ws/build/ur10_perception\n'}
+[70.130429] (-) TimerEvent: {}
+[70.157014] (ur10_perception) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target pcd_capture_node\n'}
+[70.157176] (ur10_perception) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target pcd_to_collision_scene_node\n'}
+[70.159644] (ur10_perception) StdoutLine: {'line': b'[ 16%] Building CXX object CMakeFiles/synthetic_overhead_camera_node.dir/src/synthetic_overhead_camera_node.cpp.o\n'}
+[70.168793] (ur10_perception) StdoutLine: {'line': b'[ 50%] Built target pcd_capture_node\n'}
+[70.169997] (ur10_perception) StdoutLine: {'line': b'[ 83%] Built target pcd_to_collision_scene_node\n'}
+[70.230614] (-) TimerEvent: {}
+[70.331014] (-) TimerEvent: {}
+[70.431216] (-) TimerEvent: {}
+[70.531498] (-) TimerEvent: {}
+[70.631766] (-) TimerEvent: {}
+[70.732123] (-) TimerEvent: {}
+[70.832347] (-) TimerEvent: {}
+[70.932564] (-) TimerEvent: {}
+[71.032774] (-) TimerEvent: {}
+[71.133489] (-) TimerEvent: {}
+[71.233760] (-) TimerEvent: {}
+[71.333957] (-) TimerEvent: {}
+[71.434301] (-) TimerEvent: {}
+[71.534634] (-) TimerEvent: {}
+[71.634912] (-) TimerEvent: {}
+[71.735111] (-) TimerEvent: {}
+[71.835360] (-) TimerEvent: {}
+[71.935545] (-) TimerEvent: {}
+[72.036036] (-) TimerEvent: {}
+[72.136404] (-) TimerEvent: {}
+[72.236706] (-) TimerEvent: {}
+[72.336948] (-) TimerEvent: {}
+[72.437227] (-) TimerEvent: {}
+[72.537441] (-) TimerEvent: {}
+[72.637602] (-) TimerEvent: {}
+[72.737980] (-) TimerEvent: {}
+[72.838209] (-) TimerEvent: {}
+[72.938454] (-) TimerEvent: {}
+[73.038826] (-) TimerEvent: {}
+[73.139087] (-) TimerEvent: {}
+[73.239350] (-) TimerEvent: {}
+[73.339545] (-) TimerEvent: {}
+[73.439768] (-) TimerEvent: {}
+[73.539988] (-) TimerEvent: {}
+[73.640237] (-) TimerEvent: {}
+[73.740452] (-) TimerEvent: {}
+[73.840808] (-) TimerEvent: {}
+[73.941037] (-) TimerEvent: {}
+[74.041223] (-) TimerEvent: {}
+[74.141693] (-) TimerEvent: {}
+[74.242046] (-) TimerEvent: {}
+[74.342355] (-) TimerEvent: {}
+[74.442597] (-) TimerEvent: {}
+[74.542883] (-) TimerEvent: {}
+[74.643187] (-) TimerEvent: {}
+[74.743431] (-) TimerEvent: {}
+[74.843670] (-) TimerEvent: {}
+[74.943913] (-) TimerEvent: {}
+[75.044173] (-) TimerEvent: {}
+[75.144510] (-) TimerEvent: {}
+[75.244735] (-) TimerEvent: {}
+[75.345062] (-) TimerEvent: {}
+[75.445259] (-) TimerEvent: {}
+[75.545482] (-) TimerEvent: {}
+[75.645749] (-) TimerEvent: {}
+[75.745980] (-) TimerEvent: {}
+[75.846344] (-) TimerEvent: {}
+[75.946615] (-) TimerEvent: {}
+[76.046878] (-) TimerEvent: {}
+[76.147134] (-) TimerEvent: {}
+[76.247381] (-) TimerEvent: {}
+[76.347562] (-) TimerEvent: {}
+[76.452945] (-) TimerEvent: {}
+[76.553139] (-) TimerEvent: {}
+[76.653393] (-) TimerEvent: {}
+[76.753583] (-) TimerEvent: {}
+[76.853882] (-) TimerEvent: {}
+[76.954109] (-) TimerEvent: {}
+[77.054354] (-) TimerEvent: {}
+[77.154615] (-) TimerEvent: {}
+[77.254826] (-) TimerEvent: {}
+[77.355166] (-) TimerEvent: {}
+[77.455397] (-) TimerEvent: {}
+[77.555673] (-) TimerEvent: {}
+[77.655986] (-) TimerEvent: {}
+[77.756257] (-) TimerEvent: {}
+[77.856460] (-) TimerEvent: {}
+[77.956707] (-) TimerEvent: {}
+[78.057059] (-) TimerEvent: {}
+[78.099200] (ur10_perception) StdoutLine: {'line': b'[100%] Linking CXX executable synthetic_overhead_camera_node\n'}
+[78.157266] (-) TimerEvent: {}
+[78.257501] (-) TimerEvent: {}
+[78.357939] (-) TimerEvent: {}
+[78.458292] (-) TimerEvent: {}
+[78.558488] (-) TimerEvent: {}
+[78.658976] (-) TimerEvent: {}
+[78.717981] (ur10_perception) StdoutLine: {'line': b'[100%] Built target synthetic_overhead_camera_node\n'}
+[78.734852] (ur10_perception) CommandEnded: {'returncode': 0}
+[78.736496] (ur10_perception) JobProgress: {'identifier': 'ur10_perception', 'progress': 'install'}
+[78.749441] (ur10_perception) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ur10_ws/build/ur10_perception'], 'cwd': '/root/ur10_ws/build/ur10_perception', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_perception'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[78.759228] (-) TimerEvent: {}
+[78.762267] (ur10_perception) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[78.763138] (ur10_perception) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[78.763755] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_capture_node\n'}
+[78.763988] (ur10_perception) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/synthetic_overhead_camera_node\n'}
+[78.774217] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_to_collision_scene_node\n'}
+[78.774450] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/config/camera_topics.yaml\n'}
+[78.774495] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/__pycache__/perception_only.launch.cpython-310.pyc\n'}
+[78.774673] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/perception_only.launch.py\n'}
+[78.774803] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/urdf/overhead_depth_camera.xacro\n'}
+[78.775035] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/worlds/obstacle_scene.world\n'}
+[78.775140] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/package_run_dependencies/ur10_perception\n'}
+[78.775204] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/parent_prefix_path/ur10_perception\n'}
+[78.775470] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.sh\n'}
+[78.775576] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.dsv\n'}
+[78.775630] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.sh\n'}
+[78.775744] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.dsv\n'}
+[78.775807] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.bash\n'}
+[78.776054] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.sh\n'}
+[78.776134] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.zsh\n'}
+[78.776798] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.dsv\n'}
+[78.777054] (ur10_perception) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv\n'}
+[78.785961] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/packages/ur10_perception\n'}
+[78.786189] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig.cmake\n'}
+[78.786275] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig-version.cmake\n'}
+[78.786306] (ur10_perception) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.xml\n'}
+[78.787393] (ur10_perception) CommandEnded: {'returncode': 0}
+[78.801338] (ur10_perception) JobEnded: {'identifier': 'ur10_perception', 'rc': 0}
+[78.802178] (ur10_simulation_bringup) JobStarted: {'identifier': 'ur10_simulation_bringup'}
+[78.859326] (-) TimerEvent: {}
+[78.959640] (-) TimerEvent: {}
+[79.060356] (-) TimerEvent: {}
+[79.161111] (-) TimerEvent: {}
+[79.261457] (-) TimerEvent: {}
+[79.361839] (-) TimerEvent: {}
+[79.462063] (-) TimerEvent: {}
+[79.562440] (-) TimerEvent: {}
+[79.662857] (-) TimerEvent: {}
+[79.745815] (ur10_simulation_bringup) JobProgress: {'identifier': 'ur10_simulation_bringup', 'progress': 'cmake'}
+[79.746875] (ur10_simulation_bringup) JobProgress: {'identifier': 'ur10_simulation_bringup', 'progress': 'build'}
+[79.747347] (ur10_simulation_bringup) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ur10_ws/build/ur10_simulation_bringup', '--', '-j4', '-l4'], 'cwd': '/root/ur10_ws/build/ur10_simulation_bringup', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_simulation_bringup'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[79.763070] (-) TimerEvent: {}
+[79.794468] (ur10_simulation_bringup) CommandEnded: {'returncode': 0}
+[79.796992] (ur10_simulation_bringup) JobProgress: {'identifier': 'ur10_simulation_bringup', 'progress': 'install'}
+[79.798820] (ur10_simulation_bringup) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ur10_ws/build/ur10_simulation_bringup'], 'cwd': '/root/ur10_ws/build/ur10_simulation_bringup', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_perception:/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_simulation_bringup'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[79.810430] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[79.811481] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[79.813050] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/complete_simulation.launch.cpython-310.pyc\n'}
+[79.813621] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/demo_nodes.launch.cpython-310.pyc\n'}
+[79.813796] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/gazebo_sim.launch.cpython-310.pyc\n'}
+[79.833197] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/moveit_planning.launch.cpython-310.pyc\n'}
+[79.833513] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/complete_simulation.launch.py\n'}
+[79.833605] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/demo_nodes.launch.py\n'}
+[79.833653] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/gazebo_sim.launch.py\n'}
+[79.833835] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/moveit_planning.launch.py\n'}
+[79.833917] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/worlds/empty.world\n'}
+[79.834024] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/package_run_dependencies/ur10_simulation_bringup\n'}
+[79.834442] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/parent_prefix_path/ur10_simulation_bringup\n'}
+[79.835173] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/ament_prefix_path.sh\n'}
+[79.835727] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/ament_prefix_path.dsv\n'}
+[79.836066] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/path.sh\n'}
+[79.836133] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/path.dsv\n'}
+[79.836295] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.bash\n'}
+[79.836387] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.sh\n'}
+[79.836491] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.zsh\n'}
+[79.836638] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.dsv\n'}
+[79.837684] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/package.dsv\n'}
+[79.847461] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/packages/ur10_simulation_bringup\n'}
+[79.847820] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/cmake/ur10_simulation_bringupConfig.cmake\n'}
+[79.847893] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/cmake/ur10_simulation_bringupConfig-version.cmake\n'}
+[79.847921] (ur10_simulation_bringup) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/package.xml\n'}
+[79.848753] (ur10_simulation_bringup) CommandEnded: {'returncode': 0}
+[79.858814] (ur10_simulation_bringup) JobEnded: {'identifier': 'ur10_simulation_bringup', 'rc': 0}
+[79.859253] (-) EventReactorShutdown: {}

@@ -1,0 +1,1 @@
+/root/ur10_ws/build/ur10_description/ament_cmake_core/ur10_descriptionConfig.cmake

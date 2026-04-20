@@ -1,0 +1,35 @@
+[0.998s] Invoking command in '/root/ur10_ws/build/ur10_simulation_bringup': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble PYTHONPATH=/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ur10_ws/build/ur10_simulation_bringup -- -j4 -l4
+[1.019s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.177s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.257s] -- Configuring done
+[1.265s] -- Generating done
+[1.269s] -- Build files have been written to: /root/ur10_ws/build/ur10_simulation_bringup
+[1.327s] Invoked command in '/root/ur10_ws/build/ur10_simulation_bringup' returned '0': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble PYTHONPATH=/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ur10_ws/build/ur10_simulation_bringup -- -j4 -l4
+[1.330s] Invoking command in '/root/ur10_ws/build/ur10_simulation_bringup': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble PYTHONPATH=/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ur10_ws/build/ur10_simulation_bringup
+[1.342s] -- Install configuration: ""
+[1.343s] -- Execute custom install script
+[1.345s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/complete_simulation.launch.cpython-310.pyc
+[1.345s] -- Symlinking: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/demo_nodes.launch.cpython-310.pyc
+[1.358s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/gazebo_sim.launch.cpython-310.pyc
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/__pycache__/moveit_planning.launch.cpython-310.pyc
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/complete_simulation.launch.py
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/demo_nodes.launch.py
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/gazebo_sim.launch.py
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/launch/moveit_planning.launch.py
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/worlds/empty.world
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/package_run_dependencies/ur10_simulation_bringup
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/parent_prefix_path/ur10_simulation_bringup
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/ament_prefix_path.sh
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/ament_prefix_path.dsv
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/path.sh
+[1.359s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/environment/path.dsv
+[1.360s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.bash
+[1.360s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.sh
+[1.360s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.zsh
+[1.360s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/local_setup.dsv
+[1.360s] -- Symlinking: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/package.dsv
+[1.372s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ament_index/resource_index/packages/ur10_simulation_bringup
+[1.373s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/cmake/ur10_simulation_bringupConfig.cmake
+[1.373s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/cmake/ur10_simulation_bringupConfig-version.cmake
+[1.373s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_simulation_bringup/share/ur10_simulation_bringup/package.xml
+[1.375s] Invoked command in '/root/ur10_ws/build/ur10_simulation_bringup' returned '0': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_description:/root/moveit_ws/install:/opt/ros/humble PYTHONPATH=/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages:/root/ur10_ws/build/ur10_examples_py:/root/ur10_ws/install/ur10_examples_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ur10_ws/build/ur10_simulation_bringup

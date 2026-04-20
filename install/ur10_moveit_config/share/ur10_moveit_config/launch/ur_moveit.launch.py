@@ -1,0 +1,1 @@
+/root/ur10_ws/src/ur10_moveit_config/launch/ur_moveit.launch.py

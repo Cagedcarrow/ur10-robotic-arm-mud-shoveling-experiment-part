@@ -1,0 +1,2 @@
+Invoking command in '/root/ur10_ws/build/ur10_description': /usr/bin/cmake /root/ur10_ws/src/ur10_description -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_description
+Invoked command in '/root/ur10_ws/build/ur10_description' returned '1': /usr/bin/cmake /root/ur10_ws/src/ur10_description -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_description

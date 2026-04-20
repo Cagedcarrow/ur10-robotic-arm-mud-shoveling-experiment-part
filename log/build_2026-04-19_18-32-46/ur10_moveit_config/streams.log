@@ -1,0 +1,49 @@
+[0.157s] Invoking command in '/root/ur10_ws/build/ur10_moveit_config': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /root/ur10_ws/build/ur10_moveit_config -- -j4 -l4
+[0.205s] Built target ament_cmake_python_symlink_ur10_moveit_config
+[0.384s] running egg_info
+[0.385s] writing ur10_moveit_config.egg-info/PKG-INFO
+[0.386s] writing dependency_links to ur10_moveit_config.egg-info/dependency_links.txt
+[0.386s] writing top-level names to ur10_moveit_config.egg-info/top_level.txt
+[0.388s] reading manifest file 'ur10_moveit_config.egg-info/SOURCES.txt'
+[0.388s] writing manifest file 'ur10_moveit_config.egg-info/SOURCES.txt'
+[0.411s] Built target ament_cmake_python_build_ur10_moveit_config_egg
+[0.420s] Invoked command in '/root/ur10_ws/build/ur10_moveit_config' returned '0': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /root/ur10_ws/build/ur10_moveit_config -- -j4 -l4
+[0.427s] Invoking command in '/root/ur10_ws/build/ur10_moveit_config': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /root/ur10_ws/build/ur10_moveit_config
+[0.433s] -- Install configuration: ""
+[0.433s] -- Execute custom install script
+[0.433s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/pythonpath.sh
+[0.433s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/pythonpath.dsv
+[0.433s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/PKG-INFO
+[0.434s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/SOURCES.txt
+[0.434s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/dependency_links.txt
+[0.434s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/top_level.txt
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config/__init__.py
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config/launch_common.py
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/controllers.yaml
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/joint_limits.yaml
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/kinematics.yaml
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/moveit_controllers.yaml
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/ompl_planning.yaml
+[0.435s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/ur_servo.yaml
+[0.435s] -- Symlinking: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/launch/__pycache__/ur_moveit.launch.cpython-310.pyc
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/launch/ur_moveit.launch.py
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/rviz/view_robot.rviz
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/srdf/ur.srdf.xacro
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/srdf/ur_macro.srdf.xacro
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/package_run_dependencies/ur10_moveit_config
+[0.443s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/parent_prefix_path/ur10_moveit_config
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/ament_prefix_path.sh
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/ament_prefix_path.dsv
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/path.sh
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/path.dsv
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.bash
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.sh
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.zsh
+[0.444s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.dsv
+[0.444s] -- Symlinking: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/package.dsv
+[0.450s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/packages/ur10_moveit_config
+[0.450s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/cmake/ur10_moveit_configConfig.cmake
+[0.451s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/cmake/ur10_moveit_configConfig-version.cmake
+[0.451s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/package.xml
+[0.474s] Listing '/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config'...
+[0.479s] Invoked command in '/root/ur10_ws/build/ur10_moveit_config' returned '0': AMENT_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ur10_ws/install/ur10_description:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /root/ur10_ws/build/ur10_moveit_config

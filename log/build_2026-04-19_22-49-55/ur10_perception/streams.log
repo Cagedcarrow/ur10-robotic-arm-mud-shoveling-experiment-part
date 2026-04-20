@@ -1,0 +1,37 @@
+[0.015s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[0.069s] Consolidate compiler generated dependencies of target pcd_to_collision_scene_node
+[0.087s] [ 16%] Building CXX object CMakeFiles/synthetic_overhead_camera_node.dir/src/synthetic_overhead_camera_node.cpp.o
+[0.090s] [ 50%] Built target pcd_capture_node
+[0.116s] [ 66%] Building CXX object CMakeFiles/pcd_to_collision_scene_node.dir/src/pcd_to_collision_scene_node.cpp.o
+[5.865s] [ 83%] Linking CXX executable synthetic_overhead_camera_node
+[6.407s] [ 83%] Built target synthetic_overhead_camera_node
+[9.344s] [100%] Linking CXX executable pcd_to_collision_scene_node
+[10.687s] [100%] Built target pcd_to_collision_scene_node
+[10.699s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[10.710s] Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception
+[10.715s] -- Install configuration: ""
+[10.715s] -- Execute custom install script
+[10.715s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_capture_node
+[10.715s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/synthetic_overhead_camera_node
+[10.715s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_to_collision_scene_node
+[10.716s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/config/camera_topics.yaml
+[10.716s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/__pycache__/perception_only.launch.cpython-310.pyc
+[10.716s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/perception_only.launch.py
+[10.716s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/urdf/overhead_depth_camera.xacro
+[10.716s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/worlds/obstacle_scene.world
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/package_run_dependencies/ur10_perception
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/parent_prefix_path/ur10_perception
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.sh
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.dsv
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.sh
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.dsv
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.bash
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.sh
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.zsh
+[10.717s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.dsv
+[10.718s] -- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv
+[10.724s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/packages/ur10_perception
+[10.724s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig.cmake
+[10.725s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig-version.cmake
+[10.725s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.xml
+[10.728s] Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception

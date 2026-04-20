@@ -1,0 +1,32 @@
+Consolidate compiler generated dependencies of target synthetic_overhead_camera_node
+Consolidate compiler generated dependencies of target pcd_to_collision_scene_node
+[ 33%] Built target pcd_capture_node
+[ 66%] Built target synthetic_overhead_camera_node
+[ 83%] Building CXX object CMakeFiles/pcd_to_collision_scene_node.dir/src/pcd_to_collision_scene_node.cpp.o
+[100%] Linking CXX executable pcd_to_collision_scene_node
+[100%] Built target pcd_to_collision_scene_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_capture_node
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/synthetic_overhead_camera_node
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/lib/ur10_perception/pcd_to_collision_scene_node
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/config/camera_topics.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/__pycache__/perception_only.launch.cpython-310.pyc
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/launch/perception_only.launch.py
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/urdf/overhead_depth_camera.xacro
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/worlds/obstacle_scene.world
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/package_run_dependencies/ur10_perception
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/parent_prefix_path/ur10_perception
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/environment/path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.bash
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.zsh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/local_setup.dsv
+-- Symlinking: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ament_index/resource_index/packages/ur10_perception
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/cmake/ur10_perceptionConfig-version.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_perception/share/ur10_perception/package.xml

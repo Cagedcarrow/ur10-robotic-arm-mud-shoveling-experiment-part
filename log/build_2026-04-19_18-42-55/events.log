@@ -1,0 +1,596 @@
+[0.000000] (-) TimerEvent: {}
+[0.000120] (-) JobUnselected: {'identifier': 'ur10_description'}
+[0.000158] (-) JobUnselected: {'identifier': 'ur10_examples_py'}
+[0.000182] (-) JobUnselected: {'identifier': 'ur10_moveit_config'}
+[0.000204] (-) JobUnselected: {'identifier': 'ur10_perception'}
+[0.000228] (-) JobUnselected: {'identifier': 'ur10_simulation_bringup'}
+[0.000239] (ur10_examples) JobQueued: {'identifier': 'ur10_examples', 'dependencies': OrderedDict()}
+[0.000249] (ur10_examples) JobStarted: {'identifier': 'ur10_examples'}
+[0.005861] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'cmake'}
+[0.006609] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '/root/ur10_ws/src/ur10_examples', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_examples'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[0.099540] (-) TimerEvent: {}
+[0.199930] (-) TimerEvent: {}
+[0.300275] (-) TimerEvent: {}
+[0.400812] (-) TimerEvent: {}
+[0.476468] (ur10_examples) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.500941] (-) TimerEvent: {}
+[0.601260] (-) TimerEvent: {}
+[0.701494] (-) TimerEvent: {}
+[0.801832] (-) TimerEvent: {}
+[0.903659] (-) TimerEvent: {}
+[1.003984] (-) TimerEvent: {}
+[1.104534] (-) TimerEvent: {}
+[1.205279] (-) TimerEvent: {}
+[1.305672] (-) TimerEvent: {}
+[1.406248] (-) TimerEvent: {}
+[1.506655] (-) TimerEvent: {}
+[1.607082] (-) TimerEvent: {}
+[1.707559] (-) TimerEvent: {}
+[1.807873] (-) TimerEvent: {}
+[1.908211] (-) TimerEvent: {}
+[2.008517] (-) TimerEvent: {}
+[2.108703] (-) TimerEvent: {}
+[2.170958] (ur10_examples) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.208927] (-) TimerEvent: {}
+[2.309343] (-) TimerEvent: {}
+[2.409707] (-) TimerEvent: {}
+[2.510049] (-) TimerEvent: {}
+[2.610255] (-) TimerEvent: {}
+[2.710510] (-) TimerEvent: {}
+[2.810719] (-) TimerEvent: {}
+[2.910932] (-) TimerEvent: {}
+[3.011230] (-) TimerEvent: {}
+[3.111845] (-) TimerEvent: {}
+[3.212143] (-) TimerEvent: {}
+[3.312553] (-) TimerEvent: {}
+[3.395660] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.412700] (-) TimerEvent: {}
+[3.513024] (-) TimerEvent: {}
+[3.613243] (-) TimerEvent: {}
+[3.713588] (-) TimerEvent: {}
+[3.755073] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.767017] (ur10_examples) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[3.767455] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.767883] (ur10_examples) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.771822] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.813685] (-) TimerEvent: {}
+[3.913946] (-) TimerEvent: {}
+[4.014287] (-) TimerEvent: {}
+[4.021843] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[4.027275] (ur10_examples) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[4.027468] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[4.027734] (ur10_examples) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[4.030026] (ur10_examples) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[4.114413] (-) TimerEvent: {}
+[4.144567] (ur10_examples) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[4.193919] (ur10_examples) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.214544] (-) TimerEvent: {}
+[4.217523] (ur10_examples) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[4.314654] (-) TimerEvent: {}
+[4.414902] (-) TimerEvent: {}
+[4.515188] (-) TimerEvent: {}
+[4.616118] (-) TimerEvent: {}
+[4.655583] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[4.662867] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.670256] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.678548] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.690710] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.716214] (-) TimerEvent: {}
+[4.722319] (ur10_examples) StdoutLine: {'line': b'-- Found moveit_msgs: 2.7.1 (/root/moveit_ws/install/moveit_msgs/share/moveit_msgs/cmake)\n'}
+[4.832517] (ur10_examples) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/root/moveit_ws/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)\n'}
+[4.832972] (-) TimerEvent: {}
+[4.933127] (-) TimerEvent: {}
+[5.033419] (-) TimerEvent: {}
+[5.133741] (-) TimerEvent: {}
+[5.234086] (-) TimerEvent: {}
+[5.334451] (-) TimerEvent: {}
+[5.434857] (-) TimerEvent: {}
+[5.535301] (-) TimerEvent: {}
+[5.635721] (-) TimerEvent: {}
+[5.690068] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread \n'}
+[5.720813] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread \n'}
+[5.735834] (-) TimerEvent: {}
+[5.836088] (-) TimerEvent: {}
+[5.936312] (-) TimerEvent: {}
+[6.036654] (-) TimerEvent: {}
+[6.137033] (-) TimerEvent: {}
+[6.237413] (-) TimerEvent: {}
+[6.337752] (-) TimerEvent: {}
+[6.438180] (-) TimerEvent: {}
+[6.538598] (-) TimerEvent: {}
+[6.639469] (-) TimerEvent: {}
+[6.739834] (-) TimerEvent: {}
+[6.840055] (-) TimerEvent: {}
+[6.940315] (-) TimerEvent: {}
+[7.040637] (-) TimerEvent: {}
+[7.141122] (-) TimerEvent: {}
+[7.241530] (-) TimerEvent: {}
+[7.341974] (-) TimerEvent: {}
+[7.442412] (-) TimerEvent: {}
+[7.542891] (-) TimerEvent: {}
+[7.643322] (-) TimerEvent: {}
+[7.743669] (-) TimerEvent: {}
+[7.844391] (-) TimerEvent: {}
+[7.944778] (-) TimerEvent: {}
+[8.045140] (-) TimerEvent: {}
+[8.145545] (-) TimerEvent: {}
+[8.245909] (-) TimerEvent: {}
+[8.346573] (-) TimerEvent: {}
+[8.447078] (-) TimerEvent: {}
+[8.547467] (-) TimerEvent: {}
+[8.647753] (-) TimerEvent: {}
+[8.748219] (-) TimerEvent: {}
+[8.848797] (-) TimerEvent: {}
+[8.949169] (-) TimerEvent: {}
+[9.049429] (-) TimerEvent: {}
+[9.149734] (-) TimerEvent: {}
+[9.250069] (-) TimerEvent: {}
+[9.350351] (-) TimerEvent: {}
+[9.450725] (-) TimerEvent: {}
+[9.551128] (-) TimerEvent: {}
+[9.651539] (-) TimerEvent: {}
+[9.752043] (-) TimerEvent: {}
+[9.852525] (-) TimerEvent: {}
+[9.952860] (-) TimerEvent: {}
+[10.053186] (-) TimerEvent: {}
+[10.153607] (-) TimerEvent: {}
+[10.253942] (-) TimerEvent: {}
+[10.354408] (-) TimerEvent: {}
+[10.454840] (-) TimerEvent: {}
+[10.555289] (-) TimerEvent: {}
+[10.655764] (-) TimerEvent: {}
+[10.756419] (-) TimerEvent: {}
+[10.856894] (-) TimerEvent: {}
+[10.957366] (-) TimerEvent: {}
+[11.057683] (-) TimerEvent: {}
+[11.158317] (-) TimerEvent: {}
+[11.167127] (ur10_examples) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[11.215572] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[11.218707] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[11.258288] (-) TimerEvent: {}
+[11.358537] (-) TimerEvent: {}
+[11.458785] (-) TimerEvent: {}
+[11.558998] (-) TimerEvent: {}
+[11.659380] (-) TimerEvent: {}
+[11.759695] (-) TimerEvent: {}
+[11.860017] (-) TimerEvent: {}
+[11.960292] (-) TimerEvent: {}
+[12.060643] (-) TimerEvent: {}
+[12.160922] (-) TimerEvent: {}
+[12.261353] (-) TimerEvent: {}
+[12.361677] (-) TimerEvent: {}
+[12.461947] (-) TimerEvent: {}
+[12.562275] (-) TimerEvent: {}
+[12.662537] (-) TimerEvent: {}
+[12.763019] (-) TimerEvent: {}
+[12.863479] (-) TimerEvent: {}
+[12.964048] (-) TimerEvent: {}
+[13.064358] (-) TimerEvent: {}
+[13.164808] (-) TimerEvent: {}
+[13.265102] (-) TimerEvent: {}
+[13.365481] (-) TimerEvent: {}
+[13.465932] (-) TimerEvent: {}
+[13.566290] (-) TimerEvent: {}
+[13.666602] (-) TimerEvent: {}
+[13.767105] (-) TimerEvent: {}
+[13.867388] (-) TimerEvent: {}
+[13.967586] (-) TimerEvent: {}
+[14.067924] (-) TimerEvent: {}
+[14.168394] (-) TimerEvent: {}
+[14.268780] (-) TimerEvent: {}
+[14.369151] (-) TimerEvent: {}
+[14.502528] (-) TimerEvent: {}
+[14.603010] (-) TimerEvent: {}
+[14.703598] (-) TimerEvent: {}
+[14.804049] (-) TimerEvent: {}
+[14.904748] (-) TimerEvent: {}
+[15.005128] (-) TimerEvent: {}
+[15.105467] (-) TimerEvent: {}
+[15.205767] (-) TimerEvent: {}
+[15.305987] (-) TimerEvent: {}
+[15.406364] (-) TimerEvent: {}
+[15.506747] (-) TimerEvent: {}
+[15.607078] (-) TimerEvent: {}
+[15.707582] (-) TimerEvent: {}
+[15.808035] (-) TimerEvent: {}
+[15.908521] (-) TimerEvent: {}
+[16.008930] (-) TimerEvent: {}
+[16.109410] (-) TimerEvent: {}
+[16.209835] (-) TimerEvent: {}
+[16.310119] (-) TimerEvent: {}
+[16.324841] (ur10_examples) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[16.410289] (-) TimerEvent: {}
+[16.510608] (-) TimerEvent: {}
+[16.610984] (-) TimerEvent: {}
+[16.711209] (-) TimerEvent: {}
+[16.811491] (-) TimerEvent: {}
+[16.911953] (-) TimerEvent: {}
+[17.012459] (-) TimerEvent: {}
+[17.112922] (-) TimerEvent: {}
+[17.213296] (-) TimerEvent: {}
+[17.313691] (-) TimerEvent: {}
+[17.414041] (-) TimerEvent: {}
+[17.514389] (-) TimerEvent: {}
+[17.615078] (-) TimerEvent: {}
+[17.715473] (-) TimerEvent: {}
+[17.815988] (-) TimerEvent: {}
+[17.916457] (-) TimerEvent: {}
+[18.016753] (-) TimerEvent: {}
+[18.117204] (-) TimerEvent: {}
+[18.217644] (-) TimerEvent: {}
+[18.318001] (-) TimerEvent: {}
+[18.418295] (-) TimerEvent: {}
+[18.518525] (-) TimerEvent: {}
+[18.618758] (-) TimerEvent: {}
+[18.719141] (-) TimerEvent: {}
+[18.819428] (-) TimerEvent: {}
+[18.919798] (-) TimerEvent: {}
+[19.020119] (-) TimerEvent: {}
+[19.120473] (-) TimerEvent: {}
+[19.220824] (-) TimerEvent: {}
+[19.321176] (-) TimerEvent: {}
+[19.421627] (-) TimerEvent: {}
+[19.521913] (-) TimerEvent: {}
+[19.622299] (-) TimerEvent: {}
+[19.722719] (-) TimerEvent: {}
+[19.823043] (-) TimerEvent: {}
+[19.923548] (-) TimerEvent: {}
+[20.023893] (-) TimerEvent: {}
+[20.124178] (-) TimerEvent: {}
+[20.224553] (-) TimerEvent: {}
+[20.324932] (-) TimerEvent: {}
+[20.425349] (-) TimerEvent: {}
+[20.525705] (-) TimerEvent: {}
+[20.626038] (-) TimerEvent: {}
+[20.726363] (-) TimerEvent: {}
+[20.826767] (-) TimerEvent: {}
+[20.927265] (-) TimerEvent: {}
+[21.027489] (-) TimerEvent: {}
+[21.127698] (-) TimerEvent: {}
+[21.228008] (-) TimerEvent: {}
+[21.328503] (-) TimerEvent: {}
+[21.428986] (-) TimerEvent: {}
+[21.529279] (-) TimerEvent: {}
+[21.629606] (-) TimerEvent: {}
+[21.730167] (-) TimerEvent: {}
+[21.830671] (-) TimerEvent: {}
+[21.862132] (ur10_examples) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[21.930781] (-) TimerEvent: {}
+[22.031013] (-) TimerEvent: {}
+[22.131493] (-) TimerEvent: {}
+[22.231941] (-) TimerEvent: {}
+[22.332874] (-) TimerEvent: {}
+[22.433403] (-) TimerEvent: {}
+[22.533810] (-) TimerEvent: {}
+[22.634217] (-) TimerEvent: {}
+[22.734540] (-) TimerEvent: {}
+[22.834791] (-) TimerEvent: {}
+[22.935195] (-) TimerEvent: {}
+[23.035705] (-) TimerEvent: {}
+[23.136322] (-) TimerEvent: {}
+[23.236670] (-) TimerEvent: {}
+[23.336972] (-) TimerEvent: {}
+[23.437440] (-) TimerEvent: {}
+[23.537813] (-) TimerEvent: {}
+[23.638083] (-) TimerEvent: {}
+[23.738383] (-) TimerEvent: {}
+[23.838892] (-) TimerEvent: {}
+[23.939220] (-) TimerEvent: {}
+[24.039573] (-) TimerEvent: {}
+[24.140443] (-) TimerEvent: {}
+[24.240917] (-) TimerEvent: {}
+[24.341364] (-) TimerEvent: {}
+[24.441776] (-) TimerEvent: {}
+[24.542126] (-) TimerEvent: {}
+[24.642492] (-) TimerEvent: {}
+[24.743152] (-) TimerEvent: {}
+[24.843861] (-) TimerEvent: {}
+[24.944223] (-) TimerEvent: {}
+[25.044455] (-) TimerEvent: {}
+[25.144829] (-) TimerEvent: {}
+[25.245202] (-) TimerEvent: {}
+[25.345419] (-) TimerEvent: {}
+[25.445609] (-) TimerEvent: {}
+[25.545901] (-) TimerEvent: {}
+[25.646236] (-) TimerEvent: {}
+[25.746549] (-) TimerEvent: {}
+[25.846815] (-) TimerEvent: {}
+[25.947020] (-) TimerEvent: {}
+[26.047260] (-) TimerEvent: {}
+[26.147626] (-) TimerEvent: {}
+[26.247897] (-) TimerEvent: {}
+[26.348119] (-) TimerEvent: {}
+[26.448374] (-) TimerEvent: {}
+[26.548870] (-) TimerEvent: {}
+[26.649193] (-) TimerEvent: {}
+[26.749518] (-) TimerEvent: {}
+[26.849888] (-) TimerEvent: {}
+[26.950170] (-) TimerEvent: {}
+[27.050474] (-) TimerEvent: {}
+[27.150868] (-) TimerEvent: {}
+[27.251469] (-) TimerEvent: {}
+[27.351811] (-) TimerEvent: {}
+[27.452077] (-) TimerEvent: {}
+[27.552373] (-) TimerEvent: {}
+[27.652626] (-) TimerEvent: {}
+[27.752954] (-) TimerEvent: {}
+[27.853233] (-) TimerEvent: {}
+[27.953586] (-) TimerEvent: {}
+[28.054033] (-) TimerEvent: {}
+[28.154554] (-) TimerEvent: {}
+[28.255044] (-) TimerEvent: {}
+[28.355471] (-) TimerEvent: {}
+[28.455779] (-) TimerEvent: {}
+[28.556127] (-) TimerEvent: {}
+[28.656415] (-) TimerEvent: {}
+[28.756761] (-) TimerEvent: {}
+[28.857141] (-) TimerEvent: {}
+[28.957432] (-) TimerEvent: {}
+[29.057782] (-) TimerEvent: {}
+[29.158131] (-) TimerEvent: {}
+[29.258536] (-) TimerEvent: {}
+[29.358817] (-) TimerEvent: {}
+[29.459101] (-) TimerEvent: {}
+[29.559608] (-) TimerEvent: {}
+[29.659934] (-) TimerEvent: {}
+[29.760312] (-) TimerEvent: {}
+[29.860830] (-) TimerEvent: {}
+[29.961240] (-) TimerEvent: {}
+[30.061768] (-) TimerEvent: {}
+[30.162146] (-) TimerEvent: {}
+[30.262503] (-) TimerEvent: {}
+[30.362912] (-) TimerEvent: {}
+[30.463313] (-) TimerEvent: {}
+[30.563910] (-) TimerEvent: {}
+[30.664257] (-) TimerEvent: {}
+[30.764622] (-) TimerEvent: {}
+[30.864918] (-) TimerEvent: {}
+[30.965565] (-) TimerEvent: {}
+[31.066064] (-) TimerEvent: {}
+[31.166462] (-) TimerEvent: {}
+[31.266718] (-) TimerEvent: {}
+[31.321472] (ur10_examples) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[31.339298] (ur10_examples) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[31.366928] (-) TimerEvent: {}
+[31.425702] (ur10_examples) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[31.451220] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: random \n'}
+[31.467038] (-) TimerEvent: {}
+[31.567466] (-) TimerEvent: {}
+[31.667754] (-) TimerEvent: {}
+[31.768015] (-) TimerEvent: {}
+[31.868331] (-) TimerEvent: {}
+[31.968668] (-) TimerEvent: {}
+[32.068985] (-) TimerEvent: {}
+[32.169240] (-) TimerEvent: {}
+[32.269552] (-) TimerEvent: {}
+[32.369973] (-) TimerEvent: {}
+[32.470350] (-) TimerEvent: {}
+[32.571153] (-) TimerEvent: {}
+[32.671485] (-) TimerEvent: {}
+[32.771699] (-) TimerEvent: {}
+[32.871919] (-) TimerEvent: {}
+[32.972396] (-) TimerEvent: {}
+[33.072752] (-) TimerEvent: {}
+[33.173110] (-) TimerEvent: {}
+[33.273444] (-) TimerEvent: {}
+[33.373851] (-) TimerEvent: {}
+[33.474411] (-) TimerEvent: {}
+[33.574730] (-) TimerEvent: {}
+[33.675130] (-) TimerEvent: {}
+[33.775478] (-) TimerEvent: {}
+[33.875738] (-) TimerEvent: {}
+[33.976042] (-) TimerEvent: {}
+[34.076413] (-) TimerEvent: {}
+[34.176587] (-) TimerEvent: {}
+[34.276804] (-) TimerEvent: {}
+[34.377063] (-) TimerEvent: {}
+[34.477414] (-) TimerEvent: {}
+[34.577769] (-) TimerEvent: {}
+[34.678131] (-) TimerEvent: {}
+[34.778519] (-) TimerEvent: {}
+[34.878871] (-) TimerEvent: {}
+[34.979279] (-) TimerEvent: {}
+[35.079710] (-) TimerEvent: {}
+[35.180182] (-) TimerEvent: {}
+[35.280577] (-) TimerEvent: {}
+[35.380907] (-) TimerEvent: {}
+[35.481465] (-) TimerEvent: {}
+[35.582008] (-) TimerEvent: {}
+[35.682293] (-) TimerEvent: {}
+[35.782531] (-) TimerEvent: {}
+[35.882851] (-) TimerEvent: {}
+[35.983218] (-) TimerEvent: {}
+[36.083687] (-) TimerEvent: {}
+[36.183955] (-) TimerEvent: {}
+[36.284449] (-) TimerEvent: {}
+[36.385420] (-) TimerEvent: {}
+[36.485815] (-) TimerEvent: {}
+[36.586244] (-) TimerEvent: {}
+[36.686668] (-) TimerEvent: {}
+[36.787118] (-) TimerEvent: {}
+[36.788493] (ur10_examples) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[36.887280] (-) TimerEvent: {}
+[36.987749] (-) TimerEvent: {}
+[37.050065] (ur10_examples) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[37.050646] (ur10_examples) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[37.087860] (-) TimerEvent: {}
+[37.188164] (-) TimerEvent: {}
+[37.288789] (-) TimerEvent: {}
+[37.389139] (-) TimerEvent: {}
+[37.489412] (-) TimerEvent: {}
+[37.589732] (-) TimerEvent: {}
+[37.690121] (-) TimerEvent: {}
+[37.790467] (-) TimerEvent: {}
+[37.890842] (-) TimerEvent: {}
+[37.991279] (-) TimerEvent: {}
+[38.091661] (-) TimerEvent: {}
+[38.191931] (-) TimerEvent: {}
+[38.292155] (-) TimerEvent: {}
+[38.392613] (-) TimerEvent: {}
+[38.492908] (-) TimerEvent: {}
+[38.593121] (-) TimerEvent: {}
+[38.693524] (-) TimerEvent: {}
+[38.793935] (-) TimerEvent: {}
+[38.894316] (-) TimerEvent: {}
+[38.994709] (-) TimerEvent: {}
+[39.094952] (-) TimerEvent: {}
+[39.195219] (-) TimerEvent: {}
+[39.295758] (-) TimerEvent: {}
+[39.396116] (-) TimerEvent: {}
+[39.496483] (-) TimerEvent: {}
+[39.596780] (-) TimerEvent: {}
+[39.697070] (-) TimerEvent: {}
+[39.797731] (-) TimerEvent: {}
+[39.898267] (-) TimerEvent: {}
+[39.998531] (-) TimerEvent: {}
+[40.098804] (-) TimerEvent: {}
+[40.199086] (-) TimerEvent: {}
+[40.299361] (-) TimerEvent: {}
+[40.399648] (-) TimerEvent: {}
+[40.499963] (-) TimerEvent: {}
+[40.600200] (-) TimerEvent: {}
+[40.700555] (-) TimerEvent: {}
+[40.800928] (-) TimerEvent: {}
+[40.901436] (-) TimerEvent: {}
+[41.001873] (-) TimerEvent: {}
+[41.102424] (-) TimerEvent: {}
+[41.202751] (-) TimerEvent: {}
+[41.303068] (-) TimerEvent: {}
+[41.403467] (-) TimerEvent: {}
+[41.503771] (-) TimerEvent: {}
+[41.604045] (-) TimerEvent: {}
+[41.704437] (-) TimerEvent: {}
+[41.804970] (-) TimerEvent: {}
+[41.905448] (-) TimerEvent: {}
+[42.005927] (-) TimerEvent: {}
+[42.106246] (-) TimerEvent: {}
+[42.206612] (-) TimerEvent: {}
+[42.307067] (-) TimerEvent: {}
+[42.407461] (-) TimerEvent: {}
+[42.495458] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono \n'}
+[42.507559] (-) TimerEvent: {}
+[42.536153] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options \n'}
+[42.579737] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread \n'}
+[42.607662] (-) TimerEvent: {}
+[42.654940] (ur10_examples) StdoutLine: {'line': b'-- Configuring done\n'}
+[42.681760] (ur10_examples) StdoutLine: {'line': b'-- Generating done\n'}
+[42.688412] (ur10_examples) StdoutLine: {'line': b'-- Build files have been written to: /root/ur10_ws/build/ur10_examples\n'}
+[42.701144] (ur10_examples) CommandEnded: {'returncode': 0}
+[42.702243] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'build'}
+[42.702290] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ur10_ws/build/ur10_examples', '--', '-j4', '-l4'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[42.707765] (-) TimerEvent: {}
+[42.740677] (ur10_examples) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o\n'}
+[42.807884] (-) TimerEvent: {}
+[42.908067] (-) TimerEvent: {}
+[43.008253] (-) TimerEvent: {}
+[43.108661] (-) TimerEvent: {}
+[43.208927] (-) TimerEvent: {}
+[43.309133] (-) TimerEvent: {}
+[43.409310] (-) TimerEvent: {}
+[43.509597] (-) TimerEvent: {}
+[43.609835] (-) TimerEvent: {}
+[43.710128] (-) TimerEvent: {}
+[43.810529] (-) TimerEvent: {}
+[43.910978] (-) TimerEvent: {}
+[44.011292] (-) TimerEvent: {}
+[44.111520] (-) TimerEvent: {}
+[44.211723] (-) TimerEvent: {}
+[44.311940] (-) TimerEvent: {}
+[44.412266] (-) TimerEvent: {}
+[44.512555] (-) TimerEvent: {}
+[44.612805] (-) TimerEvent: {}
+[44.713013] (-) TimerEvent: {}
+[44.813209] (-) TimerEvent: {}
+[44.913427] (-) TimerEvent: {}
+[45.013763] (-) TimerEvent: {}
+[45.113981] (-) TimerEvent: {}
+[45.214236] (-) TimerEvent: {}
+[45.314449] (-) TimerEvent: {}
+[45.414685] (-) TimerEvent: {}
+[45.514877] (-) TimerEvent: {}
+[45.615121] (-) TimerEvent: {}
+[45.715371] (-) TimerEvent: {}
+[45.816158] (-) TimerEvent: {}
+[45.916811] (-) TimerEvent: {}
+[46.017114] (-) TimerEvent: {}
+[46.117462] (-) TimerEvent: {}
+[46.217944] (-) TimerEvent: {}
+[46.318280] (-) TimerEvent: {}
+[46.418490] (-) TimerEvent: {}
+[46.518695] (-) TimerEvent: {}
+[46.618879] (-) TimerEvent: {}
+[46.719111] (-) TimerEvent: {}
+[46.819344] (-) TimerEvent: {}
+[46.919546] (-) TimerEvent: {}
+[47.019769] (-) TimerEvent: {}
+[47.119980] (-) TimerEvent: {}
+[47.220177] (-) TimerEvent: {}
+[47.320448] (-) TimerEvent: {}
+[47.420710] (-) TimerEvent: {}
+[47.520945] (-) TimerEvent: {}
+[47.621328] (-) TimerEvent: {}
+[47.721603] (-) TimerEvent: {}
+[47.821899] (-) TimerEvent: {}
+[47.922081] (-) TimerEvent: {}
+[48.022242] (-) TimerEvent: {}
+[48.122562] (-) TimerEvent: {}
+[48.222852] (-) TimerEvent: {}
+[48.323108] (-) TimerEvent: {}
+[48.423424] (-) TimerEvent: {}
+[48.523634] (-) TimerEvent: {}
+[48.623829] (-) TimerEvent: {}
+[48.724317] (-) TimerEvent: {}
+[48.824675] (-) TimerEvent: {}
+[48.924913] (-) TimerEvent: {}
+[49.025104] (-) TimerEvent: {}
+[49.125525] (-) TimerEvent: {}
+[49.225747] (-) TimerEvent: {}
+[49.325954] (-) TimerEvent: {}
+[49.426292] (-) TimerEvent: {}
+[49.526748] (-) TimerEvent: {}
+[49.626977] (-) TimerEvent: {}
+[49.727440] (-) TimerEvent: {}
+[49.827812] (-) TimerEvent: {}
+[49.928044] (-) TimerEvent: {}
+[50.028323] (-) TimerEvent: {}
+[50.128535] (-) TimerEvent: {}
+[50.228780] (-) TimerEvent: {}
+[50.329022] (-) TimerEvent: {}
+[50.429246] (-) TimerEvent: {}
+[50.529436] (-) TimerEvent: {}
+[50.629631] (-) TimerEvent: {}
+[50.660353] (ur10_examples) StdoutLine: {'line': b'[100%] Linking CXX executable move_group_interface_demo\n'}
+[50.729840] (-) TimerEvent: {}
+[50.830156] (-) TimerEvent: {}
+[50.930446] (-) TimerEvent: {}
+[51.030756] (-) TimerEvent: {}
+[51.131137] (-) TimerEvent: {}
+[51.231327] (-) TimerEvent: {}
+[51.331984] (-) TimerEvent: {}
+[51.361437] (ur10_examples) StdoutLine: {'line': b'[100%] Built target move_group_interface_demo\n'}
+[51.374229] (ur10_examples) CommandEnded: {'returncode': 0}
+[51.375187] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'install'}
+[51.381910] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ur10_ws/build/ur10_examples'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/env'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/root/moveit_ws/install/moveit_py/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_configs_utils/lib/python3.10/site-packages:/root/moveit_ws/install/srdfdom/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages:/root/moveit_ws/install/moveit_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/root/moveit_ws/install:/opt/ros/humble')]), 'shell': False}
+[51.391830] (ur10_examples) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[51.392604] (ur10_examples) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[51.393127] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo\n'}
+[51.406394] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples\n'}
+[51.431269] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples\n'}
+[51.432161] (-) TimerEvent: {}
+[51.449234] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh\n'}
+[51.461418] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv\n'}
+[51.471240] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh\n'}
+[51.479122] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv\n'}
+[51.486038] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash\n'}
+[51.507055] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh\n'}
+[51.521350] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh\n'}
+[51.530391] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv\n'}
+[51.532391] (-) TimerEvent: {}
+[51.538735] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv\n'}
+[51.546017] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples\n'}
+[51.552565] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake\n'}
+[51.559033] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake\n'}
+[51.565543] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml\n'}
+[51.572769] (ur10_examples) CommandEnded: {'returncode': 0}
+[51.584118] (ur10_examples) JobEnded: {'identifier': 'ur10_examples', 'rc': 0}
+[51.584573] (-) EventReactorShutdown: {}

@@ -1,0 +1,522 @@
+[0.000000] (-) TimerEvent: {}
+[0.000159] (-) JobUnselected: {'identifier': 'ur10_description'}
+[0.000189] (-) JobUnselected: {'identifier': 'ur10_examples_py'}
+[0.000211] (-) JobUnselected: {'identifier': 'ur10_moveit_config'}
+[0.000233] (-) JobUnselected: {'identifier': 'ur10_perception'}
+[0.000255] (-) JobUnselected: {'identifier': 'ur10_simulation_bringup'}
+[0.000278] (ur10_examples) JobQueued: {'identifier': 'ur10_examples', 'dependencies': OrderedDict()}
+[0.000301] (ur10_examples) JobStarted: {'identifier': 'ur10_examples'}
+[0.014248] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'cmake'}
+[0.015388] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'build'}
+[0.015439] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ur10_ws/build/ur10_examples', '--', '-j4', '-l4'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.044873] (ur10_examples) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099254] (-) TimerEvent: {}
+[0.175771] (ur10_examples) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.182309] (ur10_examples) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.199378] (-) TimerEvent: {}
+[0.299638] (-) TimerEvent: {}
+[0.399954] (-) TimerEvent: {}
+[0.500377] (-) TimerEvent: {}
+[0.600770] (-) TimerEvent: {}
+[0.635411] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.638638] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.647587] (ur10_examples) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.663315] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.678580] (ur10_examples) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.700913] (-) TimerEvent: {}
+[0.728968] (ur10_examples) StdoutLine: {'line': b'-- Found moveit_msgs: 2.7.1 (/root/moveit_ws/install/moveit_msgs/share/moveit_msgs/cmake)\n'}
+[0.801190] (-) TimerEvent: {}
+[0.892856] (ur10_examples) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/root/moveit_ws/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)\n'}
+[0.901416] (-) TimerEvent: {}
+[0.915948] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread \n'}
+[0.936287] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread \n'}
+[1.001550] (-) TimerEvent: {}
+[1.101780] (-) TimerEvent: {}
+[1.202025] (-) TimerEvent: {}
+[1.302367] (-) TimerEvent: {}
+[1.402664] (-) TimerEvent: {}
+[1.502906] (-) TimerEvent: {}
+[1.603207] (-) TimerEvent: {}
+[1.703709] (-) TimerEvent: {}
+[1.803994] (-) TimerEvent: {}
+[1.904296] (-) TimerEvent: {}
+[2.004562] (-) TimerEvent: {}
+[2.104875] (-) TimerEvent: {}
+[2.205230] (-) TimerEvent: {}
+[2.305577] (-) TimerEvent: {}
+[2.405940] (-) TimerEvent: {}
+[2.506289] (-) TimerEvent: {}
+[2.606587] (-) TimerEvent: {}
+[2.706820] (-) TimerEvent: {}
+[2.807164] (-) TimerEvent: {}
+[2.907511] (-) TimerEvent: {}
+[3.008014] (-) TimerEvent: {}
+[3.108265] (-) TimerEvent: {}
+[3.208674] (-) TimerEvent: {}
+[3.308922] (-) TimerEvent: {}
+[3.409157] (-) TimerEvent: {}
+[3.509448] (-) TimerEvent: {}
+[3.609749] (-) TimerEvent: {}
+[3.710092] (-) TimerEvent: {}
+[3.810475] (-) TimerEvent: {}
+[3.833904] (ur10_examples) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[3.861415] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[3.864539] (ur10_examples) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.910645] (-) TimerEvent: {}
+[4.010946] (-) TimerEvent: {}
+[4.111198] (-) TimerEvent: {}
+[4.211452] (-) TimerEvent: {}
+[4.311757] (-) TimerEvent: {}
+[4.412063] (-) TimerEvent: {}
+[4.512393] (-) TimerEvent: {}
+[4.612674] (-) TimerEvent: {}
+[4.713248] (-) TimerEvent: {}
+[4.813562] (-) TimerEvent: {}
+[4.913831] (-) TimerEvent: {}
+[5.014223] (-) TimerEvent: {}
+[5.114875] (-) TimerEvent: {}
+[5.215271] (-) TimerEvent: {}
+[5.315732] (-) TimerEvent: {}
+[5.416171] (-) TimerEvent: {}
+[5.516398] (-) TimerEvent: {}
+[5.616810] (-) TimerEvent: {}
+[5.717303] (-) TimerEvent: {}
+[5.817590] (-) TimerEvent: {}
+[5.917948] (-) TimerEvent: {}
+[6.018194] (-) TimerEvent: {}
+[6.118881] (-) TimerEvent: {}
+[6.219092] (-) TimerEvent: {}
+[6.319505] (-) TimerEvent: {}
+[6.419721] (-) TimerEvent: {}
+[6.520041] (-) TimerEvent: {}
+[6.620819] (-) TimerEvent: {}
+[6.721101] (-) TimerEvent: {}
+[6.821339] (-) TimerEvent: {}
+[6.921576] (-) TimerEvent: {}
+[7.021890] (-) TimerEvent: {}
+[7.122115] (-) TimerEvent: {}
+[7.222646] (-) TimerEvent: {}
+[7.323045] (-) TimerEvent: {}
+[7.423777] (-) TimerEvent: {}
+[7.524179] (-) TimerEvent: {}
+[7.624398] (-) TimerEvent: {}
+[7.724797] (-) TimerEvent: {}
+[7.825121] (-) TimerEvent: {}
+[7.925536] (-) TimerEvent: {}
+[8.026064] (-) TimerEvent: {}
+[8.126444] (-) TimerEvent: {}
+[8.226861] (-) TimerEvent: {}
+[8.327079] (-) TimerEvent: {}
+[8.427475] (-) TimerEvent: {}
+[8.527814] (-) TimerEvent: {}
+[8.628887] (-) TimerEvent: {}
+[8.729088] (-) TimerEvent: {}
+[8.829408] (-) TimerEvent: {}
+[8.929839] (-) TimerEvent: {}
+[9.030102] (-) TimerEvent: {}
+[9.130618] (-) TimerEvent: {}
+[9.230837] (-) TimerEvent: {}
+[9.331033] (-) TimerEvent: {}
+[9.431316] (-) TimerEvent: {}
+[9.531556] (-) TimerEvent: {}
+[9.632173] (-) TimerEvent: {}
+[9.732575] (-) TimerEvent: {}
+[9.832815] (-) TimerEvent: {}
+[9.933089] (-) TimerEvent: {}
+[10.033319] (-) TimerEvent: {}
+[10.133600] (-) TimerEvent: {}
+[10.234053] (-) TimerEvent: {}
+[10.334524] (-) TimerEvent: {}
+[10.434891] (-) TimerEvent: {}
+[10.535215] (-) TimerEvent: {}
+[10.635602] (-) TimerEvent: {}
+[10.736021] (-) TimerEvent: {}
+[10.836322] (-) TimerEvent: {}
+[10.936571] (-) TimerEvent: {}
+[11.036851] (-) TimerEvent: {}
+[11.137105] (-) TimerEvent: {}
+[11.237397] (-) TimerEvent: {}
+[11.337723] (-) TimerEvent: {}
+[11.438084] (-) TimerEvent: {}
+[11.538568] (-) TimerEvent: {}
+[11.638907] (-) TimerEvent: {}
+[11.739127] (-) TimerEvent: {}
+[11.839410] (-) TimerEvent: {}
+[11.939962] (-) TimerEvent: {}
+[12.040321] (-) TimerEvent: {}
+[12.140629] (-) TimerEvent: {}
+[12.240928] (-) TimerEvent: {}
+[12.341230] (-) TimerEvent: {}
+[12.441487] (-) TimerEvent: {}
+[12.541747] (-) TimerEvent: {}
+[12.641984] (-) TimerEvent: {}
+[12.742247] (-) TimerEvent: {}
+[12.842480] (-) TimerEvent: {}
+[12.942727] (-) TimerEvent: {}
+[13.042990] (-) TimerEvent: {}
+[13.143420] (-) TimerEvent: {}
+[13.243784] (-) TimerEvent: {}
+[13.344043] (-) TimerEvent: {}
+[13.444307] (-) TimerEvent: {}
+[13.544590] (-) TimerEvent: {}
+[13.644878] (-) TimerEvent: {}
+[13.745163] (-) TimerEvent: {}
+[13.845565] (-) TimerEvent: {}
+[13.946087] (-) TimerEvent: {}
+[14.047167] (-) TimerEvent: {}
+[14.147472] (-) TimerEvent: {}
+[14.247726] (-) TimerEvent: {}
+[14.348189] (-) TimerEvent: {}
+[14.448584] (-) TimerEvent: {}
+[14.548878] (-) TimerEvent: {}
+[14.649162] (-) TimerEvent: {}
+[14.749460] (-) TimerEvent: {}
+[14.849723] (-) TimerEvent: {}
+[14.949981] (-) TimerEvent: {}
+[15.050257] (-) TimerEvent: {}
+[15.150498] (-) TimerEvent: {}
+[15.252941] (-) TimerEvent: {}
+[15.353228] (-) TimerEvent: {}
+[15.453457] (-) TimerEvent: {}
+[15.553639] (-) TimerEvent: {}
+[15.653856] (-) TimerEvent: {}
+[15.754295] (-) TimerEvent: {}
+[15.854750] (-) TimerEvent: {}
+[15.955261] (-) TimerEvent: {}
+[16.055582] (-) TimerEvent: {}
+[16.155940] (-) TimerEvent: {}
+[16.256161] (-) TimerEvent: {}
+[16.356416] (-) TimerEvent: {}
+[16.456965] (-) TimerEvent: {}
+[16.557248] (-) TimerEvent: {}
+[16.657462] (-) TimerEvent: {}
+[16.758362] (-) TimerEvent: {}
+[16.858656] (-) TimerEvent: {}
+[16.958948] (-) TimerEvent: {}
+[17.059282] (-) TimerEvent: {}
+[17.159518] (-) TimerEvent: {}
+[17.259705] (-) TimerEvent: {}
+[17.359943] (-) TimerEvent: {}
+[17.460146] (-) TimerEvent: {}
+[17.560540] (-) TimerEvent: {}
+[17.660999] (-) TimerEvent: {}
+[17.761987] (-) TimerEvent: {}
+[17.862274] (-) TimerEvent: {}
+[17.965321] (-) TimerEvent: {}
+[18.065686] (-) TimerEvent: {}
+[18.165941] (-) TimerEvent: {}
+[18.266211] (-) TimerEvent: {}
+[18.366726] (-) TimerEvent: {}
+[18.467175] (-) TimerEvent: {}
+[18.567575] (-) TimerEvent: {}
+[18.667842] (-) TimerEvent: {}
+[18.768303] (-) TimerEvent: {}
+[18.868472] (-) TimerEvent: {}
+[18.968692] (-) TimerEvent: {}
+[19.069041] (-) TimerEvent: {}
+[19.169320] (-) TimerEvent: {}
+[19.269627] (-) TimerEvent: {}
+[19.369977] (-) TimerEvent: {}
+[19.470685] (-) TimerEvent: {}
+[19.571052] (-) TimerEvent: {}
+[19.671302] (-) TimerEvent: {}
+[19.771783] (-) TimerEvent: {}
+[19.872140] (-) TimerEvent: {}
+[19.972403] (-) TimerEvent: {}
+[20.072708] (-) TimerEvent: {}
+[20.173169] (-) TimerEvent: {}
+[20.273538] (-) TimerEvent: {}
+[20.373874] (-) TimerEvent: {}
+[20.474150] (-) TimerEvent: {}
+[20.574522] (-) TimerEvent: {}
+[20.674924] (-) TimerEvent: {}
+[20.775581] (-) TimerEvent: {}
+[20.875871] (-) TimerEvent: {}
+[20.976112] (-) TimerEvent: {}
+[21.076401] (-) TimerEvent: {}
+[21.176657] (-) TimerEvent: {}
+[21.276958] (-) TimerEvent: {}
+[21.377158] (-) TimerEvent: {}
+[21.477374] (-) TimerEvent: {}
+[21.577665] (-) TimerEvent: {}
+[21.677932] (-) TimerEvent: {}
+[21.778800] (-) TimerEvent: {}
+[21.879480] (-) TimerEvent: {}
+[21.979980] (-) TimerEvent: {}
+[22.068156] (ur10_examples) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[22.080070] (-) TimerEvent: {}
+[22.102300] (ur10_examples) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[22.121221] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: random \n'}
+[22.180377] (-) TimerEvent: {}
+[22.280802] (-) TimerEvent: {}
+[22.381190] (-) TimerEvent: {}
+[22.482174] (-) TimerEvent: {}
+[22.582405] (-) TimerEvent: {}
+[22.682672] (-) TimerEvent: {}
+[22.783439] (-) TimerEvent: {}
+[22.883776] (-) TimerEvent: {}
+[22.984095] (-) TimerEvent: {}
+[23.084435] (-) TimerEvent: {}
+[23.184912] (-) TimerEvent: {}
+[23.285401] (-) TimerEvent: {}
+[23.385906] (-) TimerEvent: {}
+[23.486241] (-) TimerEvent: {}
+[23.586629] (-) TimerEvent: {}
+[23.686888] (-) TimerEvent: {}
+[23.787187] (-) TimerEvent: {}
+[23.887790] (-) TimerEvent: {}
+[23.988274] (-) TimerEvent: {}
+[24.088666] (-) TimerEvent: {}
+[24.188988] (-) TimerEvent: {}
+[24.289593] (-) TimerEvent: {}
+[24.390133] (-) TimerEvent: {}
+[24.490976] (-) TimerEvent: {}
+[24.591471] (-) TimerEvent: {}
+[24.691828] (-) TimerEvent: {}
+[24.792426] (-) TimerEvent: {}
+[24.893109] (-) TimerEvent: {}
+[24.993444] (-) TimerEvent: {}
+[25.093740] (-) TimerEvent: {}
+[25.194067] (-) TimerEvent: {}
+[25.294624] (-) TimerEvent: {}
+[25.394882] (-) TimerEvent: {}
+[25.495112] (-) TimerEvent: {}
+[25.595426] (-) TimerEvent: {}
+[25.695734] (-) TimerEvent: {}
+[25.796040] (-) TimerEvent: {}
+[25.896356] (-) TimerEvent: {}
+[25.996571] (-) TimerEvent: {}
+[26.096907] (-) TimerEvent: {}
+[26.197245] (-) TimerEvent: {}
+[26.297535] (-) TimerEvent: {}
+[26.397807] (-) TimerEvent: {}
+[26.498092] (-) TimerEvent: {}
+[26.598650] (-) TimerEvent: {}
+[26.699097] (-) TimerEvent: {}
+[26.799405] (-) TimerEvent: {}
+[26.899857] (-) TimerEvent: {}
+[27.000130] (-) TimerEvent: {}
+[27.100446] (-) TimerEvent: {}
+[27.200929] (-) TimerEvent: {}
+[27.301290] (-) TimerEvent: {}
+[27.332431] (ur10_examples) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[27.367249] (ur10_examples) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[27.401434] (-) TimerEvent: {}
+[27.502209] (-) TimerEvent: {}
+[27.602607] (-) TimerEvent: {}
+[27.702900] (-) TimerEvent: {}
+[27.803281] (-) TimerEvent: {}
+[27.903533] (-) TimerEvent: {}
+[28.004272] (-) TimerEvent: {}
+[28.104568] (-) TimerEvent: {}
+[28.204826] (-) TimerEvent: {}
+[28.305548] (-) TimerEvent: {}
+[28.405948] (-) TimerEvent: {}
+[28.506410] (-) TimerEvent: {}
+[28.606646] (-) TimerEvent: {}
+[28.706966] (-) TimerEvent: {}
+[28.807621] (-) TimerEvent: {}
+[28.908001] (-) TimerEvent: {}
+[29.008495] (-) TimerEvent: {}
+[29.108908] (-) TimerEvent: {}
+[29.209257] (-) TimerEvent: {}
+[29.309582] (-) TimerEvent: {}
+[29.409956] (-) TimerEvent: {}
+[29.510369] (-) TimerEvent: {}
+[29.610711] (-) TimerEvent: {}
+[29.711569] (-) TimerEvent: {}
+[29.811880] (-) TimerEvent: {}
+[29.912523] (-) TimerEvent: {}
+[30.012801] (-) TimerEvent: {}
+[30.113119] (-) TimerEvent: {}
+[30.213356] (-) TimerEvent: {}
+[30.313572] (-) TimerEvent: {}
+[30.413783] (-) TimerEvent: {}
+[30.514213] (-) TimerEvent: {}
+[30.614527] (-) TimerEvent: {}
+[30.714846] (-) TimerEvent: {}
+[30.815513] (-) TimerEvent: {}
+[30.915850] (-) TimerEvent: {}
+[31.016189] (-) TimerEvent: {}
+[31.116538] (-) TimerEvent: {}
+[31.216864] (-) TimerEvent: {}
+[31.317068] (-) TimerEvent: {}
+[31.417294] (-) TimerEvent: {}
+[31.517841] (-) TimerEvent: {}
+[31.618140] (-) TimerEvent: {}
+[31.718406] (-) TimerEvent: {}
+[31.818592] (-) TimerEvent: {}
+[31.918997] (-) TimerEvent: {}
+[31.966083] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono \n'}
+[31.985522] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options \n'}
+[32.002124] (ur10_examples) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread \n'}
+[32.019241] (-) TimerEvent: {}
+[32.109883] (ur10_examples) StdoutLine: {'line': b'-- Configuring done\n'}
+[32.119352] (-) TimerEvent: {}
+[32.136922] (ur10_examples) StdoutLine: {'line': b'-- Generating done\n'}
+[32.144610] (ur10_examples) StdoutLine: {'line': b'-- Build files have been written to: /root/ur10_ws/build/ur10_examples\n'}
+[32.170293] (ur10_examples) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target move_group_interface_demo\n'}
+[32.188871] (ur10_examples) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o\n'}
+[32.219483] (-) TimerEvent: {}
+[32.319753] (-) TimerEvent: {}
+[32.419980] (-) TimerEvent: {}
+[32.520978] (-) TimerEvent: {}
+[32.621175] (-) TimerEvent: {}
+[32.721379] (-) TimerEvent: {}
+[32.821565] (-) TimerEvent: {}
+[32.921898] (-) TimerEvent: {}
+[33.022139] (-) TimerEvent: {}
+[33.122348] (-) TimerEvent: {}
+[33.222628] (-) TimerEvent: {}
+[33.323018] (-) TimerEvent: {}
+[33.423358] (-) TimerEvent: {}
+[33.523597] (-) TimerEvent: {}
+[33.623934] (-) TimerEvent: {}
+[33.724310] (-) TimerEvent: {}
+[33.824954] (-) TimerEvent: {}
+[33.925210] (-) TimerEvent: {}
+[34.025408] (-) TimerEvent: {}
+[34.125634] (-) TimerEvent: {}
+[34.226082] (-) TimerEvent: {}
+[34.326279] (-) TimerEvent: {}
+[34.426612] (-) TimerEvent: {}
+[34.527064] (-) TimerEvent: {}
+[34.627319] (-) TimerEvent: {}
+[34.727615] (-) TimerEvent: {}
+[34.827889] (-) TimerEvent: {}
+[34.928083] (-) TimerEvent: {}
+[35.028334] (-) TimerEvent: {}
+[35.128554] (-) TimerEvent: {}
+[35.228820] (-) TimerEvent: {}
+[35.329140] (-) TimerEvent: {}
+[35.429460] (-) TimerEvent: {}
+[35.529755] (-) TimerEvent: {}
+[35.630146] (-) TimerEvent: {}
+[35.730416] (-) TimerEvent: {}
+[35.830602] (-) TimerEvent: {}
+[35.930815] (-) TimerEvent: {}
+[36.031046] (-) TimerEvent: {}
+[36.131656] (-) TimerEvent: {}
+[36.231849] (-) TimerEvent: {}
+[36.332349] (-) TimerEvent: {}
+[36.432657] (-) TimerEvent: {}
+[36.532900] (-) TimerEvent: {}
+[36.633131] (-) TimerEvent: {}
+[36.733898] (-) TimerEvent: {}
+[36.835087] (-) TimerEvent: {}
+[36.935482] (-) TimerEvent: {}
+[37.036417] (-) TimerEvent: {}
+[37.136791] (-) TimerEvent: {}
+[37.237165] (-) TimerEvent: {}
+[37.337430] (-) TimerEvent: {}
+[37.437676] (-) TimerEvent: {}
+[37.537905] (-) TimerEvent: {}
+[37.638373] (-) TimerEvent: {}
+[37.738676] (-) TimerEvent: {}
+[37.838992] (-) TimerEvent: {}
+[37.939293] (-) TimerEvent: {}
+[38.039641] (-) TimerEvent: {}
+[38.139941] (-) TimerEvent: {}
+[38.240449] (-) TimerEvent: {}
+[38.340814] (-) TimerEvent: {}
+[38.441085] (-) TimerEvent: {}
+[38.541394] (-) TimerEvent: {}
+[38.641983] (-) TimerEvent: {}
+[38.742216] (-) TimerEvent: {}
+[38.842556] (-) TimerEvent: {}
+[38.942771] (-) TimerEvent: {}
+[39.042969] (-) TimerEvent: {}
+[39.143183] (-) TimerEvent: {}
+[39.243459] (-) TimerEvent: {}
+[39.343764] (-) TimerEvent: {}
+[39.444121] (-) TimerEvent: {}
+[39.544986] (-) TimerEvent: {}
+[39.645642] (-) TimerEvent: {}
+[39.745775] (-) TimerEvent: {}
+[39.845976] (-) TimerEvent: {}
+[39.946176] (-) TimerEvent: {}
+[40.046564] (-) TimerEvent: {}
+[40.146768] (-) TimerEvent: {}
+[40.246995] (-) TimerEvent: {}
+[40.347243] (-) TimerEvent: {}
+[40.447485] (-) TimerEvent: {}
+[40.547667] (-) TimerEvent: {}
+[40.647871] (-) TimerEvent: {}
+[40.748111] (-) TimerEvent: {}
+[40.848379] (-) TimerEvent: {}
+[40.948622] (-) TimerEvent: {}
+[41.048842] (-) TimerEvent: {}
+[41.156784] (-) TimerEvent: {}
+[41.257285] (-) TimerEvent: {}
+[41.357967] (-) TimerEvent: {}
+[41.458302] (-) TimerEvent: {}
+[41.558569] (-) TimerEvent: {}
+[41.658845] (-) TimerEvent: {}
+[41.759072] (-) TimerEvent: {}
+[41.859378] (-) TimerEvent: {}
+[41.959579] (-) TimerEvent: {}
+[42.059825] (-) TimerEvent: {}
+[42.160096] (-) TimerEvent: {}
+[42.260555] (-) TimerEvent: {}
+[42.361012] (-) TimerEvent: {}
+[42.463244] (-) TimerEvent: {}
+[42.563530] (-) TimerEvent: {}
+[42.664064] (-) TimerEvent: {}
+[42.764326] (-) TimerEvent: {}
+[42.864623] (-) TimerEvent: {}
+[42.964833] (-) TimerEvent: {}
+[43.065015] (-) TimerEvent: {}
+[43.165602] (-) TimerEvent: {}
+[43.265889] (-) TimerEvent: {}
+[43.366107] (-) TimerEvent: {}
+[43.466367] (-) TimerEvent: {}
+[43.566552] (-) TimerEvent: {}
+[43.666749] (-) TimerEvent: {}
+[43.766998] (-) TimerEvent: {}
+[43.867257] (-) TimerEvent: {}
+[43.967503] (-) TimerEvent: {}
+[44.067689] (-) TimerEvent: {}
+[44.167970] (-) TimerEvent: {}
+[44.268885] (-) TimerEvent: {}
+[44.369101] (-) TimerEvent: {}
+[44.469409] (-) TimerEvent: {}
+[44.569813] (-) TimerEvent: {}
+[44.670213] (-) TimerEvent: {}
+[44.770619] (-) TimerEvent: {}
+[44.870806] (-) TimerEvent: {}
+[44.907198] (ur10_examples) StdoutLine: {'line': b'[100%] Linking CXX executable move_group_interface_demo\n'}
+[44.970919] (-) TimerEvent: {}
+[45.071526] (-) TimerEvent: {}
+[45.171952] (-) TimerEvent: {}
+[45.272239] (-) TimerEvent: {}
+[45.372728] (-) TimerEvent: {}
+[45.473059] (-) TimerEvent: {}
+[45.573299] (-) TimerEvent: {}
+[45.673583] (-) TimerEvent: {}
+[45.773848] (-) TimerEvent: {}
+[45.787136] (ur10_examples) StdoutLine: {'line': b'[100%] Built target move_group_interface_demo\n'}
+[45.801644] (ur10_examples) CommandEnded: {'returncode': 0}
+[45.803850] (ur10_examples) JobProgress: {'identifier': 'ur10_examples', 'progress': 'install'}
+[45.814459] (ur10_examples) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ur10_ws/build/ur10_examples'], 'cwd': '/root/ur10_ws/build/ur10_examples', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('VSCODE_CWD', '/mnt/d/Microsoft VS Code'), ('VSCODE_ESM_ENTRYPOINT', 'vs/workbench/api/node/extensionHostProcess'), ('CODEX_CI', '1'), ('USER', 'root'), ('CODEX_INTERNAL_ORIGINATOR_OVERRIDE', 'codex_vscode'), ('VSCODE_NLS_CONFIG', '{"userLocale":"zh-cn","osLocale":"zh-cn","resolvedLanguage":"zh-cn","defaultMessagesFile":"/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/out/nls.messages.json","languagePack":{"translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","messagesFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622/nls.messages.json","corruptMarkerFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"},"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_languagePackSupport":true,"_translationsConfigFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/tcf.json","_cacheRoot":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn","_resolvedLanguagePackCoreLocation":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/072586267e68ece9a47aa43f8c108e0dcbf44622","_corruptedFile":"/root/.vscode-server/data/clp/1163c9980a28fc39b33ca5c1eafd6f05.zh-cn/corrupted.info"}'), ('VSCODE_WSL_EXT_LOCATION', '/mnt/c/Users/18262/.vscode/extensions/ms-vscode-remote.remote-wsl-0.104.3'), ('VSCODE_HANDLES_UNCAUGHT_ERRORS', 'true'), ('DEBUG', 'release'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('VSCODE_RECONNECTION_GRACE_TIME', '10800000'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-46fd653b-935b-4f07-acd3-e43d454f7104.sock'), ('ROS_PYTHON_VERSION', '3'), ('OPENAI_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('PAGER', 'cat'), ('LC_CTYPE', 'C.UTF-8'), ('NO_COLOR', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', ''), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'Caged-sparrow'), ('WSL_INTEROP', '/run/WSL/378_interop'), ('VSCODE_HANDLES_SIGPIPE', 'true'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('CODEX_API_KEY', 'sk-hUIkeWtF0KllJ5BpL7aAW9aFGjSV3V9XtZmGsN3ZcfkrdRyY'), ('RUST_LOG', 'warn'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/wust6666/ros2_ws/src/aws-robomaker-hospital-world/models'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/root/.codex/tmp/arg0/codex-arg0VH5rb0:/root/.vscode-server/bin/072586267e68ece9a47aa43f8c108e0dcbf44622/bin/remote-cli:/root/.npm-global/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/e/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/CUDA/bin:/mnt/c/Program Files (x86)/NAiS MEWNET:/mnt/d/CUDA/libnvvp:/mnt/c/Windows/System32/DriverStore/FileRepository/nvacsi.inf_amd64_c809b94b88997e99:/mnt/e/WinSCP/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/VTK/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/FLANN/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Redist/:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/Qhull/bin:/mnt/e/cloud_mask/PCL1.8.1/PCL 1.8.1/3rdParty/OpenNI2/Tools:/mnt/e/vs2019/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64:/mnt/c/Windows/System32:/mnt/c/WINDOWS:/mnt/e/cloud_mask/Qt5.14.2/5.14.2/msvc2017_64/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/pcsuite/:/mnt/c/Program Files/Tailscale/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/dotnet/:/mnt/e/matlab2025b/runtime/win64:/mnt/e/matlab2025b/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/CMake/bin:/mnt/d/Microsoft VS Code/bin:/mnt/e/cloud_mask/VTK/prefix/bin:/mnt/c/ProgramData/18262/GitHubDesktop/bin:/mnt/c/Users/18262/AppData/Roaming/npm:/mnt/c/Windows/System32/OpenSSH/:/snap/bin:/root/.vscode-server/extensions/openai.chatgpt-26.415.20818-linux-x64/bin/linux-x86_64'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('GH_PAGER', 'cat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('SHELL', '/bin/bash'), ('ELECTRON_RUN_AS_NODE', '1'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CODEX_THREAD_ID', '019da40b-0b47-7aa0-85b1-f8cf1c5a6109'), ('GIT_PAGER', 'cat'), ('PWD', '/root/ur10_ws/build/ur10_examples'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'C.UTF-8'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/root/ur10_ws/install/COLCON_IGNORE:/root/ur10_ws/install/_local_setup_util_ps1.py:/root/ur10_ws/install/_local_setup_util_sh.py:/root/ur10_ws/install/local_setup.bash:/root/ur10_ws/install/local_setup.ps1:/root/ur10_ws/install/local_setup.sh:/root/ur10_ws/install/local_setup.zsh:/root/ur10_ws/install/setup.bash:/root/ur10_ws/install/setup.ps1:/root/ur10_ws/install/setup.sh:/root/ur10_ws/install/setup.zsh:/root/ur10_ws/install/ur10_description:/root/ur10_ws/install/ur10_examples:/root/ur10_ws/install/ur10_examples_py:/root/ur10_ws/install/ur10_moveit_config:/root/ur10_ws/install/ur10_perception:/root/ur10_ws/install/ur10_simulation_bringup:/root/moveit_ws/install/COLCON_IGNORE:/root/moveit_ws/install/_local_setup_util_ps1.py:/root/moveit_ws/install/_local_setup_util_sh.py:/root/moveit_ws/install/chomp_motion_planner:/root/moveit_ws/install/geometric_shapes:/root/moveit_ws/install/local_setup.bash:/root/moveit_ws/install/local_setup.ps1:/root/moveit_ws/install/local_setup.sh:/root/moveit_ws/install/local_setup.zsh:/root/moveit_ws/install/moveit_common:/root/moveit_ws/install/moveit_configs_utils:/root/moveit_ws/install/moveit_core:/root/moveit_ws/install/moveit_kinematics:/root/moveit_ws/install/moveit_msgs:/root/moveit_ws/install/moveit_planners_chomp:/root/moveit_ws/install/moveit_planners_ompl:/root/moveit_ws/install/moveit_py:/root/moveit_ws/install/moveit_resources_fanuc_description:/root/moveit_ws/install/moveit_resources_fanuc_moveit_config:/root/moveit_ws/install/moveit_resources_panda_description:/root/moveit_ws/install/moveit_resources_panda_moveit_config:/root/moveit_ws/install/moveit_resources_pr2_description:/root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin:/root/moveit_ws/install/moveit_resources_prbt_moveit_config:/root/moveit_ws/install/moveit_resources_prbt_pg70_support:/root/moveit_ws/install/moveit_resources_prbt_support:/root/moveit_ws/install/moveit_ros_move_group:/root/moveit_ws/install/moveit_ros_occupancy_map_monitor:/root/moveit_ws/install/moveit_ros_planning:/root/moveit_ws/install/moveit_ros_planning_interface:/root/moveit_ws/install/moveit_ros_robot_interaction:/root/moveit_ws/install/moveit_ros_warehouse:/root/moveit_ws/install/moveit_simple_controller_manager:/root/moveit_ws/install/moveit_task_constructor_msgs:/root/moveit_ws/install/ompl:/root/moveit_ws/install/pilz_industrial_motion_planner:/root/moveit_ws/install/pilz_industrial_motion_planner_testutils:/root/moveit_ws/install/random_numbers:/root/moveit_ws/install/ruckig:/root/moveit_ws/install/rviz_marker_tools:/root/moveit_ws/install/setup.bash:/root/moveit_ws/install/setup.ps1:/root/moveit_ws/install/setup.sh:/root/moveit_ws/install/setup.zsh:/root/moveit_ws/install/srdfdom:/opt/ros/humble:'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[45.825031] (ur10_examples) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[45.825210] (ur10_examples) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[45.825681] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo\n'}
+[45.826011] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples\n'}
+[45.826429] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples\n'}
+[45.826662] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh\n'}
+[45.827341] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv\n'}
+[45.827508] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh\n'}
+[45.827583] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv\n'}
+[45.827647] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash\n'}
+[45.827711] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh\n'}
+[45.828031] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh\n'}
+[45.828486] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv\n'}
+[45.828640] (ur10_examples) StdoutLine: {'line': b'-- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv\n'}
+[45.844714] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples\n'}
+[45.845316] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake\n'}
+[45.845520] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake\n'}
+[45.845845] (ur10_examples) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml\n'}
+[45.849291] (ur10_examples) CommandEnded: {'returncode': 0}
+[45.875395] (ur10_examples) JobEnded: {'identifier': 'ur10_examples', 'rc': 0}
+[45.876010] (-) TimerEvent: {}
+[45.876077] (-) EventReactorShutdown: {}

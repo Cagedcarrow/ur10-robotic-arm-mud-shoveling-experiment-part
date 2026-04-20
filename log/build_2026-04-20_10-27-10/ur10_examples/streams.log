@@ -1,0 +1,26 @@
+[0.017s] Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[0.076s] Consolidate compiler generated dependencies of target move_group_interface_demo
+[0.095s] [ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o
+[10.894s] [100%] Linking CXX executable move_group_interface_demo
+[11.667s] [100%] Built target move_group_interface_demo
+[11.679s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[11.692s] Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples
+[11.696s] -- Install configuration: ""
+[11.697s] -- Execute custom install script
+[11.697s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo
+[11.697s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh
+[11.698s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv
+[11.698s] -- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv
+[11.706s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples
+[11.706s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake
+[11.706s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake
+[11.706s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml
+[11.707s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples

@@ -1,0 +1,21 @@
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/kinematics_base/kinematics_base.h:42,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/joint_model_group.h:42,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/robot_model.h:45,
+                 from /root/moveit_ws/install/moveit_core/include/moveit/robot_state/robot_state.h:40,
+                 from /root/moveit_ws/install/moveit_ros_planning_interface/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:8:
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp: In function ‘int main(int, char**)’:
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:9: warning: format ‘%zu’ expects argument of type ‘size_t’, but argument 5 has type ‘unsigned int’ [-Wformat=]
+  196 |         "goal_joint_positions must contain %zu values but received %zu.",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  197 |         joint_model_group->getVariableCount(), goal_joint_positions.size());
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            unsigned int
+/root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:46: note: format string is defined here
+  196 |         "goal_joint_positions must contain %zu values but received %zu.",
+      |                                            ~~^
+      |                                              |
+      |                                              long unsigned int
+      |                                            %u

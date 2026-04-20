@@ -1,0 +1,10 @@
+[0.000000] (-) TimerEvent: {}
+[0.000049] (-) JobUnselected: {'identifier': 'ur10_description'}
+[0.000065] (-) JobUnselected: {'identifier': 'ur10_examples'}
+[0.000073] (-) JobUnselected: {'identifier': 'ur10_moveit_config'}
+[0.000080] (-) JobUnselected: {'identifier': 'ur10_perception'}
+[0.000086] (-) JobUnselected: {'identifier': 'ur10_simulation_bringup'}
+[0.000095] (ur10_examples_py) JobQueued: {'identifier': 'ur10_examples_py', 'dependencies': OrderedDict([('ur10_perception', '/root/ur10_ws/install/ur10_perception')])}
+[0.000108] (ur10_examples_py) JobStarted: {'identifier': 'ur10_examples_py'}
+[0.007431] (ur10_examples_py) JobEnded: {'identifier': 'ur10_examples_py', 'rc': 1}
+[0.008147] (-) EventReactorShutdown: {}

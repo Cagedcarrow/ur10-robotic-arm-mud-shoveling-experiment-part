@@ -1,0 +1,6 @@
+Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake /root/ur10_ws/src/ur10_examples -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_examples
+Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake /root/ur10_ws/src/ur10_examples -DCMAKE_INSTALL_PREFIX=/root/ur10_ws/install/ur10_examples
+Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples
+Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples

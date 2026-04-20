@@ -1,0 +1,45 @@
+Built target ament_cmake_python_symlink_ur10_moveit_config
+running egg_info
+writing ur10_moveit_config.egg-info/PKG-INFO
+writing dependency_links to ur10_moveit_config.egg-info/dependency_links.txt
+writing top-level names to ur10_moveit_config.egg-info/top_level.txt
+reading manifest file 'ur10_moveit_config.egg-info/SOURCES.txt'
+writing manifest file 'ur10_moveit_config.egg-info/SOURCES.txt'
+Built target ament_cmake_python_build_ur10_moveit_config_egg
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/pythonpath.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/pythonpath.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/PKG-INFO
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config-0.1.0-py3.10.egg-info/top_level.txt
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config/__init__.py
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config/launch_common.py
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/controllers.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/joint_limits.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/kinematics.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/moveit_controllers.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/ompl_planning.yaml
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/config/ur_servo.yaml
+-- Symlinking: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/launch/__pycache__/ur_moveit.launch.cpython-310.pyc
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/launch/ur_moveit.launch.py
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/rviz/view_robot.rviz
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/srdf/ur.srdf.xacro
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/srdf/ur_macro.srdf.xacro
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/package_run_dependencies/ur10_moveit_config
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/parent_prefix_path/ur10_moveit_config
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/path.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/environment/path.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.bash
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.sh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.zsh
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/local_setup.dsv
+-- Symlinking: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/package.dsv
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ament_index/resource_index/packages/ur10_moveit_config
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/cmake/ur10_moveit_configConfig.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/cmake/ur10_moveit_configConfig-version.cmake
+-- Up-to-date symlink: /root/ur10_ws/install/ur10_moveit_config/share/ur10_moveit_config/package.xml
+Listing '/root/ur10_ws/install/ur10_moveit_config/local/lib/python3.10/dist-packages/ur10_moveit_config'...

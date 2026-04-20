@@ -1,0 +1,47 @@
+[0.044s] Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[0.095s] Consolidate compiler generated dependencies of target move_group_interface_demo
+[0.121s] [ 50%] Building CXX object CMakeFiles/move_group_interface_demo.dir/src/move_group_interface_demo.cpp.o
+[5.761s] In file included from /opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24,
+[5.761s]                  from /root/moveit_ws/install/moveit_core/include/moveit/kinematics_base/kinematics_base.h:42,
+[5.761s]                  from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/joint_model_group.h:42,
+[5.761s]                  from /root/moveit_ws/install/moveit_core/include/moveit/robot_model/robot_model.h:45,
+[5.761s]                  from /root/moveit_ws/install/moveit_core/include/moveit/robot_state/robot_state.h:40,
+[5.761s]                  from /root/moveit_ws/install/moveit_ros_planning_interface/include/moveit/move_group_interface/move_group_interface.h:41,
+[5.762s]                  from /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:8:
+[5.762s] /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp: In function ‘int main(int, char**)’:
+[5.762s] /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:9: warning: format ‘%zu’ expects argument of type ‘size_t’, but argument 5 has type ‘unsigned int’ [-Wformat=]
+[5.762s]   196 |         "goal_joint_positions must contain %zu values but received %zu.",
+[5.762s]       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5.762s]   197 |         joint_model_group->getVariableCount(), goal_joint_positions.size());
+[5.762s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5.762s]       |                                            |
+[5.762s]       |                                            unsigned int
+[5.762s] /root/ur10_ws/src/ur10_examples/src/move_group_interface_demo.cpp:196:46: note: format string is defined here
+[5.762s]   196 |         "goal_joint_positions must contain %zu values but received %zu.",
+[5.762s]       |                                            ~~^
+[5.762s]       |                                              |
+[5.762s]       |                                              long unsigned int
+[5.762s]       |                                            %u
+[9.983s] [100%] Linking CXX executable move_group_interface_demo
+[10.504s] [100%] Built target move_group_interface_demo
+[10.517s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+[10.530s] Invoking command in '/root/ur10_ws/build/ur10_examples': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples
+[10.543s] -- Install configuration: ""
+[10.545s] -- Execute custom install script
+[10.545s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo
+[10.546s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples
+[10.546s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples
+[10.547s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh
+[10.547s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv
+[10.547s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh
+[10.548s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv
+[10.549s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash
+[10.549s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh
+[10.549s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh
+[10.549s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv
+[10.549s] -- Symlinking: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv
+[10.561s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples
+[10.561s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake
+[10.561s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake
+[10.561s] -- Up-to-date symlink: /root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml
+[10.564s] Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples

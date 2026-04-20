@@ -1,0 +1,4 @@
+Invoking command in '/root/ur10_ws/build/ur10_examples': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ur10_ws/build/ur10_examples -- -j4 -l4
+Invoking command in '/root/ur10_ws/build/ur10_examples': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples
+Invoked command in '/root/ur10_ws/build/ur10_examples' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ur10_ws/build/ur10_examples

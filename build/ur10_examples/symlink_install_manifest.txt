@@ -1,0 +1,16 @@
+/root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_demo
+/root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/package_run_dependencies/ur10_examples
+/root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/parent_prefix_path/ur10_examples
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.sh
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/ament_prefix_path.dsv
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.sh
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/environment/path.dsv
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.bash
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.sh
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.zsh
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/local_setup.dsv
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/package.dsv
+/root/ur10_ws/install/ur10_examples/share/ament_index/resource_index/packages/ur10_examples
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig.cmake
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/cmake/ur10_examplesConfig-version.cmake
+/root/ur10_ws/install/ur10_examples/share/ur10_examples/package.xml

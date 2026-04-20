@@ -1,0 +1,1 @@
+/root/ur10_ws/src/ur10_simulation_bringup/launch/moveit_planning.launch.py

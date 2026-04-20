@@ -1,0 +1,288 @@
+[0.492s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-select', 'ur10_perception', '--base-paths', '/root/ur10_ws/src']
+[0.492s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/root/ur10_ws/src'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['ur10_perception'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x716a109514e0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x716a10a42fe0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x716a10a42fe0>>)
+[0.598s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.598s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.598s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.598s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.598s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.598s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/ur10_ws/src'
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['ignore', 'ignore_ament_install']
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'ignore'
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'ignore_ament_install'
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['colcon_pkg']
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'colcon_pkg'
+[0.598s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['colcon_meta']
+[0.599s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'colcon_meta'
+[0.599s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['ros']
+[0.599s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'ros'
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['cmake', 'python']
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'cmake'
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'python'
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extensions ['python_setup_py']
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src) by extension 'python_setup_py'
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extensions ['ignore', 'ignore_ament_install']
+[0.609s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extension 'ignore'
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extension 'ignore_ament_install'
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extensions ['colcon_pkg']
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extension 'colcon_pkg'
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extensions ['colcon_meta']
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extension 'colcon_meta'
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extensions ['ros']
+[0.610s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_description) by extension 'ros'
+[0.613s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_description' with type 'ros.ament_cmake' and name 'ur10_description'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extensions ['ignore', 'ignore_ament_install']
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extension 'ignore'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extension 'ignore_ament_install'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extensions ['colcon_pkg']
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extension 'colcon_pkg'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extensions ['colcon_meta']
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extension 'colcon_meta'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extensions ['ros']
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples) by extension 'ros'
+[0.615s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_examples' with type 'ros.ament_cmake' and name 'ur10_examples'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extensions ['ignore', 'ignore_ament_install']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extension 'ignore'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extension 'ignore_ament_install'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extensions ['colcon_pkg']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extension 'colcon_pkg'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extensions ['colcon_meta']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extension 'colcon_meta'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extensions ['ros']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_examples_py) by extension 'ros'
+[0.616s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_examples_py' with type 'ros.ament_python' and name 'ur10_examples_py'
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extensions ['ignore', 'ignore_ament_install']
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extension 'ignore'
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extension 'ignore_ament_install'
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extensions ['colcon_pkg']
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extension 'colcon_pkg'
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extensions ['colcon_meta']
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extension 'colcon_meta'
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extensions ['ros']
+[0.616s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_moveit_config) by extension 'ros'
+[0.617s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_moveit_config' with type 'ros.ament_cmake' and name 'ur10_moveit_config'
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extensions ['ignore', 'ignore_ament_install']
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extension 'ignore'
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extension 'ignore_ament_install'
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extensions ['colcon_pkg']
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extension 'colcon_pkg'
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extensions ['colcon_meta']
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extension 'colcon_meta'
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extensions ['ros']
+[0.617s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_perception) by extension 'ros'
+[0.618s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_perception' with type 'ros.ament_cmake' and name 'ur10_perception'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extension 'ignore'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extension 'ignore_ament_install'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extensions ['colcon_pkg']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extension 'colcon_pkg'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extensions ['colcon_meta']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extension 'colcon_meta'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extensions ['ros']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(/root/ur10_ws/src/ur10_simulation_bringup) by extension 'ros'
+[0.618s] DEBUG:colcon.colcon_core.package_identification:Package '/root/ur10_ws/src/ur10_simulation_bringup' with type 'ros.ament_cmake' and name 'ur10_simulation_bringup'
+[0.618s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.650s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur10_description' in '/root/ur10_ws/src/ur10_description'
+[0.650s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur10_examples' in '/root/ur10_ws/src/ur10_examples'
+[0.650s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur10_examples_py' in '/root/ur10_ws/src/ur10_examples_py'
+[0.650s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur10_moveit_config' in '/root/ur10_ws/src/ur10_moveit_config'
+[0.650s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur10_simulation_bringup' in '/root/ur10_ws/src/ur10_simulation_bringup'
+[0.650s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.651s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.663s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
+[0.665s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_description
+[0.665s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_examples
+[0.665s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_examples_py
+[0.665s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_moveit_config
+[0.666s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_perception
+[0.666s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/ur10_ws/install/ur10_simulation_bringup
+[0.667s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/chomp_motion_planner
+[0.667s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/geometric_shapes
+[0.668s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_common
+[0.668s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_configs_utils
+[0.669s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_core
+[0.669s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_kinematics
+[0.669s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_msgs
+[0.669s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_planners_chomp
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_planners_ompl
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_py
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_fanuc_description
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_fanuc_moveit_config
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_panda_description
+[0.670s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_panda_moveit_config
+[0.671s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_pr2_description
+[0.671s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_prbt_ikfast_manipulator_plugin
+[0.671s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_prbt_moveit_config
+[0.671s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_prbt_pg70_support
+[0.672s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_resources_prbt_support
+[0.672s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_move_group
+[0.673s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_occupancy_map_monitor
+[0.673s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_planning
+[0.673s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_planning_interface
+[0.673s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_robot_interaction
+[0.673s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_ros_warehouse
+[0.674s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_simple_controller_manager
+[0.674s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/moveit_task_constructor_msgs
+[0.674s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/ompl
+[0.674s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/pilz_industrial_motion_planner_testutils
+[0.675s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/random_numbers
+[0.675s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/rviz_marker_tools
+[0.675s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /root/moveit_ws/install/srdfdom
+[0.676s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 467 installed packages in /opt/ros/humble
+[0.682s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.729s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'ur10_perception' is in: /root/ur10_ws/install/ur10_perception
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding ur10_perception
+
+This may be promoted to an error in a future release of colcon-override-check.
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_args' from command line to 'None'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_target' from command line to 'None'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_clean_cache' from command line to 'False'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_clean_first' from command line to 'False'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'cmake_force_configure' from command line to 'False'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'ament_cmake_args' from command line to 'None'
+[0.730s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'catkin_cmake_args' from command line to 'None'
+[0.731s] Level 5:colcon.colcon_core.verb:set package 'ur10_perception' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.731s] DEBUG:colcon.colcon_core.verb:Building package 'ur10_perception' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ur10_ws/build/ur10_perception', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ur10_ws/install/ur10_perception', 'merge_install': False, 'path': '/root/ur10_ws/src/ur10_perception', 'symlink_install': True, 'test_result_base': None}
+[0.731s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.734s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.735s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ur10_ws/src/ur10_perception' with build type 'ament_cmake'
+[0.735s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ur10_ws/src/ur10_perception'
+[0.741s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.742s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.742s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.743s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
+[0.745s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/COLCON_IGNORE'
+[0.745s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/_local_setup_util_ps1.py'
+[0.745s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/_local_setup_util_sh.py'
+[0.746s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/local_setup.bash'
+[0.746s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/local_setup.ps1'
+[0.747s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/local_setup.sh'
+[0.747s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/local_setup.zsh'
+[0.748s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/setup.bash'
+[0.749s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/setup.ps1'
+[0.751s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/setup.sh'
+[0.752s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/ur10_ws/install/setup.zsh'
+[0.756s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/COLCON_IGNORE'
+[0.756s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/_local_setup_util_ps1.py'
+[0.757s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/_local_setup_util_sh.py'
+[0.758s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/local_setup.bash'
+[0.759s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/local_setup.ps1'
+[0.759s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/local_setup.sh'
+[0.759s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/local_setup.zsh'
+[0.766s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/pilz_industrial_motion_planner'
+[0.766s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/ruckig'
+[0.767s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/setup.bash'
+[0.767s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/setup.ps1'
+[0.767s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/setup.sh'
+[0.768s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/root/moveit_ws/install/setup.zsh'
+[0.786s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[11.973s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --build /root/ur10_ws/build/ur10_perception -- -j4 -l4
+[11.989s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ur10_ws/build/ur10_perception': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception
+[12.033s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ur10_perception)
+[12.034s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ur10_ws/build/ur10_perception' returned '0': /usr/bin/cmake --install /root/ur10_ws/build/ur10_perception
+[12.037s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception' for CMake module files
+[12.038s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception' for CMake config files
+[12.039s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur10_perception', 'cmake_prefix_path')
+[12.040s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.ps1'
+[12.042s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.dsv'
+[12.043s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.sh'
+[12.045s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib'
+[12.045s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/bin'
+[12.045s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib/pkgconfig/ur10_perception.pc'
+[12.045s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib/python3.10/site-packages'
+[12.046s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/bin'
+[12.046s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.ps1'
+[12.047s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv'
+[12.048s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.sh'
+[12.049s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.bash'
+[12.051s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.zsh'
+[12.052s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ur10_ws/install/ur10_perception/share/colcon-core/packages/ur10_perception)
+[12.053s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ur10_perception)
+[12.053s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception' for CMake module files
+[12.054s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception' for CMake config files
+[12.054s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur10_perception', 'cmake_prefix_path')
+[12.054s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.ps1'
+[12.055s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.dsv'
+[12.055s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ur10_ws/install/ur10_perception/share/ur10_perception/hook/cmake_prefix_path.sh'
+[12.056s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib'
+[12.056s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/bin'
+[12.056s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib/pkgconfig/ur10_perception.pc'
+[12.056s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/lib/python3.10/site-packages'
+[12.057s] Level 1:colcon.colcon_core.environment:checking '/root/ur10_ws/install/ur10_perception/bin'
+[12.057s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.ps1'
+[12.057s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.dsv'
+[12.058s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.sh'
+[12.058s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.bash'
+[12.059s] INFO:colcon.colcon_core.shell:Creating package script '/root/ur10_ws/install/ur10_perception/share/ur10_perception/package.zsh'
+[12.059s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ur10_ws/install/ur10_perception/share/colcon-core/packages/ur10_perception)
+[12.059s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[12.060s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[12.060s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[12.061s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[12.220s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[12.220s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[12.221s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[12.221s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[12.221s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.FileNotFound: Failed to connect to socket /run/user/0/bus: No such file or directory
+[12.222s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[12.222s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ur10_ws/install/local_setup.ps1'
+[12.226s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ur10_ws/install/_local_setup_util_ps1.py'
+[12.228s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ur10_ws/install/setup.ps1'
+[12.229s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
+[12.232s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ur10_ws/install/local_setup.sh'
+[12.233s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ur10_ws/install/_local_setup_util_sh.py'
+[12.235s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ur10_ws/install/setup.sh'
+[12.237s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
+[12.239s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ur10_ws/install/local_setup.bash'
+[12.241s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ur10_ws/install/setup.bash'
+[12.242s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
+[12.247s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ur10_ws/install/local_setup.zsh'
+[12.249s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ur10_ws/install/setup.zsh'
+[12.250s] ERROR:colcon.colcon_core.prefix_path:Exception in prefix path extension 'ament': [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/prefix_path/__init__.py", line 78, in get_chained_prefix_path
+    retval = extension.extend_prefix_path(chained_prefix_path)
+  File "/usr/lib/python3/dist-packages/colcon_ros/prefix_path/ament.py", line 40, in extend_prefix_path
+    for filename in os.listdir(path):
+NotADirectoryError: [Errno 20] Not a directory: '/root/ur10_ws/install/COLCON_IGNORE'
+
