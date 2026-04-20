@@ -6,9 +6,11 @@
 
 相关文档：
 
+- [Docs 导航](README.md)
 - [编译与重编指南](01_build_and_rebuild_guide.md)
 - [工作区结构说明](02_workspace_structure.md)
 - [运行手册](03_runbook.md)
+- [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
 
 ## 1. Launch 文件清单
 

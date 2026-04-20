@@ -6,9 +6,11 @@
 
 相关文档：
 
+- [Docs 导航](README.md)
 - [运行手册](03_runbook.md)
 - [节点与 Launch 清单](04_nodes_and_launches.md)
 - [代码讲解](05_code_walkthrough.md)
+- [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
 
 ## 1. 路径规划整体原理
 

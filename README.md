@@ -71,8 +71,9 @@ ros2 run ur10_examples_py moveit_py_demo
 
 1. [运行手册](docs/03_runbook.md)
 2. [工作区结构说明](docs/02_workspace_structure.md)
-3. [代码讲解](docs/05_code_walkthrough.md)
-4. [路径规划与避障原理](docs/06_motion_planning_and_obstacle_avoidance.md)
+3. [ROS 2 入门与本项目上手指南](docs/07_ros2_getting_started.md)
+4. [代码讲解](docs/05_code_walkthrough.md)
+5. [路径规划与避障原理](docs/06_motion_planning_and_obstacle_avoidance.md)
 
 这样可以先学会“怎么跑”，再学“代码在哪”，最后理解“为什么能规划和避障”。
 
@@ -128,11 +129,13 @@ ros2 run ur10_examples_py moveit_py_demo
 ## 文档导航
 
 - [编译与重编指南](docs/01_build_and_rebuild_guide.md)
+- [Docs 导航](docs/README.md)
 - [工作区结构说明](docs/02_workspace_structure.md)
 - [运行手册](docs/03_runbook.md)
 - [节点与 Launch 清单](docs/04_nodes_and_launches.md)
 - [代码讲解](docs/05_code_walkthrough.md)
 - [路径规划与避障原理](docs/06_motion_planning_and_obstacle_avoidance.md)
+- [ROS 2 入门与本项目上手指南](docs/07_ros2_getting_started.md)
 
 ## 目录预览
 

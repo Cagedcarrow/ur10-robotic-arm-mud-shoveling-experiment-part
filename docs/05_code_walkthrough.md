@@ -6,9 +6,11 @@
 
 相关文档：
 
+- [Docs 导航](README.md)
 - [工作区结构说明](02_workspace_structure.md)
 - [运行手册](03_runbook.md)
 - [路径规划与避障原理](06_motion_planning_and_obstacle_avoidance.md)
+- [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md)
 
 ## 1. 系统代码总览
 
