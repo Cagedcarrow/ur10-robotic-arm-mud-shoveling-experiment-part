@@ -22,6 +22,8 @@ def generate_launch_description():
     start_cpp_demo = LaunchConfiguration("start_cpp_demo")
     start_py_demo = LaunchConfiguration("start_py_demo")
     start_py_tools = LaunchConfiguration("start_py_tools")
+    enable_gantry_rviz_control = LaunchConfiguration("enable_gantry_rviz_control")
+    show_depth_camera_window = LaunchConfiguration("show_depth_camera_window")
     enable_overhead_camera = LaunchConfiguration("enable_overhead_camera")
     capture_pcd_on_start = LaunchConfiguration("capture_pcd_on_start")
     import_pcd_obstacle = LaunchConfiguration("import_pcd_obstacle")
@@ -59,6 +61,8 @@ def generate_launch_description():
                 "pkill -9 -f '/root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_[d]emo' || true; "
                 "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[m]oveit_py_demo' || true; "
                 "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[c]apture_and_import_pcd' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[g]antry_rviz_control' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[d]epth_image_viewer' || true; "
                 "sleep 2"
             ),
         ],
@@ -172,6 +176,51 @@ def generate_launch_description():
         parameters=[{"pcd_file": pcd_file, "obstacle_id": obstacle_id, "use_sim_time": True}],
     )
 
+    gantry_rviz_control = TimerAction(
+        period=7.0,
+        actions=[
+            Node(
+                package="ur10_examples_py",
+                executable="gantry_rviz_control",
+                output="screen",
+                condition=IfCondition(enable_gantry_rviz_control),
+                parameters=[
+                    {
+                        "gantry_base_x": 0.95,
+                        "gantry_base_y": 0.0,
+                        "gantry_base_height": gantry_base_height,
+                        "gantry_x_min": gantry_x_min,
+                        "gantry_x_max": gantry_x_max,
+                        "gantry_y_min": gantry_y_min,
+                        "gantry_y_max": gantry_y_max,
+                        "gantry_z_min": gantry_z_min,
+                        "gantry_z_max": gantry_z_max,
+                        "use_sim_time": True,
+                    }
+                ],
+            )
+        ],
+    )
+
+    depth_image_window = TimerAction(
+        period=6.0,
+        actions=[
+            Node(
+                package="ur10_examples_py",
+                executable="depth_image_viewer",
+                output="screen",
+                condition=IfCondition(show_depth_camera_window),
+                parameters=[
+                    {
+                        "image_topic": "/gantry_depth_camera/depth/image_raw",
+                        "window_name": "Gantry Depth Camera",
+                        "use_sim_time": True,
+                    }
+                ],
+            )
+        ],
+    )
+
     py_helper = Node(
         package="ur10_examples_py",
         executable="capture_and_import_pcd",
@@ -210,6 +259,8 @@ def generate_launch_description():
             DeclareLaunchArgument("start_cpp_demo", default_value="false"),
             DeclareLaunchArgument("start_py_demo", default_value="false"),
             DeclareLaunchArgument("start_py_tools", default_value="false"),
+            DeclareLaunchArgument("enable_gantry_rviz_control", default_value="true"),
+            DeclareLaunchArgument("show_depth_camera_window", default_value="true"),
             DeclareLaunchArgument("enable_overhead_camera", default_value="false"),
             DeclareLaunchArgument("capture_pcd_on_start", default_value="false"),
             DeclareLaunchArgument("import_pcd_obstacle", default_value="false"),
@@ -235,6 +286,8 @@ def generate_launch_description():
             ),
             cleanup_processes,
             gazebo_launch,
+            depth_image_window,
+            gantry_rviz_control,
             synthetic_camera,
             moveit_launch,
             TimerAction(period=11.0, actions=[pcd_capture]),

@@ -2,6 +2,10 @@
   ros__parameters:
     pointcloud_topic: /overhead_camera/points
     camera_frame: overhead_camera_link
+    gantry_depth_image_topic: /gantry_depth_camera/depth/image_raw
+    gantry_depth_camera_info_topic: /gantry_depth_camera/depth/camera_info
+    gantry_depth_pointcloud_topic: /gantry_depth_camera/points
+    gantry_depth_camera_frame: gantry_depth_camera_link
     roi:
       x_min: 0.30
       x_max: 1.20
