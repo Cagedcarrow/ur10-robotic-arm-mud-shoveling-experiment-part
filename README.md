@@ -12,6 +12,8 @@
 - 提供 C++ `MoveGroupInterface` 示例节点
 - 提供 Python `moveit_py` 示例节点
 - 提供独立的龙门控制命令入口
+- 提供 RViz2 中可拖拽的龙门 `X/Y/Z` 交互控制标记
+- 提供 Gazebo 深度相机与独立深度图显示窗口
 - 保留俯视点云采集、PCD 写盘、PCD 回灌规划场景障碍物的可选链路
 - 提供实机网线通信配置模板与 `ur_robot_driver` 启动入口
 - 提供一键总入口 `complete_simulation.launch.py`
@@ -24,6 +26,8 @@
 - C++ 运动规划与执行
 - Python 运动规划与执行
 - 龙门三轴独立控制
+- RViz2 中的龙门三轴交互控制
+- 深度相机图像与点云输出
 - 实机通信配置模板
 - 可选的点云采集生成 PCD
 - 可选的 PCD 回灌为规划场景障碍物
@@ -56,6 +60,8 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 3. 启动 `move_group` 与 RViz
 4. 激活 `joint_state_broadcaster`、`joint_trajectory_controller`、`gantry_trajectory_controller`
 5. 将龙门自动移动到 launch 指定的初始 XYZ
+6. 启动 RViz 中的龙门交互标记控制节点
+7. 启动龙门内部区域深度相机，以及可选深度图窗口
 
 运行后，如果你想手动移动龙门：
 
@@ -139,6 +145,27 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
 - 单独运行 `capture_and_import_pcd`
 
 具体命令见 [运行手册](docs/03_runbook.md)。
+
+## 窗口与进程排障
+
+如果你遇到下面这些情况：
+
+- Gazebo 窗口关不掉
+- RViz 卡住不退出
+- 深度图窗口还在
+- 再次启动时提示 `Entity already exists`
+- 再次启动时提示 `Controller already loaded`
+
+请直接看：
+
+- [运行手册](docs/03_runbook.md)
+- [ROS 2 入门与本项目上手指南](docs/07_ros2_getting_started.md)
+
+里面已经补了：
+
+- 如何用 `ps` / `pgrep` / `ros2 node list` 查进程
+- 如何安全结束当前 launch
+- 如何用 `pkill` 精确关闭 Gazebo、RViz、深度窗口和示例节点
 
 ## 验收结果摘要
 

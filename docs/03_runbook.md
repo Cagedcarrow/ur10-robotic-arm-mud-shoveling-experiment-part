@@ -55,6 +55,9 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 4. 激活 `joint_state_broadcaster`、`joint_trajectory_controller` 和 `gantry_trajectory_controller`
 5. 自动把龙门移动到 launch 参数指定的初始 `X/Y/Z`
 6. 启动 `move_group` 与 RViz
+7. 启动 RViz2 龙门 `X/Y/Z` 交互控制节点
+8. 启动龙门内部区域深度相机
+9. 如果 `show_depth_camera_window:=true`，再弹出深度图窗口
 
 当前默认场景是干净场景，不再自动放置桌子和障碍物。
 
@@ -62,6 +65,14 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 
 ```bash
 ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_rviz:=false
+```
+
+如果你没有图形界面，或者只是先验证底层链路，推荐同时关闭深度图窗口：
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
+  start_rviz:=false \
+  show_depth_camera_window:=false
 ```
 
 ## 3. 参数应该在哪里输入
@@ -102,6 +113,8 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 
 - C++ 示例默认目标：`ur10_examples/src/move_group_interface_demo.cpp`
 - Python 示例默认目标：`ur10_examples_py/ur10_examples_py/moveit_py_demo.py`
+- RViz 龙门交互控制：`ur10_examples_py/ur10_examples_py/gantry_rviz_control.py`
+- 深度图窗口：`ur10_examples_py/ur10_examples_py/depth_image_viewer.py`
 - 总启动默认参数：`ur10_simulation_bringup/launch/complete_simulation.launch.py`
 
 所以你可以把“参数输入位置”简单理解为三种：
@@ -125,6 +138,7 @@ Gazebo 使用的场景默认是：
 - 地面
 - 光照
 - 龙门架倒装 UR10 运行所需世界环境
+- 一个固定安装、朝向龙门内部工作区域的深度相机
 
 ### MoveIt
 
@@ -133,6 +147,42 @@ MoveIt 由 `ur10_moveit_config` 提供配置，默认：
 - 规划组：`ur_manipulator`
 - 规划管线：`ompl`
 - 控制器：`joint_trajectory_controller`
+
+### RViz 龙门交互控制
+
+总启动默认会启动：
+
+```text
+ur10_examples_py/gantry_rviz_control
+```
+
+这个节点会在 RViz 中创建一个 `Interactive Marker`，命名空间是：
+
+```text
+/gantry_xyz_control
+```
+
+你拖动这个标记时，本质上是在向：
+
+```text
+/gantry_trajectory_controller/follow_joint_trajectory
+```
+
+发送龙门三轴目标，所以 Gazebo 中整个机械臂会跟着 gantry 一起移动。
+
+### 深度相机
+
+当前默认场景中已经固定放置了一台 Gazebo 深度相机，用来观察龙门内部区域。
+
+常用话题：
+
+```text
+/gantry_depth_camera/depth/image_raw
+/gantry_depth_camera/depth/camera_info
+/gantry_depth_camera/points
+```
+
+如果 `show_depth_camera_window:=true`，系统还会自动启动一个小窗口显示深度图。
 
 ### 点云采集
 
@@ -181,6 +231,8 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py
 
 - 第一次验证龙门架和 UR10 是否能正常起来
 - 想先看纯仿真场景，不想自动加载障碍物
+- 想直接在 RViz 中拖动龙门 `X/Y/Z`
+- 想直接看到深度相机画面
 
 ### 5.2 启动带 MoveIt 的龙门场景并手动控制
 
@@ -200,6 +252,20 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_cpp_demo
 ```bash
 ros2 run ur10_examples_py gantry_control --ros-args -p x:=0.20 -p y:=0.00 -p z:=-0.70
 ```
+
+如果你要用 RViz 里的交互滑轨：
+
+1. 保持 `start_rviz:=true`
+2. 等 RViz 完全加载
+3. 在左侧 `Displays` 中确认 `InteractiveMarkers` 已启用
+4. 找到 `GantryXYZ` 交互标记
+5. 拖动红、绿、蓝三根轴，分别对应 `X/Y/Z`
+
+如果你要看深度相机画面：
+
+1. 保持 `show_depth_camera_window:=true`
+2. 等待系统启动完成
+3. 会弹出一个名为 `Gantry Depth Camera` 的独立窗口
 
 ### 5.3 已启动环境下单独运行 C++ / Python 示例
 
@@ -257,7 +323,27 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
   gantry_z_initial:=-0.70
 ```
 
-### 6.3 启动真实 UR10 驱动
+### 6.3 关闭深度图窗口但保留深度相机
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
+  show_depth_camera_window:=false
+```
+
+### 6.4 关闭 RViz 龙门交互控制节点
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
+  enable_gantry_rviz_control:=false
+```
+
+这时你仍然可以通过命令行控制 gantry：
+
+```bash
+ros2 run ur10_examples_py gantry_control --ros-args -p x:=0.10 -p y:=0.05 -p z:=-0.65
+```
+
+### 6.5 启动真实 UR10 驱动
 
 ```bash
 ros2 launch ur10_simulation_bringup real_robot_driver.launch.py \
@@ -270,25 +356,25 @@ ros2 launch ur10_simulation_bringup real_robot_driver.launch.py \
 
 - [实机网线通信与驱动启动](08_real_robot_ethernet_and_driver.md)
 
-### 6.1 只启动总环境，不自动运行示例
+### 6.6 只启动总环境，不自动运行示例
 
 ```bash
 ros2 launch ur10_simulation_bringup complete_simulation.launch.py start_cpp_demo:=false start_py_demo:=false
 ```
 
-### 6.2 只起 Gazebo 仿真
+### 6.7 只起 Gazebo 仿真
 
 ```bash
 ros2 launch ur10_simulation_bringup gazebo_sim.launch.py
 ```
 
-### 6.3 只起 MoveIt 规划环境
+### 6.8 只起 MoveIt 规划环境
 
 ```bash
 ros2 launch ur10_simulation_bringup moveit_planning.launch.py
 ```
 
-### 6.4 单独运行 C++ 示例
+### 6.9 单独运行 C++ 示例
 
 在 `move_group` 已经运行、障碍物已导入的前提下：
 
@@ -296,7 +382,7 @@ ros2 launch ur10_simulation_bringup moveit_planning.launch.py
 ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=true
 ```
 
-### 6.5 单独运行 Python 示例
+### 6.10 单独运行 Python 示例
 
 在完整环境已启动后执行：
 
@@ -304,7 +390,25 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 ros2 run ur10_examples_py moveit_py_demo
 ```
 
-### 6.6 单独运行 PCD 采集与导入辅助脚本
+### 6.11 单独运行 RViz 龙门交互控制节点
+
+```bash
+ros2 run ur10_examples_py gantry_rviz_control --ros-args -p use_sim_time:=true
+```
+
+这要求：
+
+- Gazebo 已启动
+- `gantry_trajectory_controller` 已经是 `active`
+- RViz 已启动并启用了 `InteractiveMarkers`
+
+### 6.12 单独运行深度图窗口
+
+```bash
+ros2 run ur10_examples_py depth_image_viewer --ros-args -p use_sim_time:=true
+```
+
+### 6.13 单独运行 PCD 采集与导入辅助脚本
 
 ```bash
 ros2 run ur10_examples_py capture_and_import_pcd
@@ -316,13 +420,13 @@ ros2 run ur10_examples_py capture_and_import_pcd
 2. 生成 PCD
 3. 导入规划场景障碍物
 
-### 6.7 单独运行点云采集节点
+### 6.14 单独运行点云采集节点
 
 ```bash
 ros2 run ur10_perception pcd_capture_node --ros-args -p pointcloud_topic:=/overhead_camera/points -p output_file:=/root/ur10_ws/data/latest_obstacle.pcd
 ```
 
-### 6.8 单独运行 PCD 导入节点
+### 6.15 单独运行 PCD 导入节点
 
 ```bash
 ros2 run ur10_perception pcd_to_collision_scene_node --ros-args -p pcd_file:=/root/ur10_ws/data/latest_obstacle.pcd -p obstacle_id:=pcd_obstacle_box
@@ -337,6 +441,8 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
   start_cpp_demo:=false \
   start_py_demo:=false \
   start_rviz:=false \
+  enable_gantry_rviz_control:=true \
+  show_depth_camera_window:=false \
   ur_type:=ur10 \
   pcd_file:=/root/ur10_ws/data/latest_obstacle.pcd
 ```
@@ -349,6 +455,10 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
   - 是否自动运行 Python 示例
 - `start_rviz`
   - 是否启动 RViz
+- `enable_gantry_rviz_control`
+  - 是否自动启动 RViz 龙门交互标记节点
+- `show_depth_camera_window`
+  - 是否自动弹出深度图窗口
 - `ur_type`
   - 默认 `ur10`，可切换为 `ur10e`
 - `pcd_file`
@@ -396,7 +506,100 @@ ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
 - 重新 `source`
 - 再次运行 `complete_simulation.launch.py`
 
-## 9. 结果检查
+## 9. 如果窗口关不掉，怎么查进程和关进程
+
+这一节专门给新手。
+
+### 9.1 先查当前 ROS 节点
+
+```bash
+ros2 node list
+```
+
+常见会看到：
+
+- `/move_group`
+- `/robot_state_publisher`
+- `/gantry_rviz_control`
+- `/gantry_depth_image_viewer`
+
+### 9.2 再查 Linux 进程
+
+```bash
+ps -ef | grep -E 'gzserver|gzclient|rviz2|move_group|gantry_rviz_control|depth_image_viewer'
+```
+
+或者：
+
+```bash
+pgrep -af 'gzserver|gzclient|rviz2|move_group|gantry_rviz_control|depth_image_viewer'
+```
+
+### 9.3 优先用 Ctrl+C 结束当前 launch
+
+如果当前终端就是启动它的终端，优先按：
+
+```text
+Ctrl+C
+```
+
+这是最安全、最推荐的结束方式。
+
+### 9.4 单独关闭某一类进程
+
+关闭 Gazebo：
+
+```bash
+pkill -f gzserver
+pkill -f gzclient
+```
+
+关闭 RViz：
+
+```bash
+pkill -f rviz2
+```
+
+关闭 MoveIt：
+
+```bash
+pkill -f move_group
+```
+
+关闭深度图窗口：
+
+```bash
+pkill -f depth_image_viewer
+```
+
+关闭 RViz 龙门交互控制节点：
+
+```bash
+pkill -f gantry_rviz_control
+```
+
+### 9.5 一次性清掉整套常用进程
+
+```bash
+pkill -f gzserver
+pkill -f gzclient
+pkill -f rviz2
+pkill -f move_group
+pkill -f robot_state_publisher
+pkill -f gantry_rviz_control
+pkill -f depth_image_viewer
+```
+
+然后重新开一个新终端，再执行：
+
+```bash
+source /opt/ros/humble/setup.bash
+source /root/moveit_ws/install/setup.bash
+source /root/ur10_ws/install/setup.bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py
+```
+
+## 10. 结果检查
 
 ### 应生成的 PCD 文件
 
@@ -418,6 +621,7 @@ ros2 control list_controllers
 
 - `joint_state_broadcaster` 为 `active`
 - `joint_trajectory_controller` 为 `active`
+- `gantry_trajectory_controller` 为 `active`
 
 ### 典型成功日志
 
@@ -429,10 +633,11 @@ ros2 control list_controllers
 - `Execution succeeded for obstacle-aware joint-space goal.`
 - `moveit_py execution status: SUCCEEDED`
 
-### Gazebo / RViz 中应看到的现象
+### Gazebo / RViz / 深度图中应看到的现象
 
-- Gazebo 中出现 UR10、工作台和障碍物
-- 机械臂完成一条避开障碍物的规划轨迹
-- RViz 中能看到机器人模型和 MotionPlanning 面板
+- Gazebo 中出现倒装龙门架和 UR10
+- RViz 中能看到机器人模型、MotionPlanning 面板和 `GantryXYZ` 交互标记
+- 深度图窗口中能看到龙门内部区域的深度图
+- 如果启用旧的障碍物模式，才会额外看到桌子和障碍物
 
 下一篇建议阅读：[节点与 Launch 清单](04_nodes_and_launches.md)

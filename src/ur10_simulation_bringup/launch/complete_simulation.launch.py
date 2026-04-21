@@ -59,10 +59,11 @@ def generate_launch_description():
                 "pkill -9 -f '/root/ur10_ws/install/ur10_perception/lib/ur10_perception/[p]cd_capture_node' || true; "
                 "pkill -9 -f '/root/ur10_ws/install/ur10_perception/lib/ur10_perception/[p]cd_to_collision_scene_node' || true; "
                 "pkill -9 -f '/root/ur10_ws/install/ur10_examples/lib/ur10_examples/move_group_interface_[d]emo' || true; "
-                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[m]oveit_py_demo' || true; "
-                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[c]apture_and_import_pcd' || true; "
-                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[g]antry_rviz_control' || true; "
-                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/bin/[d]epth_image_viewer' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py/[m]oveit_py_demo' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py/[c]apture_and_import_pcd' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py/[g]antry_control' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py/[g]antry_rviz_control' || true; "
+                "pkill -9 -f '/root/ur10_ws/install/ur10_examples_py/lib/ur10_examples_py/[d]epth_image_viewer' || true; "
                 "sleep 2"
             ),
         ],
@@ -79,22 +80,22 @@ def generate_launch_description():
                         [FindPackageShare("ur10_simulation_bringup"), "launch", "gazebo_sim.launch.py"]
                     )
                 ),
-        launch_arguments={
-            "ur_type": ur_type,
-            "use_fake_hardware": use_fake_hardware,
-            "world": world,
-            "gantry_x_initial": gantry_x_initial,
-            "gantry_y_initial": gantry_y_initial,
-            "gantry_z_initial": gantry_z_initial,
-            "gantry_x_min": gantry_x_min,
-            "gantry_x_max": gantry_x_max,
-            "gantry_y_min": gantry_y_min,
-            "gantry_y_max": gantry_y_max,
-            "gantry_z_min": gantry_z_min,
-            "gantry_z_max": gantry_z_max,
-            "gantry_base_height": gantry_base_height,
-        }.items(),
-    )
+                launch_arguments={
+                    "ur_type": ur_type,
+                    "use_fake_hardware": use_fake_hardware,
+                    "world": world,
+                    "gantry_x_initial": gantry_x_initial,
+                    "gantry_y_initial": gantry_y_initial,
+                    "gantry_z_initial": gantry_z_initial,
+                    "gantry_x_min": gantry_x_min,
+                    "gantry_x_max": gantry_x_max,
+                    "gantry_y_min": gantry_y_min,
+                    "gantry_y_max": gantry_y_max,
+                    "gantry_z_min": gantry_z_min,
+                    "gantry_z_max": gantry_z_max,
+                    "gantry_base_height": gantry_base_height,
+                }.items(),
+            )
         ],
     )
 

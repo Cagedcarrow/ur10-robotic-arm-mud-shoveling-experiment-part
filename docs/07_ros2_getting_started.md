@@ -97,6 +97,9 @@ ros2 run <package> <executable>
 
 - `/joint_states`
 - `/overhead_camera/points`
+- `/gantry_depth_camera/depth/image_raw`
+- `/gantry_depth_camera/points`
+- `/gantry_xyz_control/update`
 - `/planning_scene`
 - `/planning_scene_world`
 
@@ -104,6 +107,8 @@ ros2 run <package> <executable>
 
 - `synthetic_overhead_camera_node` 发布 `/overhead_camera/points`
 - `pcd_capture_node` 订阅 `/overhead_camera/points`
+- Gazebo 深度相机发布 `/gantry_depth_camera/depth/image_raw`
+- `gantry_rviz_control` 维护 `/gantry_xyz_control/update`
 
 ### 2.5 参数 parameter
 
@@ -154,6 +159,12 @@ complete_simulation.launch.py
 
 它可以一条命令拉起整套系统。
 
+这条总启动现在默认还会一起拉起：
+
+- RViz2 里的龙门 `X/Y/Z` 交互控制
+- Gazebo 深度相机
+- 独立的深度图显示窗口
+
 ## 3. 为什么每次都要 source
 
 你经常会看到这三行：
@@ -187,12 +198,14 @@ source /root/ur10_ws/install/setup.bash
 - `gzserver`
 - `gzclient`
 - `robot_state_publisher`
+- `depth_image_viewer`
 
 这些节点负责：
 
 - 提供 Gazebo 仿真世界
 - 显示 Gazebo 界面
 - 发布机器人模型和 TF
+- 显示龙门内部区域的深度图窗口
 
 ### 4.2 控制类节点
 
@@ -222,14 +235,26 @@ source /root/ur10_ws/install/setup.bash
 - `synthetic_overhead_camera_node`
 - `pcd_capture_node`
 - `pcd_to_collision_scene_node`
+- Gazebo world 内的 `gantry_depth_camera`
 
 它们共同完成：
 
 - 发布点云
 - 保存 PCD
 - 导入障碍物
+- 发布深度图与点云
 
-### 4.5 示例类节点
+### 4.5 交互控制类节点
+
+- `gantry_rviz_control`
+
+它的作用是：
+
+- 在 RViz 中创建一个可拖拽的 `Interactive Marker`
+- 让你直接调节龙门的 `X/Y/Z`
+- 把拖动结果转换成 `gantry_trajectory_controller` 的轨迹目标
+
+### 4.6 示例类节点
 
 - `move_group_interface_demo`
 - `moveit_py_demo`
@@ -259,10 +284,11 @@ Gazebo 的主要作用是：
 
 在这套工程里，Gazebo 负责：
 
-1. 加载 `obstacle_scene.world`
+1. 加载 `gantry_only.world` 或 `obstacle_scene.world`
 2. 接收 `spawn_entity.py` 生成的 UR10
 3. 通过 `gazebo_ros2_control` 接入控制器
 4. 执行 `joint_trajectory_controller` 发来的轨迹
+5. 运行深度相机并发布深度图、相机信息和点云
 
 所以如果没有 Gazebo：
 
@@ -276,16 +302,26 @@ Gazebo 的主要作用是：
 本项目世界文件是：
 
 ```text
-/root/ur10_ws/src/ur10_perception/worlds/obstacle_scene.world
+/root/ur10_ws/src/ur10_perception/worlds/gantry_only.world
 ```
 
 里面包括：
 
 - 地面
+- 龙门内部区域的深度相机
+
+如果你显式切换到障碍物模式，还可以使用：
+
+```text
+/root/ur10_ws/src/ur10_perception/worlds/obstacle_scene.world
+```
+
+这时会额外包含：
+
 - 工作台
 - 障碍物
 
-这些对象一方面让仿真更真实，另一方面也有助于点云采集。
+这些对象一方面让仿真更真实，另一方面也有助于点云采集与避障验证。
 
 ## 6. MoveIt2 到底在做什么
 
@@ -499,6 +535,58 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 
 如果命令行不写，程序就会回到 launch 默认值或源码默认值。
 
+### 8.6 如何使用 RViz 里的龙门 XYZ 滑轨
+
+启动完整系统后：
+
+```bash
+ros2 launch ur10_simulation_bringup complete_simulation.launch.py
+```
+
+你会在 RViz 中看到一个 `Interactive Marker`。
+
+可以把它理解成一个“图形化滑轨手柄”：
+
+- 红色轴对应 `X`
+- 绿色轴对应 `Y`
+- 蓝色轴对应 `Z`
+
+你拖动它时，`gantry_rviz_control` 会把目标位置转成龙门三轴轨迹，并发送给：
+
+```text
+/gantry_trajectory_controller/follow_joint_trajectory
+```
+
+所以本质上：
+
+- RViz 负责给你一个好拖动的图形界面
+- `gantry_trajectory_controller` 负责真正执行
+- Gazebo 负责把运动显示出来
+
+### 8.7 如何理解深度相机窗口
+
+默认总启动会带起一台 Gazebo 深度相机，主要话题是：
+
+```text
+/gantry_depth_camera/depth/image_raw
+/gantry_depth_camera/depth/camera_info
+/gantry_depth_camera/points
+```
+
+同时还会启动：
+
+```text
+ur10_examples_py/depth_image_viewer
+```
+
+这个节点会弹一个名为 `Gantry Depth Camera` 的窗口。
+
+你可以把它理解成：
+
+- Gazebo 在模拟“相机采集”
+- ROS 2 负责传输图像
+- `depth_image_viewer` 负责把深度图显示出来
+
 ## 9. 如何理解代码应该从哪里看
 
 如果你是新手，建议按下面顺序看代码：
@@ -571,6 +659,45 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 
 - 系统里同时存在多套 `move_group` 或控制器
 
+### 10.7 为什么窗口关不掉
+
+最常见的是这几类窗口：
+
+- Gazebo 窗口
+- RViz 窗口
+- 深度图窗口
+
+它们通常都是某个 ROS 2 节点或 Gazebo 进程带出来的。
+
+先查 ROS 节点：
+
+```bash
+ros2 node list
+```
+
+再查 Linux 进程：
+
+```bash
+pgrep -af 'gzserver|gzclient|rviz2|move_group|gantry_rviz_control|depth_image_viewer'
+```
+
+如果是当前终端启动的，优先按：
+
+```text
+Ctrl+C
+```
+
+如果还不退出，再用：
+
+```bash
+pkill -f gzserver
+pkill -f gzclient
+pkill -f rviz2
+pkill -f move_group
+pkill -f gantry_rviz_control
+pkill -f depth_image_viewer
+```
+
 ## 11. 你学会这篇文档后，应该能做到什么
 
 看完这篇文档后，你应该至少能做到：
@@ -581,6 +708,9 @@ ros2 run ur10_examples move_group_interface_demo --ros-args -p use_sim_time:=tru
 - 知道点云如何变成 MoveIt 的障碍物
 - 知道如何启动完整系统
 - 知道如何单独运行 MoveIt2 机械臂运动规划
+- 知道如何用 RViz 图形化调节龙门 XYZ
+- 知道深度相机窗口是如何工作的
+- 知道窗口卡住时如何查进程并关闭
 - 知道该从哪里开始读代码
 
 下一篇建议阅读：[运行手册](03_runbook.md)

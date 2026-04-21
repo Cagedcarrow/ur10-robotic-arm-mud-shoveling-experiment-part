@@ -34,6 +34,8 @@
 - `start_rviz`
 - `start_cpp_demo`
 - `start_py_demo`
+- `enable_gantry_rviz_control`
+- `show_depth_camera_window`
 - `gantry_x_initial`
 - `gantry_y_initial`
 - `gantry_z_initial`
@@ -150,6 +152,8 @@
 | `move_group_interface_demo` | `ur10_examples` | 是 | 自动或手动调试 C++ 规划执行 |
 | `moveit_py_demo` | `ur10_examples_py` | 默认否 | 手动调试 Python 规划执行 |
 | `gantry_control` | `ur10_examples_py` | 是，一次性初始化后退出，也可手动运行 | 单独控制龙门 X/Y/Z |
+| `gantry_rviz_control` | `ur10_examples_py` | 默认是 | 在 RViz 中拖动交互标记控制龙门 X/Y/Z |
+| `depth_image_viewer` | `ur10_examples_py` | 默认是 | 弹出独立窗口显示深度相机画面 |
 | `capture_and_import_pcd` | `ur10_examples_py` | 默认否 | 手动触发一次点云采集和导入 |
 | `pcd_capture_node` | `ur10_perception` | 是 | 调试 PCD 写盘 |
 | `pcd_to_collision_scene_node` | `ur10_perception` | 是 | 调试障碍物回灌 |
@@ -243,6 +247,71 @@ ur10_examples_py
 - `z`
 - `duration_sec`
 - `controller_name`
+
+## `gantry_rviz_control`
+
+包：
+
+```text
+ur10_examples_py
+```
+
+作用：
+
+- 在 RViz 中创建 `Interactive Marker`
+- 提供龙门 `X/Y/Z` 三轴的可拖拽控制
+- 拖动后向 `gantry_trajectory_controller` 发送轨迹目标
+
+默认是否自动启动：
+
+- 默认是，可通过 `enable_gantry_rviz_control:=false` 关闭
+
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+- 或者手动执行 `ros2 run ur10_examples_py gantry_rviz_control --ros-args -p ...`
+
+常用参数名：
+
+- `gantry_base_x`
+- `gantry_base_y`
+- `gantry_base_height`
+- `gantry_x_min`
+- `gantry_x_max`
+- `gantry_y_min`
+- `gantry_y_max`
+- `gantry_z_min`
+- `gantry_z_max`
+- `controller_name`
+
+## `depth_image_viewer`
+
+包：
+
+```text
+ur10_examples_py
+```
+
+作用：
+
+- 订阅 Gazebo 深度相机图像
+- 用 OpenCV 弹出一个独立深度图窗口
+
+默认是否自动启动：
+
+- 默认是，可通过 `show_depth_camera_window:=false` 关闭
+
+输入参数在哪里传入：
+
+- `complete_simulation.launch.py`
+- 或者手动运行 `ros2 run ur10_examples_py depth_image_viewer --ros-args -p ...`
+
+常用参数名：
+
+- `image_topic`
+- `window_name`
+- `min_depth`
+- `max_depth`
 
 ## `capture_and_import_pcd`
 
@@ -388,6 +457,11 @@ ur10_perception
 | --- | --- | --- |
 | `/joint_states` | `sensor_msgs/msg/JointState` | 龙门三轴和 UR 六轴的当前关节状态 |
 | `/gantry_trajectory_controller/follow_joint_trajectory` | `control_msgs/action/FollowJointTrajectory` | 龙门三轴动作接口 |
+| `/gantry_xyz_control/update` | `visualization_msgs/msg/InteractiveMarkerUpdate` | RViz 龙门交互标记更新 |
+| `/gantry_xyz_control/feedback` | `visualization_msgs/msg/InteractiveMarkerFeedback` | RViz 拖动交互标记后的反馈 |
+| `/gantry_depth_camera/depth/image_raw` | `sensor_msgs/msg/Image` | 龙门内部区域深度图 |
+| `/gantry_depth_camera/depth/camera_info` | `sensor_msgs/msg/CameraInfo` | 深度相机内参 |
+| `/gantry_depth_camera/points` | `sensor_msgs/msg/PointCloud2` | 深度相机生成的点云 |
 | `/overhead_camera/points` | `sensor_msgs/msg/PointCloud2` | 俯视点云输入 |
 | `/planning_scene` | MoveIt 规划场景更新 | MoveIt 场景同步 |
 | `/planning_scene_world` | MoveIt 场景世界对象 | 障碍物世界状态 |

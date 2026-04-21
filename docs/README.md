@@ -32,11 +32,14 @@
 
 - ROS 2 工作区、节点、话题、参数和 launch 是什么
 - 这套 UR10 系统是如何启动的
+- 如何在 RViz2 里拖动龙门 `X/Y/Z` 交互标记
+- 深度相机窗口是从哪里来的、怎么查看深度图
 - MoveIt2 是如何做机械臂运动规划的
 - Gazebo 在仿真中扮演什么角色
 - 点云障碍物是如何从 PCD 进入 MoveIt 场景的
 - C++ / Python 示例代码应该从哪里改起
 - 实机 UR10 的网线应该怎么接、PC IP 应该怎么配
 - 应该用哪个 launch 来启动 `ur_robot_driver`
+- 如果 Gazebo / RViz / 深度窗口关不掉，应该如何查进程并关闭
 
 如果你只是想马上跑起来，请先看 [ROS 2 入门与本项目上手指南](07_ros2_getting_started.md) 和 [运行手册](03_runbook.md)。

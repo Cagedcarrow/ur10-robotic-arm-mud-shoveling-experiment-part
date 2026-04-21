@@ -114,5 +114,56 @@
         </visual>
       </link>
     </model>
+
+    <model name="gantry_depth_camera_model">
+      <static>true</static>
+      <pose>0.95 0.0 2.05 0 1.57079632679 3.14159265359</pose>
+      <link name="gantry_depth_camera_link">
+        <visual name="camera_body_visual">
+          <geometry>
+            <box>
+              <size>0.12 0.08 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.16 1.0</ambient>
+            <diffuse>0.12 0.12 0.16 1.0</diffuse>
+          </material>
+        </visual>
+        <sensor type="depth" name="gantry_depth_sensor">
+          <always_on>true</always_on>
+          <update_rate>20.0</update_rate>
+          <visualize>true</visualize>
+          <camera>
+            <horizontal_fov>1.25</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>B8G8R8</format>
+            </image>
+            <depth_camera/>
+            <clip>
+              <near>0.10</near>
+              <far>5.0</far>
+            </clip>
+          </camera>
+          <plugin name="gantry_depth_camera_controller" filename="libgazebo_ros_camera.so">
+            <ros>
+              <namespace>/gantry_depth_camera</namespace>
+              <remapping>gantry_depth/image_raw:=depth/image_raw</remapping>
+              <remapping>gantry_depth/depth/image_raw:=depth/image_raw</remapping>
+              <remapping>gantry_depth/camera_info:=camera_info</remapping>
+              <remapping>gantry_depth/depth/camera_info:=depth/camera_info</remapping>
+              <remapping>gantry_depth/points:=points</remapping>
+            </ros>
+            <camera_name>gantry_depth</camera_name>
+            <frame_name>gantry_depth_camera_link</frame_name>
+            <hack_baseline>0.0</hack_baseline>
+            <min_depth>0.10</min_depth>
+            <max_depth>5.0</max_depth>
+          </plugin>
+        </sensor>
+      </link>
+    </model>
   </world>
 </sdf>

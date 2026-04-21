@@ -4,8 +4,10 @@ setup.py
 resource/ur10_examples_py
 ur10_examples_py/__init__.py
 ur10_examples_py/capture_and_import_pcd.py
+ur10_examples_py/depth_image_viewer.py
 ur10_examples_py/env_bootstrap.py
 ur10_examples_py/gantry_control.py
+ur10_examples_py/gantry_rviz_control.py
 ur10_examples_py/moveit_py_demo.py
 ur10_examples_py.egg-info/PKG-INFO
 ur10_examples_py.egg-info/SOURCES.txt
