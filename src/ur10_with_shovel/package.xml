@@ -20,6 +20,8 @@
   <exec_depend>gazebo_ros2_control</exec_depend>
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>ur_description</exec_depend>
+  <exec_depend>ur_robot_driver</exec_depend>
+  <exec_depend>ur10_simulation_bringup</exec_depend>
   <exec_depend>ur10_moveit_config</exec_depend>
 
   <export>

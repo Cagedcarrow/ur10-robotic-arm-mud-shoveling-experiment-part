@@ -1,82 +1,270 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur_with_shovel">
-  <xacro:arg name="name" default="ur"/>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
   <xacro:arg name="tf_prefix" default=""/>
-  <xacro:arg name="ur_type" default="ur10"/>
-  <xacro:arg name="use_fake_hardware" default="false"/>
   <xacro:arg name="sim_gazebo" default="true"/>
-  <xacro:arg name="safety_limits" default="true"/>
-  <xacro:arg name="safety_pos_margin" default="0.15"/>
-  <xacro:arg name="safety_k_position" default="20"/>
-  <xacro:arg name="initial_positions_file" default="$(find ur10_description)/config/initial_positions.yaml"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
   <xacro:arg name="simulation_controllers" default="$(find ur10_with_shovel)/config/ros2_controllers.yaml"/>
-  <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml"/>
-  <xacro:arg name="kinematics_params" default="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
-  <xacro:arg name="physical_params" default="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
-  <xacro:arg name="visual_params" default="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
 
-  <xacro:property name="initial_positions_file_path" value="$(arg initial_positions_file)"/>
+  <!--
+    Pose Alignment Baseline (Stage 1):
+    仅对齐 my_robot 链路与附件基准的末端姿态，不改 MoveIt/SRDF/控制器名
+    (保持纯模型级别对齐，不承诺链路兼容性)
+  -->
 
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
-
-  <link name="world"/>
-
-  <xacro:ur_robot
-    name="$(arg name)"
-    tf_prefix="$(arg tf_prefix)"
-    parent="world"
-    joint_limits_parameters_file="$(arg joint_limit_params)"
-    kinematics_parameters_file="$(arg kinematics_params)"
-    physical_parameters_file="$(arg physical_params)"
-    visual_parameters_file="$(arg visual_params)"
-    safety_limits="$(arg safety_limits)"
-    safety_pos_margin="$(arg safety_pos_margin)"
-    safety_k_position="$(arg safety_k_position)"
-    use_fake_hardware="$(arg use_fake_hardware)"
-    sim_gazebo="$(arg sim_gazebo)"
-    sim_ignition="false"
-    initial_positions="${xacro.load_yaml(initial_positions_file_path)}">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:ur_robot>
-
-  <link name="$(arg tf_prefix)铲子">
+  <link name="ur10">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://ur10_with_shovel/meshes/base_link.STL"/>
+        <mesh filename="package://ur10_with_shovel/meshes/base.dae" />
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0.019" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://ur10_with_shovel/meshes/base_link.STL"/>
+        <cylinder radius="0.075" length="0.038" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="1.512"/>
-      <origin xyz="0.0002787 0.0006902 -0.1177" rpy="0 0 0"/>
-      <inertia ixx="0.0070805" ixy="-0.0000053" ixz="0.0002891" iyy="0.0068883" iyz="0.0000875" izz="0.0004825"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="4" />
+      <inertia ixx="0.0061063" ixy="0" ixz="0" iyy="0.0061063" iyz="0" izz="0.01125" />
     </inertial>
   </link>
 
-  <joint name="$(arg tf_prefix)ur10-robot" type="fixed">
-    <parent link="$(arg tf_prefix)wrist_3_link"/>
-    <child link="$(arg tf_prefix)铲子"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+  <link name="ur10_shoulder">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/shoulder.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.075" length="0.177" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="7.778" />
+      <inertia ixx="0.0314743" ixy="0" ixz="0" iyy="0.0314743" iyz="0" izz="0.0218756" />
+    </inertial>
+  </link>
+
+  <link name="ur10_upper_arm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/upperarm.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.045 0" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.075" length="0.177" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 -0.0436 0.32" rpy="0 0 1.5707" />
+      <geometry>
+        <cylinder radius="0.058" length="0.461" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 -0.04 0.613" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.058" length="0.129" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.306" rpy="0 0 0" />
+      <mass value="12.93" />
+      <inertia ixx="0.421754" ixy="0" ixz="0" iyy="0.421754" iyz="0" izz="0.0363656" />
+    </inertial>
+  </link>
+
+  <link name="ur10_forearm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/forearm.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.001" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.058" length="0.136" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0 0.305" rpy="0 0 1.5707" />
+      <geometry>
+        <cylinder radius="0.045" length="0.447" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0.001 0.5735" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.045" length="0.119" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.28615" rpy="0 0 0" />
+      <mass value="3.87" />
+      <inertia ixx="0.11107" ixy="0" ixz="0" iyy="0.11107" iyz="0" izz="0.0108844" />
+    </inertial>
+  </link>
+
+  <link name="ur10_wrist_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/wrist1.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.115 0.0025" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.0455" length="0.119" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1.96" />
+      <inertia ixx="0.0051082" ixy="0" ixz="0" iyy="0.0051082" iyz="0" izz="0.0055125" />
+    </inertial>
+  </link>
+
+  <link name="ur10_wrist_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/wrist2.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.002 0.11659" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.0455" length="0.119" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1.96" />
+      <inertia ixx="0.0051082" ixy="0" ixz="0" iyy="0.0051082" iyz="0" izz="0.0055125" />
+    </inertial>
+  </link>
+
+  <link name="ur10_wrist_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/wrist3.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.0765 0" rpy="1.5707 0 0" />
+      <geometry>
+        <cylinder radius="0.045" length="0.031" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.202" />
+      <inertia ixx="0.0005265" ixy="0" ixz="0" iyy="0.0005265" iyz="0" izz="0.0005681" />
+    </inertial>
+  </link>
+
+  <link name="铲子">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/base_link.STL" />
+      </geometry>
+      <material name="铲子_mat">
+        <color rgba="0.64706275 0.61961176 0.58823922 1.00000000"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur10_with_shovel/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.0002787 0.0006902 -0.1177" rpy="0 0 0" />
+      <mass value="1.512" />
+      <inertia ixx="0.0070805" ixy="-0.0000053" ixz="0.0002891" iyy="0.0068883" iyz="0.0000875" izz="0.0004825" />
+    </inertial>
+  </link>
+
+  <joint name="ur10_shoulder_pan" type="revolute">
+    <parent link="ur10" />
+    <child link="ur10_shoulder" />
+    <origin xyz="0 0 0.1273" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.28319" upper="6.28319" effort="330" velocity="2.16" />
   </joint>
 
-  <link name="$(arg tf_prefix)shovel_tip">
+  <joint name="ur10_shoulder_lift" type="revolute">
+    <parent link="ur10_shoulder" />
+    <child link="ur10_upper_arm" />
+    <origin xyz="0 0.220941 0" rpy="0 1.57079 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.28319" upper="6.28319" effort="330" velocity="2.16" />
+  </joint>
+
+  <joint name="ur10_elbow" type="revolute">
+    <parent link="ur10_upper_arm" />
+    <child link="ur10_forearm" />
+    <origin xyz="-0.0000039 -0.1719 0.612" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.28319" upper="6.28319" effort="150" velocity="3.15" />
+  </joint>
+
+  <joint name="ur10_wrist_1" type="revolute">
+    <parent link="ur10_forearm" />
+    <child link="ur10_wrist_1" />
+    <origin xyz="-0.0000036 0 0.5723" rpy="0 1.5707895 0.0000027" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
+  </joint>
+
+  <joint name="ur10_wrist_2" type="revolute">
+    <parent link="ur10_wrist_1" />
+    <child link="ur10_wrist_2" />
+    <origin xyz="0.0000003 0.1149 0.0000003" rpy="0 0 0" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
+  </joint>
+
+  <joint name="ur10_wrist_3" type="revolute">
+    <parent link="ur10_wrist_2" />
+    <child link="ur10_wrist_3" />
+    <origin xyz="0 -0.0000003 0.1157" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
+  </joint>
+
+  <joint name="ur10-robot" type="fixed">
+    <parent link="ur10_wrist_3" />
+    <child link="铲子" />
+    <origin xyz="0 0.105 0" rpy="1.5707963 0 -1.5707963" />
+  </joint>
+
+  <link name="shovel_tip">
     <inertial>
-      <mass value="0.0001"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001"/>
+      <mass value="0.0001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001" />
     </inertial>
   </link>
 
-  <joint name="$(arg tf_prefix)铲子_to_shovel_tip" type="fixed">
-    <parent link="$(arg tf_prefix)铲子"/>
-    <child link="$(arg tf_prefix)shovel_tip"/>
-    <origin xyz="-0.047680 0.477360 0.003180" rpy="0.433015 1.482013 0.786385"/>
+  <!-- TCP frame mounted on the shovel body for motion fitting/tracking -->
+  <joint name="shovel_to_shovel_tip" type="fixed">
+    <parent link="铲子" />
+    <child link="shovel_tip" />
+    <origin xyz="-0.047680 0.477360 0.003180" rpy="0.433015 1.482013 0.786385" />
   </joint>
 
   <xacro:if value="$(arg sim_gazebo)">

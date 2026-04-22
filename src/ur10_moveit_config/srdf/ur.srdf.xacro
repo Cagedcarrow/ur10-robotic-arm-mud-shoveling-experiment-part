@@ -5,9 +5,10 @@
   <xacro:arg name="name" default="ur"/>
   <!-- parameters -->
   <xacro:arg name="prefix" default="" />
+  <xacro:arg name="tip_link" default="tool0" />
 
   <xacro:include filename="$(find ur10_moveit_config)/srdf/ur_macro.srdf.xacro"/>
 
-  <xacro:ur_srdf name="$(arg name)" prefix="$(arg prefix)"/>
+  <xacro:ur_srdf name="$(arg name)" prefix="$(arg prefix)" tip_link="$(arg tip_link)"/>
 
 </robot>

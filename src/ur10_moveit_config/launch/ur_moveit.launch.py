@@ -20,6 +20,9 @@ def launch_setup(context, *args, **kwargs):
     warehouse_sqlite_path = LaunchConfiguration("warehouse_sqlite_path")
     use_sim_time = LaunchConfiguration("use_sim_time")
     launch_rviz = LaunchConfiguration("launch_rviz")
+    sim_gazebo = LaunchConfiguration("sim_gazebo")
+    use_fake_hardware = LaunchConfiguration("use_fake_hardware")
+    planning_tip_link = LaunchConfiguration("planning_tip_link")
     gantry_x_initial = LaunchConfiguration("gantry_x_initial")
     gantry_y_initial = LaunchConfiguration("gantry_y_initial")
     gantry_z_initial = LaunchConfiguration("gantry_z_initial")
@@ -84,8 +87,12 @@ def launch_setup(context, *args, **kwargs):
             gantry_base_height,
             " ",
             "robot_name:=ur ",
-            "use_fake_hardware:=false ",
-            "sim_gazebo:=true ",
+            "use_fake_hardware:=",
+            use_fake_hardware,
+            " ",
+            "sim_gazebo:=",
+            sim_gazebo,
+            " ",
             "joint_limit_params:=",
             joint_limit_params,
             " ",
@@ -110,6 +117,9 @@ def launch_setup(context, *args, **kwargs):
             PathJoinSubstitution([FindPackageShare(moveit_config_package), "srdf", moveit_config_file]),
             " ",
             "name:=ur",
+            " ",
+            "tip_link:=",
+            planning_tip_link,
         ]
     )
     robot_description_semantic = {
@@ -249,6 +259,9 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             DeclareLaunchArgument("launch_rviz", default_value="true"),
+            DeclareLaunchArgument("sim_gazebo", default_value="true"),
+            DeclareLaunchArgument("use_fake_hardware", default_value="false"),
+            DeclareLaunchArgument("planning_tip_link", default_value="tool0"),
             DeclareLaunchArgument("gantry_x_initial", default_value="0.0"),
             DeclareLaunchArgument("gantry_y_initial", default_value="0.0"),
             DeclareLaunchArgument("gantry_z_initial", default_value="-0.6"),

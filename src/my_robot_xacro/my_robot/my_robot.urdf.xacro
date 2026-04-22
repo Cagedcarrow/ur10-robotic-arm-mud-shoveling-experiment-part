@@ -239,21 +239,7 @@
   <joint name="ur10-robot" type="fixed">
     <parent link="ur10_wrist_3" />
     <child link="铲子" />
-    <origin xyz="0 0.105 0" rpy="1.5707963 0 -1.5707963" quat_xyzw="0.5 -0.5 -0.5 0.5" />
-  </joint>
-
-  <link name="shovel_tip">
-    <inertial>
-      <mass value="0.0001" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001" />
-    </inertial>
-  </link>
-
-  <joint name="铲子_to_shovel_tip" type="fixed">
-    <parent link="铲子" />
-    <child link="shovel_tip" />
-    <origin xyz="-0.047680 0.477360 0.003180" rpy="0.433015 1.482013 0.786385" />
+    <origin xyz="0 0.105 0" rpy="1.5707963 0 -1.5707963" />
   </joint>
 
 
@@ -631,4 +617,18 @@
       </gazebo>
 
   </xacro:if>
+
+  <link name="shovel_tip">
+    <inertial>
+      <mass value="0.0001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001" />
+    </inertial>
+  </link>
+
+  <joint name="wrist_3_to_shovel_tip" type="fixed">
+    <parent link="ur10_wrist_3" />
+    <child link="shovel_tip" />
+    <origin xyz="-0.00318 0.15268 0.47736" rpy="1.2194 -0.0628 -0.0628" />
+  </joint>
 </robot>
