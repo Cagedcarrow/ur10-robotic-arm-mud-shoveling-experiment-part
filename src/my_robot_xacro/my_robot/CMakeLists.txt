@@ -4,7 +4,7 @@ project(my_robot)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY meshes textures launch rviz
+  DIRECTORY config launch meshes rviz textures urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

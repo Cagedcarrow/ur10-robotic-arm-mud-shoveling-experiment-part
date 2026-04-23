@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="${xacro.arg('name')}">
+  <xacro:arg name="name" default="my_robot_gantry" />
+  <xacro:arg name="tip_link" default="shovel_tip" />
+
+  <group name="my_robot_manipulator">
+    <chain base_link="ur10" tip_link="${xacro.arg('tip_link')}" />
+  </group>
+
+  <group_state name="home" group="my_robot_manipulator">
+    <joint name="ur10_elbow" value="0" />
+    <joint name="ur10_shoulder_lift" value="-1.5707" />
+    <joint name="ur10_shoulder_pan" value="0" />
+    <joint name="ur10_wrist_1_joint" value="0" />
+    <joint name="ur10_wrist_2_joint" value="0" />
+    <joint name="ur10_wrist_3_joint" value="0" />
+  </group_state>
+
+  <group_state name="up" group="my_robot_manipulator">
+    <joint name="ur10_elbow" value="0" />
+    <joint name="ur10_shoulder_lift" value="-1.5707" />
+    <joint name="ur10_shoulder_pan" value="0" />
+    <joint name="ur10_wrist_1_joint" value="-1.5707" />
+    <joint name="ur10_wrist_2_joint" value="0" />
+    <joint name="ur10_wrist_3_joint" value="0" />
+  </group_state>
+
+  <group_state name="test_configuration" group="my_robot_manipulator">
+    <joint name="ur10_elbow" value="1.4" />
+    <joint name="ur10_shoulder_lift" value="-1.62" />
+    <joint name="ur10_shoulder_pan" value="1.54" />
+    <joint name="ur10_wrist_1_joint" value="-1.2" />
+    <joint name="ur10_wrist_2_joint" value="-1.6" />
+    <joint name="ur10_wrist_3_joint" value="-0.11" />
+  </group_state>
+
+  <disable_collisions link1="gantry_structure_link" link2="gantry_x_carriage_link" reason="Adjacent" />
+  <disable_collisions link1="gantry_x_carriage_link" link2="gantry_y_carriage_link" reason="Adjacent" />
+  <disable_collisions link1="gantry_y_carriage_link" link2="gantry_z_carriage_link" reason="Adjacent" />
+  <disable_collisions link1="gantry_z_carriage_link" link2="ur_mount_link" reason="Adjacent" />
+  <disable_collisions link1="ur_mount_link" link2="ur10" reason="Adjacent" />
+  <disable_collisions link1="gantry_structure_link" link2="ur10_forearm" reason="Never" />
+  <disable_collisions link1="ur10" link2="ur10_shoulder" reason="Adjacent" />
+  <disable_collisions link1="ur10_shoulder" link2="ur10_upper_arm" reason="Adjacent" />
+  <disable_collisions link1="ur10_upper_arm" link2="ur10_forearm" reason="Adjacent" />
+  <disable_collisions link1="ur10_forearm" link2="ur10_wrist_1" reason="Adjacent" />
+  <disable_collisions link1="ur10_forearm" link2="ur10_wrist_2" reason="Never" />
+  <disable_collisions link1="ur10_wrist_1" link2="ur10_wrist_2" reason="Adjacent" />
+  <disable_collisions link1="ur10_wrist_2" link2="ur10_wrist_3" reason="Adjacent" />
+  <disable_collisions link1="ur10_wrist_3" link2="铲子" reason="Adjacent" />
+  <disable_collisions link1="ur10_wrist_3" link2="shovel_tip" reason="Adjacent" />
+  <disable_collisions link1="铲子" link2="shovel_tip" reason="Never" />
+</robot>

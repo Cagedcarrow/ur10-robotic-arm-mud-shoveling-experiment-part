@@ -24,6 +24,11 @@ def _get_string_parameter(node, name: str) -> Optional[str]:
     return parameter.value
 
 
+def _declare_if_missing(node, name: str, default_value):
+    if not node.has_parameter(name):
+        node.declare_parameter(name, default_value)
+
+
 def main():
     try:
         from moveit.core.robot_state import RobotState
@@ -38,23 +43,30 @@ def main():
     node = rclpy.create_node(
         "ur10_moveit_py_demo", automatically_declare_parameters_from_overrides=True
     )
-    node.declare_parameter("planning_group", "ur_manipulator")
-    node.declare_parameter("execute", True)
-    node.declare_parameter(
+    _declare_if_missing(node, "planning_group", "ur_manipulator")
+    _declare_if_missing(node, "execute", True)
+    _declare_if_missing(
+        node,
         "goal_joint_positions",
         [-1.20, -1.70, 2.05, -1.95, -1.57, 0.0],
     )
-    node.declare_parameter("ur_type", "ur10")
-    node.declare_parameter("gantry_x_initial", 0.0)
-    node.declare_parameter("gantry_y_initial", 0.0)
-    node.declare_parameter("gantry_z_initial", -0.6)
-    node.declare_parameter("gantry_x_min", -1.0)
-    node.declare_parameter("gantry_x_max", 1.0)
-    node.declare_parameter("gantry_y_min", -0.8)
-    node.declare_parameter("gantry_y_max", 0.8)
-    node.declare_parameter("gantry_z_min", -1.0)
-    node.declare_parameter("gantry_z_max", 0.0)
-    node.declare_parameter("gantry_base_height", 2.2)
+    _declare_if_missing(node, "ur_type", "ur10")
+    _declare_if_missing(node, "description_package", "ur10_description")
+    _declare_if_missing(node, "description_file", "ur10_sim.urdf.xacro")
+    _declare_if_missing(node, "moveit_config_package", "ur10_moveit_config")
+    _declare_if_missing(node, "moveit_config_file", "ur.srdf.xacro")
+    _declare_if_missing(node, "semantic_robot_name", "ur")
+    _declare_if_missing(node, "planning_tip_link", "tool0")
+    _declare_if_missing(node, "gantry_x_initial", 0.0)
+    _declare_if_missing(node, "gantry_y_initial", 0.0)
+    _declare_if_missing(node, "gantry_z_initial", -0.6)
+    _declare_if_missing(node, "gantry_x_min", -1.0)
+    _declare_if_missing(node, "gantry_x_max", 1.0)
+    _declare_if_missing(node, "gantry_y_min", -0.8)
+    _declare_if_missing(node, "gantry_y_max", 0.8)
+    _declare_if_missing(node, "gantry_z_min", -1.0)
+    _declare_if_missing(node, "gantry_z_max", 0.0)
+    _declare_if_missing(node, "gantry_base_height", 2.2)
 
     if not node.has_parameter("use_sim_time"):
       node.declare_parameter("use_sim_time", True)
@@ -65,19 +77,25 @@ def main():
     execute = node.get_parameter("execute").value
     goal_joint_positions = node.get_parameter("goal_joint_positions").value
     ur_type = node.get_parameter("ur_type").value
+    description_package = node.get_parameter("description_package").value
+    description_file = node.get_parameter("description_file").value
+    moveit_config_package = node.get_parameter("moveit_config_package").value
+    moveit_config_file = node.get_parameter("moveit_config_file").value
+    semantic_robot_name = node.get_parameter("semantic_robot_name").value
+    planning_tip_link = node.get_parameter("planning_tip_link").value
 
     robot_description = _get_string_parameter(node, "robot_description")
     robot_description_semantic = _get_string_parameter(node, "robot_description_semantic")
 
     if robot_description is None or robot_description_semantic is None:
-        ur10_description_share = Path(get_package_share_directory("ur10_description"))
-        ur_description_share = Path(get_package_share_directory("ur_description"))
-        moveit_config_share = Path(get_package_share_directory("ur10_moveit_config"))
+        description_share = Path(get_package_share_directory(description_package))
+        moveit_config_share = Path(get_package_share_directory(moveit_config_package))
 
-        robot_description = subprocess.check_output(
-            [
+        if description_package == "ur10_description" and description_file == "ur10_sim.urdf.xacro":
+            ur_description_share = Path(get_package_share_directory("ur_description"))
+            robot_description_command = [
                 "xacro",
-                str(ur10_description_share / "urdf" / "ur10_sim.urdf.xacro"),
+                str(description_share / "urdf" / description_file),
                 f"ur_type:={ur_type}",
                 "robot_name:=ur",
                 "use_fake_hardware:=false",
@@ -96,14 +114,36 @@ def main():
                 f"gantry_z_min:={node.get_parameter('gantry_z_min').value}",
                 f"gantry_z_max:={node.get_parameter('gantry_z_max').value}",
                 f"gantry_base_height:={node.get_parameter('gantry_base_height').value}",
-            ],
-            text=True,
-        )
+            ]
+        else:
+            robot_description_command = [
+                "xacro",
+                str(description_share / "urdf" / description_file),
+                "ros_profile:=ros2",
+                "ros_hardware_interface:=position",
+                "sim_gazebo:=true",
+                f"gantry_x_initial:={node.get_parameter('gantry_x_initial').value}",
+                f"gantry_y_initial:={node.get_parameter('gantry_y_initial').value}",
+                f"gantry_z_initial:={node.get_parameter('gantry_z_initial').value}",
+                f"gantry_x_min:={node.get_parameter('gantry_x_min').value}",
+                f"gantry_x_max:={node.get_parameter('gantry_x_max').value}",
+                f"gantry_y_min:={node.get_parameter('gantry_y_min').value}",
+                f"gantry_y_max:={node.get_parameter('gantry_y_max').value}",
+                f"gantry_z_min:={node.get_parameter('gantry_z_min').value}",
+                f"gantry_z_max:={node.get_parameter('gantry_z_max').value}",
+                f"gantry_base_height:={node.get_parameter('gantry_base_height').value}",
+            ]
+            controllers_yaml = description_share / "config" / "ros2_controllers.yaml"
+            if controllers_yaml.exists():
+                robot_description_command.append(f"simulation_controllers:={controllers_yaml}")
+
+        robot_description = subprocess.check_output(robot_description_command, text=True)
         robot_description_semantic = subprocess.check_output(
             [
                 "xacro",
-                str(moveit_config_share / "srdf" / "ur.srdf.xacro"),
-                "name:=ur",
+                str(moveit_config_share / "srdf" / moveit_config_file),
+                f"name:={semantic_robot_name}",
+                f"tip_link:={planning_tip_link}",
             ],
             text=True,
         )
@@ -117,15 +157,15 @@ def main():
         "default_planner_request_adapters/FixStartStatePathConstraints",
         "start_state_max_bounds_error": 0.1,
     }
-    ompl_config.update(load_yaml("ur10_moveit_config", "config/ompl_planning.yaml"))
+    ompl_config.update(load_yaml(moveit_config_package, "config/ompl_planning.yaml"))
 
     config_dict = {
         "robot_description": robot_description,
         "robot_description_semantic": robot_description_semantic,
-        "robot_description_kinematics": load_yaml("ur10_moveit_config", "config/kinematics.yaml")[
+        "robot_description_kinematics": load_yaml(moveit_config_package, "config/kinematics.yaml")[
             "/**"
         ]["ros__parameters"]["robot_description_kinematics"],
-        "robot_description_planning": load_yaml("ur10_moveit_config", "config/joint_limits.yaml")[
+        "robot_description_planning": load_yaml(moveit_config_package, "config/joint_limits.yaml")[
             "joint_limits"
         ],
         "planning_scene_monitor_options": {
@@ -143,7 +183,7 @@ def main():
         },
         "ompl": ompl_config,
         "moveit_simple_controller_manager": load_yaml(
-            "ur10_moveit_config", "config/moveit_controllers.yaml"
+            moveit_config_package, "config/moveit_controllers.yaml"
         ),
         "moveit_controller_manager": "moveit_simple_controller_manager/MoveItSimpleControllerManager",
         "trajectory_execution.allowed_execution_duration_scaling": 1.2,

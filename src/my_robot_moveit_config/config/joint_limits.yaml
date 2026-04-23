@@ -1,0 +1,19 @@
+joint_limits:
+  ur10_shoulder_pan:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  ur10_shoulder_lift:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  ur10_elbow:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  ur10_wrist_1_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  ur10_wrist_2_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  ur10_wrist_3_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0

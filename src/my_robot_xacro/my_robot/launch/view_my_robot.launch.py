@@ -13,6 +13,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindPackageShare("my_robot"), "my_robot.urdf.xacro"]),
             " ros_profile:=ros2",
             " ros_hardware_interface:=position",
+            " inject_gazebo_ros_control_plugin:=false",
         ]
     )
     robot_description = {
