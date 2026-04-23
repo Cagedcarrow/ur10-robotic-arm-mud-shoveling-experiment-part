@@ -4,7 +4,13 @@ import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.conditions import IfCondition
-from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import (
+    Command,
+    FindExecutable,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+    PythonExpression,
+)
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
@@ -46,6 +52,7 @@ def _launch_setup(context, *args, **kwargs):
 
     use_sim_time = LaunchConfiguration("use_sim_time")
     start_rviz = LaunchConfiguration("start_rviz")
+    start_gantry_rviz_control = LaunchConfiguration("start_gantry_rviz_control")
     planning_group = LaunchConfiguration("planning_group")
     planning_tip_link = LaunchConfiguration("planning_tip_link")
     warehouse_sqlite_path = LaunchConfiguration("warehouse_sqlite_path")
@@ -210,7 +217,33 @@ def _launch_setup(context, *args, **kwargs):
         ],
     )
 
-    return [move_group_node, rviz_node]
+    gantry_rviz_control_node = Node(
+        package="ur10_examples_py",
+        executable="gantry_rviz_control",
+        name="gantry_rviz_control",
+        output="screen",
+        condition=IfCondition(
+            PythonExpression(
+                ["'", start_rviz, "' == 'true' and '", start_gantry_rviz_control, "' == 'true'"]
+            )
+        ),
+        parameters=[
+            {
+                "gantry_base_x": 0.95,
+                "gantry_base_y": 0.0,
+                "gantry_base_height": float(gantry_config["structure"]["base_height"]),
+                "gantry_x_min": float(gantry_config["limits"]["x"]["min"]),
+                "gantry_x_max": float(gantry_config["limits"]["x"]["max"]),
+                "gantry_y_min": float(gantry_config["limits"]["y"]["min"]),
+                "gantry_y_max": float(gantry_config["limits"]["y"]["max"]),
+                "gantry_z_min": float(gantry_config["limits"]["z"]["min"]),
+                "gantry_z_max": float(gantry_config["limits"]["z"]["max"]),
+                "use_sim_time": True,
+            }
+        ],
+    )
+
+    return [move_group_node, rviz_node, gantry_rviz_control_node]
 
 
 def generate_launch_description():
@@ -218,6 +251,7 @@ def generate_launch_description():
         [
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             DeclareLaunchArgument("start_rviz", default_value="true"),
+            DeclareLaunchArgument("start_gantry_rviz_control", default_value="true"),
             DeclareLaunchArgument("planning_group", default_value="my_robot_manipulator"),
             DeclareLaunchArgument("planning_tip_link", default_value="shovel_tip"),
             DeclareLaunchArgument(
