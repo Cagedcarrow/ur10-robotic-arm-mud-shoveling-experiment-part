@@ -14,7 +14,7 @@
   <xacro:arg name="gantry_z_min" default="-1.0" />
   <xacro:arg name="gantry_z_max" default="0.0" />
   <xacro:arg name="gantry_base_height" default="2.2" />
-  <xacro:arg name="use_gazebo_compatible_visuals" default="true" />
+  <xacro:arg name="use_gazebo_visual_meshes" default="true" />
 
   <xacro:include filename="$(find my_robot)/urdf/my_robot_macro.urdf.xacro" />
 
@@ -215,12 +215,43 @@
     ros_profile="$(arg ros_profile)"
     ros_hardware_interface="$(arg ros_hardware_interface)"
     inject_gazebo_ros_control_plugin="false"
-    use_gazebo_compatible_visuals="$(arg use_gazebo_compatible_visuals)" />
+    include_ros2_control="false"
+    use_gazebo_visual_meshes="$(arg use_gazebo_visual_meshes)" />
 
-  <ros2_control name="gantry" type="system">
+  <ros2_control name="my_robot_gantry" type="system">
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
+    <joint name="ur10_shoulder_pan">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="ur10_shoulder_lift">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="ur10_elbow">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="ur10_wrist_1_joint">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="ur10_wrist_2_joint">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="ur10_wrist_3_joint">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
     <joint name="gantry_x_joint">
       <command_interface name="position" />
       <state_interface name="position">

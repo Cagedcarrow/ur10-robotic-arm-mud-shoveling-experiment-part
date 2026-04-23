@@ -47,7 +47,7 @@
   <disable_collisions link1="ur10_forearm" link2="ur10_wrist_2" reason="Never" />
   <disable_collisions link1="ur10_wrist_1" link2="ur10_wrist_2" reason="Adjacent" />
   <disable_collisions link1="ur10_wrist_2" link2="ur10_wrist_3" reason="Adjacent" />
-  <disable_collisions link1="ur10_wrist_3" link2="铲子" reason="Adjacent" />
+  <disable_collisions link1="ur10_wrist_3" link2="shovel_link" reason="Adjacent" />
   <disable_collisions link1="ur10_wrist_3" link2="shovel_tip" reason="Adjacent" />
-  <disable_collisions link1="铲子" link2="shovel_tip" reason="Never" />
+  <disable_collisions link1="shovel_link" link2="shovel_tip" reason="Never" />
 </robot>

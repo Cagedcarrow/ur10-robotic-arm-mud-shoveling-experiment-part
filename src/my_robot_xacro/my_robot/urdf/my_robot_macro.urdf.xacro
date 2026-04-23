@@ -2,43 +2,31 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro
     name="my_robot_model"
-    params="ros_profile:='ros2' ros_hardware_interface:='position' inject_gazebo_ros_control_plugin:='true' use_gazebo_compatible_visuals:='false'">
+    params="ros_profile:='ros2' ros_hardware_interface:='position' inject_gazebo_ros_control_plugin:='true' include_ros2_control:='true' use_gazebo_visual_meshes:='false'">
 
-  <xacro:macro name="ur_gray_material" params="name rgba">
-    <material name="${name}">
-      <color rgba="${rgba}" />
-    </material>
-  </xacro:macro>
-
-  <xacro:macro name="ur_visual_or_gazebo_cylinder" params="mesh_filename radius length origin_xyz origin_rpy material_name material_rgba">
-    <xacro:if value="${use_gazebo_compatible_visuals}">
-      <visual>
-        <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
-        <geometry>
-          <cylinder radius="${radius}" length="${length}" />
-        </geometry>
-        <xacro:ur_gray_material name="${material_name}" rgba="${material_rgba}" />
-      </visual>
-    </xacro:if>
-    <xacro:unless value="${use_gazebo_compatible_visuals}">
+  <xacro:macro name="ur_visual_mesh" params="dae_mesh stl_mesh">
+    <xacro:if value="${use_gazebo_visual_meshes}">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${mesh_filename}" />
+          <mesh filename="${stl_mesh}" />
+        </geometry>
+      </visual>
+    </xacro:if>
+    <xacro:unless value="${use_gazebo_visual_meshes}">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="${dae_mesh}" />
         </geometry>
       </visual>
     </xacro:unless>
   </xacro:macro>
 
   <link name="ur10">
-    <xacro:ur_visual_or_gazebo_cylinder
-      mesh_filename="package://my_robot/meshes/base.dae"
-      radius="0.075"
-      length="0.038"
-      origin_xyz="0 0 0.019"
-      origin_rpy="0 0 0"
-      material_name="ur10_base_mat"
-      material_rgba="0.27 0.27 0.29 1.0" />
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/base.dae"
+      stl_mesh="file://$(find my_robot)/meshes/base_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0 0.019" rpy="0 0 0" />
       <geometry>
@@ -53,14 +41,9 @@
   </link>
 
   <link name="ur10_shoulder">
-    <xacro:ur_visual_or_gazebo_cylinder
-      mesh_filename="package://my_robot/meshes/shoulder.dae"
-      radius="0.075"
-      length="0.177"
-      origin_xyz="0 0 0"
-      origin_rpy="0 0 0"
-      material_name="ur10_shoulder_mat"
-      material_rgba="0.60 0.61 0.64 1.0" />
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/shoulder.dae"
+      stl_mesh="file://$(find my_robot)/meshes/shoulder_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -75,37 +58,9 @@
   </link>
 
   <link name="ur10_upper_arm">
-    <xacro:if value="${use_gazebo_compatible_visuals}">
-      <visual>
-        <origin xyz="0 -0.045 0" rpy="1.5707 0 0" />
-        <geometry>
-          <cylinder radius="0.075" length="0.177" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_upper_arm_head_mat" rgba="0.62 0.63 0.66 1.0" />
-      </visual>
-      <visual>
-        <origin xyz="0 -0.0436 0.32" rpy="0 0 1.5707" />
-        <geometry>
-          <cylinder radius="0.058" length="0.461" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_upper_arm_body_mat" rgba="0.76 0.76 0.79 1.0" />
-      </visual>
-      <visual>
-        <origin xyz="0 -0.04 0.613" rpy="1.5707 0 0" />
-        <geometry>
-          <cylinder radius="0.058" length="0.129" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_upper_arm_cap_mat" rgba="0.62 0.63 0.66 1.0" />
-      </visual>
-    </xacro:if>
-    <xacro:unless value="${use_gazebo_compatible_visuals}">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://my_robot/meshes/upperarm.dae" />
-        </geometry>
-      </visual>
-    </xacro:unless>
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/upperarm.dae"
+      stl_mesh="file://$(find my_robot)/meshes/upperarm_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 -0.045 0" rpy="1.5707 0 0" />
       <geometry>
@@ -132,37 +87,9 @@
   </link>
 
   <link name="ur10_forearm">
-    <xacro:if value="${use_gazebo_compatible_visuals}">
-      <visual>
-        <origin xyz="0 0 0.001" rpy="1.5707 0 0" />
-        <geometry>
-          <cylinder radius="0.058" length="0.136" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_forearm_base_mat" rgba="0.62 0.63 0.66 1.0" />
-      </visual>
-      <visual>
-        <origin xyz="0 0 0.305" rpy="0 0 1.5707" />
-        <geometry>
-          <cylinder radius="0.045" length="0.447" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_forearm_body_mat" rgba="0.76 0.76 0.79 1.0" />
-      </visual>
-      <visual>
-        <origin xyz="0 0.001 0.5735" rpy="1.5707 0 0" />
-        <geometry>
-          <cylinder radius="0.045" length="0.119" />
-        </geometry>
-        <xacro:ur_gray_material name="ur10_forearm_cap_mat" rgba="0.62 0.63 0.66 1.0" />
-      </visual>
-    </xacro:if>
-    <xacro:unless value="${use_gazebo_compatible_visuals}">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://my_robot/meshes/forearm.dae" />
-        </geometry>
-      </visual>
-    </xacro:unless>
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/forearm.dae"
+      stl_mesh="file://$(find my_robot)/meshes/forearm_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0 0.001" rpy="1.5707 0 0" />
       <geometry>
@@ -189,14 +116,9 @@
   </link>
 
   <link name="ur10_wrist_1">
-    <xacro:ur_visual_or_gazebo_cylinder
-      mesh_filename="package://my_robot/meshes/wrist1.dae"
-      radius="0.0455"
-      length="0.119"
-      origin_xyz="0 0.115 0.0025"
-      origin_rpy="0 0 0"
-      material_name="ur10_wrist_1_mat"
-      material_rgba="0.58 0.59 0.62 1.0" />
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/wrist1.dae"
+      stl_mesh="file://$(find my_robot)/meshes/wrist1_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0.115 0.0025" rpy="0 0 0" />
       <geometry>
@@ -211,14 +133,9 @@
   </link>
 
   <link name="ur10_wrist_2">
-    <xacro:ur_visual_or_gazebo_cylinder
-      mesh_filename="package://my_robot/meshes/wrist2.dae"
-      radius="0.0455"
-      length="0.119"
-      origin_xyz="0 0.002 0.11659"
-      origin_rpy="1.5707 0 0"
-      material_name="ur10_wrist_2_mat"
-      material_rgba="0.58 0.59 0.62 1.0" />
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/wrist2.dae"
+      stl_mesh="file://$(find my_robot)/meshes/wrist2_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0.002 0.11659" rpy="1.5707 0 0" />
       <geometry>
@@ -233,14 +150,9 @@
   </link>
 
   <link name="ur10_wrist_3">
-    <xacro:ur_visual_or_gazebo_cylinder
-      mesh_filename="package://my_robot/meshes/wrist3.dae"
-      radius="0.045"
-      length="0.031"
-      origin_xyz="0 0.0765 0"
-      origin_rpy="1.5707 0 0"
-      material_name="ur10_wrist_3_mat"
-      material_rgba="0.58 0.59 0.62 1.0" />
+    <xacro:ur_visual_mesh
+      dae_mesh="package://my_robot/meshes/wrist3.dae"
+      stl_mesh="file://$(find my_robot)/meshes/wrist3_gazebo_visual.stl" />
     <collision>
       <origin xyz="0 0.0765 0" rpy="1.5707 0 0" />
       <geometry>
@@ -254,20 +166,20 @@
     </inertial>
   </link>
 
-  <link name="铲子">
+  <link name="shovel_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://my_robot/meshes/base_link.STL" />
+        <mesh filename="file://$(find my_robot)/meshes/base_link.STL" />
       </geometry>
-      <material name="铲子_mat">
+      <material name="shovel_material">
         <color rgba="0.64706275 0.61961176 0.58823922 1.00000000"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://my_robot/meshes/base_link.STL" />
+        <mesh filename="file://$(find my_robot)/meshes/base_link.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -327,7 +239,7 @@
 
   <joint name="ur10-robot" type="fixed">
     <parent link="ur10_wrist_3" />
-    <child link="铲子" />
+    <child link="shovel_link" />
     <origin xyz="0 0.105 0" rpy="1.5707963 0 -1.5707963" />
   </joint>
   <xacro:if value="${ros_profile == 'ros1' and ros_hardware_interface == 'effort'}">
@@ -564,7 +476,7 @@
 
   </xacro:if>
 
-  <xacro:if value="${ros_profile == 'ros2' and ros_hardware_interface == 'effort'}">
+  <xacro:if value="${include_ros2_control == 'true' and ros_profile == 'ros2' and ros_hardware_interface == 'effort'}">
       <ros2_control name="my_robot" type="system">
         <hardware>
           <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -618,7 +530,7 @@
 
   </xacro:if>
 
-  <xacro:if value="${ros_profile == 'ros2' and ros_hardware_interface == 'position'}">
+  <xacro:if value="${include_ros2_control == 'true' and ros_profile == 'ros2' and ros_hardware_interface == 'position'}">
       <ros2_control name="my_robot" type="system">
         <hardware>
           <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -666,7 +578,7 @@
 
   </xacro:if>
 
-  <xacro:if value="${ros_profile == 'ros2' and ros_hardware_interface == 'velocity'}">
+  <xacro:if value="${include_ros2_control == 'true' and ros_profile == 'ros2' and ros_hardware_interface == 'velocity'}">
       <ros2_control name="my_robot" type="system">
         <hardware>
           <plugin>gazebo_ros2_control/GazeboSystem</plugin>
