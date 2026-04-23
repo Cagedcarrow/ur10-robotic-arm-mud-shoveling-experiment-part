@@ -14,6 +14,7 @@
   <xacro:arg name="gantry_z_min" default="-1.0" />
   <xacro:arg name="gantry_z_max" default="0.0" />
   <xacro:arg name="gantry_base_height" default="2.2" />
+  <xacro:arg name="use_gazebo_compatible_visuals" default="true" />
 
   <xacro:include filename="$(find my_robot)/urdf/my_robot_macro.urdf.xacro" />
 
@@ -213,7 +214,8 @@
   <xacro:my_robot_model
     ros_profile="$(arg ros_profile)"
     ros_hardware_interface="$(arg ros_hardware_interface)"
-    inject_gazebo_ros_control_plugin="false" />
+    inject_gazebo_ros_control_plugin="false"
+    use_gazebo_compatible_visuals="$(arg use_gazebo_compatible_visuals)" />
 
   <ros2_control name="gantry" type="system">
     <hardware>

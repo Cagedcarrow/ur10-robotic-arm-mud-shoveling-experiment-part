@@ -3,11 +3,13 @@
   <xacro:arg name="ros_profile" default="ros2" />
   <xacro:arg name="ros_hardware_interface" default="position" />
   <xacro:arg name="inject_gazebo_ros_control_plugin" default="true" />
+  <xacro:arg name="use_gazebo_compatible_visuals" default="false" />
 
   <xacro:include filename="$(find my_robot)/urdf/my_robot_macro.urdf.xacro" />
 
   <xacro:my_robot_model
     ros_profile="$(arg ros_profile)"
     ros_hardware_interface="$(arg ros_hardware_interface)"
-    inject_gazebo_ros_control_plugin="$(arg inject_gazebo_ros_control_plugin)" />
+    inject_gazebo_ros_control_plugin="$(arg inject_gazebo_ros_control_plugin)"
+    use_gazebo_compatible_visuals="$(arg use_gazebo_compatible_visuals)" />
 </robot>
