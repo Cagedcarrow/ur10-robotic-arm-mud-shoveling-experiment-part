@@ -146,6 +146,14 @@ ur10_description + ur10_moveit_config + ur10_simulation_bringup
 - [机器人描述与 RViz](src/docs/机器人描述与RViz/README.md)
 - [my_robot 龙门架构建笔记](src/docs/my_robot_gantry_build_notes/00_总览.md)
 
+## 论文写作入口
+
+如果你正在将本工程整理为论文材料，建议从下面文档开始：
+
+- [UR10 龙门架铲斗系统论文级技术说明](论文项目/UR10_龙门架铲斗系统_论文级技术说明.md)
+
+该文档面向论文写作场景，采用“研究背景-系统架构-模型构建-联动机制-GUI实现-验证方法”的叙事结构，覆盖实施路径、软件操作流程、`my_robot.urdf.xacro`（sarco 所指）构建机制、MoveIt2 与 Gazebo 联动机制及一体化 GUI 设计与测试结果。
+
 推荐阅读顺序：
 
 1. 如果你不知道包是干什么的，看 [工作区功能包分析](src/docs/工作区功能包分析/README.md)

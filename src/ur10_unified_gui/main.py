@@ -46,6 +46,8 @@ def _dir_exists(path: str) -> bool:
 
 
 class ProcessSession:
+    POPEN = subprocess.Popen
+
     def __init__(self, cmd, cwd: Optional[str], env: Optional[Dict[str, str]], label: str, log_queue):
         self.cmd = cmd
         self.cwd = cwd
@@ -57,7 +59,7 @@ class ProcessSession:
 
     def start(self):
         preexec_fn = os.setsid if os.name == "posix" else None
-        self.proc = subprocess.Popen(
+        self.proc = self.POPEN(
             self.cmd,
             cwd=self.cwd,
             env=self.env,
@@ -229,14 +231,42 @@ class UnifiedGUIApp(tk.Tk):
             ttk.Button(frame, text="…", width=3, command=cmd).grid(row=row, column=2)
 
     def _pick_file(self, var: tk.StringVar, types):
-        path = filedialog.askopenfilename(filetypes=types)
+        path = self._ask_open_filename(types)
         if path:
             var.set(path)
 
     def _pick_dir(self, var: tk.StringVar):
-        path = filedialog.askdirectory(initialdir=var.get() or str(BASE_DIR))
+        path = self._ask_directory(var.get() or str(BASE_DIR))
         if path:
             var.set(path)
+
+    def _ask_open_filename(self, types):
+        return filedialog.askopenfilename(filetypes=types)
+
+    def _ask_directory(self, initialdir: str):
+        return filedialog.askdirectory(initialdir=initialdir)
+
+    def _ask_save_filename(self, default_ext: str, initial_file: str, types):
+        return filedialog.asksaveasfilename(
+            defaultextension=default_ext,
+            initialfile=initial_file,
+            filetypes=types,
+        )
+
+    def _show_warning(self, title: str, message: str):
+        messagebox.showwarning(title, message)
+
+    def _show_error(self, title: str, message: str):
+        messagebox.showerror(title, message)
+
+    def _run_ping(self, robot_ip: str):
+        return subprocess.run(
+            ["ping", "-c", "1", "-W", "2", robot_ip],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
 
     def _toggle_mode(self):
         if self.v_mode.get() == "Real":
@@ -270,7 +300,7 @@ class UnifiedGUIApp(tk.Tk):
             return True
         active = self.active_mode or "Unknown"
         self._append_log("Main", f"[WARN] 当前 {active} 任务运行中，按互斥策略拒绝启动 {target_mode}")
-        messagebox.showwarning("提示", f"当前 {active} 任务运行中，请先停止")
+        self._show_warning("提示", f"当前 {active} 任务运行中，请先停止")
         return False
 
     def _append_log(self, source: str, text: str):
@@ -344,21 +374,21 @@ class UnifiedGUIApp(tk.Tk):
             ipaddress.ip_address(cfg.host_ip)
         except Exception:
             self._append_log("Net", "[FAIL] host_ip 非法")
-            messagebox.showerror("参数错误", "host_ip 不合法")
+            self._show_error("参数错误", "host_ip 不合法")
             return False
 
         try:
             ipaddress.ip_address(cfg.robot_ip)
         except Exception:
             self._append_log("Net", "[FAIL] robot_ip 非法")
-            messagebox.showerror("参数错误", "robot_ip 不合法")
+            self._show_error("参数错误", "robot_ip 不合法")
             return False
 
         try:
             ipaddress.ip_network(cfg.robot_subnet, strict=False)
         except Exception:
             self._append_log("Net", "[FAIL] robot_subnet 非法")
-            messagebox.showerror("参数错误", "robot_subnet 不合法")
+            self._show_error("参数错误", "robot_subnet 不合法")
             return False
 
         host = ipaddress.ip_address(cfg.host_ip)
@@ -372,13 +402,7 @@ class UnifiedGUIApp(tk.Tk):
             self._append_log("Net", f"[WARN] robot_ip 不在子网 {cfg.robot_subnet}")
 
         try:
-            p = subprocess.run(
-                ["ping", "-c", "1", "-W", "2", cfg.robot_ip],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                check=False,
-            )
+            p = self._run_ping(cfg.robot_ip)
             if p.returncode == 0:
                 self._append_log("Net", "[PASS] ping 到 robot_ip 成功")
             else:
@@ -431,11 +455,11 @@ class UnifiedGUIApp(tk.Tk):
             self._set_status("FAIL")
             return False
         if not cfg.ur_type:
-            messagebox.showerror("参数错误", "ur_type 不能为空")
+            self._show_error("参数错误", "ur_type 不能为空")
             self._set_status("FAIL")
             return False
         if not cfg.world:
-            messagebox.showerror("参数错误", "world 不能为空")
+            self._show_error("参数错误", "world 不能为空")
             self._set_status("FAIL")
             return False
 
@@ -538,7 +562,7 @@ class UnifiedGUIApp(tk.Tk):
         self.config_data = UnifiedGUIConfig.from_dict({**self.config_data.to_dict(), **cfg.to_dict()})
         ok, err = self._validate_real(cfg)
         if not ok:
-            messagebox.showerror("参数错误", err)
+            self._show_error("参数错误", err)
             return
 
         if cfg.auto_network_check and not self._check_real_network(cfg):
@@ -587,7 +611,7 @@ class UnifiedGUIApp(tk.Tk):
         self.config_data = UnifiedGUIConfig.from_dict({**self.config_data.to_dict(), **cfg.to_dict()})
         ok, err = self._validate_sim(cfg)
         if not ok:
-            messagebox.showerror("参数错误", err)
+            self._show_error("参数错误", err)
             return
 
         if cfg.auto_network_check and not self._check_sim_network(cfg):
@@ -653,10 +677,10 @@ class UnifiedGUIApp(tk.Tk):
             self._set_status("IDLE")
 
     def _export_log(self):
-        path = filedialog.asksaveasfilename(
-            defaultextension=".log",
-            initialfile=f"ur10_unified_gui_{int(time.time())}.log",
-            filetypes=[("Log", "*.log"), ("All", "*.*")],
+        path = self._ask_save_filename(
+            ".log",
+            f"ur10_unified_gui_{int(time.time())}.log",
+            [("Log", "*.log"), ("All", "*.*")],
         )
         if not path:
             return
