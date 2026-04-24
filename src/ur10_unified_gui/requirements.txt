@@ -1,0 +1,2 @@
+# 当前版本无第三方依赖，使用 Python 标准库
+# (tkinter, subprocess, socket, ipaddress, json, threading)
