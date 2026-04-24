@@ -1,0 +1,23 @@
+/**:
+  ros__parameters:
+    ur_type: ur10
+    description_package: ur10_description
+    description_file: ur10_sim.urdf.xacro
+    planning_group: ur_manipulator
+    planning_tip_link: tool0
+    moveit_config_package: ur10_moveit_config
+    moveit_config_file: ur.srdf.xacro
+    planning_pipeline: ompl
+    planner_id: RRTConnectkConfigDefault
+    wrist3_joint_name: wrist_3_joint
+    wrist3_delta_deg: 0.5
+    wrist3_tolerance_deg: 0.2
+    verify_tolerance_ratio: 0.7
+    planning_timeout_sec: 20.0
+    execution_timeout_sec: 30.0
+    joint_state_timeout_sec: 20.0
+    controller_check_timeout_sec: 30.0
+    wait_for_confirm_timeout_sec: 180.0
+    velocity_scale: 0.05
+    acceleration_scale: 0.05
+    initial_joint_controller: scaled_joint_trajectory_controller
