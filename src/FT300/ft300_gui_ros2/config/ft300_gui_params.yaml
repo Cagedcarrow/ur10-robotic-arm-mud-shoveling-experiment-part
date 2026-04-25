@@ -1,0 +1,11 @@
+/**:
+  ros__parameters:
+    port: "/dev/ttyUSB0"
+    baudrate: 19200
+    timeout: 0.1
+    frame_id: "ft300_sensor_link"
+    publish_rate: 100.0
+    validate_crc: true
+    save_root_dir: "~/ft300_sessions"
+    plot_window_sec: 30
+    slave_id: 9

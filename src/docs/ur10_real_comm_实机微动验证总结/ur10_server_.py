@@ -3,6 +3,7 @@ import threading
 import json
 import numpy as np
 import binascii
+import argparse
 import urx
 import time
 import math
@@ -10,16 +11,19 @@ import threading
 from ur_monitor import URMonitor
 
 class UR10eServer:
-    def __init__(self, host='10.160.9.100', port=8001):
+    def __init__(self, host='0.0.0.0', port=8001, robot_ip='10.160.9.21'):
 
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 创建 TCP 套接字
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server_socket.bind((host, port))  # 绑定服务器地址和端口
         self.server_socket.listen(5)  # 开始监听连接
         print(f"Server listening on {host}:{port}")
+        self.robot_ip = robot_ip
 
         ####################ke####################
-        self.ur = urx.Robot('10.160.9.21')  # 与UR连接
-        print('UR机械臂连接成功')
+        # 延迟连接：先让服务器稳定监听，收到运动指令时再连接机械臂
+        self.ur = None
+        print(f'UR机械臂连接采用延迟模式，目标IP: {self.robot_ip}')
         # 机器人只要一启动就需运动到初始位
         # print('机械臂运动到初始位')
         # init_q = [1.46, 7.60, -91.51, -95.88, 358.55, -0.22]
@@ -41,6 +45,18 @@ class UR10eServer:
             print(f"Connection from {addr}")
             threading.Thread(target=self.handle_client, args=(client_socket, addr)).start()  # 创建新线程处理客户端连接
 
+    def ensure_robot_connection(self):
+        if self.ur is not None:
+            return True
+        try:
+            self.ur = urx.Robot(self.robot_ip)
+            print(f'UR机械臂连接成功: {self.robot_ip}')
+            return True
+        except Exception as e:
+            print(f'UR机械臂连接失败({self.robot_ip}): {e}')
+            self.ur = None
+            return False
+
     def handle_client(self, client_socket, addr):
         with client_socket:
             while True:
@@ -54,12 +70,18 @@ class UR10eServer:
                     command = data[1:2]  # 获取命令字节
 
                     if command == b'\xa1':  # 接收墙面涂抹指令
+                        if not self.ensure_robot_connection():
+                            client_socket.sendall(b'\xEE\x00\x02\xFE\x00\x00\x00\xDD')
+                            continue
                         print("Received command A1")
                         self.plaster_pos_type = 'A1'
                         # 到达涂抹开始位后走servoJ开始涂抹
                         threading.Thread(target=self.execute_and_respond,
                                          args=(client_socket, b'\xEE\x00\x02\x00\x00\x00\x00\xDD', 'AAA.csv')).start()
                     elif command == b'\xa2':
+                        if not self.ensure_robot_connection():
+                            client_socket.sendall(b'\xEE\x00\x02\xFE\x00\x00\x00\xDD')
+                            continue
                         print("Received command A2")  # 接收抹泥面1涂抹指令
                         self.plaster_pos_type = 'A2'
 
@@ -70,6 +92,9 @@ class UR10eServer:
                                          args=(
                                          client_socket, b'\xEE\x00\x02\x02\x00\x00\x00\xDD', 's8028face1.csv')).start()
                     elif command == b'\xa3':  # 接收抹泥面2涂抹指令
+                        if not self.ensure_robot_connection():
+                            client_socket.sendall(b'\xEE\x00\x02\xFE\x00\x00\x00\xDD')
+                            continue
                         print("Received command A3")
                         self.plaster_pos_type = 'A3'
                         self.ur.check_rtde_c_connection()
@@ -271,4 +296,11 @@ class UR10eServer:
 
 
 if __name__ == '__main__':
-    UR10eServer()
+    parser = argparse.ArgumentParser(description='UR10e TCP server')
+    parser.add_argument('--host', default='0.0.0.0', help='Server bind host, default 0.0.0.0')
+    parser.add_argument('--port', type=int, default=8001, help='Server bind port, default 8001')
+    parser.add_argument('--robot-ip', default='10.160.9.21', help='UR robot IP')
+    args = parser.parse_args()
+
+    server = UR10eServer(host=args.host, port=args.port, robot_ip=args.robot_ip)
+    server.start_server()
