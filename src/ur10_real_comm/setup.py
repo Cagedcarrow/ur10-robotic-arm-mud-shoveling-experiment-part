@@ -1,9 +1,13 @@
 from glob import glob
-from os.path import join
+from os.path import isfile
 
 from setuptools import setup
 
 package_name = "ur10_real_comm"
+
+
+def file_list(pattern: str):
+    return [p for p in glob(pattern) if isfile(p)]
 
 
 setup(
@@ -13,9 +17,8 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", [f"resource/{package_name}"]),
         (f"share/{package_name}", ["package.xml"]),
-        (f"share/{package_name}/launch", glob("launch/*.py")),
-        (f"share/{package_name}/config", glob("config/*.yaml")),
-        (f"share/{package_name}/scripts", glob("scripts/*")),
+        (f"share/{package_name}/launch", file_list("launch/*.py")),
+        (f"share/{package_name}/config", file_list("config/*.yaml")),
     ],
     install_requires=[
         "setuptools",

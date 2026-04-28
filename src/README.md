@@ -1,352 +1,174 @@
-# UR10 主线任务总说明（ROS 2 Humble）
+# 龙门架 UR10 智能作业系统
 
-## 0. 适用范围与版本
+## 1. 项目简介
+本工程基于 Ubuntu 22.04 + ROS2 Humble，面向“龙门架三轴定位 + UR10 六轴作业 + 末端铲子围桶轨迹任务”。
+主线目标是形成一条可运行、可维护、可扩展的一键集成链路：Gazebo 仿真、MoveIt2 规划、RViz2 可视化、PyQt5 GUI 控制、DP-RRT 轨迹规划与执行。
 
-- 工作区：`/root/ur10_ws/src`
-- 适用系统：ROS 2 Humble
-- 本文主线范围（唯一主线）：
-  - UR10 仿真 + MoveIt2 路径规划（`ur10_simulation_bringup`）
-  - UR10 实机通信 + MoveIt2 微动验证（`ur10_real_comm`）
-  - FT300 力传感器采集与发布（`FT300/ft300_gui_ros2`）
-  - 双 GUI 协同：
-    - `ur10_unified_gui/main.py`
-    - `FT300/ft300_gui_ros2/ft300_gui_ros2/ft300_gui_node.py`
+## 2. 系统架构
+主线包固定为：
 
-说明：本文不把 `my_robot*` 系列作为主线，`my_robot*` 仍可作为独立分支使用。
+- `my_robot`：Gantry + UR10 + shovel_tip 机器人模型与 ros2_control 控制器配置
+- `my_robot_moveit_config`：仅 UR10 六轴 MoveIt2 规划配置（Gantry 不进 MoveIt 采样空间）
+- `ur10_trajectory_planner`：DP-RRT、轨迹生成、姿态拟合、demo/moveit 双模式执行
+- `ur10_bringup`：统一一键启动入口 `full_system.launch.py`
+- `ur10_unified_gui`：PyQt5 GUI（3+6 轴控制 + 桶参数 + 规划/执行操作）
 
----
+## 3. 功能包分层
+### 核心主线包
+- `my_robot`
+- `my_robot_moveit_config`
+- `ur10_trajectory_planner`
+- `ur10_bringup`
+- `ur10_unified_gui`
 
-## 1. 项目主线一图看懂
+### 辅助包
+- `ur10_simulation_bringup`（历史仿真编排入口，仍可单独使用）
+- `ur10_examples`、`ur10_examples_py`（示例控制/调试节点）
+- `ur10_perception`（world、相机、点云相关）
+- `ur10_real_comm`（实机通信与验证）
+- `FT300/ft300_gui_ros2`（力传感器 GUI）
 
-```text
-[场景A 仿真规划链]
-ur10_unified_gui(可选) -> ur10_simulation_bringup/complete_simulation.launch.py
-                         -> gazebo_sim.launch.py + moveit_planning.launch.py + demo_nodes.launch.py
-                         -> Gazebo + MoveIt2 + (可选)示例节点/感知节点
+### 历史/保留包
+- `ur10_with_shovel`、`ur10_description`、`ur10_moveit_config`
+- `FT300/my_robotiq_force_torque_sensor-master`（ROS1）
+- `轨迹构建与拟合说明文档`（文档与模板保留，不作为主线运行入口）
 
-[场景B 实机通信链]
-ur10_unified_gui(Real) 或命令行
--> ur10_real_comm/real_comm_moveit_verify.launch.py
--> ur_robot_driver + ur10_moveit_config + motion_verify_node
--> /ur10_real_comm/status + /ur10_real_comm/confirm_execute
+## 4. 模型组成
+### 4.1 龙门架
+- 关节：`gantry_x_joint`、`gantry_y_joint`、`gantry_z_joint`
+- 作用：整体定位，不进入 MoveIt2 采样空间
 
-[场景C FT300感知链]
-FT300/ft300_gui_ros2/ft300_gui.launch.py
--> ft300_gui_node (内置 GUI)
--> 串口读取 FT300 + 发布 /ft300/wrench + 会话保存 CSV/PNG/JSON
+### 4.2 UR10 机械臂
+- 关节：`ur10_shoulder_pan`、`ur10_shoulder_lift`、`ur10_elbow`、`ur10_wrist_1_joint`、`ur10_wrist_2_joint`、`ur10_wrist_3_joint`
+- 作用：末端作业与轨迹执行
 
-[场景D 双GUI协同]
-GUI1: ur10_unified_gui/main.py (负责 UR10 Real/Sim 编排)
-GUI2: ft300_gui_node.py 对应 GUI (负责 FT300 USB测试/采集/保存)
-```
+### 4.3 末端铲子
+- link：`shovel_link`、`shovel_tip`
+- 用于围桶入桶、桶内作业、抬升退出任务
 
-### 非主线/历史参考（保留但不作为当前主链路）
+### 4.4 圆柱桶
+- 参数：`bucket_center_x/y/z`、`bucket_radius`、`bucket_height`、`bucket_wall_thickness`、`safe_margin`
+- Gazebo 实体由 `ur10_bringup/bucket_scene_node` 动态生成
+- RViz 发布 `/bucket/marker`、`/bucket/safe_margin_marker`，并发布 `/bucket/features`
 
-- `FT300/my_robotiq_force_torque_sensor-master`：ROS1 风格 FT300 通信包（历史参考）
-- `FT300/robotiq_ft_sensor_dev_v1.0.1_20210317`：Robotiq 底层驱动开发包（参考/调试资料）
-- `docs/ur10_real_comm_实机微动验证总结/ur10_server_.py`：实机 TCP 控制脚本（专项工具，不是 ROS2 主线启动入口）
+## 5. Gazebo 仿真流程
+1. `my_robot/launch/gazebo_gantry.launch.py` 启动 `gzserver`。
+2. `robot_state_publisher` 发布机器人模型。
+3. `spawn_entity.py` 将 Gantry+UR10+shovel 实体注入 Gazebo。
+4. `gazebo_ros2_control` 在 Gazebo 内加载控制器管理器。
 
----
+## 6. ros2_control 控制器链路
+- 控制器配置文件：`my_robot/config/ros2_controllers.yaml`
+- 启动控制器：
+  - `joint_state_broadcaster`
+  - `joint_trajectory_controller`（UR10）
+  - `gantry_trajectory_controller`（Gantry）
+- 执行 action：
+  - `/joint_trajectory_controller/follow_joint_trajectory`
+  - `/gantry_trajectory_controller/follow_joint_trajectory`
 
-## 2. 主线包与核心节点清单
+## 7. MoveIt2 规划流程
+- 启动文件：`my_robot_moveit_config/launch/my_robot_moveit.launch.py`
+- 规划组：`my_robot_manipulator`（仅 UR10 六轴链）
+- 核心配置：
+  - `kinematics.yaml`
+  - `joint_limits.yaml`
+  - `ompl_planning.yaml`
+  - `moveit_controllers.yaml`
 
-| 包/入口 | 关键节点或进程 | 作用 | 关键话题/服务 |
-| --- | --- | --- | --- |
-| `ur10_simulation_bringup` (`complete_simulation.launch.py`) | Gazebo、`robot_state_publisher`、控制器 spawner、MoveIt launch、可选 demo/perception | 一键编排仿真规划链路 | 取决于下游节点，核心是 MoveIt 与控制器链路 |
-| `ur10_real_comm` (`real_comm_moveit_verify.launch.py`) | `ur_control.launch.py` + MoveIt + `motion_verify_node` | 实机通信与微动验证 | `/ur10_real_comm/status`、`/ur10_real_comm/confirm_execute` |
-| `FT300/ft300_gui_ros2` (`ft300_gui.launch.py`) | `ft300_gui_node`（带 tkinter+matplotlib GUI） | FT300 串口采集、可视化、保存与 ROS 发布 | `/ft300/wrench` |
-| `ur10_unified_gui/main.py` | GUI 编排进程（Real/Sim） | 一体化启动和状态监控（UR10链路） | 通过脚本/launch 间接驱动，不直接新增固定 ROS 话题 |
+## 8. RViz2 可视化流程
+- RobotModel、TF、MotionPlanning 由 MoveIt2/RViz2 侧提供
+- DP-RRT 与执行链可视化话题：
+  - `/planning/tree_markers`
+  - `/planning/markers`
+  - `/planning/path`
+  - `/execution/demo_marker`
 
-### `complete_simulation.launch.py` 编排关系（重点）
+## 9. DP-RRT 算法说明
+`ur10_trajectory_planner/planner_node` 将 `Algo_DP_RRT_3D.m` 核心思想迁移到 C++：
+- 动态目标偏置 `Pg`
+- 动态引力融合 `rho`
+- 自适应步长 `lambda(d_min)`
+- 失败计数恢复机制 `fail_count`
 
-`complete_simulation.launch.py` 会按顺序组织：
+规划对象为末端 TCP 笛卡尔路径，发布规划状态 `/planning/status` 与可视化 Marker。
 
-1. （可选）清理历史残留进程
-2. 启动 `gazebo_sim.launch.py`
-3. 启动 `moveit_planning.launch.py`
-4. （可选）启动 demo/perception/py tools 节点
+## 10. 轨迹生成流程
+`trajectory_node` 提供 `/trajectory/generate` 服务，输入桶参数后生成阶段化 TCP 轨迹：
+1. 桶口上方接近
+2. 入桶段
+3. 桶内作业段
+4. 抬升退出段
 
----
+并发布：
+- `/trajectory/target_poses`
+- `/trajectory/target_pose_array`
 
-## 3. 启动手册（按场景）
+## 11. 末端姿态拟合流程
+在轨迹点上执行：
+- 切线方向构造局部坐标系
+- 铲面攻角/装配角补偿
+- 姿态连续化（避免翻转）
+- 轨迹点重采样与平滑
 
-> 所有场景默认先执行：
+目标是减少 wrist 突跳与姿态反转。
 
+## 12. PyQt5 GUI 使用说明
+GUI 包：`ur10_unified_gui`，启动节点 `gui_node`。
+
+界面分 4 页：
+1. 关节控制：Gantry 3 轴 + UR10 6 轴（滑块+数值）
+2. 轨迹规划：桶参数输入、规划/执行/停止
+3. 系统状态：Gazebo/MoveIt/控制器/joint_states/marker/执行状态
+4. 日志页：规划日志、执行日志、系统日志
+
+中文到真实关节映射：
+- 龙门架 X/Y/Z -> `gantry_x_joint/gantry_y_joint/gantry_z_joint`
+- 基座/肩部/肘部/腕1/腕2/腕3 -> `ur10_shoulder_pan/ur10_shoulder_lift/ur10_elbow/ur10_wrist_1_joint/ur10_wrist_2_joint/ur10_wrist_3_joint`
+
+## 13. 一键启动命令
 ```bash
 cd /root/ur10_ws
-source /opt/ros/humble/setup.bash
-source /root/ur10_ws/install/setup.bash
+colcon build --symlink-install
+source install/setup.bash
+ros2 launch ur10_bringup full_system.launch.py
 ```
 
-### 场景 A：仅仿真（Gazebo + MoveIt2 + 可选 demo）
-
-#### 前置条件
-- 已完成编译（至少包含 `ur10_simulation_bringup` 及其依赖包）。
-- 本机图形环境可打开 Gazebo/RViz。 
-
-#### 启动命令（推荐最小）
-
+常用参数：
 ```bash
-ros2 launch ur10_simulation_bringup complete_simulation.launch.py \
-  start_cpp_demo:=false \
-  start_py_demo:=false \
-  start_py_tools:=false \
-  start_rviz:=true
+ros2 launch ur10_bringup full_system.launch.py \
+  headless:=false \
+  start_rviz:=true \
+  gazebo_gui:=true \
+  planner_mode:=dp_rrt \
+  execution_mode:=demo \
+  use_bucket:=true \
+  bucket_center_x:=0.8 bucket_center_y:=0.0 bucket_center_z:=0.0 \
+  bucket_radius:=0.18 bucket_height:=0.30 bucket_wall_thickness:=0.005 safe_margin:=0.03
 ```
 
-#### 成功判据
-- Gazebo 正常打开并加载 UR10/gantry。
-- MoveIt2（RViz）可看到模型与规划场景。
-
-#### 停止方式
-- 当前终端 `Ctrl+C`。
-- 如有残留进程，再次启动时可启用 `cleanup_existing_processes:=true`。
-
----
-
-### 场景 B：仅实机通信与路径验证（UR 驱动 + MoveIt + 微动验证）
-
-#### 前置条件
-- UR 控制器网络连通（`robot_ip`/`reverse_ip` 正确）。
-- 机器人端 External Control 配置一致。 
-
-#### 启动命令
-
-```bash
-ros2 launch ur10_real_comm real_comm_moveit_verify.launch.py \
-  robot_ip:=192.168.56.101 \
-  reverse_ip:=192.168.56.1 \
-  wrist3_delta_deg:=0.5 \
-  confirm_execute:=true
-```
-
-#### 执行确认（当 `confirm_execute:=true`）
-
-```bash
-ros2 service call /ur10_real_comm/confirm_execute std_srvs/srv/Trigger "{}"
-```
-
-#### 成功判据
-- `/ur10_real_comm/status` 有状态输出，最终出现 `PASS` 或明确 `FAIL` 原因。 
-
-#### 停止方式
-- 启动终端 `Ctrl+C`。
-
----
-
-### 场景 C：仅 FT300 采集可视化
-
-#### 前置条件
-- FT300 通过 USB-RS485 接入，串口可见（如 `/dev/ttyUSB0`）。
-- 已安装依赖：`python3-serial`、`python3-matplotlib`、`python3-numpy`。
-
-#### 启动命令
-
-```bash
-ros2 launch ft300_gui_ros2 ft300_gui.launch.py
-```
-
-#### GUI 使用流程
-1. 点击 `USB测试连接`
-2. 点击 `开始采集`
-3. 观察实时曲线与数值
-4. 点击 `停止采集并保存`
-
-#### 成功判据
-- GUI 显示 USB 通信正常。
-- `ros2 topic echo /ft300/wrench` 能持续看到数据。 
-- 保存目录出现 `CSV + PNG + JSON`。
-
-#### 停止方式
-- 在 GUI 点击 `退出` 或终端 `Ctrl+C`。
-
----
-
-### 场景 D：双 GUI 协同（UR10 总编排 GUI + FT300 GUI）
-
-#### 前置条件
-- 同时满足场景 A/B 与场景 C 对应前置条件。
-- 建议两个终端分别运行，避免日志混杂。
-
-#### 启动步骤
-
-终端 1（UR10 编排 GUI）：
-
-```bash
-cd /root/ur10_ws/src/ur10_unified_gui
-python3 main.py
-```
-
-终端 2（FT300 GUI）：
-
+## 14. 调试命令
 ```bash
 cd /root/ur10_ws
-source /opt/ros/humble/setup.bash
-source /root/ur10_ws/install/setup.bash
-ros2 launch ft300_gui_ros2 ft300_gui.launch.py
+source install/setup.bash
+
+ros2 pkg list | grep -E "ur10|my_robot|bringup|planner|gui"
+ros2 launch ur10_bringup full_system.launch.py headless:=true start_rviz:=false gazebo_gui:=false
+ros2 node list
+ros2 topic list
+ros2 service list | grep trajectory
+ros2 action list | grep follow_joint_trajectory
+ros2 control list_controllers
 ```
 
-#### 推荐操作顺序
-1. 先在 GUI1（`ur10_unified_gui`）启动你当前需要的 UR10 场景（Real 或 Sim）。
-2. 再在 GUI2（FT300）完成 USB 测试并开始采集。
-3. 需要保存传感器数据时，先在 GUI2 停止并保存，再停 UR10 任务。
+## 15. 常见问题排查
+1. `AMENT_TRACE_SETUP_FILES: unbound variable`：脚本中 `set -u` 前先给 `AMENT_TRACE_SETUP_FILES` 默认值，或先 `set +u` 再 `source`。
+2. `gzserver exit code 255`：通常是已有旧 `gzserver` 进程占用端口，先清理残留再启动。
+3. 控制器无法加载：确认 `gazebo_ros2_control` 已加载，且 `ros2_controllers.yaml` 中 joint 名与 URDF 完全一致。
+4. 轨迹执行无动作：检查 `execution_mode`、`/execution/execute_shovel_task` action 是否存在，以及 `joint_trajectory_controller` 是否激活。
 
-#### 并行注意点
-- GUI1 与 GUI2 不共享同一串口，不冲突。
-- GUI1 主要调度 UR10 链路；GUI2 只负责 FT300。
-- 建议分终端运行，便于独立停止。
-
----
-
-## 4. 两个 GUI 怎么用（职责边界）
-
-### GUI1：`/root/ur10_ws/src/ur10_unified_gui/main.py`
-
-用途：
-- UR10 主线编排入口（Real/Sim）
-- 快速网络检查
-- 启停流程与日志汇总
-
-不负责：
-- FT300 串口采集和传感器曲线显示
-
-### GUI2：`/root/ur10_ws/src/FT300/ft300_gui_ros2/ft300_gui_ros2/ft300_gui_node.py`
-
-用途：
-- FT300 USB连接测试
-- 实时六维力/力矩曲线
-- 发布 `/ft300/wrench`
-- 会话保存（CSV/PNG/JSON）
-
-不负责：
-- UR10 Real/Sim 全链路编排
-
----
-
-## 5. 常见混乱点与排查
-
-### 5.1 如何区分“主线包”与“测试包”
-
-主线包判断标准（满足多数即可）：
-- 有稳定 launch 入口，并在当前任务长期使用。
-- 对应 UR10 主链目标（仿真、实机、规划、FT300采集）。
-
-测试/历史包特征：
-- 仅用于协议试验、历史兼容、单点验证。
-- ROS1 旧包或仅底层驱动源码资料。
-
-### 5.2 `source` 顺序与 Python 解释器
-
-推荐固定写法：
-
-```bash
-source /opt/ros/humble/setup.bash
-source /root/ur10_ws/install/setup.bash
-```
-
-若出现 Python 模块找不到：
-- 先确认当前解释器：`which python3`
-- 再确认依赖安装在该解释器环境。
-
-### 5.3 实机网络参数排查（UR）
-
-- `robot_ip`：UR 控制器地址
-- `reverse_ip`：UR 回连到主机的地址
-- 快速检查：
-
-```bash
-ping -c 1 <robot_ip>
-```
-
-### 5.4 `real_comm_moveit_verify.launch.py` 已知兼容问题
-
-在当前环境中，执行：
-
-```bash
-ros2 launch ur10_real_comm real_comm_moveit_verify.launch.py ...
-```
-
-可能报错：
-
-`ImportError: cannot import name 'ConcatSubstitution' from 'launch.substitutions'`
-
-建议临时替代方式：
-
-1. 使用 GUI1（`ur10_unified_gui/main.py`）的 Real 模式启动。
-2. 或直接运行：
-
-```bash
-cd /root/ur10_ws/src/ur10_real_comm/scripts
-./run_full_verify.sh
-```
-
-### 5.5 FT300 串口排查
-
-```bash
-ls /dev/ttyUSB*
-sudo chmod 666 /dev/ttyUSB0
-```
-
-若 USB 测试失败：
-- 检查端口号、波特率（默认 19200）与接线。
-- 检查串口是否被其它进程占用。
-
----
-
-## 6. 常用命令模板（复制即用）
-
-### 构建
-
-```bash
-cd /root/ur10_ws
-colcon build --packages-select ur10_simulation_bringup ur10_real_comm ft300_gui_ros2
-```
-
-### 环境
-
-```bash
-source /opt/ros/humble/setup.bash && source /root/ur10_ws/install/setup.bash
-```
-
-### 仿真主线
-
-```bash
-ros2 launch ur10_simulation_bringup complete_simulation.launch.py
-```
-
-### 实机验证主线
-
-```bash
-ros2 launch ur10_real_comm real_comm_moveit_verify.launch.py robot_ip:=192.168.56.101 reverse_ip:=192.168.56.1
-```
-
-### FT300 GUI
-
-```bash
-ros2 launch ft300_gui_ros2 ft300_gui.launch.py
-```
-
-### UR10 编排 GUI
-
-```bash
-python3 /root/ur10_ws/src/ur10_unified_gui/main.py
-```
-
----
-
-## 7. 以后新增包时如何归类（防止再次混乱）
-
-新增包请先归类到以下四类之一：
-
-1. `mainline-core`：主线必需（可进入本 README 主流程）
-2. `mainline-optional`：主线可选扩展（可在场景里写“可选”）
-3. `tooling`：调试/GUI/脚本工具（独立说明，不混入核心启动链）
-4. `archive-test`：历史或实验包（统一放“非主线/历史参考”）
-
-建议每个新增包至少补一条记录：
-- 启动入口
-- 依赖谁
-- 对外话题/服务
-- 归类标签
-
-这样你后续看 `src` 时，能快速判断“该启动什么、该忽略什么”。
+## 16. 后续开发计划
+- 将 moveit 执行模式升级为“真实 IK 轨迹链（按姿态约束逐点求解）”
+- 增加桶壁碰撞距离的规划代价函数与失败恢复策略
+- GUI 增加运行参数持久化与任务模板
+- 接入力/视觉传感器，形成闭环作业策略

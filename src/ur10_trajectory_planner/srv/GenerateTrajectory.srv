@@ -1,0 +1,22 @@
+# Request
+ur10_trajectory_planner/BucketFeatures features
+float32 entry_span_factor
+float32 mid_span_factor
+float32 exit_span_factor
+float32 entry_depth_ratio
+float32 target_deep_depth_ratio
+float32 max_cut_angle_deg
+float32 top_outer_offset_ratio
+float32 start_finish_lift_ratio
+float32 attack_deg
+float32 assembly_deg
+bool flip_tool_z
+bool exec_first_mode
+bool force_base_x_dir
+bool reverse_fit_z_axis
+int32 n_pts
+---
+# Response
+bool success
+string message
+ur10_trajectory_planner/TargetPoseSeq target_pose_seq

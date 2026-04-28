@@ -16,3 +16,10 @@ ur10_examples_py/env_bootstrap.py
 ur10_examples_py/gantry_control.py
 ur10_examples_py/gantry_rviz_control.py
 ur10_examples_py/moveit_py_demo.py
+ur10_examples_py.egg-info/PKG-INFO
+ur10_examples_py.egg-info/SOURCES.txt
+ur10_examples_py.egg-info/dependency_links.txt
+ur10_examples_py.egg-info/entry_points.txt
+ur10_examples_py.egg-info/not-zip-safe
+ur10_examples_py.egg-info/requires.txt
+ur10_examples_py.egg-info/top_level.txt

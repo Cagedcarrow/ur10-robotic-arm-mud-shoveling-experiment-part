@@ -1,0 +1,19 @@
+planner_node:
+  ros__parameters:
+    planner_mode: dp_rrt
+    planning.waypoint_count: 8
+    dp_rrt.max_iter: 2400
+    dp_rrt.goal_radius: 0.12
+    dp_rrt.pg_init: 0.28
+    dp_rrt.pg_min: 0.03
+    dp_rrt.rho_init: 0.55
+    dp_rrt.decay_rate: 0.5
+    dp_rrt.lambda_min: 0.08
+    dp_rrt.lambda_max: 0.24
+    dp_rrt.d_safe: 0.20
+    workspace.x_min: -1.25
+    workspace.x_max: 1.25
+    workspace.y_min: -1.25
+    workspace.y_max: 1.25
+    workspace.z_min: 0.05
+    workspace.z_max: 1.55

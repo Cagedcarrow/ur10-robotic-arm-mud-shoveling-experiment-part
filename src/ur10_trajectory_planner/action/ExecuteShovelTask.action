@@ -1,0 +1,16 @@
+# Goal
+ur10_trajectory_planner/TargetPoseSeq target_pose_seq
+bool local_rrt_enabled
+int32 local_rrt_max_iter
+---
+# Result
+bool success
+string message
+ur10_trajectory_planner/PlanInfo plan_info
+---
+# Feedback
+uint32 current_index
+uint32 total_index
+float32 pos_err
+float32 ori_err_deg
+bool timeout

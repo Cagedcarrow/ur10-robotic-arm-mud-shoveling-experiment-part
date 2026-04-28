@@ -1,0 +1,9 @@
+std_msgs/Header header
+uint32 current_index
+uint32 total_index
+float32 pos_err
+float32 ori_err_deg
+uint32 fallback_count
+uint32 hold_count
+bool timeout
+string timeout_stage
