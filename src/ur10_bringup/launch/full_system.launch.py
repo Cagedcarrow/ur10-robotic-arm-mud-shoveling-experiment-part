@@ -10,6 +10,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     headless = LaunchConfiguration('headless')
     start_rviz = LaunchConfiguration('start_rviz')
+    start_moveit = LaunchConfiguration('start_moveit')
     gazebo_gui = LaunchConfiguration('gazebo_gui')
     planner_mode = LaunchConfiguration('planner_mode')
     execution_mode = LaunchConfiguration('execution_mode')
@@ -19,15 +20,30 @@ def generate_launch_description():
 
     sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('my_robot'), 'launch', 'sim_planning_gantry.launch.py'])
+            PathJoinSubstitution([FindPackageShare('my_robot'), 'launch', 'gazebo_gantry.launch.py'])
         ),
         launch_arguments={
             'use_sim_time': 'true',
-            'start_rviz': PythonExpression(["'false' if '", headless, "' == 'true' else '", start_rviz, "'"]),
             'gui': PythonExpression(["'false' if '", headless, "' == 'true' else '", gazebo_gui, "'"]),
-            'start_gantry_rviz_control': 'false',
             'world': world,
         }.items(),
+    )
+
+    moveit_stage = TimerAction(
+        period=6.0,
+        actions=[
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    PathJoinSubstitution([FindPackageShare('ur10_bringup'), 'launch', 'moveit_only.launch.py'])
+                ),
+                launch_arguments={
+                    'start_rviz': PythonExpression(
+                        ["'false' if '", headless, "' == 'true' else '", start_rviz, "'"]
+                    ),
+                }.items(),
+            )
+        ],
+        condition=IfCondition(start_moveit),
     )
 
     planner_pipeline = TimerAction(
@@ -74,7 +90,6 @@ def generate_launch_description():
         output='screen',
         condition=UnlessCondition(headless),
         parameters=[{
-            'planner_mode': planner_mode,
             'execution_mode': execution_mode,
         }],
     )
@@ -82,6 +97,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('headless', default_value='false'),
         DeclareLaunchArgument('start_rviz', default_value='true'),
+        DeclareLaunchArgument('start_moveit', default_value='true'),
         DeclareLaunchArgument('gazebo_gui', default_value='true'),
         DeclareLaunchArgument('planner_mode', default_value='dp_rrt'),
         DeclareLaunchArgument('execution_mode', default_value='demo'),
@@ -98,6 +114,7 @@ def generate_launch_description():
         DeclareLaunchArgument('bucket_wall_thickness', default_value='0.005'),
         DeclareLaunchArgument('safe_margin', default_value='0.03'),
         sim,
+        moveit_stage,
         bucket_node,
         planner_pipeline,
         gui_node,

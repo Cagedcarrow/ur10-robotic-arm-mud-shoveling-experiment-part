@@ -208,7 +208,7 @@
   <joint name="ur_mount_to_my_robot" type="fixed">
     <parent link="ur_mount_link" />
     <child link="ur10" />
-    <origin xyz="0 0 -0.20" rpy="3.141592653589793 0 0" />
+    <origin xyz="0 0 -0.20" rpy="3.141592653589793 0 1.5707963267948966" />
   </joint>
 
   <xacro:my_robot_model

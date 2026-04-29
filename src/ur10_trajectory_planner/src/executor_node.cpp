@@ -8,6 +8,7 @@
 
 #include <control_msgs/action/follow_joint_trajectory.hpp>
 #include <geometry_msgs/msg/pose_array.hpp>
+#include <rcl_interfaces/msg/set_parameters_result.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp_action/rclcpp_action.hpp>
 #include <std_msgs/msg/string.hpp>
@@ -35,6 +36,8 @@ public:
     execution_mode_ = declare_parameter<std::string>("execution_mode", "demo");
     max_joint_step_ = declare_parameter("max_joint_step_rad", 0.1);
     dt_ = declare_parameter("dt", 0.05);
+    param_cb_handle_ = add_on_set_parameters_callback(
+      std::bind(&ExecutorNode::on_set_parameters, this, std::placeholders::_1));
 
     traj_pub_ = create_publisher<trajectory_msgs::msg::JointTrajectory>(
       "/joint_trajectory_controller/joint_trajectory", 10);
@@ -317,6 +320,45 @@ private:
     latest_planned_ = *msg;
   }
 
+  rcl_interfaces::msg::SetParametersResult on_set_parameters(
+    const std::vector<rclcpp::Parameter> & params)
+  {
+    rcl_interfaces::msg::SetParametersResult result;
+    result.successful = true;
+    result.reason = "ok";
+
+    for (const auto & param : params) {
+      if (param.get_name() == "execution_mode") {
+        const auto mode = param.as_string();
+        if (mode != "demo" && mode != "moveit") {
+          result.successful = false;
+          result.reason = "execution_mode must be demo or moveit";
+          return result;
+        }
+        execution_mode_ = mode;
+        RCLCPP_INFO(get_logger(), "execution_mode switched to %s", execution_mode_.c_str());
+      } else if (param.get_name() == "max_joint_step_rad") {
+        const auto v = param.as_double();
+        if (v <= 0.0) {
+          result.successful = false;
+          result.reason = "max_joint_step_rad must be > 0";
+          return result;
+        }
+        max_joint_step_ = v;
+      } else if (param.get_name() == "dt") {
+        const auto v = param.as_double();
+        if (v <= 0.0) {
+          result.successful = false;
+          result.reason = "dt must be > 0";
+          return result;
+        }
+        dt_ = v;
+      }
+    }
+
+    return result;
+  }
+
   rclcpp_action::GoalResponse handle_goal(
     const rclcpp_action::GoalUUID &, std::shared_ptr<const ExecuteAction::Goal>)
   {
@@ -350,6 +392,7 @@ private:
   rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr demo_marker_pub_;
   rclcpp_action::Server<ExecuteAction>::SharedPtr action_server_;
   rclcpp_action::Client<FollowTrajectory>::SharedPtr controller_client_;
+  OnSetParametersCallbackHandle::SharedPtr param_cb_handle_;
 };
 
 int main(int argc, char ** argv)

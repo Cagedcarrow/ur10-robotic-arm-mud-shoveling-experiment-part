@@ -26,11 +26,9 @@
 - `ur10_examples`、`ur10_examples_py`（示例控制/调试节点）
 - `ur10_perception`（world、相机、点云相关）
 - `ur10_real_comm`（实机通信与验证）
-- `FT300/ft300_gui_ros2`（力传感器 GUI）
 
 ### 历史/保留包
 - `ur10_with_shovel`、`ur10_description`、`ur10_moveit_config`
-- `FT300/my_robotiq_force_torque_sensor-master`（ROS1）
 - `轨迹构建与拟合说明文档`（文档与模板保留，不作为主线运行入口）
 
 ## 4. 模型组成
@@ -93,6 +91,10 @@
 
 规划对象为末端 TCP 笛卡尔路径，发布规划状态 `/planning/status` 与可视化 Marker。
 
+说明：
+- `ur10_trajectory_planner` 自定义规划模式固定为 `dp_rrt`。
+- OMPL 多算法选择（`RRTConnect/RRTstar/PRM/...`）统一在 MoveIt/RViz 真链路中使用，不在自定义规划节点里做占位切换。
+
 ## 10. 轨迹生成流程
 `trajectory_node` 提供 `/trajectory/generate` 服务，输入桶参数后生成阶段化 TCP 轨迹：
 1. 桶口上方接近
@@ -122,6 +124,11 @@ GUI 包：`ur10_unified_gui`，启动节点 `gui_node`。
 3. 系统状态：Gazebo/MoveIt/控制器/joint_states/marker/执行状态
 4. 日志页：规划日志、执行日志、系统日志
 
+关键操作说明：
+- 关节控制页提供独立按钮：`发送龙门架目标`、`发送机械臂目标`，避免互相覆盖。
+- 关节控制页提供独立回初始：`龙门架回初始`、`机械臂回初始`。
+- 轨迹规划页提供 `启动 MoveIt 规划` 与 `查询 OMPL 算法列表`，用于第二阶段启动和核对 MoveIt planner_ids。
+
 中文到真实关节映射：
 - 龙门架 X/Y/Z -> `gantry_x_joint/gantry_y_joint/gantry_z_joint`
 - 基座/肩部/肘部/腕1/腕2/腕3 -> `ur10_shoulder_pan/ur10_shoulder_lift/ur10_elbow/ur10_wrist_1_joint/ur10_wrist_2_joint/ur10_wrist_3_joint`
@@ -134,12 +141,22 @@ source install/setup.bash
 ros2 launch ur10_bringup full_system.launch.py
 ```
 
+推荐两阶段启动（先调位再规划）：
+```bash
+# 阶段1：仅仿真+控制+轨迹节点，不启动 move_group
+ros2 launch ur10_bringup full_system.launch.py start_moveit:=false
+
+# 阶段2：启动 MoveIt2（可由 GUI “启动 MoveIt 规划”按钮触发）
+ros2 launch ur10_bringup moveit_only.launch.py start_rviz:=false
+```
+
 常用参数：
 ```bash
 ros2 launch ur10_bringup full_system.launch.py \
   headless:=false \
   start_rviz:=true \
   gazebo_gui:=true \
+  start_moveit:=false \
   planner_mode:=dp_rrt \
   execution_mode:=demo \
   use_bucket:=true \
@@ -153,10 +170,12 @@ cd /root/ur10_ws
 source install/setup.bash
 
 ros2 pkg list | grep -E "ur10|my_robot|bringup|planner|gui"
-ros2 launch ur10_bringup full_system.launch.py headless:=true start_rviz:=false gazebo_gui:=false
+ros2 launch ur10_bringup full_system.launch.py headless:=true start_rviz:=false gazebo_gui:=false start_moveit:=false
+ros2 launch ur10_bringup moveit_only.launch.py start_rviz:=false
 ros2 node list
 ros2 topic list
 ros2 service list | grep trajectory
+ros2 service call /query_planner_interface moveit_msgs/srv/QueryPlannerInterfaces "{}"
 ros2 action list | grep follow_joint_trajectory
 ros2 control list_controllers
 ```

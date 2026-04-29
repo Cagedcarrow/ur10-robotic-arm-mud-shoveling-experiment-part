@@ -50,7 +50,7 @@
     - Topics `/planning/path` `/planning/markers` `/planning/tree_markers` `/planning/status`
     - Action `/execution/execute_shovel_task`
     - Topics `/execution/feedback` `/execution/status`
-  - `planner_node`：DP-RRT/OMPL 选择、分段路径拼接、状态发布
+  - `planner_node`：DP-RRT 规划、分段路径拼接、状态发布（移除自定义 `ompl` 占位分支）
   - `trajectory_node`：桶约束轨迹生成与姿态序列发布
   - `executor_node`：`demo|moveit` 双执行模式
   - `executor_adapter`：关节名改为真实 `ur10_*`
@@ -102,6 +102,10 @@ ros2 launch ur10_bringup full_system.launch.py
 - 失败计数恢复 `fail_count`
 
 规划对象：末端 TCP 笛卡尔路径（非 9 轴联合采样）。
+
+语义修正：
+- 自定义规划器仅保留 `dp_rrt`。
+- OMPL 多算法选择统一在 MoveIt/RViz 链路中使用（`/query_planner_interface` 校验 planner_ids）。
 
 ## 8. 轨迹生成说明
 `trajectory_node` 提供 `/trajectory/generate` 服务，围绕桶生成分阶段路径：

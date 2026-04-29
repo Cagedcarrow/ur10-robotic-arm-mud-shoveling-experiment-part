@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import math
+import os
+import signal
+import subprocess
 import sys
 import threading
 import time
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Dict, List, Optional
 
 import rclpy
-from geometry_msgs.msg import Point
+from ament_index_python.packages import get_package_share_directory
+from moveit_msgs.srv import QueryPlannerInterfaces
 from PyQt5 import QtCore, QtWidgets
 from rcl_interfaces.msg import Parameter, ParameterType, ParameterValue
 from rcl_interfaces.srv import SetParameters
@@ -25,6 +31,33 @@ from ur10_trajectory_planner.msg import PlanInfo, TargetPoseSeq
 from ur10_trajectory_planner.srv import GenerateTrajectory
 
 
+UR10_HOME = {
+    "ur10_shoulder_pan": 0.0,
+    "ur10_shoulder_lift": -1.57,
+    "ur10_elbow": 1.57,
+    "ur10_wrist_1_joint": -1.57,
+    "ur10_wrist_2_joint": -1.57,
+    "ur10_wrist_3_joint": 0.0,
+}
+
+UR10_RANGE = {
+    "ur10_shoulder_pan": (-math.pi, math.pi),
+    "ur10_shoulder_lift": (-math.pi, math.pi),
+    "ur10_elbow": (-math.pi, math.pi),
+    "ur10_wrist_1_joint": (-math.pi, math.pi),
+    "ur10_wrist_2_joint": (-math.pi, math.pi),
+    "ur10_wrist_3_joint": (-math.pi, math.pi),
+}
+
+GANTRY_DEFAULT = {
+    "initial": {"x": 0.0, "y": 0.0, "z": -0.6},
+    "limits": {
+        "x": {"min": -1.0, "max": 1.0},
+        "y": {"min": -0.8, "max": 0.8},
+        "z": {"min": -1.0, "max": 0.0},
+    },
+}
+
 GANTRY_JOINTS = ["gantry_x_joint", "gantry_y_joint", "gantry_z_joint"]
 UR10_JOINTS = [
     "ur10_shoulder_pan",
@@ -35,17 +68,49 @@ UR10_JOINTS = [
     "ur10_wrist_3_joint",
 ]
 
-JOINT_LABEL_MAP = [
-    ("龙门架 X 轴", "gantry_x_joint", -1.2, 1.2, 0.0),
-    ("龙门架 Y 轴", "gantry_y_joint", -1.2, 1.2, 0.0),
-    ("龙门架 Z 轴", "gantry_z_joint", 0.0, 1.2, 0.40),
-    ("基座关节", "ur10_shoulder_pan", -math.pi, math.pi, 0.0),
-    ("肩部关节", "ur10_shoulder_lift", -math.pi, math.pi, -1.57),
-    ("肘部关节", "ur10_elbow", -math.pi, math.pi, 1.57),
-    ("腕部1关节", "ur10_wrist_1_joint", -math.pi, math.pi, -1.57),
-    ("腕部2关节", "ur10_wrist_2_joint", -math.pi, math.pi, -1.57),
-    ("腕部3关节", "ur10_wrist_3_joint", -math.pi, math.pi, 0.0),
-]
+
+def _load_gantry_config() -> dict:
+    cfg = GANTRY_DEFAULT
+    try:
+        pkg = get_package_share_directory("my_robot")
+        path = Path(pkg) / "config" / "gantry_config.json"
+        if path.is_file():
+            with path.open("r", encoding="utf-8") as fp:
+                loaded = json.load(fp)
+            cfg = loaded
+    except Exception:
+        pass
+    return cfg
+
+
+def _build_joint_map() -> List[tuple]:
+    cfg = _load_gantry_config()
+    ix = float(cfg["initial"]["x"])
+    iy = float(cfg["initial"]["y"])
+    iz = float(cfg["initial"]["z"])
+
+    x_min = float(cfg["limits"]["x"]["min"])
+    x_max = float(cfg["limits"]["x"]["max"])
+    y_min = float(cfg["limits"]["y"]["min"])
+    y_max = float(cfg["limits"]["y"]["max"])
+    z_min = float(cfg["limits"]["z"]["min"])
+    z_max = float(cfg["limits"]["z"]["max"])
+
+    return [
+        ("龙门架 X 轴", "gantry_x_joint", x_min, x_max, ix, "gantry"),
+        ("龙门架 Y 轴", "gantry_y_joint", y_min, y_max, iy, "gantry"),
+        ("龙门架 Z 轴", "gantry_z_joint", z_min, z_max, iz, "gantry"),
+        ("基座关节", "ur10_shoulder_pan", UR10_RANGE["ur10_shoulder_pan"][0], UR10_RANGE["ur10_shoulder_pan"][1], UR10_HOME["ur10_shoulder_pan"], "ur10"),
+        ("肩部关节", "ur10_shoulder_lift", UR10_RANGE["ur10_shoulder_lift"][0], UR10_RANGE["ur10_shoulder_lift"][1], UR10_HOME["ur10_shoulder_lift"], "ur10"),
+        ("肘部关节", "ur10_elbow", UR10_RANGE["ur10_elbow"][0], UR10_RANGE["ur10_elbow"][1], UR10_HOME["ur10_elbow"], "ur10"),
+        ("腕部1关节", "ur10_wrist_1_joint", UR10_RANGE["ur10_wrist_1_joint"][0], UR10_RANGE["ur10_wrist_1_joint"][1], UR10_HOME["ur10_wrist_1_joint"], "ur10"),
+        ("腕部2关节", "ur10_wrist_2_joint", UR10_RANGE["ur10_wrist_2_joint"][0], UR10_RANGE["ur10_wrist_2_joint"][1], UR10_HOME["ur10_wrist_2_joint"], "ur10"),
+        ("腕部3关节", "ur10_wrist_3_joint", UR10_RANGE["ur10_wrist_3_joint"][0], UR10_RANGE["ur10_wrist_3_joint"][1], UR10_HOME["ur10_wrist_3_joint"], "ur10"),
+    ]
+
+
+JOINT_LABEL_MAP = _build_joint_map()
+GANTRY_HOME = {row[1]: float(row[4]) for row in JOINT_LABEL_MAP if row[5] == "gantry"}
 
 
 class RosBridgeNode(Node):
@@ -56,6 +121,7 @@ class RosBridgeNode(Node):
         self.generate_client = self.create_client(GenerateTrajectory, "/trajectory/generate")
         self.execute_client = ActionClient(self, ExecuteShovelTask, "/execution/execute_shovel_task")
         self.executor_param_client = self.create_client(SetParameters, "/executor_node/set_parameters")
+        self.ompl_query_client = self.create_client(QueryPlannerInterfaces, "/query_planner_interface")
 
         self.arm_pub = self.create_publisher(JointTrajectory, "/joint_trajectory_controller/joint_trajectory", 10)
         self.gantry_pub = self.create_publisher(JointTrajectory, "/gantry_trajectory_controller/joint_trajectory", 10)
@@ -116,30 +182,29 @@ class RosBridgeNode(Node):
         }
         self.worker.system_signal.emit(payload)
 
-    def publish_joint_targets(self, joint_values: Dict[str, float], duration_sec: float = 2.0):
-        now_msg = self.get_clock().now().to_msg()
+    def _publish_joint_traj(self, topic: str, joint_names: List[str], values: Dict[str, float], duration_sec: float):
+        traj = JointTrajectory()
+        traj.header.stamp = self.get_clock().now().to_msg()
+        traj.joint_names = joint_names
 
-        gantry_msg = JointTrajectory()
-        gantry_msg.header.stamp = now_msg
-        gantry_msg.joint_names = GANTRY_JOINTS
-        gantry_pt = JointTrajectoryPoint()
-        gantry_pt.positions = [joint_values[name] for name in GANTRY_JOINTS]
-        gantry_pt.time_from_start.sec = int(duration_sec)
-        gantry_pt.time_from_start.nanosec = int((duration_sec - int(duration_sec)) * 1e9)
-        gantry_msg.points = [gantry_pt]
+        pt = JointTrajectoryPoint()
+        pt.positions = [float(values[name]) for name in joint_names]
+        pt.time_from_start.sec = int(duration_sec)
+        pt.time_from_start.nanosec = int((duration_sec - int(duration_sec)) * 1e9)
+        traj.points = [pt]
 
-        arm_msg = JointTrajectory()
-        arm_msg.header.stamp = now_msg
-        arm_msg.joint_names = UR10_JOINTS
-        arm_pt = JointTrajectoryPoint()
-        arm_pt.positions = [joint_values[name] for name in UR10_JOINTS]
-        arm_pt.time_from_start.sec = int(duration_sec)
-        arm_pt.time_from_start.nanosec = int((duration_sec - int(duration_sec)) * 1e9)
-        arm_msg.points = [arm_pt]
+        if topic == "gantry":
+            self.gantry_pub.publish(traj)
+        else:
+            self.arm_pub.publish(traj)
 
-        self.gantry_pub.publish(gantry_msg)
-        self.arm_pub.publish(arm_msg)
-        self.worker.log_signal.emit("[control] 已发送 3+6 轴目标")
+    def publish_gantry_targets(self, joint_values: Dict[str, float], duration_sec: float = 2.0):
+        self._publish_joint_traj("gantry", GANTRY_JOINTS, joint_values, duration_sec)
+        self.worker.log_signal.emit("[control] 已发送龙门架目标")
+
+    def publish_arm_targets(self, joint_values: Dict[str, float], duration_sec: float = 2.0):
+        self._publish_joint_traj("arm", UR10_JOINTS, joint_values, duration_sec)
+        self.worker.log_signal.emit("[control] 已发送机械臂目标")
 
     def request_plan(self, params: Dict[str, float]):
         if not self.generate_client.wait_for_service(timeout_sec=2.0):
@@ -187,6 +252,31 @@ class RosBridgeNode(Node):
                 self.worker.plan_signal.emit(res.success, res.message)
             except Exception as exc:
                 self.worker.plan_signal.emit(False, f"规划调用失败: {exc}")
+
+        future.add_done_callback(done_cb)
+
+    def query_ompl_planner_ids(self):
+        if not self.ompl_query_client.wait_for_service(timeout_sec=1.0):
+            self.worker.log_signal.emit("[moveit] /query_planner_interface 不可用（MoveIt 可能未启动）")
+            return
+        future = self.ompl_query_client.call_async(QueryPlannerInterfaces.Request())
+
+        def done_cb(f):
+            try:
+                res = f.result()
+                if res is None:
+                    self.worker.log_signal.emit("[moveit] 未获取到 planner 接口")
+                    return
+                lines = []
+                for iface in res.planner_interfaces:
+                    ids = ", ".join(iface.planner_ids)
+                    lines.append(f"{iface.pipeline_id}/{iface.name}: {ids}")
+                if lines:
+                    self.worker.log_signal.emit("[moveit] 已发现 OMPL planner_ids:\n" + "\n".join(lines))
+                else:
+                    self.worker.log_signal.emit("[moveit] 未返回 planner_ids")
+            except Exception as exc:
+                self.worker.log_signal.emit(f"[moveit] 查询 planner_ids 失败: {exc}")
 
         future.add_done_callback(done_cb)
 
@@ -302,15 +392,25 @@ class RosWorker(QtCore.QObject):
                 self.log_signal.emit(f"[error] ROS spin 异常: {exc}")
                 time.sleep(0.2)
 
-    def publish_joint_targets(self, joint_values: Dict[str, float], duration_sec: float):
+    def publish_gantry_targets(self, joint_values: Dict[str, float], duration_sec: float):
         with self._lock:
             if self._node is not None:
-                self._node.publish_joint_targets(joint_values, duration_sec)
+                self._node.publish_gantry_targets(joint_values, duration_sec)
+
+    def publish_arm_targets(self, joint_values: Dict[str, float], duration_sec: float):
+        with self._lock:
+            if self._node is not None:
+                self._node.publish_arm_targets(joint_values, duration_sec)
 
     def request_plan(self, params: Dict[str, float]):
         with self._lock:
             if self._node is not None:
                 self._node.request_plan(params)
+
+    def query_ompl_planner_ids(self):
+        with self._lock:
+            if self._node is not None:
+                self._node.query_ompl_planner_ids()
 
     def execute_task(self, execution_mode: str):
         with self._lock:
@@ -326,6 +426,7 @@ class RosWorker(QtCore.QObject):
 @dataclass
 class JointRowWidgets:
     name: str
+    group: str
     slider: QtWidgets.QSlider
     spin: QtWidgets.QDoubleSpinBox
 
@@ -339,6 +440,14 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.joint_rows: List[JointRowWidgets] = []
         self.status_labels: Dict[str, QtWidgets.QLabel] = {}
+        self.moveit_proc: Optional[subprocess.Popen] = None
+        self._user_edit_hold_sec = 1.2
+        self._last_user_edit_time: Dict[str, float] = {}
+        self._manual_lock_enabled = False
+        self._gantry_auto_send_timer = QtCore.QTimer(self)
+        self._gantry_auto_send_timer.setSingleShot(True)
+        self._gantry_auto_send_timer.setInterval(180)
+        self._gantry_auto_send_timer.timeout.connect(self._auto_send_gantry_targets)
 
         self.worker.log_signal.connect(self.append_log)
         self.worker.system_signal.connect(self.update_system_status)
@@ -367,7 +476,7 @@ class MainWindow(QtWidgets.QMainWindow):
         grid.addWidget(QtWidgets.QLabel("滑块"), 0, 1)
         grid.addWidget(QtWidgets.QLabel("数值"), 0, 2)
 
-        for i, (label_cn, name, vmin, vmax, vdef) in enumerate(JOINT_LABEL_MAP, start=1):
+        for i, (label_cn, name, vmin, vmax, vdef, group) in enumerate(JOINT_LABEL_MAP, start=1):
             label = QtWidgets.QLabel(label_cn)
             slider = QtWidgets.QSlider(QtCore.Qt.Horizontal)
             slider.setMinimum(0)
@@ -385,6 +494,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 s.blockSignals(True)
                 s.setValue(int(max(0, min(1000, round(ratio * 1000)))))
                 s.blockSignals(False)
+                self._mark_user_edit(name)
 
             def _slider_to_spin(raw, sp=spin, lo=vmin, hi=vmax):
                 ratio = raw / 1000.0
@@ -392,6 +502,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 sp.blockSignals(True)
                 sp.setValue(val)
                 sp.blockSignals(False)
+                self._mark_user_edit(name)
 
             spin.valueChanged.connect(_spin_to_slider)
             slider.valueChanged.connect(_slider_to_spin)
@@ -400,7 +511,9 @@ class MainWindow(QtWidgets.QMainWindow):
             grid.addWidget(label, i, 0)
             grid.addWidget(slider, i, 1)
             grid.addWidget(spin, i, 2)
-            self.joint_rows.append(JointRowWidgets(name=name, slider=slider, spin=spin))
+            self.joint_rows.append(JointRowWidgets(name=name, group=group, slider=slider, spin=spin))
+            if group == "gantry":
+                spin.valueChanged.connect(self._schedule_gantry_send)
 
         layout.addLayout(grid)
 
@@ -411,13 +524,25 @@ class MainWindow(QtWidgets.QMainWindow):
         self.duration_spin.setValue(2.0)
         btn_row.addWidget(QtWidgets.QLabel("执行时长(s)"))
         btn_row.addWidget(self.duration_spin)
+        self.manual_lock_checkbox = QtWidgets.QCheckBox("手动模式锁定（禁止状态回写）")
+        self.manual_lock_checkbox.setChecked(False)
+        self.manual_lock_checkbox.toggled.connect(self.on_manual_lock_toggled)
+        btn_row.addWidget(self.manual_lock_checkbox)
 
-        send_btn = QtWidgets.QPushButton("发送关节目标")
-        home_btn = QtWidgets.QPushButton("回零")
-        send_btn.clicked.connect(self.send_joint_targets)
-        home_btn.clicked.connect(self.go_home)
-        btn_row.addWidget(send_btn)
-        btn_row.addWidget(home_btn)
+        send_gantry_btn = QtWidgets.QPushButton("发送龙门架目标")
+        send_arm_btn = QtWidgets.QPushButton("发送机械臂目标")
+        home_gantry_btn = QtWidgets.QPushButton("龙门架回初始")
+        home_arm_btn = QtWidgets.QPushButton("机械臂回初始")
+
+        send_gantry_btn.clicked.connect(self.send_gantry_targets)
+        send_arm_btn.clicked.connect(self.send_arm_targets)
+        home_gantry_btn.clicked.connect(self.home_gantry)
+        home_arm_btn.clicked.connect(self.home_arm)
+
+        btn_row.addWidget(send_gantry_btn)
+        btn_row.addWidget(send_arm_btn)
+        btn_row.addWidget(home_gantry_btn)
+        btn_row.addWidget(home_arm_btn)
         btn_row.addStretch(1)
 
         layout.addLayout(btn_row)
@@ -437,7 +562,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.safe_m = QtWidgets.QDoubleSpinBox(); self.safe_m.setRange(0.001, 0.2); self.safe_m.setValue(0.03)
         self.n_pts = QtWidgets.QSpinBox(); self.n_pts.setRange(20, 500); self.n_pts.setValue(90)
 
-        self.planner_mode = QtWidgets.QComboBox(); self.planner_mode.addItems(["dp_rrt", "ompl"])
         self.execution_mode = QtWidgets.QComboBox(); self.execution_mode.addItems(["demo", "moveit"])
 
         form.addRow("桶中心 X", self.bucket_cx)
@@ -448,28 +572,31 @@ class MainWindow(QtWidgets.QMainWindow):
         form.addRow("桶壁厚", self.bucket_t)
         form.addRow("安全裕量", self.safe_m)
         form.addRow("轨迹采样点", self.n_pts)
-        form.addRow("planner_mode", self.planner_mode)
+        form.addRow("自定义规划器", QtWidgets.QLabel("dp_rrt"))
         form.addRow("execution_mode", self.execution_mode)
         layout.addLayout(form)
 
         btn_row = QtWidgets.QHBoxLayout()
+        moveit_btn = QtWidgets.QPushButton("启动 MoveIt 规划")
+        query_ompl_btn = QtWidgets.QPushButton("查询 OMPL 算法列表")
         plan_btn = QtWidgets.QPushButton("开始规划轨迹")
         show_btn = QtWidgets.QPushButton("显示规划结果")
         exec_btn = QtWidgets.QPushButton("执行轨迹")
         stop_btn = QtWidgets.QPushButton("停止执行")
-        home_btn = QtWidgets.QPushButton("回初始位姿")
 
+        moveit_btn.clicked.connect(self.start_moveit_stage)
+        query_ompl_btn.clicked.connect(self.query_ompl_ids)
         plan_btn.clicked.connect(self.start_plan)
         show_btn.clicked.connect(self.show_result_hint)
         exec_btn.clicked.connect(self.execute_trajectory)
         stop_btn.clicked.connect(self.stop_execution)
-        home_btn.clicked.connect(self.go_home)
 
+        btn_row.addWidget(moveit_btn)
+        btn_row.addWidget(query_ompl_btn)
         btn_row.addWidget(plan_btn)
         btn_row.addWidget(show_btn)
         btn_row.addWidget(exec_btn)
         btn_row.addWidget(stop_btn)
-        btn_row.addWidget(home_btn)
         layout.addLayout(btn_row)
 
         self.plan_status_label = QtWidgets.QLabel("规划状态: idle")
@@ -503,15 +630,81 @@ class MainWindow(QtWidgets.QMainWindow):
     def collect_joint_values(self) -> Dict[str, float]:
         return {row.name: float(row.spin.value()) for row in self.joint_rows}
 
-    def send_joint_targets(self):
-        values = self.collect_joint_values()
-        self.worker.publish_joint_targets(values, float(self.duration_spin.value()))
+    def _collect_group_values(self, group: str) -> Dict[str, float]:
+        return {row.name: float(row.spin.value()) for row in self.joint_rows if row.group == group}
 
-    def go_home(self):
-        home = {name: default for _cn, name, _minv, _maxv, default in JOINT_LABEL_MAP}
+    def _mark_user_edit(self, joint_name: str):
+        self._last_user_edit_time[joint_name] = time.monotonic()
+
+    def _is_user_edit_protected(self, joint_name: str) -> bool:
+        t = self._last_user_edit_time.get(joint_name)
+        if t is None:
+            return False
+        return (time.monotonic() - t) < self._user_edit_hold_sec
+
+    def on_manual_lock_toggled(self, checked: bool):
+        self._manual_lock_enabled = bool(checked)
+        if self._manual_lock_enabled:
+            self.append_log("[control] 已开启手动模式锁定：忽略 /joint_states 回写")
+        else:
+            self.append_log("[control] 已关闭手动模式锁定：恢复状态回写")
+
+    def _schedule_gantry_send(self, _val: float):
+        self._gantry_auto_send_timer.start()
+
+    def _auto_send_gantry_targets(self):
+        values = self._collect_group_values("gantry")
+        self.worker.publish_gantry_targets(values, max(0.3, float(self.duration_spin.value())))
+
+    def send_gantry_targets(self):
+        values = self._collect_group_values("gantry")
+        self.worker.publish_gantry_targets(values, float(self.duration_spin.value()))
+
+    def send_arm_targets(self):
+        values = self._collect_group_values("ur10")
+        self.worker.publish_arm_targets(values, float(self.duration_spin.value()))
+
+    def home_gantry(self):
         for row in self.joint_rows:
-            row.spin.setValue(home[row.name])
-        self.worker.publish_joint_targets(home, 2.5)
+            if row.group == "gantry":
+                row.spin.setValue(float(GANTRY_HOME[row.name]))
+        self.worker.publish_gantry_targets(GANTRY_HOME, 2.5)
+
+    def home_arm(self):
+        for row in self.joint_rows:
+            if row.group == "ur10":
+                row.spin.setValue(float(UR10_HOME[row.name]))
+        self.worker.publish_arm_targets(UR10_HOME, 3.0)
+
+    def _read_proc_log(self, proc: subprocess.Popen):
+        if proc.stdout is None:
+            return
+        for line in proc.stdout:
+            self.append_log(f"[moveit-launch] {line.rstrip()}")
+
+    def start_moveit_stage(self):
+        if self.moveit_proc is not None and self.moveit_proc.poll() is None:
+            self.append_log("[moveit] moveit_only 已在运行")
+            return
+
+        cmd = (
+            "source /opt/ros/humble/setup.bash && "
+            "source /root/ur10_ws/install/setup.bash && "
+            "ros2 launch ur10_bringup moveit_only.launch.py start_rviz:=false"
+        )
+        self.moveit_proc = subprocess.Popen(
+            ["bash", "-lc", cmd],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            preexec_fn=os.setsid,
+        )
+        threading.Thread(target=self._read_proc_log, args=(self.moveit_proc,), daemon=True).start()
+        self.append_log("[moveit] 已启动 moveit_only.launch.py")
+        QtCore.QTimer.singleShot(5000, self.query_ompl_ids)
+
+    def query_ompl_ids(self):
+        self.worker.query_ompl_planner_ids()
 
     def start_plan(self):
         params = {
@@ -524,7 +717,7 @@ class MainWindow(QtWidgets.QMainWindow):
             "safe_margin": float(self.safe_m.value()),
             "n_pts": int(self.n_pts.value()),
         }
-        self.append_log(f"[plan] 请求规划 planner_mode={self.planner_mode.currentText()}")
+        self.append_log("[plan] 请求规划 planner_mode=dp_rrt")
         self.worker.request_plan(params)
 
     def show_result_hint(self):
@@ -557,11 +750,24 @@ class MainWindow(QtWidgets.QMainWindow):
         self.exec_progress_label.setText(f"执行进度: {cur}/{total}")
 
     def update_joint_from_state(self, current: dict):
+        if self._manual_lock_enabled:
+            return
         for row in self.joint_rows:
             if row.name in current:
+                # Do not overwrite user edits while dragging/typing.
+                if row.slider.isSliderDown() or row.spin.hasFocus() or self._is_user_edit_protected(row.name):
+                    continue
                 row.spin.blockSignals(True)
                 row.spin.setValue(float(current[row.name]))
                 row.spin.blockSignals(False)
+
+    def closeEvent(self, event):  # type: ignore[override]
+        if self.moveit_proc is not None and self.moveit_proc.poll() is None:
+            try:
+                os.killpg(os.getpgid(self.moveit_proc.pid), signal.SIGTERM)
+            except Exception:
+                pass
+        super().closeEvent(event)
 
 
 class GuiApp:

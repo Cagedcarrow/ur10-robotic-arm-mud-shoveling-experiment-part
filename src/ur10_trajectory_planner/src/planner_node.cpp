@@ -21,6 +21,13 @@ public:
   : Node("planner_node")
   {
     planner_mode_ = declare_parameter<std::string>("planner_mode", "dp_rrt");
+    if (planner_mode_ != "dp_rrt") {
+      RCLCPP_WARN(
+        get_logger(),
+        "planner_mode='%s' is deprecated in planner_node. Fallback to dp_rrt; OMPL should be used via MoveIt/RViz.",
+        planner_mode_.c_str());
+      planner_mode_ = "dp_rrt";
+    }
     planning_waypoint_count_ = declare_parameter<int>("planning.waypoint_count", 8);
     dp_.max_iter = declare_parameter("dp_rrt.max_iter", 2400);
     dp_.goal_radius = declare_parameter("dp_rrt.goal_radius", 0.12);
@@ -147,11 +154,7 @@ private:
     for (size_t i = 1; i < waypoints.size(); ++i) {
       sb::PlannerStats seg_stats;
       std::vector<geometry_msgs::msg::Point> seg_path;
-      if (planner_mode_ == "ompl") {
-        seg_path = sb::plan_linear_path(waypoints[i - 1], waypoints[i], 35, &seg_stats);
-      } else {
-        seg_path = sb::plan_dp_rrt_path(waypoints[i - 1], waypoints[i], dp_, ws_, &seg_stats, &edges);
-      }
+      seg_path = sb::plan_dp_rrt_path(waypoints[i - 1], waypoints[i], dp_, ws_, &seg_stats, &edges);
 
       if (seg_path.empty()) {
         total_stats.success = false;
@@ -191,7 +194,7 @@ private:
     }
     path_pub_->publish(arr);
 
-    if (planner_mode_ == "dp_rrt" && !edges.empty()) {
+    if (!edges.empty()) {
       publish_markers(edges, path);
     }
   }

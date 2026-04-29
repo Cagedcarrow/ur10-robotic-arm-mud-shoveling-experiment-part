@@ -156,6 +156,7 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
+        Planner Id: RRTConnectkConfigDefault
         Planning Group: my_robot_manipulator
         Query Goal State: true
         Query Start State: false

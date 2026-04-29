@@ -1,3 +1,0 @@
-<launch>
-    <node name="my_robotiq_ft" pkg="my_robotiq_force_toque_sensor" type="my_robotiq_ft" />
-</launch>

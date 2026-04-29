@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur10_shovel_tool">
+  <xacro:macro name="ur10_shovel_tool" params="parent:=tool0 xyz:='0 0 0' rpy:='0 0 0'">
+    <link name="base_link">
+      <inertial>
+        <origin xyz="-0.0047632 0.00057508 -0.1224" rpy="0 0 0" />
+        <mass value="2.5" />
+        <inertia ixx="0.008126" ixy="-1.5225E-08" ixz="-1.5303E-05" iyy="0.0079565" iyz="0.00026644" izz="0.00048604" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ur10_shovel_tool/meshes/base_link.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ur10_shovel_tool/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="shovel_tcp">
+      <inertial>
+        <origin xyz="1.0408E-17 -0.00029192 -5E-05" rpy="0 0 0" />
+        <mass value="1e-8" />
+        <inertia ixx="1e-10" ixy="0" ixz="0" iyy="1e-10" iyz="0" izz="1e-10" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://ur10_shovel_tool/meshes/shovel_tcp.STL" />
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="shovel_tcp_joint" type="fixed">
+      <origin xyz="-0.025 0.47377 0.077109" rpy="0.61087 0 -1.04E-05" />
+      <parent link="base_link" />
+      <child link="shovel_tcp" />
+    </joint>
+
+    <joint name="${parent}_to_shovel_base_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent}" />
+      <child link="base_link" />
+    </joint>
+  </xacro:macro>
+</robot>
