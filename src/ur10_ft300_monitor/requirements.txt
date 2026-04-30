@@ -1,0 +1,5 @@
+numpy
+pandas
+pyqt5
+pyqtgraph
+pyserial
