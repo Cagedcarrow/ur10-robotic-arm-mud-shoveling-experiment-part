@@ -3,3 +3,5 @@ pandas
 pyqt5
 pyqtgraph
 pyserial
+pyyaml
+requests

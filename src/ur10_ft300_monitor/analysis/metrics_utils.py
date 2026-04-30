@@ -97,10 +97,15 @@ class ProcessArtifacts:
 
 def _to_numeric(df: pd.DataFrame, cols: List[str]) -> pd.DataFrame:
     out = df.copy()
+    existing_cols = []
+    seen = set()
     for col in cols:
-        if col in out.columns:
+        if col in out.columns and col not in seen:
             out[col] = pd.to_numeric(out[col], errors="coerce")
-    out[cols] = out[cols].ffill().bfill()
+            existing_cols.append(col)
+            seen.add(col)
+    if existing_cols:
+        out[existing_cols] = out[existing_cols].ffill().bfill()
     return out
 
 
@@ -668,4 +673,3 @@ def process_experiment(
         t_force_rate=t_force_rate,
         cumulative_energy=cumulative_energy,
     )
-

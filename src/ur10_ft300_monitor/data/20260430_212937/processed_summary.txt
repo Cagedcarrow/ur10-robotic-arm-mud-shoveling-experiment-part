@@ -1,0 +1,18 @@
+# 实验处理总结
+实验目录: /root/ur10_ws/src/ur10_ft300_monitor/data/20260430_212937
+数据文件: /root/ur10_ws/src/ur10_ft300_monitor/data/20260430_212937/ur10_ft300_realtime_data.csv
+时间来源: epoch_time
+是否使用 Label=1 实验段: 否（已回退全段）
+零点修正方法: first_5_percent_of_experiment
+样本数量: 总计 6744 行, 实验段 6744 行
+实验段持续时间: 52.976 s
+
+指标解释:
+- 最大合力 F_max=12.1662 N（反映铲泥最大冲击/阻力）
+- 最大力矩 M_max=3.2346 Nm（反映偏载/扭转载荷峰值）
+- 末端能量估计 E_force=14.6839 N*m（基于末端力与位移的近似功）
+- 平滑性 smoothness_force=0.7225 N/s（越小越平稳）
+- 力突变次数 shock_count=0（越大越不稳定）
+
+可能存在异常：FT fresh 比例过低
+警告信息: 警告：未检测到足够的 Label=1 实验段，本次处理使用全段数据。 | 未提供 mass_g，E_per_mass 为 NaN。

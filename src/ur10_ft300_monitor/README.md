@@ -1,22 +1,34 @@
 # UR10 + FT300 一体化监控工具包
 
-该工具包用于在同一 GUI 页面同时采集与记录：
-- UR10 实时运动数据（`30003` socket）
-- FT300 六维力数据（串口 Modbus）
+该工具包用于：
+- 采集 UR10 + FT300 实时数据
+- 对单次实验目录执行本地指标处理 + DeepSeek 报告分析
 
-并统一保存到同一份 CSV，主时间字段为 Unix Epoch 秒（`epoch_time`）。
+## 总流程总览
+- 见 `WORKFLOW_GUIDE.md`
 
-## 目录结构
+## 目录结构（当前）
 ```text
 ur10_ft300_monitor/
 ├── README.md
+├── WORKFLOW_GUIDE.md
 ├── requirements.txt
 ├── run_gui.py
-├── data/
 ├── scripts/
+│   ├── fusion_logger_gui.py
 │   ├── ur_reader.py
-│   ├── ft300_reader.py
-│   └── fusion_logger_gui.py
+│   └── ft300_reader.py
+├── analysis/
+│   ├── run_analysis_gui.py
+│   ├── analysis_gui.py
+│   ├── deepseek_reporter.py
+│   ├── metrics_utils.py
+│   └── README_analysis.md
+├── config/
+│   ├── llm_config.yaml
+│   └── test_deepseek_api.py
+├── data/
+├── results/
 └── docs/
     └── usage.md
 ```
@@ -27,42 +39,16 @@ cd ~/ur10_ws/src/ur10_ft300_monitor
 pip install -r requirements.txt
 ```
 
-## 启动
+## 启动采集 GUI
 ```bash
 python3 run_gui.py
 ```
 
-## 默认参数
-- UR: `10.160.9.21:30003`, timeout `3s`
-- FT300: `/dev/ttyUSB0`, `19200`, `slave_id=9`, timeout `0.2s`
-
-## 数据保存
-每次点击开始采集会创建：
-```text
-data/YYYYMMDD_HHMMSS/ur10_ft300_realtime_data.csv
-data/YYYYMMDD_HHMMSS/metadata.txt
-```
-
-CSV 关键列：
-- `epoch_time`（Unix Epoch 秒，float）
-- UR 全量字段（q/qd/I/TCP/Tgt_q/状态电气量）
-- `Fx,Fy,Fz,Mx,My,Mz`
-- `Label`
-- `ur_fresh,ft_fresh`
-
-## 连接检查
+## 启动分析 GUI
 ```bash
-ping 10.160.9.21
-nc -vz 10.160.9.21 30003
-ls /dev/ttyUSB*
-```
-
-若没有 `nc`：
-```bash
-sudo apt install -y netcat-openbsd
+python3 analysis/run_analysis_gui.py
 ```
 
 ## 安全说明
-- 本工具仅读取数据，不发送任何机械臂运动命令。
-- 禁止在本工具中加入 `movej`、`movel`、`servoj` 等控制接口。
+- 本工具仅读取和分析数据，不发送机械臂运动控制命令。
 - 实验前确认急停可用并保持机器人周围安全空间。

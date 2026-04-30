@@ -1,0 +1,11 @@
+ur_ip: 10.160.9.21
+ur_port: 30003
+ft_port: /dev/ttyUSB0
+ft_baudrate: 19200
+ft_slave_id: 9
+start_datetime: 2026-04-30 21:29:37
+csv_path: /root/ur10_ws/src/ur10_ft300_monitor/data/20260430_212937/ur10_ft300_realtime_data.csv
+sample_count: 6744
+stop_datetime: 2026-04-30 21:30:34
+normal_stop: yes
+errors: none

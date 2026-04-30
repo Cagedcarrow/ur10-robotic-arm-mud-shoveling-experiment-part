@@ -1,0 +1,5 @@
+base_url: https://api.deepseek.com
+api_key: sk-176f71fa684a4b64894e9835fff3e18c
+model: deepseek-v4-flash
+timeout_sec: 120
+temperature: 0.2
