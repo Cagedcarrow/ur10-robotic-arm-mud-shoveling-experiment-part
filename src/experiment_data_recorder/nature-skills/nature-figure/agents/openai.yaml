@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nature Figure"
+  short_description: "Create Nature-style matplotlib publication figures"
+  default_prompt: "Help me create a publication-ready matplotlib figure in a Nature-style visual language, including layout, palette, typography, and export settings."

@@ -1,0 +1,15 @@
+start_datetime: 2026-05-01 19:57:41
+stop_datetime: 2026-05-01 19:58:09
+normal_stop: yes
+session_dir: /root/ur10_ws/src/experiment_data_recorder/data/2026-05-01_19-57-41
+ur_ip: 10.160.9.21
+ur_port: 30003
+ft_port: /dev/ttyUSB0
+ft_baud: 19200
+ft_slave: 9
+rs_width: 640
+rs_height: 480
+rs_fps: 30
+sample_count: 3404
+csv_path: /root/ur10_ws/src/experiment_data_recorder/data/2026-05-01_19-57-41/ur10_ft300_realtime_data.csv
+errors: none

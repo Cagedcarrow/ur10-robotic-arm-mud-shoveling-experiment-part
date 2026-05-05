@@ -1,1 +1,0 @@
-/root/ur10_ws/src/ur10_perception/launch/perception_only.launch.py

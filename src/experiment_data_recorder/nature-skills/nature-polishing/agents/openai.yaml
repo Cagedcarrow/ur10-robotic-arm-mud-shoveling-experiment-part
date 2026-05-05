@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nature Polishing"
+  short_description: "Polish academic prose into Nature-leaning English"
+  default_prompt: "Help me polish or translate this academic draft into publication-quality English with Nature-leaning structure, logic, and phrasing."

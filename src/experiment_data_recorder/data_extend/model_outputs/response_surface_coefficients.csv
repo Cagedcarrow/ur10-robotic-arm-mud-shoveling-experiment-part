@@ -1,0 +1,10 @@
+term,term_type,coefficient,direction
+speed_setting,linear,218.80861934695025,positive
+penetration_depth,linear,49.18580748424953,positive
+entry_angle,linear,13.806745275725564,positive
+speed_setting^2,quadratic,-728.1465704342645,negative
+speed_setting penetration_depth,interaction,15.913509658766726,positive
+speed_setting entry_angle,interaction,3.0236933423618892,positive
+penetration_depth^2,quadratic,-0.9725486477109602,negative
+penetration_depth entry_angle,interaction,0.009497336687509517,positive
+entry_angle^2,quadratic,-0.22440688898563366,negative

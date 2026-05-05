@@ -1,1 +1,0 @@
-/root/ur10_ws/src/ur10_description/launch/view_description.launch.py

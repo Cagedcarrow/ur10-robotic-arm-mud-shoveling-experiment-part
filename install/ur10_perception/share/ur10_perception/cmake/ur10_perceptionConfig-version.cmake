@@ -1,1 +1,0 @@
-/root/ur10_ws/build/ur10_perception/ament_cmake_core/ur10_perceptionConfig-version.cmake

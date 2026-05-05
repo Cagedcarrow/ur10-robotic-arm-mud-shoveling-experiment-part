@@ -1,0 +1,13 @@
+Starting >>> realsense2_camera_msgs
+Starting >>> realsense2_ros_mqtt_bridge
+Finished <<< realsense2_ros_mqtt_bridge [1.16s]
+Finished <<< realsense2_camera_msgs [25.5s]
+Starting >>> realsense2_camera
+Starting >>> realsense2_description
+Starting >>> realsense2_rviz_plugin
+Finished <<< realsense2_rviz_plugin [3.30s]
+Finished <<< realsense2_description [3.56s]
+[Processing: realsense2_camera]
+Finished <<< realsense2_camera [1min 3s]
+
+Summary: 5 packages finished [1min 29s]

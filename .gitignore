@@ -15,3 +15,6 @@ __pycache__/
 # 其他
 *.bag
 .DS_Store
+
+# local archives
+*.zip

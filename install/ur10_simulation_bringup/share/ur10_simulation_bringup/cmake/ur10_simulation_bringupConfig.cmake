@@ -1,1 +1,0 @@
-/root/ur10_ws/build/ur10_simulation_bringup/ament_cmake_core/ur10_simulation_bringupConfig.cmake

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nature Data"
+  short_description: "Draft Nature data availability and FAIR metadata text"
+  default_prompt: "Help me turn my Chinese or English data notes into a Nature-ready Data Availability statement, repository plan, dataset citation checklist, and FAIR metadata audit."

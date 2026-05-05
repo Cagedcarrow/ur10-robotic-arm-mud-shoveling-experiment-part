@@ -1,0 +1,8 @@
+{
+  "optimal_entry_angle": 34.69387755102041,
+  "optimal_penetration_depth": 29.79591836734694,
+  "optimal_speed_setting": 0.5428571428571429,
+  "predicted_max_scooped_mass": 417.6402212561143,
+  "model_type": "quadratic_response_surface_regression",
+  "warning": "The optimum is based on synthetic-augmented response surface fitting, not direct experimental verification."
+}
