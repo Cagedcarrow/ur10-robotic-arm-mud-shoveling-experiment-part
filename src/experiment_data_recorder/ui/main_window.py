@@ -97,15 +97,19 @@ class MainWindow(QMainWindow):
         ctrl = QHBoxLayout()
         self.btn_start = QPushButton("开始记录")
         self.btn_stop = QPushButton("停止记录")
+        self.btn_ft_zero = QPushButton("力传感器清零")
         self.btn_stop.setEnabled(False)
+        self.btn_ft_zero.setEnabled(False)
         self.status_label = QLabel("状态: 空闲")
         self.path_label = QLabel("会话目录: -")
 
         self.btn_start.clicked.connect(self._start)
         self.btn_stop.clicked.connect(self._stop)
+        self.btn_ft_zero.clicked.connect(self._tare_ft_sensor)
 
         ctrl.addWidget(self.btn_start)
         ctrl.addWidget(self.btn_stop)
+        ctrl.addWidget(self.btn_ft_zero)
         ctrl.addWidget(self.status_label)
         root.addLayout(ctrl)
         root.addWidget(self.path_label)
@@ -222,6 +226,7 @@ class MainWindow(QMainWindow):
 
         self.btn_start.setEnabled(False)
         self.btn_stop.setEnabled(True)
+        self.btn_ft_zero.setEnabled(True)
         self.path_label.setText(f"会话目录: {session_dir}")
         self._append_log(f"[session] started: {session_dir}")
         for dq in self.plot_buffers.values():
@@ -231,7 +236,19 @@ class MainWindow(QMainWindow):
         self.manager.stop_session(normal_stop=True)
         self.btn_start.setEnabled(True)
         self.btn_stop.setEnabled(False)
+        self.btn_ft_zero.setEnabled(False)
         self._append_log("[session] stopped")
+
+    def _tare_ft_sensor(self) -> None:
+        adapter = self.manager.urft_adapter
+        if adapter is None:
+            QMessageBox.warning(self, "清零失败", "当前未启动采集，无法清零。")
+            return
+        ok = adapter.tare_ft_sensor()
+        if not ok:
+            QMessageBox.warning(self, "清零失败", "尚未收到FT300数据，请稍后重试。")
+            return
+        self._append_log("[ft300] tare applied")
 
     def _on_status(self, msg: str) -> None:
         self.status_label.setText(f"状态: {msg}")

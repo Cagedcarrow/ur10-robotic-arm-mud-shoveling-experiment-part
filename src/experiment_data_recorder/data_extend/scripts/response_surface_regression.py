@@ -24,6 +24,7 @@ DATA_EXTEND_ROOT = Path(__file__).resolve().parents[1]
 PLOTS_DIR = DATA_EXTEND_ROOT / "plots"
 MODEL_DIR = DATA_EXTEND_ROOT / "model_outputs"
 COMBINED_DATA_PATH = DATA_EXTEND_ROOT / "combined_modeling_dataset.csv"
+PROVENANCE_COMBINED_DATA_PATH = DATA_EXTEND_ROOT / "combined_modeling_dataset_provenance.csv"
 
 METRICS_PATH = MODEL_DIR / "response_surface_model_metrics.json"
 COEF_PATH = MODEL_DIR / "response_surface_coefficients.csv"
@@ -75,10 +76,23 @@ def load_combined_data() -> pd.DataFrame:
     if not COMBINED_DATA_PATH.exists():
         raise RuntimeError(f"Missing dataset: {COMBINED_DATA_PATH}. Run generate_augmented_response_surface_data.py first.")
     df = pd.read_csv(COMBINED_DATA_PATH)
-    required = FEATURES + [TARGET, "data_role", "source_description", "is_measured"]
+    required = FEATURES + [TARGET]
     missing = [name for name in required if name not in df.columns]
     if missing:
         raise RuntimeError(f"Missing required fields in combined dataset: {missing}")
+    if "record_id" not in df.columns:
+        raise RuntimeError("Missing required field in combined dataset: record_id")
+    if PROVENANCE_COMBINED_DATA_PATH.exists():
+        prov_df = pd.read_csv(PROVENANCE_COMBINED_DATA_PATH)
+        keep_cols = ["record_id", "data_role", "source_description", "is_measured"]
+        if all(col in prov_df.columns for col in keep_cols):
+            df = df.merge(prov_df[keep_cols], on="record_id", how="left")
+    if "data_role" not in df.columns:
+        df["data_role"] = "unknown"
+    if "source_description" not in df.columns:
+        df["source_description"] = "unknown"
+    if "is_measured" not in df.columns:
+        df["is_measured"] = 0
     return df
 
 
@@ -114,7 +128,10 @@ def fit_response_surface_model(df: pd.DataFrame) -> dict[str, object]:
 
     metrics = {
         "model_type": "quadratic_response_surface_regression",
-        "data_basis": "8 measured real experiments + 100 response_surface_augmented samples",
+        "data_basis": (
+            f"{int((df['data_role'] == 'real_experiment').sum())} measured real experiments + "
+            f"{int((df['data_role'] == 'response_surface_augmented').sum())} response_surface_augmented samples"
+        ),
         "n_samples": int(n),
         "n_real_experiment": int((df["data_role"] == "real_experiment").sum()),
         "n_response_surface_augmented": int((df["data_role"] == "response_surface_augmented").sum()),
@@ -207,6 +224,8 @@ def make_surface_prediction(
 
 def plot_real_experiment_scatter(df: pd.DataFrame, chinese_ok: bool) -> None:
     real_df = df[df["data_role"] == "real_experiment"].copy()
+    if real_df.empty:
+        return
     fig = plt.figure(figsize=(8.4, 6.5))
     ax = fig.add_subplot(111, projection="3d")
     sc = ax.scatter(
@@ -232,6 +251,8 @@ def plot_real_experiment_scatter(df: pd.DataFrame, chinese_ok: bool) -> None:
 
 def plot_augmented_distribution(df: pd.DataFrame, chinese_ok: bool) -> None:
     aug_df = df[df["data_role"] == "response_surface_augmented"].copy()
+    if aug_df.empty:
+        return
     fig = plt.figure(figsize=(8.4, 6.5))
     ax = fig.add_subplot(111, projection="3d")
     sc = ax.scatter(
@@ -276,8 +297,10 @@ def plot_surface(
 
     real_df = df[df["data_role"] == "real_experiment"]
     aug_df = df[df["data_role"] == "response_surface_augmented"]
-    ax.scatter(real_df[x_name], real_df[y_name], real_df[TARGET], c="#D55E00", marker="o", s=62, edgecolor="black", label="measured real experiment")
-    ax.scatter(aug_df[x_name], aug_df[y_name], aug_df[TARGET], c="#0072B2", marker="^", s=22, alpha=0.35, label="response_surface_augmented")
+    if not real_df.empty:
+        ax.scatter(real_df[x_name], real_df[y_name], real_df[TARGET], c="#D55E00", marker="o", s=62, edgecolor="black", label="measured real experiment")
+    if not aug_df.empty:
+        ax.scatter(aug_df[x_name], aug_df[y_name], aug_df[TARGET], c="#0072B2", marker="^", s=22, alpha=0.35, label="response_surface_augmented")
     ax.set_xlabel(x_name)
     ax.set_ylabel(y_name)
     ax.set_zlabel("scooped_mass (g)")
@@ -293,8 +316,12 @@ def plot_predicted_vs_observed(df: pd.DataFrame, pred: np.ndarray, chinese_ok: b
         "real_experiment": {"color": "#D55E00", "marker": "o", "label": "measured real experiment", "size": 60, "edgecolor": "black", "alpha": 0.9},
         "response_surface_augmented": {"color": "#0072B2", "marker": "^", "label": "response_surface_augmented", "size": 32, "edgecolor": "none", "alpha": 0.55},
     }
+    plotted_any = False
     for role, style in styles.items():
         mask = df["data_role"] == role
+        if not mask.any():
+            continue
+        plotted_any = True
         ax.scatter(
             df.loc[mask, TARGET],
             pred[mask.to_numpy()],
@@ -305,6 +332,8 @@ def plot_predicted_vs_observed(df: pd.DataFrame, pred: np.ndarray, chinese_ok: b
             alpha=style["alpha"],
             label=style["label"],
         )
+    if not plotted_any:
+        ax.scatter(df[TARGET], pred, c="#0072B2", marker="o", s=24, alpha=0.55, label="combined samples")
     bounds = [float(min(df[TARGET].min(), pred.min())), float(max(df[TARGET].max(), pred.max()))]
     ax.plot(bounds, bounds, "--", color="black", lw=1.2)
     ax.set_xlabel(label("观测 scooped_mass (g)", "Observed scooped_mass (g)", chinese_ok))
@@ -370,6 +399,8 @@ def plot_factor_sensitivity(result: dict[str, object], df: pd.DataFrame, chinese
 
 def build_interpretation(result: dict[str, object], sensitivity_peaks: dict[str, float]) -> str:
     metrics = result["metrics"]
+    n_real = int(metrics.get("n_real_experiment", 0))
+    n_aug = int(metrics.get("n_response_surface_augmented", 0))
     coef_map = dict(zip(result["feature_names"], result["linreg"].coef_))
     angle_peak = sensitivity_peaks["entry_angle"]
     depth_peak = sensitivity_peaks["penetration_depth"]
@@ -377,7 +408,7 @@ def build_interpretation(result: dict[str, object], sensitivity_peaks: dict[str,
     lines = [
         "二次响应面回归模型说明",
         "",
-        "本模型基于 8 条 measured 真实实验样本与 100 条 response_surface_augmented 增强样本联合建立，主要用于趋势拟合、响应面展示、模型稳定性分析与参数寻优参考，不等同于纯真实实验验证结论。",
+        f"本模型基于 {n_real} 条 measured 真实实验样本与 {n_aug} 条 response_surface_augmented 增强样本联合建立，主要用于趋势拟合、响应面展示、模型稳定性分析与参数寻优参考，不等同于纯真实实验验证结论。",
         "",
         "之所以采用二次响应面回归，是因为本研究关注的三个控制变量——机器臂速度设置、铲子下潜深度与切入角度——都可能表现出非线性和中间最优效应。二次响应面模型能够同时表达一次项、二次项与交互项，在当前小样本真实实验基础上，比单纯线性模型更适合描述“过低不足、过高损失、中间最优”的趋势结构。",
         "",

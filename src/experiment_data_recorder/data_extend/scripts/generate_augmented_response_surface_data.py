@@ -15,8 +15,10 @@ DATA_ROOT = PROJECT_ROOT / "data"
 ANALYSIS_OUTPUT_ROOT = DATA_ROOT / "analysis" / "output"
 
 REAL_DATA_PATH = DATA_EXTEND_ROOT / "real_experiment_clean.csv"
-AUGMENTED_DATA_PATH = DATA_EXTEND_ROOT / "response_surface_augmented_100.csv"
+AUGMENTED_SAMPLE_COUNT = 92
+AUGMENTED_DATA_PATH = DATA_EXTEND_ROOT / f"response_surface_augmented_{AUGMENTED_SAMPLE_COUNT}.csv"
 COMBINED_DATA_PATH = DATA_EXTEND_ROOT / "combined_modeling_dataset.csv"
+PROVENANCE_COMBINED_DATA_PATH = DATA_EXTEND_ROOT / "combined_modeling_dataset_provenance.csv"
 MODEL_OUTPUT_DIR = DATA_EXTEND_ROOT / "model_outputs"
 RNG_SEED = 20260505
 
@@ -282,26 +284,33 @@ def main() -> int:
     ensure_dirs()
     scan_info = scan_direct_design_tables(scan_tabular_files(DATA_ROOT))
     real_df = build_real_experiment_table()
-    augmented_df = generate_augmented_dataset(real_df, n_samples=100)
-    combined_df = pd.concat([real_df, augmented_df], ignore_index=True)
+    augmented_df = generate_augmented_dataset(real_df, n_samples=AUGMENTED_SAMPLE_COUNT)
+    combined_df_with_provenance = pd.concat([real_df, augmented_df], ignore_index=True)
+    combined_df = combined_df_with_provenance.drop(columns=["data_role", "source_description", "is_measured"])
 
     real_df.to_csv(REAL_DATA_PATH, index=False, encoding="utf-8")
     augmented_df.to_csv(AUGMENTED_DATA_PATH, index=False, encoding="utf-8")
     combined_df.to_csv(COMBINED_DATA_PATH, index=False, encoding="utf-8")
+    combined_df_with_provenance.to_csv(PROVENANCE_COMBINED_DATA_PATH, index=False, encoding="utf-8")
 
     summary = {
         "real_experiment_count": int(len(real_df)),
         "response_surface_augmented_count": int(len(augmented_df)),
         "combined_modeling_count": int(len(combined_df)),
+        "combined_modeling_provenance_count": int(len(combined_df_with_provenance)),
         "tabular_files_scanned": int(scan_info["tabular_files_scanned"]),
         "matched_direct_design_file_count": int(scan_info["matched_direct_design_file_count"]),
         "matched_direct_design_rows": int(scan_info["matched_direct_design_rows"]),
         "real_experiment_clean_path": str(REAL_DATA_PATH.relative_to(PROJECT_ROOT)),
         "response_surface_augmented_path": str(AUGMENTED_DATA_PATH.relative_to(PROJECT_ROOT)),
         "combined_modeling_dataset_path": str(COMBINED_DATA_PATH.relative_to(PROJECT_ROOT)),
+        "combined_modeling_dataset_provenance_path": str(PROVENANCE_COMBINED_DATA_PATH.relative_to(PROJECT_ROOT)),
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
-    print("说明：speed_setting 为由真实运动数据推导的代理变量；response_surface_augmented_100.csv 为响应面增强样本，不是直接实验测量数据。")
+    print(
+        "说明：speed_setting 为由真实运动数据推导的代理变量；"
+        f"{AUGMENTED_DATA_PATH.name} 为响应面增强样本，不是直接实验测量数据。"
+    )
     return 0
 
 

@@ -1,9 +1,29 @@
 {
-  "optimal_entry_angle": 34.69387755102041,
-  "optimal_penetration_depth": 29.79591836734694,
-  "optimal_speed_setting": 0.5428571428571429,
-  "predicted_max_scooped_mass": 417.6402212561143,
+  "optimal_entry_angle": 33.87755102040816,
+  "optimal_penetration_depth": 30.612244897959183,
+  "optimal_speed_setting": 0.5591836734693878,
+  "predicted_max_scooped_mass": 414.5023518689155,
+  "search_bounds": {
+    "speed_setting": {
+      "min": 0.2,
+      "max": 1.0
+    },
+    "penetration_depth": {
+      "min": 20.0,
+      "max": 40.0
+    },
+    "entry_angle": {
+      "min": 20.0,
+      "max": 60.0
+    }
+  },
+  "boundary_hit": {
+    "speed_setting": false,
+    "penetration_depth": false,
+    "entry_angle": false
+  },
+  "any_boundary_hit": false,
   "model_type": "quadratic_response_surface_regression",
-  "data_basis": "8 measured real experiments + 100 response_surface_augmented samples",
+  "data_basis": "8 measured real experiments + 92 response_surface_augmented samples",
   "warning": "该最优参数来自“真实初步实验 + 响应面增强样本”的模型预测，不等同于真实测得的运行结果。"
 }

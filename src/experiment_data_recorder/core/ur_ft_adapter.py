@@ -93,6 +93,8 @@ class URFTAdapter:
 
         self.latest_ur: Dict[str, float] = {}
         self.latest_ft: Dict[str, float] = {}
+        self.latest_ft_raw: Dict[str, float] = {}
+        self.ft_zero_offset: Dict[str, float] = {}
         self.ur_fresh = 0
         self.ft_fresh = 0
 
@@ -136,6 +138,8 @@ class URFTAdapter:
         self.errors = []
         self.latest_ur = {}
         self.latest_ft = {}
+        self.latest_ft_raw = {}
+        self.ft_zero_offset = {k: 0.0 for k in self.ft_fields}
         self.ur_fresh = 0
         self.ft_fresh = 0
 
@@ -202,9 +206,25 @@ class URFTAdapter:
         self._write_fused_row()
 
     def on_ft_data(self, data: Dict[str, float]) -> None:
-        self.latest_ft.update(data)
+        self.latest_ft_raw.update(data)
+        corrected = {
+            key: float(data.get(key, 0.0)) - float(self.ft_zero_offset.get(key, 0.0))
+            for key in self.ft_fields
+        }
+        self.latest_ft.update(corrected)
         self.ft_fresh = 1
         self._write_fused_row()
+
+    def tare_ft_sensor(self) -> bool:
+        if not self.latest_ft_raw:
+            return False
+        for key in self.ft_fields:
+            self.ft_zero_offset[key] = float(self.latest_ft_raw.get(key, 0.0))
+        self._status(
+            "FT300已清零: "
+            + ", ".join(f"{k}={self.ft_zero_offset[k]:.3f}" for k in self.ft_fields)
+        )
+        return True
 
     def get_stats(self) -> dict:
         return {

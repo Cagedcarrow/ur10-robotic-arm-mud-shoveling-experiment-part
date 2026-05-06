@@ -1,12 +1,12 @@
 {
   "model_type": "quadratic_response_surface_regression",
-  "data_basis": "8 measured real experiments + 100 response_surface_augmented samples",
-  "n_samples": 108,
+  "data_basis": "8 measured real experiments + 92 response_surface_augmented samples",
+  "n_samples": 100,
   "n_real_experiment": 8,
-  "n_response_surface_augmented": 100,
-  "r2": 0.667444289068413,
-  "adjusted_r2": 0.6369034584726551,
-  "rmse": 66.30023652422302,
-  "mae": 32.833549037379306,
-  "intercept": -621.7361107098172
+  "n_response_surface_augmented": 92,
+  "r2": 0.6350655410901724,
+  "adjusted_r2": 0.5985720951991897,
+  "rmse": 68.11779785965633,
+  "mae": 34.87979641713829,
+  "intercept": -601.5995059664248
 }

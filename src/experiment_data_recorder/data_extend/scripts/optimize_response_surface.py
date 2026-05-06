@@ -13,6 +13,7 @@ from response_surface_regression import (
     FEATURES,
     METRICS_PATH,
     MODEL_DIR,
+    PROVENANCE_COMBINED_DATA_PATH,
     SUMMARY_PATH,
     TARGET,
     build_formula,
@@ -23,6 +24,23 @@ from response_surface_regression import (
 OPTIMUM_PATH = MODEL_DIR / "predicted_optimum.json"
 PREDICTION_GRID_PATH = MODEL_DIR / "prediction_grid.csv"
 README_PATH = DATA_EXTEND_ROOT / "README.md"
+AUGMENTED_FILE_NAME = "response_surface_augmented_92.csv"
+
+
+def load_modeling_dataframe() -> pd.DataFrame:
+    df = pd.read_csv(COMBINED_DATA_PATH)
+    if PROVENANCE_COMBINED_DATA_PATH.exists():
+        prov_df = pd.read_csv(PROVENANCE_COMBINED_DATA_PATH)
+        keep_cols = ["record_id", "data_role", "source_description", "is_measured"]
+        if "record_id" in df.columns and all(col in prov_df.columns for col in keep_cols):
+            df = df.merge(prov_df[keep_cols], on="record_id", how="left")
+    if "data_role" not in df.columns:
+        df["data_role"] = "unknown"
+    if "source_description" not in df.columns:
+        df["source_description"] = "unknown"
+    if "is_measured" not in df.columns:
+        df["is_measured"] = 0
+    return df
 
 
 def optimize_grid(result: dict[str, object]) -> tuple[dict[str, object], pd.DataFrame]:
@@ -53,13 +71,29 @@ def optimize_grid(result: dict[str, object]) -> tuple[dict[str, object], pd.Data
 
     best_idx = int(pred.argmax())
     best = mesh.iloc[best_idx]
+    boundaries = {
+        "speed_setting": {"min": float(speed_grid.min()), "max": float(speed_grid.max())},
+        "penetration_depth": {"min": float(depth_grid.min()), "max": float(depth_grid.max())},
+        "entry_angle": {"min": float(angle_grid.min()), "max": float(angle_grid.max())},
+    }
+    boundary_hits = {
+        "speed_setting": bool(np.isclose(best["speed_setting"], boundaries["speed_setting"]["min"]) or np.isclose(best["speed_setting"], boundaries["speed_setting"]["max"])),
+        "penetration_depth": bool(
+            np.isclose(best["penetration_depth"], boundaries["penetration_depth"]["min"])
+            or np.isclose(best["penetration_depth"], boundaries["penetration_depth"]["max"])
+        ),
+        "entry_angle": bool(np.isclose(best["entry_angle"], boundaries["entry_angle"]["min"]) or np.isclose(best["entry_angle"], boundaries["entry_angle"]["max"])),
+    }
     optimum = {
         "optimal_entry_angle": float(best["entry_angle"]),
         "optimal_penetration_depth": float(best["penetration_depth"]),
         "optimal_speed_setting": float(best["speed_setting"]),
         "predicted_max_scooped_mass": float(pred[best_idx]),
+        "search_bounds": boundaries,
+        "boundary_hit": boundary_hits,
+        "any_boundary_hit": bool(any(boundary_hits.values())),
         "model_type": "quadratic_response_surface_regression",
-        "data_basis": "8 measured real experiments + 100 response_surface_augmented samples",
+        "data_basis": result["metrics"]["data_basis"],
         "warning": "该最优参数来自“真实初步实验 + 响应面增强样本”的模型预测，不等同于真实测得的运行结果。",
     }
     return optimum, grid_df
@@ -73,8 +107,9 @@ def write_readme(df: pd.DataFrame, metrics: dict[str, float], optimum: dict[str,
         "",
         "- `data/`：原始真实实验目录，本流程不会修改、覆盖或删除其中任何文件。",
         "- `real_experiment_clean.csv`：8 条 measured 真实实验样本，从原始 `data/` 会话级样本整理得到。",
-        "- `response_surface_augmented_100.csv`：100 条响应面增强样本，不是直接实验测量数据。",
-        "- `combined_modeling_dataset.csv`：用于二次响应面建模的统一数据集，包含 measured real experiment 与 response_surface_augmented 两类样本。",
+        f"- `{AUGMENTED_FILE_NAME}`：92 条响应面增强样本，不是直接实验测量数据。",
+        "- `combined_modeling_dataset.csv`：用于二次响应面建模的无标签训练集（仅保留建模字段）。",
+        "- `combined_modeling_dataset_provenance.csv`：用于内部追溯复现的带来源数据集（包含 data_role/is_measured）。",
         "- `model_outputs/prediction_grid.csv`：基于拟合模型生成的预测网格点，`data_role = model_prediction_grid`。",
         "- `future_real_experiment_design.csv`：用于后续补充真实实验的设计表，当前测量字段留空。",
         "",
@@ -94,7 +129,7 @@ def write_readme(df: pd.DataFrame, metrics: dict[str, float], optimum: dict[str,
         "",
         "## 4. Response-Surface Augmented Table",
         "",
-        "- `response_surface_augmented_100.csv` 不是直接实验测量数据。",
+        f"- `{AUGMENTED_FILE_NAME}` 不是直接实验测量数据。",
         "- 该数据集基于初步实验趋势假设构造，用于改善响应面形状展示、模型稳定性分析和参数寻优参考。",
         "- 增强样本保留明确来源字段，不会被重标记为 measured real experiment。",
         "",
@@ -128,6 +163,8 @@ def write_readme(df: pd.DataFrame, metrics: dict[str, float], optimum: dict[str,
         f"- predicted optimal penetration depth: `{optimum['optimal_penetration_depth']:.3f} mm`",
         f"- predicted optimal speed setting: `{optimum['optimal_speed_setting']:.3f}`",
         f"- predicted maximum scooped mass: `{optimum['predicted_max_scooped_mass']:.3f} g`",
+        f"- optimum boundary hit check: `{optimum['boundary_hit']}`",
+        f"- any boundary hit: `{optimum['any_boundary_hit']}`",
         "",
         "## 8. Interpretation and Limitations",
         "",
@@ -139,7 +176,7 @@ def write_readme(df: pd.DataFrame, metrics: dict[str, float], optimum: dict[str,
         "",
         "## 9. Strict Statement",
         "",
-        "- `response_surface_augmented_100.csv` 不能作为真实测量数据使用。",
+        f"- `{AUGMENTED_FILE_NAME}` 不能作为真实测量数据使用。",
         "- `combined_modeling_dataset.csv` 只用于二次响应面回归建模、趋势展示和参数寻优参考。",
         "- `model_prediction_grid` 仅表示拟合模型上的预测网格点，不代表真实实验运行结果。",
         f"- 最优参数结论：{optimum['warning']}",
@@ -157,7 +194,7 @@ def main() -> int:
     if not COMBINED_DATA_PATH.exists():
         raise RuntimeError("Missing combined_modeling_dataset.csv. Run generate_augmented_response_surface_data.py first.")
 
-    df = pd.read_csv(COMBINED_DATA_PATH)
+    df = load_modeling_dataframe()
     result = fit_response_surface_model(df)
     optimum, prediction_grid = optimize_grid(result)
     prediction_grid.to_csv(PREDICTION_GRID_PATH, index=False, encoding="utf-8")

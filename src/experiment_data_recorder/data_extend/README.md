@@ -4,8 +4,9 @@
 
 - `data/`：原始真实实验目录，本流程不会修改、覆盖或删除其中任何文件。
 - `real_experiment_clean.csv`：8 条 measured 真实实验样本，从原始 `data/` 会话级样本整理得到。
-- `response_surface_augmented_100.csv`：100 条响应面增强样本，不是直接实验测量数据。
-- `combined_modeling_dataset.csv`：用于二次响应面建模的统一数据集，包含 measured real experiment 与 response_surface_augmented 两类样本。
+- `response_surface_augmented_92.csv`：92 条响应面增强样本，不是直接实验测量数据。
+- `combined_modeling_dataset.csv`：用于二次响应面建模的无标签训练集（仅保留建模字段）。
+- `combined_modeling_dataset_provenance.csv`：用于内部追溯复现的带来源数据集（包含 data_role/is_measured）。
 - `model_outputs/prediction_grid.csv`：基于拟合模型生成的预测网格点，`data_role = model_prediction_grid`。
 - `future_real_experiment_design.csv`：用于后续补充真实实验的设计表，当前测量字段留空。
 
@@ -25,7 +26,7 @@
 
 ## 4. Response-Surface Augmented Table
 
-- `response_surface_augmented_100.csv` 不是直接实验测量数据。
+- `response_surface_augmented_92.csv` 不是直接实验测量数据。
 - 该数据集基于初步实验趋势假设构造，用于改善响应面形状展示、模型稳定性分析和参数寻优参考。
 - 增强样本保留明确来源字段，不会被重标记为 measured real experiment。
 
@@ -49,16 +50,18 @@ python3 data_extend/scripts/generate_future_experiment_design.py
 ## 7. Result Summary
 
 - measured real experiment count: `8`
-- response_surface_augmented count: `100`
-- quadratic response-surface formula: `scooped_mass = -621.736111 + 218.808619 * speed_setting + 49.185807 * penetration_depth + 13.806745 * entry_angle - 728.146570 * speed_setting² + 15.913510 * speed_setting * penetration_depth + 3.023693 * speed_setting * entry_angle - 0.972549 * penetration_depth² + 0.009497 * penetration_depth * entry_angle - 0.224407 * entry_angle²`
-- R²: `0.6674`
-- Adjusted R²: `0.6369`
-- RMSE: `66.3002`
-- MAE: `32.8335`
-- predicted optimal entry angle: `34.694 deg`
-- predicted optimal penetration depth: `29.796 mm`
-- predicted optimal speed setting: `0.543`
-- predicted maximum scooped mass: `417.640 g`
+- response_surface_augmented count: `92`
+- quadratic response-surface formula: `scooped_mass = -601.599506 + 142.844260 * speed_setting + 48.871325 * penetration_depth + 13.540024 * entry_angle - 664.128392 * speed_setting² + 15.153818 * speed_setting * penetration_depth + 3.953777 * speed_setting * entry_angle - 0.934329 * penetration_depth² - 0.008593 * penetration_depth * entry_angle - 0.227148 * entry_angle²`
+- R²: `0.6351`
+- Adjusted R²: `0.5986`
+- RMSE: `68.1178`
+- MAE: `34.8798`
+- predicted optimal entry angle: `33.878 deg`
+- predicted optimal penetration depth: `30.612 mm`
+- predicted optimal speed setting: `0.559`
+- predicted maximum scooped mass: `414.502 g`
+- optimum boundary hit check: `{'speed_setting': False, 'penetration_depth': False, 'entry_angle': False}`
+- any boundary hit: `False`
 
 ## 8. Interpretation and Limitations
 
@@ -70,7 +73,7 @@ python3 data_extend/scripts/generate_future_experiment_design.py
 
 ## 9. Strict Statement
 
-- `response_surface_augmented_100.csv` 不能作为真实测量数据使用。
+- `response_surface_augmented_92.csv` 不能作为真实测量数据使用。
 - `combined_modeling_dataset.csv` 只用于二次响应面回归建模、趋势展示和参数寻优参考。
 - `model_prediction_grid` 仅表示拟合模型上的预测网格点，不代表真实实验运行结果。
 - 最优参数结论：该最优参数来自“真实初步实验 + 响应面增强样本”的模型预测，不等同于真实测得的运行结果。
