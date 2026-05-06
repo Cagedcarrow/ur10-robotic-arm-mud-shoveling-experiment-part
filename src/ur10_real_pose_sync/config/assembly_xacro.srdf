@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot name="assembly">
+  <group name="assembly_manipulator">
+    <joint name="ur10_shoulder_pan"/>
+    <joint name="ur10_shoulder_lift"/>
+    <joint name="ur10_elbow"/>
+    <joint name="ur10_wrist_1"/>
+    <joint name="ur10_wrist_2"/>
+    <joint name="ur10_wrist_3"/>
+  </group>
+
+  <group name="shovel_eef_group">
+    <link name="sensor_shovel_tcp"/>
+  </group>
+
+  <group_state name="home" group="assembly_manipulator">
+    <joint name="ur10_shoulder_pan" value="2.2038776874542236"/>
+    <joint name="ur10_shoulder_lift" value="0.06395161151885986"/>
+    <joint name="ur10_elbow" value="-1.7774718443499964"/>
+    <joint name="ur10_wrist_1" value="-0.04721385637392217"/>
+    <joint name="ur10_wrist_2" value="1.8873671293258667"/>
+    <joint name="ur10_wrist_3" value="0.9308245182037354"/>
+  </group_state>
+
+  <end_effector name="shovel_eef" parent_link="ur10_wrist_3" group="shovel_eef_group" parent_group="assembly_manipulator"/>
+
+  <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_jizuo"/>
+
+  <disable_collisions link1="ur10" link2="ur10_shoulder" reason="Adjacent"/>
+  <disable_collisions link1="ur10_shoulder" link2="ur10_upper_arm" reason="Adjacent"/>
+  <disable_collisions link1="ur10_upper_arm" link2="ur10_forearm" reason="Adjacent"/>
+  <disable_collisions link1="ur10_forearm" link2="ur10_wrist_1" reason="Adjacent"/>
+  <disable_collisions link1="ur10_wrist_1" link2="ur10_wrist_2" reason="Adjacent"/>
+  <disable_collisions link1="ur10_wrist_2" link2="ur10_wrist_3" reason="Adjacent"/>
+  <disable_collisions link1="ur10_wrist_3" link2="sensor_shovel" reason="Adjacent"/>
+  <disable_collisions link1="sensor_shovel" link2="sensor_shovel_tcp" reason="Adjacent"/>
+  <disable_collisions link1="ur10_wrist_2" link2="sensor_shovel" reason="Default"/>
+</robot>

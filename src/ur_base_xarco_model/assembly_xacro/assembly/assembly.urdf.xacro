@@ -1,20 +1,21 @@
 <?xml version="1.0"?>
 <robot name="assembly" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="mesh_root" default="meshes" />
 
   <link name="sensor_shovel">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_link.STL" />
+        <mesh filename="$(arg mesh_root)/base_link.STL" />
       </geometry>
-      <material>
+      <material name="mat_sensor_shovel">
         <color rgba="0.79216078 0.81961176 0.92941569 1.00000000"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_link.STL" />
+        <mesh filename="$(arg mesh_root)/base_link.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -24,20 +25,20 @@
     </inertial>
   </link>
 
-  <link name="sensor_shovel_shovel_tcp">
+  <link name="sensor_shovel_tcp">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/shovel_tcp.STL" />
+        <mesh filename="$(arg mesh_root)/shovel_tcp.STL" />
       </geometry>
-      <material>
+      <material name="mat_shovel_tcp">
         <color rgba="1.00000000 1.00000000 1.00000000 1.00000000"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/shovel_tcp.STL" />
+        <mesh filename="$(arg mesh_root)/shovel_tcp.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -51,7 +52,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base.dae" />
+        <mesh filename="$(arg mesh_root)/base.dae" />
       </geometry>
       <material name="SWMaterial-2_001">
         <color rgba="0.37255294 0.37255294 0.37255294 1.00000000"/>
@@ -74,7 +75,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/shoulder.dae" />
+        <mesh filename="$(arg mesh_root)/shoulder.dae" />
       </geometry>
       <material name="SWMaterial-0">
         <color rgba="0.22353333 0.22353333 0.22353333 1.00000000"/>
@@ -103,7 +104,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/upperarm.dae" />
+        <mesh filename="$(arg mesh_root)/upperarm.dae" />
       </geometry>
       <material name="SWMaterial-0">
         <color rgba="0.22353333 0.22353333 0.22353333 1.00000000"/>
@@ -147,7 +148,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/forearm.dae" />
+        <mesh filename="$(arg mesh_root)/forearm.dae" />
       </geometry>
       <material name="SWMaterial-0">
         <color rgba="0.22353333 0.22353333 0.22353333 1.00000000"/>
@@ -194,7 +195,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/wrist1.dae" />
+        <mesh filename="$(arg mesh_root)/wrist1.dae" />
       </geometry>
       <material name="SWMaterial-0_001">
         <color rgba="0.22353333 0.22353333 0.22353333 1.00000000"/>
@@ -223,7 +224,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/wrist2.dae" />
+        <mesh filename="$(arg mesh_root)/wrist2.dae" />
       </geometry>
       <material name="SWMaterial-0_002">
         <color rgba="0.22353333 0.22353333 0.22353333 1.00000000"/>
@@ -252,7 +253,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/wrist3.dae" />
+        <mesh filename="$(arg mesh_root)/wrist3.dae" />
       </geometry>
       <material name="SWMaterial-2_003">
         <color rgba="0.46274902 0.46274902 0.46274902 1.00000000"/>
@@ -275,16 +276,16 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_link_world_jizuo.STL" />
+        <mesh filename="$(arg mesh_root)/base_link_world_jizuo.STL" />
       </geometry>
-      <material>
+      <material name="mat_base_jizuo">
         <color rgba="1.00000000 1.00000000 1.00000000 1.00000000"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_link_world_jizuo.STL" />
+        <mesh filename="$(arg mesh_root)/base_link_world_jizuo.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -298,16 +299,16 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_ur10_with_dizuo.STL" />
+        <mesh filename="$(arg mesh_root)/base_ur10_with_dizuo.STL" />
       </geometry>
-      <material>
+      <material name="mat_base_ur10_with_dizuo">
         <color rgba="1.00000000 1.00000000 1.00000000 1.00000000"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/base_ur10_with_dizuo.STL" />
+        <mesh filename="$(arg mesh_root)/base_ur10_with_dizuo.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -317,9 +318,9 @@
     </inertial>
   </link>
 
-  <joint name="sensor_shovel_tcp" type="fixed">
+  <joint name="sensor_shovel_tcp_fixed" type="fixed">
     <parent link="sensor_shovel" />
-    <child link="sensor_shovel_shovel_tcp" />
+    <child link="sensor_shovel_tcp" />
     <origin xyz="-0.47377 0.077109 0.0733" rpy="-1.5708 1.5708 -0.61087" />
   </joint>
 
@@ -380,9 +381,9 @@
   <joint name="ur10-sensor_shovel" type="fixed">
     <parent link="ur10_wrist_3" />
     <child link="sensor_shovel" />
-    <origin xyz="0 0.09 0" rpy="-1.5707963 -1.5707963 0" quat_xyzw="-0.5 0.5 0.5 0.5" />
+    <origin xyz="0 0.09 0" rpy="-1.5707963 0 0" quat_xyzw="-0.5 0.5 0.5 0.5" />
   </joint>
-+
+
   <joint name="base_jizuo-ur10" type="fixed">
     <parent link="base_jizuo_base_ur10_with_dizuo" />
     <child link="ur10" />

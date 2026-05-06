@@ -82,7 +82,7 @@ def launch_setup(context, *args, **kwargs):
         'moveit_manage_controllers': False,
         'trajectory_execution.allowed_execution_duration_scaling': 1.2,
         'trajectory_execution.allowed_goal_duration_margin': 0.5,
-        'trajectory_execution.allowed_start_tolerance': 0.01,
+        'trajectory_execution.allowed_start_tolerance': 0.03,
         'trajectory_execution.execution_duration_monitoring': False,
     }
 
@@ -141,7 +141,7 @@ def launch_setup(context, *args, **kwargs):
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('use_sim_time', default_value='true'),
+        DeclareLaunchArgument('use_sim_time', default_value='false'),
         DeclareLaunchArgument('launch_rviz', default_value='true'),
         DeclareLaunchArgument(
             'rviz_config',
