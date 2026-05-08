@@ -4,7 +4,12 @@ set -u
 JOINT_OK=0
 CTRL_OK=0
 ACTION_OK=0
+SPEED_OK=0
 FAKE_DETECTED=0
+
+strip_ansi() {
+  sed -r 's/\x1B\[[0-9;]*[mK]//g'
+}
 
 run_cmd() {
   echo "[CMD] $*"
@@ -25,7 +30,9 @@ fi
 NODE_LIST=$(timeout 5s ros2 node list 2>/dev/null || true)
 TOPIC_LIST=$(timeout 5s ros2 topic list 2>/dev/null || true)
 CTRL_LIST=$(timeout 5s ros2 control list_controllers 2>/dev/null || true)
+CTRL_LIST_CLEAN=$(printf '%s\n' "$CTRL_LIST" | strip_ansi)
 ACTION_LIST=$(timeout 5s ros2 action list 2>/dev/null || true)
+SPEED_TOPIC=$(timeout 5s ros2 topic list 2>/dev/null | grep -E '/speed_scaling_state_broadcaster/speed_scaling$|/speed_scaling$' | head -1 || true)
 
 echo "$NODE_LIST"
 echo "$TOPIC_LIST" | grep joint_states || true
@@ -42,7 +49,7 @@ if [ "$FAKE_DETECTED" -eq 1 ]; then
   echo "FAKE_STATE_SOURCE_DETECTED"
 fi
 
-if echo "$CTRL_LIST" | grep -Eq '^scaled_joint_trajectory_controller[[:space:]].*active'; then
+if echo "$CTRL_LIST_CLEAN" | grep -Eq '^scaled_joint_trajectory_controller[[:space:]].*[[:space:]]active[[:space:]]*$'; then
   echo "CONTROLLER_ACTIVE"
   CTRL_OK=1
 else
@@ -56,7 +63,22 @@ else
   echo "ACTION_MISSING"
 fi
 
-if [ "$JOINT_OK" -eq 1 ] && [ "$CTRL_OK" -eq 1 ] && [ "$ACTION_OK" -eq 1 ] && [ "$FAKE_DETECTED" -eq 0 ]; then
+if [ -n "$SPEED_TOPIC" ]; then
+  echo "SPEED_SCALING_TOPIC=$SPEED_TOPIC"
+  SPEED_MSG=$(timeout 5s ros2 topic echo "$SPEED_TOPIC" --once 2>/dev/null || true)
+  echo "$SPEED_MSG"
+  SPEED_VALUE=$(printf '%s\n' "$SPEED_MSG" | awk '/data:/ {print $2; exit}')
+  if awk "BEGIN {exit !(${SPEED_VALUE:-0} > 0.01)}"; then
+    echo "SPEED_SCALING_NONZERO"
+    SPEED_OK=1
+  else
+    echo "SPEED_SCALING_ZERO_OR_MISSING"
+  fi
+else
+  echo "SPEED_SCALING_TOPIC_MISSING"
+fi
+
+if [ "$JOINT_OK" -eq 1 ] && [ "$CTRL_OK" -eq 1 ] && [ "$ACTION_OK" -eq 1 ] && [ "$SPEED_OK" -eq 1 ] && [ "$FAKE_DETECTED" -eq 0 ]; then
   echo "READY_FOR_RVIZ2_MOVEIT_EXECUTION"
 fi
 

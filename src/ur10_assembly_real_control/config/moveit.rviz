@@ -154,7 +154,7 @@ Visualization Manager:
         Colliding Link Color: 255; 0; 0
         Goal State Alpha: 1
         Goal State Color: 250; 128; 0
-        Interactive Marker Size: 0
+        Interactive Marker Size: 0.22
         Joint Violation Color: 255; 0; 255
         Planning Group: assembly_manipulator
         Query Goal State: true

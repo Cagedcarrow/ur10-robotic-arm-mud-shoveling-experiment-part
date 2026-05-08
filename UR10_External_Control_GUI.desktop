@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=UR10 External Control GUI
+Comment=Start the UR10 External Control ROS2 bringup GUI
+Exec=/root/ur10_ws/start_ur10_external_control_gui.sh
+Terminal=false
+Categories=Development;Robotics;

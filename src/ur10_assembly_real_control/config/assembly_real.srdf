@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <robot name="assembly">
   <group name="assembly_manipulator">
-    <joint name="shoulder_pan_joint"/>
-    <joint name="shoulder_lift_joint"/>
-    <joint name="elbow_joint"/>
-    <joint name="wrist_1_joint"/>
-    <joint name="wrist_2_joint"/>
-    <joint name="wrist_3_joint"/>
+    <chain base_link="ur10" tip_link="sensor_shovel_tcp"/>
+  </group>
+
+  <group name="shovel_eef_group">
+    <link name="sensor_shovel_tcp"/>
   </group>
 
   <group_state name="home" group="assembly_manipulator">
@@ -18,14 +17,17 @@
     <joint name="wrist_3_joint" value="0.9308245182037354"/>
   </group_state>
 
-  <end_effector name="shovel_eef" parent_link="ur10_wrist_3_link" group="assembly_manipulator" parent_group="assembly_manipulator"/>
+  <end_effector name="shovel_eef" parent_link="wrist_3_link" group="shovel_eef_group" parent_group="assembly_manipulator"/>
 
   <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_jizuo"/>
 
   <disable_collisions link1="ur10" link2="ur10_shoulder" reason="Adjacent"/>
   <disable_collisions link1="ur10_shoulder" link2="ur10_upper_arm" reason="Adjacent"/>
   <disable_collisions link1="ur10_upper_arm" link2="ur10_forearm" reason="Adjacent"/>
-  <disable_collisions link1="ur10_forearm" link2="ur10_wrist_1_link" reason="Adjacent"/>
-  <disable_collisions link1="ur10_wrist_1_link" link2="ur10_wrist_2_link" reason="Adjacent"/>
-  <disable_collisions link1="ur10_wrist_2_link" link2="ur10_wrist_3_link" reason="Adjacent"/>
+  <disable_collisions link1="ur10_forearm" link2="wrist_1_link" reason="Adjacent"/>
+  <disable_collisions link1="wrist_1_link" link2="wrist_2_link" reason="Adjacent"/>
+  <disable_collisions link1="wrist_2_link" link2="wrist_3_link" reason="Adjacent"/>
+  <disable_collisions link1="wrist_3_link" link2="sensor_shovel" reason="Adjacent"/>
+  <disable_collisions link1="sensor_shovel" link2="sensor_shovel_tcp" reason="Adjacent"/>
+  <disable_collisions link1="wrist_2_link" link2="sensor_shovel" reason="Default"/>
 </robot>

@@ -191,7 +191,7 @@
     </inertial>
   </link>
 
-  <link name="wrist_1_joint">
+  <link name="wrist_1_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -220,7 +220,7 @@
     </inertial>
   </link>
 
-  <link name="wrist_2_joint">
+  <link name="wrist_2_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -249,7 +249,7 @@
     </inertial>
   </link>
 
-  <link name="wrist_3_joint">
+  <link name="wrist_3_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -350,23 +350,23 @@
 
   <joint name="wrist_1_joint" type="revolute">
     <parent link="ur10_forearm" />
-    <child link="wrist_1_joint" />
+    <child link="wrist_1_link" />
     <origin xyz="-0.0000036 0 0.5723" rpy="0 1.5707895 0.0000027" />
     <axis xyz="0 1 0" />
     <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
   </joint>
 
   <joint name="wrist_2_joint" type="revolute">
-    <parent link="wrist_1_joint" />
-    <child link="wrist_2_joint" />
+    <parent link="wrist_1_link" />
+    <child link="wrist_2_link" />
     <origin xyz="0.0000003 0.1149 0.0000003" rpy="0 0 0" />
     <axis xyz="0 0 -1" />
     <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
   </joint>
 
   <joint name="wrist_3_joint" type="revolute">
-    <parent link="wrist_2_joint" />
-    <child link="wrist_3_joint" />
+    <parent link="wrist_2_link" />
+    <child link="wrist_3_link" />
     <origin xyz="0 -0.0000003 0.1157" rpy="0 0 0" />
     <axis xyz="0 1 0" />
     <limit lower="-6.28319" upper="6.28319" effort="54" velocity="3.2" />
@@ -379,7 +379,7 @@
   </joint>
 
   <joint name="ur10-sensor_shovel" type="fixed">
-    <parent link="wrist_3_joint" />
+    <parent link="wrist_3_link" />
     <child link="sensor_shovel" />
     <origin xyz="0 0.09 0" rpy="-1.5707963 0 0" quat_xyzw="-0.5 0.5 0.5 0.5" />
   </joint>

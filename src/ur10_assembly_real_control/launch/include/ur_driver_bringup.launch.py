@@ -10,6 +10,7 @@ def generate_launch_description():
     robot_ip = LaunchConfiguration("robot_ip")
     headless_mode = LaunchConfiguration("headless_mode")
     launch_dashboard_client = LaunchConfiguration("launch_dashboard_client")
+    reverse_ip = LaunchConfiguration("reverse_ip")
 
     ur_control = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -20,11 +21,16 @@ def generate_launch_description():
         launch_arguments={
             "ur_type": ur_type,
             "robot_ip": robot_ip,
-            "use_mock_hardware": "false",
+            "use_fake_hardware": "false",
             "headless_mode": headless_mode,
             "launch_rviz": "false",
             "launch_dashboard_client": launch_dashboard_client,
-            "initial_joint_controller": "joint_trajectory_controller",
+            "reverse_ip": reverse_ip,
+            "reverse_port": "50001",
+            "script_sender_port": "50002",
+            "trajectory_port": "50003",
+            "script_command_port": "50004",
+            "initial_joint_controller": "scaled_joint_trajectory_controller",
             "activate_joint_controller": "true",
         }.items(),
     )
@@ -34,5 +40,6 @@ def generate_launch_description():
         DeclareLaunchArgument("robot_ip"),
         DeclareLaunchArgument("headless_mode", default_value="false"),
         DeclareLaunchArgument("launch_dashboard_client", default_value="true"),
+        DeclareLaunchArgument("reverse_ip", default_value="10.160.9.100"),
         ur_control,
     ])
