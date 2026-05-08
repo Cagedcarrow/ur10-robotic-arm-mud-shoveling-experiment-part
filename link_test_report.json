@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "started_at": "2026-05-08T09:54:05.025265+08:00",
+    "finished_at": "2026-05-08T09:54:05.068574+08:00",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "robot_ip": "10.160.9.21",
+    "host_ip": "10.160.9.100",
+    "external_control_port": 50002,
+    "robot_ports": [
+      29999,
+      30001,
+      30002,
+      30003,
+      30004
+    ],
+    "safe_mode": "read_only_tcp_connect_no_rtde_recipe_no_motion_command"
+  },
+  "checks": {
+    "ping": {
+      "command": [
+        "ping",
+        "-c",
+        "1",
+        "-W",
+        "2",
+        "10.160.9.21"
+      ],
+      "returncode": 0,
+      "stdout": "PING 10.160.9.21 (10.160.9.21) 56(84) bytes of data.\n64 bytes from 10.160.9.21: icmp_seq=1 ttl=63 time=0.968 ms\n\n--- 10.160.9.21 ping statistics ---\n1 packets transmitted, 1 received, 0% packet loss, time 0ms\nrtt min/avg/max/mdev = 0.968/0.968/0.968/0.000 ms",
+      "stderr": "",
+      "timed_out": false,
+      "status": "PASS",
+      "message": "Robot replied to ICMP ping."
+    },
+    "tcp_ports": {
+      "29999": {
+        "status": "PASS",
+        "host": "10.160.9.21",
+        "port": 29999,
+        "timeout_sec": 2.0,
+        "elapsed_ms": 0.79,
+        "message": "TCP port accepted a connection."
+      },
+      "30001": {
+        "status": "PASS",
+        "host": "10.160.9.21",
+        "port": 30001,
+        "timeout_sec": 2.0,
+        "elapsed_ms": 0.39,
+        "message": "TCP port accepted a connection."
+      },
+      "30002": {
+        "status": "PASS",
+        "host": "10.160.9.21",
+        "port": 30002,
+        "timeout_sec": 2.0,
+        "elapsed_ms": 0.47,
+        "message": "TCP port accepted a connection."
+      },
+      "30003": {
+        "status": "PASS",
+        "host": "10.160.9.21",
+        "port": 30003,
+        "timeout_sec": 2.0,
+        "elapsed_ms": 1.07,
+        "message": "TCP port accepted a connection."
+      },
+      "30004": {
+        "status": "PASS",
+        "host": "10.160.9.21",
+        "port": 30004,
+        "timeout_sec": 2.0,
+        "elapsed_ms": 2.09,
+        "message": "TCP port accepted a connection."
+      }
+    },
+    "local_external_control_listener": {
+      "command": [
+        "ss",
+        "-lntp"
+      ],
+      "returncode": 0,
+      "stdout": "State  Recv-Q Send-Q  Local Address:Port  Peer Address:PortProcess                                   \nLISTEN 0      4096    127.0.0.53%lo:53         0.0.0.0:*    users:((\"systemd-resolve\",pid=127,fd=14))\nLISTEN 0      1000   10.255.255.254:53         0.0.0.0:*                                             \nLISTEN 0      511         127.0.0.1:40037      0.0.0.0:*    users:((\"node\",pid=113230,fd=22))        \nLISTEN 0      511         127.0.0.1:37482      0.0.0.0:*    users:((\"node\",pid=140276,fd=40))        \nLISTEN 0      511         127.0.0.1:29273      0.0.0.0:*    users:((\"node\",pid=139477,fd=123))       \nLISTEN 0      511         127.0.0.1:43771      0.0.0.0:*    users:((\"node\",pid=139477,fd=71))        \nLISTEN 0      511         127.0.0.1:41875      0.0.0.0:*    users:((\"node\",pid=139477,fd=66))",
+      "stderr": "",
+      "timed_out": false,
+      "status": "WARN",
+      "message": "Local system is not listening on External Control port 50002.",
+      "matches": []
+    },
+    "current_robot_connections": {
+      "command": [
+        "ss",
+        "-tnp"
+      ],
+      "returncode": 0,
+      "stdout": "State      Recv-Q Send-Q  Local Address:Port  Peer Address:Port Process                                      \nESTAB      0      0           127.0.0.1:42574    127.0.0.1:40037 users:((\"node\",pid=139450,fd=22))           \nESTAB      74521  0      172.17.201.231:41154  10.160.9.21:30002 users:((\"urscript_interf\",pid=145139,fd=18))\nFIN-WAIT-2 0      0      172.17.201.231:50926  10.160.9.21:30001                                             \nESTAB      0      0           127.0.0.1:40037    127.0.0.1:42574 users:((\"node\",pid=113230,fd=24))           \nESTAB      0      0      172.17.201.231:33936 172.17.192.1:7897  users:((\"codex\",pid=139516,fd=14))          \nESTAB      0      0      172.17.201.231:58560  10.160.9.21:29999 users:((\"dashboard_clien\",pid=145133,fd=18))\nESTAB      0      0      172.17.201.231:52950 172.17.192.1:7897  users:((\"codex\",pid=139516,fd=41))          \nESTAB      0      0           127.0.0.1:40037    127.0.0.1:42586 users:((\"node\",pid=139477,fd=22))           \nESTAB      0      0           127.0.0.1:42586    127.0.0.1:40037 users:((\"node\",pid=139459,fd=22))           \nFIN-WAIT-2 0      0      172.17.201.231:35074  10.160.9.21:30004                                             \nESTAB      0      0      172.17.201.231:52954 172.17.192.1:7897  users:((\"node\",pid=139477,fd=65))           \nESTAB      0      0      172.17.201.231:58360  10.160.9.21:30001 users:((\"robot_state_hel\",pid=145135,fd=18))\nESTAB      0      0      172.17.201.231:35228 172.17.192.1:3240                                              \nESTAB      0      0      172.17.201.231:52960 172.17.192.1:7897  users:((\"node\",pid=139477,fd=68))           \nFIN-WAIT-2 0      0      172.17.201.231:38112  10.160.9.21:30002",
+      "stderr": "",
+      "timed_out": false,
+      "status": "WARN",
+      "message": "Current TCP connections to the robot or RTDE port were found.",
+      "robot_ip_matches": [
+        "ESTAB      74521  0      172.17.201.231:41154  10.160.9.21:30002 users:((\"urscript_interf\",pid=145139,fd=18))",
+        "FIN-WAIT-2 0      0      172.17.201.231:50926  10.160.9.21:30001                                             ",
+        "ESTAB      0      0      172.17.201.231:58560  10.160.9.21:29999 users:((\"dashboard_clien\",pid=145133,fd=18))",
+        "FIN-WAIT-2 0      0      172.17.201.231:35074  10.160.9.21:30004                                             ",
+        "ESTAB      0      0      172.17.201.231:58360  10.160.9.21:30001 users:((\"robot_state_hel\",pid=145135,fd=18))",
+        "FIN-WAIT-2 0      0      172.17.201.231:38112  10.160.9.21:30002"
+      ],
+      "rtde_30004_matches": [
+        "FIN-WAIT-2 0      0      172.17.201.231:35074  10.160.9.21:30004                                             "
+      ]
+    },
+    "wsl": {
+      "status": "WARN",
+      "is_wsl": true,
+      "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "proc_version": "Linux version 6.6.87.2-microsoft-standard-WSL2 (root@439a258ad544) (gcc (GCC) 11.2.0, GNU ld (GNU Binutils) 2.37) #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025",
+      "message": "WSL detected; WSL2 NAT may prevent the robot from connecting to a listener inside WSL."
+    }
+  },
+  "analysis": {
+    "overall_status": "WARN",
+    "findings": [
+      {
+        "status": "WARN",
+        "title": "External Control port 50002 is not listening locally",
+        "detail": "The teach pendant refusal to 10.160.9.100:50002 is expected when ur_robot_driver/script sender is not listening."
+      },
+      {
+        "status": "WARN",
+        "title": "Network path is basically reachable, but RTDE writable resource is occupied",
+        "detail": "29999 and 30004 are connectable while speed_slider_mask is reported. Suspect another RTDE client, Fieldbus, URCap, another PC, or a stale robot-controller state."
+      },
+      {
+        "status": "WARN",
+        "title": "WSL2 networking risk",
+        "detail": "WSL2 NAT may prevent the robot from connecting to WSL. Also, 50002 is not listening in this Linux environment."
+      }
+    ]
+  }
+}
