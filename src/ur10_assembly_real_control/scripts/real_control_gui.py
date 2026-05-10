@@ -44,6 +44,34 @@ TOKEN_LABELS = {
     "READY_FOR_RVIZ2_MOVEIT_EXECUTION": "MoveIt 执行就绪",
 }
 
+HARD_REQUIREMENT_TOKENS = (
+    "WSL_50002_LISTENING",
+    "WSL_MOTION_PORTS_LISTENING",
+    "WINDOWS_PORTPROXY_OK",
+    "WINDOWS_50002_LISTENING",
+    "JOINT_STATES_OK",
+    "CONTROLLER_ACTIVE",
+    "ACTION_ONLINE",
+    "SPEED_SCALING_NONZERO",
+)
+
+READY_FALLBACK_TOKENS = (
+    "JOINT_STATES_OK",
+    "CONTROLLER_ACTIVE",
+    "ACTION_ONLINE",
+    "SPEED_SCALING_NONZERO",
+    "WINDOWS_PORTPROXY_OK",
+    "WINDOWS_50002_LISTENING",
+    "WSL_MOTION_PORTS_LISTENING",
+)
+
+WINDOWS_MOTION_WARN_TOKENS = (
+    "WINDOWS_MOTION_PORTS_NOT_LISTENING",
+    "WINDOWS_PORT_50001_NOT_LISTENING",
+    "WINDOWS_PORT_50003_NOT_LISTENING",
+    "WINDOWS_PORT_50004_NOT_LISTENING",
+)
+
 SCRIPT_SENDER_PORT = 50002
 MOTION_PORTS = (50001, 50003, 50004)
 REQUIRED_WINDOWS_PORTS = (50001, 50002, 50003, 50004)
@@ -70,6 +98,11 @@ KILL_PATTERNS = [
     "ros2 launch ur_robot_driver",
     "ros2 launch ur10_assembly_real_control ur10_assembly_real.launch.py",
 ]
+
+EXEC_STATE_IDLE = "IDLE"
+EXEC_STATE_EXECUTING = "EXECUTING"
+EXEC_STATE_EXECUTION_ERROR = "EXECUTION_ERROR"
+EXEC_STATE_EXECUTION_DONE = "EXECUTION_DONE"
 
 
 def _clean_ros_child_env() -> Dict[str, str]:
@@ -158,6 +191,11 @@ class MainWindow(QMainWindow):
         self.processes: Dict[str, ManagedProcess] = {}
         self.ready = False
         self.token_labels: Dict[str, QLabel] = {}
+        self.exec_state = EXEC_STATE_IDLE
+        self._exec_diag_stop = threading.Event()
+        self._exec_diag_thread: Optional[threading.Thread] = None
+        self._last_exec_snapshot_ts = 0.0
+        self._tf_tree_split_warned = False
 
         self._build_ui(args)
 
@@ -287,8 +325,9 @@ class MainWindow(QMainWindow):
             f"{self._source_prefix()} && "
             # Kill the driver's robot_state_publisher to avoid TF conflict with assembly model
             'echo "[moveit] killing conflicting robot_state_publisher from driver..." && '
-            "pkill -f 'robot_state_publisher.*ur_robot_driver' 2>/dev/null; "
-            "pkill -f 'robot_state_publisher.*ur_rsp' 2>/dev/null; "
+            "for pid in $(ps -eo pid=,args= | awk '/robot_state_publisher/ && (/ur_robot_driver|ur_rsp/) {print $1}'); do "
+            "  if [ \"$pid\" != \"$$\" ] && [ \"$pid\" != \"$PPID\" ]; then kill \"$pid\" 2>/dev/null || true; fi; "
+            "done; "
             "sleep 0.5 && "
             # Verify only one RSP is left (ours will start inside the launch)
             'echo "[moveit] remaining RSP processes:" && '
@@ -333,6 +372,39 @@ echo "=== 8. SAFETY MODE ==="
 timeout 5s ros2 service call /dashboard_client/safety_mode ur_dashboard_msgs/srv/GetSafetyMode 2>/dev/null || echo "SAFETY_MODE_FAIL"
 
 echo "=== DIAGNOSE_DONE ==="
+'''
+        return f"{self._source_prefix()} && bash -lc {self._shell_quote(script)}"
+
+    def _runtime_exec_diag_cmd(self) -> str:
+        script = r'''
+set +e
+echo "=== EXEC_RUNTIME_SNAPSHOT ==="
+ctrl="$(timeout 2s ros2 control list_controllers 2>/dev/null | sed -r 's/\x1B\[[0-9;]*[mK]//g')"
+if echo "$ctrl" | grep -Eq '^scaled_joint_trajectory_controller[[:space:]].*[[:space:]]active[[:space:]]*$'; then
+  echo "RUNTIME_CONTROLLER_SCALED=active"
+else
+  state="$(printf '%s\n' "$ctrl" | awk '/^scaled_joint_trajectory_controller[[:space:]]/ {print $NF; exit}')"
+  echo "RUNTIME_CONTROLLER_SCALED=${state:-missing}"
+fi
+speed_msg="$(timeout 2s ros2 topic echo /speed_scaling_state_broadcaster/speed_scaling --once 2>/dev/null)"
+speed_value="$(printf '%s\n' "$speed_msg" | awk '/data:/ {print $2; exit}')"
+if [ -n "$speed_value" ]; then
+  echo "RUNTIME_SPEED_SCALING=$speed_value"
+  if awk "BEGIN {exit !($speed_value > 0.01)}"; then
+    echo "SPEED_SCALING_NONZERO"
+  else
+    echo "SPEED_SCALING_LOW_OR_ZERO"
+  fi
+else
+  echo "RUNTIME_SPEED_SCALING=missing"
+  echo "SPEED_SCALING_LOW_OR_ZERO"
+fi
+action_info="$(timeout 2s ros2 action info /scaled_joint_trajectory_controller/follow_joint_trajectory 2>/dev/null)"
+if printf '%s\n' "$action_info" | grep -q 'Action servers:'; then
+  echo "RUNTIME_ACTION_ONLINE=true"
+else
+  echo "RUNTIME_ACTION_ONLINE=false"
+fi
 '''
         return f"{self._source_prefix()} && bash -lc {self._shell_quote(script)}"
 
@@ -482,6 +554,9 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
     def verify_ready(self) -> None:
         self._reset_tokens()
         self._log("[verify] checking WSL/Windows 50001-50004, /joint_states, scaled controller, action and speed scaling...")
+        self._log(
+            "[verify] Windows motion ports 50001/50003/50004 are advisory only under WSL2 portproxy; they do not block MoveIt execution if the driver reports READY."
+        )
 
         def worker() -> None:
             try:
@@ -515,8 +590,12 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
             self.processes["moveit"] = proc
         else:
             proc.cmd = self._moveit_cmd()
+        self.exec_state = EXEC_STATE_IDLE
+        self._tf_tree_split_warned = False
+        self._stop_exec_diag_thread()
         proc.start()
         self._log("[operator] RViz2 中使用 Start State = Current，只做小范围 Plan -> Execute。")
+        self._start_exec_diag_thread()
 
     def diagnose_execute(self) -> None:
         self._log("[diagnose] 开始执行前诊断...")
@@ -541,6 +620,8 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
 
     def kill_all(self) -> None:
         self.ready = False
+        self.exec_state = EXEC_STATE_IDLE
+        self._stop_exec_diag_thread()
         self._reset_tokens()
         self._log("[cleanup] terminating managed launch processes...")
         for proc in self.processes.values():
@@ -589,20 +670,130 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
             label.setText("未验证")
             self._set_label_color(label, "#777777")
 
+    def _is_ready_from_tokens(self, output: str) -> bool:
+        if "READY_FOR_RVIZ2_MOVEIT_EXECUTION" in output:
+            return True
+        return all(token in output for token in READY_FALLBACK_TOKENS)
+
     def _apply_verify_output(self, output: str) -> None:
         for token, label in self.token_labels.items():
-            if token in output:
+            if token == "WINDOWS_MOTION_PORTS_LISTENING":
+                if token in output:
+                    label.setText("OK")
+                    self._set_label_color(label, "#148a3b")
+                elif any(warn_token in output for warn_token in WINDOWS_MOTION_WARN_TOKENS):
+                    label.setText("WARN")
+                    self._set_label_color(label, "#d18a00")
+                else:
+                    label.setText("未验证")
+                    self._set_label_color(label, "#777777")
+            elif token == "READY_FOR_RVIZ2_MOVEIT_EXECUTION":
+                if self._is_ready_from_tokens(output):
+                    label.setText("OK")
+                    self._set_label_color(label, "#148a3b")
+                else:
+                    label.setText("FAIL")
+                    self._set_label_color(label, "#a83232")
+            elif token in output:
                 label.setText("OK")
                 self._set_label_color(label, "#148a3b")
             else:
                 label.setText("FAIL")
                 self._set_label_color(label, "#a83232")
-        self.ready = all(token in output for token in TOKEN_LABELS)
+        self.ready = self._is_ready_from_tokens(output)
 
     def _refresh_process_status(self) -> None:
         driver = "running" if self.processes.get("driver") and self.processes["driver"].is_running() else "stopped"
         moveit = "running" if self.processes.get("moveit") and self.processes["moveit"].is_running() else "stopped"
-        self.process_status.setText(f"Driver: {driver} | MoveIt/RViz: {moveit}")
+        self.process_status.setText(f"Driver: {driver} | MoveIt/RViz: {moveit} | ExecState: {self.exec_state}")
+
+    def _start_exec_diag_thread(self) -> None:
+        self._exec_diag_stop.clear()
+
+        def worker() -> None:
+            while not self._exec_diag_stop.is_set():
+                moveit = self.processes.get("moveit")
+                if moveit is None or not moveit.is_running():
+                    break
+                try:
+                    result = subprocess.run(
+                        ["bash", "-lc", self._runtime_exec_diag_cmd()],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.STDOUT,
+                        text=True,
+                        env=_clean_ros_child_env(),
+                        timeout=6,
+                    )
+                    out = result.stdout.strip()
+                    if out:
+                        self.log_queue.put("[execdiag] " + out.replace("\n", "\n[execdiag] "))
+                except subprocess.TimeoutExpired:
+                    self.log_queue.put("[execdiag] RUNTIME_SNAPSHOT_TIMEOUT")
+                self._exec_diag_stop.wait(1.0)
+
+        self._exec_diag_thread = threading.Thread(target=worker, daemon=True)
+        self._exec_diag_thread.start()
+
+    def _stop_exec_diag_thread(self) -> None:
+        self._exec_diag_stop.set()
+
+    def _snapshot_exec_runtime(self, reason: str) -> None:
+        now = time.time()
+        if now - self._last_exec_snapshot_ts < 1.0:
+            return
+        self._last_exec_snapshot_ts = now
+        self.log_queue.put(f"[execdiag] EXEC_RUNTIME_SNAPSHOT_TRIGGER={reason}")
+
+        def worker() -> None:
+            try:
+                result = subprocess.run(
+                    ["bash", "-lc", self._runtime_exec_diag_cmd()],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    env=_clean_ros_child_env(),
+                    timeout=8,
+                )
+                out = result.stdout.strip()
+                if out:
+                    self.log_queue.put("[execdiag] " + out.replace("\n", "\n[execdiag] "))
+            except subprocess.TimeoutExpired:
+                self.log_queue.put("[execdiag] EXEC_RUNTIME_SNAPSHOT_TIMEOUT")
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _update_exec_state_from_log(self, msg: str) -> None:
+        if "Accepted new action goal" in msg or "Goal request accepted!" in msg:
+            if self.exec_state != EXEC_STATE_EXECUTING:
+                self.exec_state = EXEC_STATE_EXECUTING
+                self._log("[exec] EXEC_STATE_EXECUTING")
+        if "Cannot push a new trajectory while another is being executed" in msg:
+            self.exec_state = EXEC_STATE_EXECUTION_ERROR
+            self._log("[exec] EXEC_ERROR_CONCURRENT_GOAL")
+            self._log("[exec] 上一条轨迹仍在执行，当前 Plan/Execute 被拒绝；请等待执行结束后再发下一条。")
+            self._log("[exec] 该错误不是“速度太快”导致。")
+            self._snapshot_exec_runtime("EXEC_ERROR_CONCURRENT_GOAL")
+        if "MoveGroupInterface::move() failed or timeout reached" in msg:
+            self.exec_state = EXEC_STATE_EXECUTION_ERROR
+            self._log("[exec] EXEC_ERROR_TIMEOUT_OR_ABORT")
+            self._snapshot_exec_runtime("EXEC_ERROR_TIMEOUT_OR_ABORT")
+        if "SPEED_SCALING_LOW_OR_ZERO" in msg:
+            self._log("[exec] SPEED_SCALING_LOW_OR_ZERO")
+        if (
+            "Unable to transform object from frame" in msg
+            and "planning frame'base_jizuo'" in msg
+            and not self._tf_tree_split_warned
+        ):
+            self._tf_tree_split_warned = True
+            self._log("[exec] TF_TREE_SPLIT_WARN")
+            self._log("[exec] TF 树存在分裂风险，可能影响场景一致性；该项与并发执行拒绝需分开判断。")
+        if msg.startswith("[moveit] EXIT code="):
+            if self.exec_state == EXEC_STATE_EXECUTING:
+                self.exec_state = EXEC_STATE_EXECUTION_DONE
+                self._log("[exec] EXEC_STATE_EXECUTION_DONE")
+            else:
+                self.exec_state = EXEC_STATE_IDLE
+            self._stop_exec_diag_thread()
 
     def _drain_logs(self) -> None:
         while True:
@@ -613,12 +804,14 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
             if msg.startswith("__VERIFY_RESULT__"):
                 self._apply_verify_output(msg.replace("__VERIFY_RESULT__", "", 1))
                 continue
+            self._update_exec_state_from_log(msg)
             self._log(msg)
 
     def _log(self, msg: str) -> None:
         self.log_box.append(msg)
 
     def closeEvent(self, event) -> None:
+        self._stop_exec_diag_thread()
         for proc in self.processes.values():
             proc.terminate()
         super().closeEvent(event)
