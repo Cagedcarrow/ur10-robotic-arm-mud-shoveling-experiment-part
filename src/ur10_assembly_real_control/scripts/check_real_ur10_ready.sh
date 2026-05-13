@@ -6,6 +6,7 @@ CTRL_OK=0
 ACTION_OK=0
 SPEED_OK=0
 FAKE_DETECTED=0
+RTDE_OK=0
 
 strip_ansi() {
   sed -r 's/\x1B\[[0-9;]*[mK]//g'
@@ -78,7 +79,21 @@ else
   echo "SPEED_SCALING_TOPIC_MISSING"
 fi
 
-if [ "$JOINT_OK" -eq 1 ] && [ "$CTRL_OK" -eq 1 ] && [ "$ACTION_OK" -eq 1 ] && [ "$SPEED_OK" -eq 1 ] && [ "$FAKE_DETECTED" -eq 0 ]; then
+echo "=== RTDE OVERFLOW CHECK ==="
+RTDE_HITS=$(
+  find "$HOME/.ros/log" -maxdepth 3 -type f -name '*.log' -mmin -30 -print0 2>/dev/null \
+    | xargs -0 -r grep -IhE 'Pipeline producer overflowed|RTDE Data Pipeline|RTDE.*overflowed|overflowed.*RTDE' 2>/dev/null \
+    | tail -n 10
+)
+if [ -n "$RTDE_HITS" ]; then
+  echo "$RTDE_HITS"
+  echo "RTDE_OVERFLOW"
+else
+  echo "RTDE_OK"
+  RTDE_OK=1
+fi
+
+if [ "$JOINT_OK" -eq 1 ] && [ "$CTRL_OK" -eq 1 ] && [ "$ACTION_OK" -eq 1 ] && [ "$SPEED_OK" -eq 1 ] && [ "$RTDE_OK" -eq 1 ] && [ "$FAKE_DETECTED" -eq 0 ]; then
   echo "READY_FOR_RVIZ2_MOVEIT_EXECUTION"
 fi
 

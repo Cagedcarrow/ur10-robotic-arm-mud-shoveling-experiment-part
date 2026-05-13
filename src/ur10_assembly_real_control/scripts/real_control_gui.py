@@ -41,6 +41,7 @@ TOKEN_LABELS = {
     "CONTROLLER_ACTIVE": "scaled 控制器",
     "ACTION_ONLINE": "执行 action",
     "SPEED_SCALING_NONZERO": "速度缩放",
+    "RTDE_OK": "RTDE 链路",
     "READY_FOR_RVIZ2_MOVEIT_EXECUTION": "MoveIt 执行就绪",
 }
 
@@ -53,6 +54,7 @@ HARD_REQUIREMENT_TOKENS = (
     "CONTROLLER_ACTIVE",
     "ACTION_ONLINE",
     "SPEED_SCALING_NONZERO",
+    "RTDE_OK",
 )
 
 READY_FALLBACK_TOKENS = (
@@ -60,9 +62,15 @@ READY_FALLBACK_TOKENS = (
     "CONTROLLER_ACTIVE",
     "ACTION_ONLINE",
     "SPEED_SCALING_NONZERO",
+    "RTDE_OK",
     "WINDOWS_PORTPROXY_OK",
     "WINDOWS_50002_LISTENING",
     "WSL_MOTION_PORTS_LISTENING",
+)
+
+RTDE_OVERFLOW_MARKERS = (
+    "pipeline producer overflowed",
+    "rtde data pipeline",
 )
 
 WINDOWS_MOTION_WARN_TOKENS = (
@@ -112,6 +120,14 @@ def _clean_ros_child_env() -> Dict[str, str]:
     return env
 
 
+def _contains_rtde_overflow(text: str) -> bool:
+    lowered = text.lower()
+    return (
+        any(marker in lowered for marker in RTDE_OVERFLOW_MARKERS)
+        or ("rtde" in lowered and "overflowed" in lowered)
+    )
+
+
 def _qt_plugin_fix() -> None:
     try:
         from PyQt5 import QtCore
@@ -121,6 +137,63 @@ def _qt_plugin_fix() -> None:
         os.environ.setdefault("QT_QPA_PLATFORM_PLUGIN_PATH", str(plugins / "platforms"))
     except Exception:
         pass
+
+
+def _is_wsl() -> bool:
+    if os.environ.get("WSL_DISTRO_NAME"):
+        return True
+    try:
+        with open("/proc/version", "r", encoding="utf-8", errors="ignore") as f:
+            return "microsoft" in f.read().lower()
+    except Exception:
+        return False
+
+
+def _configure_qt_platform(args: argparse.Namespace) -> None:
+    if args.qt_platform:
+        os.environ["QT_QPA_PLATFORM"] = args.qt_platform
+        return
+    if os.environ.get("QT_QPA_PLATFORM"):
+        return
+    # Under WSL GUI stacks, forcing xcb is usually more reliable than implicit wayland.
+    if _is_wsl() and os.environ.get("DISPLAY"):
+        os.environ["QT_QPA_PLATFORM"] = "xcb"
+
+
+def _cleanup_stale_gui_instances() -> int:
+    current = os.getpid()
+    killed = 0
+    targets = []
+    script_name = "real_control_gui.py"
+    for proc in psutil.process_iter(["pid", "cmdline"]):
+        try:
+            pid = proc.info["pid"]
+            if pid == current:
+                continue
+            cmd = proc.info.get("cmdline") or []
+            if not cmd:
+                continue
+            exe = os.path.basename(cmd[0]).lower()
+            if "python" not in exe:
+                continue
+            # Only target real python-script instances, not parent shells containing text snippets.
+            if any(os.path.basename(arg) == script_name for arg in cmd[1:]):
+                targets.append(proc)
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            continue
+    for proc in targets:
+        try:
+            proc.terminate()
+            killed += 1
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            pass
+    _, alive = psutil.wait_procs(targets, timeout=2.0)
+    for proc in alive:
+        try:
+            proc.kill()
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            pass
+    return killed
 
 
 class ManagedProcess:
@@ -190,12 +263,15 @@ class MainWindow(QMainWindow):
         self.log_queue: "queue.Queue[str]" = queue.Queue()
         self.processes: Dict[str, ManagedProcess] = {}
         self.ready = False
+        self.moveit_launch_ok = False
         self.token_labels: Dict[str, QLabel] = {}
         self.exec_state = EXEC_STATE_IDLE
         self._exec_diag_stop = threading.Event()
         self._exec_diag_thread: Optional[threading.Thread] = None
         self._last_exec_snapshot_ts = 0.0
         self._tf_tree_split_warned = False
+        self.rtde_ok = True
+        self._rtde_overflow_warned = False
 
         self._build_ui(args)
 
@@ -267,6 +343,7 @@ class MainWindow(QMainWindow):
 
         notes = QLabel(
             "操作顺序: 启动监听节点 -> 示教器点击运行 External Control -> 验证 READY -> 启动 RViz2/MoveIt2 -> 小范围 Plan/Execute。"
+            " 若 RTDE_OVERFLOW 但 controller/action/speed 已通过，可启动 RViz2/MoveIt2 做查看和 Plan，但不要 Execute。"
         )
         notes.setWordWrap(True)
         root.addWidget(notes)
@@ -308,6 +385,9 @@ class MainWindow(QMainWindow):
             f"robot_ip:={robot_ip} "
             "use_fake_hardware:=false "
             "launch_rviz:=false "
+            "description_package:=ur10_assembly_real_control "
+            "description_file:=assembly_real.urdf.xacro "
+            "kinematics_params_file:=/root/ur10_ws/src/ur10_assembly_real_control/config/ur10/default_kinematics.yaml "
             "headless_mode:=false "
             "launch_dashboard_client:=true "
             f"reverse_ip:={external_host_ip} "
@@ -323,19 +403,14 @@ class MainWindow(QMainWindow):
         robot_ip = self.robot_ip.text().strip()
         return (
             f"{self._source_prefix()} && "
-            # Kill the driver's robot_state_publisher to avoid TF conflict with assembly model
-            'echo "[moveit] killing conflicting robot_state_publisher from driver..." && '
-            "for pid in $(ps -eo pid=,args= | awk '/robot_state_publisher/ && (/ur_robot_driver|ur_rsp/) {print $1}'); do "
-            "  if [ \"$pid\" != \"$$\" ] && [ \"$pid\" != \"$PPID\" ]; then kill \"$pid\" 2>/dev/null || true; fi; "
-            "done; "
-            "sleep 0.5 && "
-            # Verify only one RSP is left (ours will start inside the launch)
-            'echo "[moveit] remaining RSP processes:" && '
+            'echo "[moveit] preserving official driver robot_state_publisher; MoveIt uses matching assembly_real robot_description." && '
+            'echo "[moveit] current RSP processes:" && '
             "pgrep -a robot_state_publisher 2>/dev/null || echo '(none)' && "
             "ros2 launch ur10_assembly_real_control ur10_assembly_real.launch.py "
             f"robot_ip:={robot_ip} "
             "ur_type:=ur10 "
             "launch_driver:=false "
+            "launch_rsp:=false "
             "launch_rviz:=true"
         )
 
@@ -535,12 +610,28 @@ ss -tnp | grep -E ':5000(1|3|4)' || true
 echo "=== SCALED CONTROLLER STATE SAMPLE ==="
 timeout 3s ros2 topic echo /scaled_joint_trajectory_controller/state --once || true
 
+echo "=== RTDE OVERFLOW CHECK ==="
+rtde_hits="$(
+  {{
+    find "$HOME/.ros/log" -maxdepth 3 -type f -name '*.log' -mmin -30 -print0 2>/dev/null \
+      | xargs -0 -r grep -IhE 'Pipeline producer overflowed|RTDE Data Pipeline|RTDE.*overflowed|overflowed.*RTDE' 2>/dev/null
+  }} | grep -E 'Pipeline producer overflowed|RTDE Data Pipeline|RTDE.*overflowed|overflowed.*RTDE' | tail -n 10
+)"
+if [ -n "$rtde_hits" ]; then
+  echo "$rtde_hits"
+  echo RTDE_OVERFLOW
+  echo "NOT_READY: RTDE realtime pipeline is unstable. Stop execution, restart driver, reduce diagnostics, and check WSL2/network/CPU/portproxy stability."
+else
+  echo RTDE_OK
+fi
+
 ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
 """
         return f"{self._source_prefix()} && bash -lc {self._shell_quote(script)}"
 
     def start_driver(self) -> None:
         self.ready = False
+        self.moveit_launch_ok = False
         self._reset_tokens()
         proc = self.processes.get("driver")
         if proc is None:
@@ -577,13 +668,19 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
         threading.Thread(target=worker, daemon=True).start()
 
     def start_moveit(self) -> None:
-        if not self.ready:
+        if not self.ready and not self.moveit_launch_ok:
             QMessageBox.warning(
                 self,
                 "尚未就绪",
-                "请先点击“验证连接与控制器”，看到 READY_FOR_RVIZ2_MOVEIT_EXECUTION 后再启动 MoveIt2/RViz2。",
+                "请先点击“验证连接与控制器”。至少需要 JOINT_STATES_OK、CONTROLLER_ACTIVE、ACTION_ONLINE、SPEED_SCALING_NONZERO 后，才能启动 MoveIt2/RViz2。",
             )
             return
+        if not self.ready and self.moveit_launch_ok:
+            QMessageBox.warning(
+                self,
+                "仅允许规划查看",
+                "当前 RTDE_OVERFLOW，不能视为 READY_FOR_RVIZ2_MOVEIT_EXECUTION。将启动 MoveIt2/RViz2 用于查看和 Plan，但不要点击 Execute；请先重启 driver 并排查 WSL2/网络/CPU/端口转发。",
+            )
         proc = self.processes.get("moveit")
         if proc is None:
             proc = ManagedProcess("moveit", self._moveit_cmd(), self.log_queue)
@@ -595,7 +692,9 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
         self._stop_exec_diag_thread()
         proc.start()
         self._log("[operator] RViz2 中使用 Start State = Current，只做小范围 Plan -> Execute。")
-        self._start_exec_diag_thread()
+        if not self.ready:
+            self._log("[operator] RTDE_OVERFLOW: 本次仅用于 RViz2/MoveIt2 查看和 Plan，不要 Execute。")
+        self._log("[execdiag] Execute 期间高频 shell 诊断已停用；仅在执行前/后触发一次快照。")
 
     def diagnose_execute(self) -> None:
         self._log("[diagnose] 开始执行前诊断...")
@@ -666,16 +765,49 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
         return killed
 
     def _reset_tokens(self) -> None:
+        self.rtde_ok = True
+        self.moveit_launch_ok = False
+        self._rtde_overflow_warned = False
         for label in self.token_labels.values():
             label.setText("未验证")
             self._set_label_color(label, "#777777")
 
+    def _mark_rtde_overflow(self, source: str) -> None:
+        self.rtde_ok = False
+        self.ready = False
+        if "RTDE_OK" in self.token_labels:
+            self.token_labels["RTDE_OK"].setText("RTDE_OVERFLOW")
+            self._set_label_color(self.token_labels["RTDE_OK"], "#a83232")
+        if "READY_FOR_RVIZ2_MOVEIT_EXECUTION" in self.token_labels:
+            self.token_labels["READY_FOR_RVIZ2_MOVEIT_EXECUTION"].setText("NOT_READY")
+            self._set_label_color(self.token_labels["READY_FOR_RVIZ2_MOVEIT_EXECUTION"], "#a83232")
+        if not self._rtde_overflow_warned:
+            self._rtde_overflow_warned = True
+            self._log(f"[rtde] RTDE_OVERFLOW detected from {source}")
+            self._log("[rtde] NOT_READY: RTDE 实时链路不稳定。停止执行，重启 driver，降低诊断负载，并检查 WSL2/网络/CPU/端口转发。")
+
     def _is_ready_from_tokens(self, output: str) -> bool:
-        if "READY_FOR_RVIZ2_MOVEIT_EXECUTION" in output:
-            return True
+        if not self.rtde_ok or "RTDE_OVERFLOW" in output or _contains_rtde_overflow(output):
+            return False
         return all(token in output for token in READY_FALLBACK_TOKENS)
 
+    @staticmethod
+    def _is_moveit_launch_ok_from_tokens(output: str) -> bool:
+        # This is intentionally weaker than real execution READY. It only means
+        # RViz2/MoveIt2 can be opened for visualization and planning inspection.
+        core_tokens = (
+            "JOINT_STATES_OK",
+            "CONTROLLER_ACTIVE",
+            "ACTION_ONLINE",
+            "SPEED_SCALING_NONZERO",
+        )
+        return all(token in output for token in core_tokens)
+
     def _apply_verify_output(self, output: str) -> None:
+        if "RTDE_OVERFLOW" in output or _contains_rtde_overflow(output):
+            self._mark_rtde_overflow("verify output")
+        elif "RTDE_OK" in output:
+            self.rtde_ok = True
         for token, label in self.token_labels.items():
             if token == "WINDOWS_MOTION_PORTS_LISTENING":
                 if token in output:
@@ -694,52 +826,42 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
                 else:
                     label.setText("FAIL")
                     self._set_label_color(label, "#a83232")
+            elif token == "RTDE_OK":
+                if self.rtde_ok and token in output:
+                    label.setText("OK")
+                    self._set_label_color(label, "#148a3b")
+                else:
+                    label.setText("RTDE_OVERFLOW" if not self.rtde_ok else "FAIL")
+                    self._set_label_color(label, "#a83232")
             elif token in output:
                 label.setText("OK")
                 self._set_label_color(label, "#148a3b")
             else:
                 label.setText("FAIL")
                 self._set_label_color(label, "#a83232")
+        self.moveit_launch_ok = self._is_moveit_launch_ok_from_tokens(output)
         self.ready = self._is_ready_from_tokens(output)
+        if self.moveit_launch_ok and not self.ready:
+            self._log("[verify] MOVEIT_RVIZ_PLAN_ONLY_OK: control graph is online, but execution READY is blocked by RTDE/other hard gate.")
 
     def _refresh_process_status(self) -> None:
         driver = "running" if self.processes.get("driver") and self.processes["driver"].is_running() else "stopped"
         moveit = "running" if self.processes.get("moveit") and self.processes["moveit"].is_running() else "stopped"
-        self.process_status.setText(f"Driver: {driver} | MoveIt/RViz: {moveit} | ExecState: {self.exec_state}")
+        rtde = "OK" if self.rtde_ok else "RTDE_OVERFLOW"
+        self.process_status.setText(f"Driver: {driver} | MoveIt/RViz: {moveit} | ExecState: {self.exec_state} | RTDE: {rtde}")
 
     def _start_exec_diag_thread(self) -> None:
-        self._exec_diag_stop.clear()
-
-        def worker() -> None:
-            while not self._exec_diag_stop.is_set():
-                moveit = self.processes.get("moveit")
-                if moveit is None or not moveit.is_running():
-                    break
-                try:
-                    result = subprocess.run(
-                        ["bash", "-lc", self._runtime_exec_diag_cmd()],
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.STDOUT,
-                        text=True,
-                        env=_clean_ros_child_env(),
-                        timeout=6,
-                    )
-                    out = result.stdout.strip()
-                    if out:
-                        self.log_queue.put("[execdiag] " + out.replace("\n", "\n[execdiag] "))
-                except subprocess.TimeoutExpired:
-                    self.log_queue.put("[execdiag] RUNTIME_SNAPSHOT_TIMEOUT")
-                self._exec_diag_stop.wait(1.0)
-
-        self._exec_diag_thread = threading.Thread(target=worker, daemon=True)
-        self._exec_diag_thread.start()
+        # Intentionally disabled for real-robot execution: high-frequency ROS2
+        # subprocess diagnostics can add load to WSL2 + RTDE timing.
+        self._exec_diag_stop.set()
+        self._exec_diag_thread = None
 
     def _stop_exec_diag_thread(self) -> None:
         self._exec_diag_stop.set()
 
     def _snapshot_exec_runtime(self, reason: str) -> None:
         now = time.time()
-        if now - self._last_exec_snapshot_ts < 1.0:
+        if now - self._last_exec_snapshot_ts < 1.0 and not reason.startswith("POST_EXECUTE"):
             return
         self._last_exec_snapshot_ts = now
         self.log_queue.put(f"[execdiag] EXEC_RUNTIME_SNAPSHOT_TRIGGER={reason}")
@@ -767,16 +889,17 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
             if self.exec_state != EXEC_STATE_EXECUTING:
                 self.exec_state = EXEC_STATE_EXECUTING
                 self._log("[exec] EXEC_STATE_EXECUTING")
+                self._snapshot_exec_runtime("PRE_EXECUTE_SNAPSHOT")
         if "Cannot push a new trajectory while another is being executed" in msg:
             self.exec_state = EXEC_STATE_EXECUTION_ERROR
             self._log("[exec] EXEC_ERROR_CONCURRENT_GOAL")
             self._log("[exec] 上一条轨迹仍在执行，当前 Plan/Execute 被拒绝；请等待执行结束后再发下一条。")
             self._log("[exec] 该错误不是“速度太快”导致。")
-            self._snapshot_exec_runtime("EXEC_ERROR_CONCURRENT_GOAL")
+            self._snapshot_exec_runtime("POST_EXECUTE_SNAPSHOT_EXEC_ERROR_CONCURRENT_GOAL")
         if "MoveGroupInterface::move() failed or timeout reached" in msg:
             self.exec_state = EXEC_STATE_EXECUTION_ERROR
             self._log("[exec] EXEC_ERROR_TIMEOUT_OR_ABORT")
-            self._snapshot_exec_runtime("EXEC_ERROR_TIMEOUT_OR_ABORT")
+            self._snapshot_exec_runtime("POST_EXECUTE_SNAPSHOT_EXEC_ERROR_TIMEOUT_OR_ABORT")
         if "SPEED_SCALING_LOW_OR_ZERO" in msg:
             self._log("[exec] SPEED_SCALING_LOW_OR_ZERO")
         if (
@@ -793,6 +916,7 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
                 self._log("[exec] EXEC_STATE_EXECUTION_DONE")
             else:
                 self.exec_state = EXEC_STATE_IDLE
+            self._snapshot_exec_runtime("POST_EXECUTE_SNAPSHOT_MOVEIT_EXIT")
             self._stop_exec_diag_thread()
 
     def _drain_logs(self) -> None:
@@ -804,6 +928,8 @@ ros2 run ur10_assembly_real_control check_real_ur10_ready.sh
             if msg.startswith("__VERIFY_RESULT__"):
                 self._apply_verify_output(msg.replace("__VERIFY_RESULT__", "", 1))
                 continue
+            if _contains_rtde_overflow(msg):
+                self._mark_rtde_overflow("runtime log")
             self._update_exec_state_from_log(msg)
             self._log(msg)
 
@@ -823,16 +949,42 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--external-host-ip", default="10.160.9.100")
     parser.add_argument("--script-sender-port", default="50002")
     parser.add_argument("--workspace", default="/root/ur10_ws")
+    parser.add_argument("--qt-platform", default="", help="Optional QT_QPA_PLATFORM override, e.g. xcb/offscreen/wayland")
     args, _ = parser.parse_known_args()
     return args
 
 
 def main() -> int:
-    _qt_plugin_fix()
     args = parse_args()
+    _qt_plugin_fix()
+    _configure_qt_platform(args)
+    cleaned = _cleanup_stale_gui_instances()
+    if cleaned:
+        print(f"[gui] cleaned stale instances: {cleaned}", flush=True)
+    print(
+        "[gui] boot",
+        f"DISPLAY={os.environ.get('DISPLAY', '')}",
+        f"WAYLAND_DISPLAY={os.environ.get('WAYLAND_DISPLAY', '')}",
+        f"QT_QPA_PLATFORM={os.environ.get('QT_QPA_PLATFORM', '')}",
+        flush=True,
+    )
     app = QApplication(sys.argv)
+    if not app.screens():
+        print("[gui] no active Qt screen detected; check DISPLAY/Wayland/X11 forwarding.", flush=True)
+        return 3
     win = MainWindow(args)
+    win.setWindowFlag(Qt.WindowStaysOnTopHint, True)
     win.show()
+    win.raise_()
+    win.activateWindow()
+    QTimer.singleShot(300, win.raise_)
+    QTimer.singleShot(300, win.activateWindow)
+    # Keep top-most only during startup, then restore normal stacking.
+    def _drop_startup_topmost() -> None:
+        win.setWindowFlag(Qt.WindowStaysOnTopHint, False)
+        win.show()
+
+    QTimer.singleShot(3000, _drop_startup_topmost)
     return app.exec_()
 
 

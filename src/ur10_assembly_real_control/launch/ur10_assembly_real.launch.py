@@ -31,6 +31,7 @@ def generate_launch_description():
     ur_type = LaunchConfiguration("ur_type")
     launch_rviz = LaunchConfiguration("launch_rviz")
     launch_driver = LaunchConfiguration("launch_driver")
+    launch_rsp = LaunchConfiguration("launch_rsp")
     headless_mode = LaunchConfiguration("headless_mode")
     launch_dashboard_client = LaunchConfiguration("launch_dashboard_client")
     reverse_ip = LaunchConfiguration("reverse_ip")
@@ -46,6 +47,18 @@ def generate_launch_description():
         "mesh_root:=",
         "file://",
         mesh_root,
+        " ",
+        "ur_type:=",
+        ur_type,
+        " ",
+        "robot_ip:=",
+        robot_ip,
+        " ",
+        "headless_mode:=",
+        headless_mode,
+        " ",
+        "reverse_ip:=",
+        reverse_ip,
     ])
 
     robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
@@ -105,6 +118,7 @@ def generate_launch_description():
         package="robot_state_publisher",
         executable="robot_state_publisher",
         output="screen",
+        condition=IfCondition(launch_rsp),
         parameters=[robot_description],
     )
 
@@ -143,6 +157,11 @@ def generate_launch_description():
         DeclareLaunchArgument("ur_type", default_value="ur10"),
         DeclareLaunchArgument("launch_rviz", default_value="true"),
         DeclareLaunchArgument("launch_driver", default_value="true"),
+        DeclareLaunchArgument(
+            "launch_rsp",
+            default_value="false",
+            description="Start a standalone robot_state_publisher. Keep false when official ur_robot_driver is running.",
+        ),
         DeclareLaunchArgument("headless_mode", default_value="false"),
         DeclareLaunchArgument("launch_dashboard_client", default_value="true"),
         DeclareLaunchArgument("reverse_ip", default_value="10.160.9.100"),

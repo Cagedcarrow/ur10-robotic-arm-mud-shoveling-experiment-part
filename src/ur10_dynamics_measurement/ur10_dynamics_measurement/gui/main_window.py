@@ -1,8 +1,20 @@
 from __future__ import annotations
 
+import os
 import sys
 from collections import deque
 from pathlib import Path
+
+# WSLg 使用 Weston (Wayland 合成器)，直接使用 Wayland 后端可避免
+# XWayland 窗口管理器长期运行后无法映射新 X11 窗口的问题。
+# 如果 Wayland 不可用则自动回退到 xcb。
+os.environ.pop("QT_QPA_PLATFORM", None)
+os.environ.setdefault("QT_QPA_PLATFORM", "wayland;xcb")
+
+# WSLg 的 Wayland socket 路径
+_wslg_runtime = "/mnt/wslg/runtime-dir"
+if os.path.isdir(_wslg_runtime) and os.path.exists(os.path.join(_wslg_runtime, "wayland-0")):
+    os.environ.setdefault("XDG_RUNTIME_DIR", _wslg_runtime)
 
 import pyqtgraph as pg
 import rclpy

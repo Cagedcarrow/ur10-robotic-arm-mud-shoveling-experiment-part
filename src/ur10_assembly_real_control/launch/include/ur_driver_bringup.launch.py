@@ -24,6 +24,16 @@ def generate_launch_description():
             "use_fake_hardware": "false",
             "headless_mode": headless_mode,
             "launch_rviz": "false",
+            "description_package": "ur10_assembly_real_control",
+            "description_file": "assembly_real.urdf.xacro",
+            "kinematics_params_file": PathJoinSubstitution(
+                [
+                    FindPackageShare("ur10_assembly_real_control"),
+                    "config",
+                    "ur10",
+                    "default_kinematics.yaml",
+                ]
+            ),
             "launch_dashboard_client": launch_dashboard_client,
             "reverse_ip": reverse_ip,
             "reverse_port": "50001",

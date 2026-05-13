@@ -18,3 +18,17 @@ __pycache__/
 
 # local archives
 *.zip
+# 实验数据
+src/**/data/
+src/**/log/
+
+# 数据文件
+*.csv
+*.txt
+*.png
+*.xlsx
+
+# ROS2
+build/
+install/
+log/

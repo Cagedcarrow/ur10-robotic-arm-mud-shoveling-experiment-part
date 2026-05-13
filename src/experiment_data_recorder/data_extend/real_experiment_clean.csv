@@ -1,9 +1,0 @@
-record_id,session_name,group,speed_setting,penetration_depth,entry_angle,scooped_mass,speed_setting_source,speed_proxy_joint_activity,speed_proxy_tcp_linear_activity,speed_proxy_tcp_angular_activity,data_role,source_description,is_measured
-real_001,2026-05-01_19-57-41,1,0.2,20.0,20.0,305.701206,derived_proxy_from_Act_qd_and_TCP_velocity,0.149814,0.053991,0.095483,real_experiment,measured from original experiment,1
-real_002,2026-05-01_20-03-37,2,0.867933,20.0,20.0,80.023529,derived_proxy_from_Act_qd_and_TCP_velocity,0.428642,0.153539,0.272271,real_experiment,measured from original experiment,1
-real_003,2026-05-01_20-10-53,3,0.313489,30.0,40.0,43.257751,derived_proxy_from_Act_qd_and_TCP_velocity,0.206841,0.062474,0.104127,real_experiment,measured from original experiment,1
-real_004,2026-05-01_20-13-52,4,0.578414,30.0,40.0,75.119097,derived_proxy_from_Act_qd_and_TCP_velocity,0.321766,0.098173,0.161682,real_experiment,measured from original experiment,1
-real_005,2026-05-01_20-15-19,5,1.0,40.0,60.0,541.262902,derived_proxy_from_Act_qd_and_TCP_velocity,0.502639,0.156741,0.25338,real_experiment,measured from original experiment,1
-real_006,2026-05-01_20-22-32,6,0.295221,40.0,60.0,63.4809,derived_proxy_from_Act_qd_and_TCP_velocity,0.193759,0.064518,0.126785,real_experiment,measured from original experiment,1
-real_007,2026-05-01_20-23-41,7,0.5947,40.0,60.0,77.116749,derived_proxy_from_Act_qd_and_TCP_velocity,0.320483,0.107661,0.209543,real_experiment,measured from original experiment,1
-real_008,2026-05-01_20-24-59,8,0.877729,40.0,60.0,162.178619,derived_proxy_from_Act_qd_and_TCP_velocity,0.437492,0.15084,0.28699,real_experiment,measured from original experiment,1

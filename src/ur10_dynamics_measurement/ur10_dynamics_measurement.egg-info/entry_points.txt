@@ -1,2 +1,0 @@
-[console_scripts]
-measurement_gui = ur10_dynamics_measurement.gui.main_window:main

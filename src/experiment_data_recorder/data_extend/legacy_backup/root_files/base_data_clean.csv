@@ -1,9 +1,0 @@
-session_name,group,penetration_depth,entry_angle,speed_setting,speed_setting_source,speed_proxy_joint_activity,speed_proxy_tcp_linear_activity,speed_proxy_tcp_angular_activity,scooped_mass,data_source,is_synthetic
-2026-05-01_19-57-41,1,20.0,20.0,0.2,derived_proxy_from_Act_qd_and_TCP_velocity,0.149814,0.053991,0.095483,305.701206,real_experiment,0
-2026-05-01_20-03-37,2,20.0,20.0,0.867933,derived_proxy_from_Act_qd_and_TCP_velocity,0.428642,0.153539,0.272271,80.023529,real_experiment,0
-2026-05-01_20-10-53,3,30.0,40.0,0.313489,derived_proxy_from_Act_qd_and_TCP_velocity,0.206841,0.062474,0.104127,43.257751,real_experiment,0
-2026-05-01_20-13-52,4,30.0,40.0,0.578414,derived_proxy_from_Act_qd_and_TCP_velocity,0.321766,0.098173,0.161682,75.119097,real_experiment,0
-2026-05-01_20-15-19,5,40.0,60.0,1.0,derived_proxy_from_Act_qd_and_TCP_velocity,0.502639,0.156741,0.25338,541.262902,real_experiment,0
-2026-05-01_20-22-32,6,40.0,60.0,0.295221,derived_proxy_from_Act_qd_and_TCP_velocity,0.193759,0.064518,0.126785,63.4809,real_experiment,0
-2026-05-01_20-23-41,7,40.0,60.0,0.5947,derived_proxy_from_Act_qd_and_TCP_velocity,0.320483,0.107661,0.209543,77.116749,real_experiment,0
-2026-05-01_20-24-59,8,40.0,60.0,0.877729,derived_proxy_from_Act_qd_and_TCP_velocity,0.437492,0.15084,0.28699,162.178619,real_experiment,0
