@@ -27,11 +27,9 @@ def generate_launch_description():
     pkg = "ur10_assembly_virtual_moveit"
 
     launch_rviz = LaunchConfiguration("launch_rviz")
-    ur_type = LaunchConfiguration("ur_type")
 
     xacro_file = PathJoinSubstitution([FindPackageShare(pkg), "urdf", "assembly_virtual.urdf.xacro"])
     mesh_root = PathJoinSubstitution([FindPackageShare(pkg), "config", "meshes"])
-    initial_positions_file = PathJoinSubstitution([FindPackageShare(pkg), "config", "initial_positions.yaml"])
     controllers_file = PathJoinSubstitution([FindPackageShare(pkg), "config", "ros2_controllers.yaml"])
 
     robot_description_content = Command([
@@ -39,19 +37,13 @@ def generate_launch_description():
         " ",
         xacro_file,
         " ",
-        "ur_type:=",
-        ur_type,
-        " ",
         "mesh_root:=",
         "file://",
         mesh_root,
         " ",
-        "initial_positions_file:=",
-        initial_positions_file,
+        "ros_profile:=ros2",
         " ",
-        "use_fake_hardware:=true",
-        " ",
-        "fake_sensor_commands:=false",
+        "ros_hardware_interface:=position",
     ])
 
     robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
@@ -164,7 +156,6 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        DeclareLaunchArgument("ur_type", default_value="ur10"),
         DeclareLaunchArgument("launch_rviz", default_value="true"),
         robot_state_publisher,
         ros2_control_node,

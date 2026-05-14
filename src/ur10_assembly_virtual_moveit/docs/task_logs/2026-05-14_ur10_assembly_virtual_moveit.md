@@ -57,6 +57,28 @@ ros2 run ur10_assembly_virtual_moveit check_virtual_moveit_ready.sh
 
 需要在有图形界面的环境中人工确认 RViz2 交互标记拖动、Plan 和 Execute 的视觉效果。
 
+## 10. 追加修改：切换为 ur_base_xarco_model 原始装配模型
+
+用户要求模型改为 `/root/ur10_ws/src/ur_base_xarco_model/assembly_xacro/assembly/assembly.urdf.xacro`。虚拟包已将 `assembly_virtual.urdf.xacro` 替换为该模型结构，保留原始 link/joint 命名和 mesh 结构，并同步更新 SRDF、joint limits、controller joints、MoveIt controller joints。
+
+关键差异：
+
+- 规划关节改为 `ur10_shoulder_pan`、`ur10_shoulder_lift`、`ur10_elbow`、`ur10_wrist_1`、`ur10_wrist_2`、`ur10_wrist_3`。
+- MoveIt planning chain 改为 `ur10` 到 `sensor_shovel_tcp`。
+- 末端父 link 改为 `ur10_wrist_3`。
+- 原模型的 GazeboSystem ros2_control 插件在虚拟包副本中替换为 `mock_components/GenericSystem`，保证仍然是纯 RViz2/MoveIt2 虚拟控制链。
+- 原始 `ur_base_xarco_model` 文件未修改。
+- 删除虚拟包内不再使用的 `config/ur10/` 和 `initial_positions.yaml`，避免残留官方关节名配置。
+
+追加验证：
+
+- 新模型 `xacro` 展开和 `check_urdf` 通过，链路为 `base_jizuo -> ... -> ur10_wrist_3 -> sensor_shovel -> sensor_shovel_tcp`。
+- `move_group` 加载新 SRDF 后输出 `You can start planning now!`。
+- `joint_state_broadcaster` 和 `joint_trajectory_controller` 均 active。
+- `/joint_states` 发布 `ur10_shoulder_pan`、`ur10_shoulder_lift`、`ur10_elbow`、`ur10_wrist_1`、`ur10_wrist_2`、`ur10_wrist_3`。
+- `/joint_trajectory_controller/follow_joint_trajectory` action server 在线。
+- `check_virtual_moveit_ready.sh` 已增加短轮询等待，避免刚启动时误报 action 或 joint_states 缺失。
+
 ## 9. 下一步建议
 
 如果后续需要 Gazebo 物理仿真，应另建 Gazebo launch，不要把 Gazebo 插件混进这个纯 RViz2/MoveIt2 虚拟包的默认入口。
