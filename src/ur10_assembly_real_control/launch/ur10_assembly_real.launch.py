@@ -2,7 +2,7 @@ import os
 import yaml
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
@@ -80,7 +80,6 @@ def generate_launch_description():
             "request_adapters": "default_planner_request_adapters/AddTimeOptimalParameterization "
                                 "default_planner_request_adapters/FixWorkspaceBounds "
                                 "default_planner_request_adapters/FixStartStateBounds "
-                                "default_planner_request_adapters/FixStartStateCollision "
                                 "default_planner_request_adapters/FixStartStatePathConstraints",
             "start_state_max_bounds_error": 0.1,
         },
@@ -138,6 +137,13 @@ def generate_launch_description():
         ],
     )
 
+    allow_all_collisions = Node(
+        package=pkg,
+        executable="allow_all_moveit_collisions.py",
+        name="allow_all_moveit_collisions",
+        output="screen",
+    )
+
     ur_driver = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare(pkg), "launch", "include", "ur_driver_bringup.launch.py"])
@@ -168,5 +174,6 @@ def generate_launch_description():
         ur_driver,
         rsp,
         move_group,
+        TimerAction(period=5.0, actions=[allow_all_collisions]),
         rviz,
     ])

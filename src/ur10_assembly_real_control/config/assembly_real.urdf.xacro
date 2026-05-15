@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
 <robot name="assembly" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
+  <xacro:arg name="ur_description_share" default="/opt/ros/humble/share/ur_description" />
+  <xacro:arg name="assembly_share" default="$(optenv UR10_ASSEMBLY_REAL_CONTROL_SHARE /root/ur10_ws/src/ur10_assembly_real_control/config)" />
+  <xacro:include filename="$(arg ur_description_share)/urdf/ur_macro.xacro" />
 
   <xacro:arg name="name" default="ur" />
   <xacro:arg name="ur_type" default="ur10" />
   <xacro:arg name="tf_prefix" default="" />
-  <xacro:arg name="mesh_root" default="file://$(find ur10_assembly_real_control)/config/meshes" />
-  <xacro:arg name="joint_limit_params" default="$(find ur10_assembly_real_control)/config/$(arg ur_type)/joint_limits.yaml" />
-  <xacro:arg name="kinematics_params" default="$(find ur10_assembly_real_control)/config/$(arg ur_type)/default_kinematics.yaml" />
-  <xacro:arg name="physical_params" default="$(find ur10_assembly_real_control)/config/$(arg ur_type)/physical_parameters.yaml" />
-  <xacro:arg name="visual_params" default="$(find ur10_assembly_real_control)/config/$(arg ur_type)/visual_parameters.yaml" />
+  <xacro:arg name="mesh_root" default="file://$(arg assembly_share)/meshes" />
+  <xacro:arg name="joint_limit_params" default="$(arg assembly_share)/$(arg ur_type)/joint_limits.yaml" />
+  <xacro:arg name="kinematics_params" default="$(arg assembly_share)/$(arg ur_type)/default_kinematics.yaml" />
+  <xacro:arg name="physical_params" default="$(arg assembly_share)/$(arg ur_type)/physical_parameters.yaml" />
+  <xacro:arg name="visual_params" default="$(arg assembly_share)/$(arg ur_type)/visual_parameters.yaml" />
   <xacro:arg name="transmission_hw_interface" default="" />
   <xacro:arg name="safety_limits" default="false" />
   <xacro:arg name="safety_pos_margin" default="0.15" />
@@ -37,7 +39,7 @@
   <xacro:arg name="fake_sensor_commands" default="false" />
   <xacro:arg name="sim_gazebo" default="false" />
   <xacro:arg name="sim_ignition" default="false" />
-  <xacro:arg name="initial_positions_file" default="$(find ur_description)/config/initial_positions.yaml" />
+  <xacro:arg name="initial_positions_file" default="$(arg ur_description_share)/config/initial_positions.yaml" />
 
   <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)" />
 
